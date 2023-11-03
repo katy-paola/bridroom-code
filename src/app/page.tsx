@@ -1,7 +1,8 @@
 import AuthButton from '../components/AuthButton'
 import { createClient } from '@/utils/supabase/server'
-import Header from '@/components/Header'
+import Header from '@/components/HeaderPrueba'
 import { cookies } from 'next/headers'
+import { titleFont } from './ui/fonts'
 
 export default async function Index() {
   const cookieStore = cookies()
@@ -21,8 +22,10 @@ export default async function Index() {
       <div className="animate-in flex max-w-4xl flex-1 flex-col gap-20 px-3 opacity-0">
         <Header />
         <main className="flex flex-1 flex-col gap-6">
-          <h2 className="mb-4 text-4xl font-bold">Pensiones</h2>
-          <ul className="grid grid-cols-1 gap-4 md:grid-cols-3">
+          <h2 className={`${titleFont.className} mb-4 text-4xl font-bold`}>
+            Pensiones
+          </h2>
+          <ul className="grid grid-cols-auto-fill gap-4">
             {data?.map((listing) => (
               <li key={listing.id} className="flex flex-col gap-2">
                 {listing.photos?.map((photo, index) => (

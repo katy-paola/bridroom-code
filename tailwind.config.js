@@ -14,6 +14,9 @@ module.exports = {
           'background-hover': 'hsl(var(--btn-background-hover))',
         },
       },
+      gridTemplateColumns: {
+        'auto-fill': 'repeat(auto-fill, minmax(200px, 1fr))',
+      },
     },
   },
   plugins: [],
