@@ -1,9 +1,12 @@
+import { type Database } from '@/types/database.types'
 import { createServerClient, type CookieOptions } from '@supabase/ssr'
-import { cookies } from 'next/headers'
+import { type cookies } from 'next/headers'
 
 export const createClient = (cookieStore: ReturnType<typeof cookies>) => {
-  return createServerClient(
+  return createServerClient<Database>(
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
     {
       cookies: {
@@ -29,6 +32,6 @@ export const createClient = (cookieStore: ReturnType<typeof cookies>) => {
           }
         },
       },
-    }
+    },
   )
 }

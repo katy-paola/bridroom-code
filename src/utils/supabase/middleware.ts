@@ -1,3 +1,4 @@
+import { type Database } from '@/types/database.types'
 import { createServerClient, type CookieOptions } from '@supabase/ssr'
 import { type NextRequest, NextResponse } from 'next/server'
 
@@ -9,8 +10,10 @@ export const createClient = (request: NextRequest) => {
     },
   })
 
-  const supabase = createServerClient(
+  const supabase = createServerClient<Database>(
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
     {
       cookies: {
@@ -54,7 +57,7 @@ export const createClient = (request: NextRequest) => {
           })
         },
       },
-    }
+    },
   )
 
   return { supabase, response }
