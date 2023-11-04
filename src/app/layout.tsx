@@ -1,5 +1,7 @@
 import { GeistSans } from 'geist/font'
 import './globals.css'
+import Header from '@/components/Header'
+import { bodyFont } from './ui/fonts'
 
 const defaultUrl =
   process.env.VERCEL_URL != null
@@ -19,10 +21,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={GeistSans.className}>
-      <body className="bg-background text-foreground">
-        <main className="flex min-h-screen flex-col items-center">
-          {children}
-        </main>
+      <body>
+        <section className={`flex flex-col ${bodyFont.className}`}>
+          <Header />
+          <main className="flex min-h-screen flex-col items-center">
+            {children}
+          </main>
+        </section>
       </body>
     </html>
   )
