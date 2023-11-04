@@ -41,6 +41,15 @@
     --warning: #ffb800;
     --info: #1653b4;
     --help: #8729ae;
+
+    /*heading fontsizes*/
+    --heading-medium: 2rem;
+    --heading-small: 1.5rem;
+
+    /*paragraph fontsizes*/
+    --paragraph-medium: 1.25rem;
+    --paragraph-regular: 1rem;
+    --paragraph-small: 0.75rem;
   }
   /*
   @media (prefers-color-scheme: dark) {
