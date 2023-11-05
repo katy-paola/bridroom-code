@@ -15,6 +15,8 @@ export interface Database {
           description: string | null
           id: string
           photos: string[] | null
+          price: number | null
+          rating: number | null
           title: string | null
           user_id: string | null
         }
@@ -23,6 +25,8 @@ export interface Database {
           description?: string | null
           id?: string
           photos?: string[] | null
+          price?: number | null
+          rating?: number | null
           title?: string | null
           user_id?: string | null
         }
@@ -31,17 +35,19 @@ export interface Database {
           description?: string | null
           id?: string
           photos?: string[] | null
+          price?: number | null
+          rating?: number | null
           title?: string | null
           user_id?: string | null
         }
         Relationships: [
           {
-            foreignKeyName: 'listings_user_id_fkey'
-            columns: ['user_id']
+            foreignKeyName: "listings_user_id_fkey"
+            columns: ["user_id"]
             isOneToOne: false
-            referencedRelation: 'profiles'
-            referencedColumns: ['id']
-          },
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          }
         ]
       }
       profiles: {

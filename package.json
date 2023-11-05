@@ -6,7 +6,7 @@
     "start": "next start",
     "lint": "eslint --ext .ts,.tsx src --fix",
     "format": "prettier --write \"src/**/*.{ts,tsx}\"",
-    "gen:types": "npx supabase gen types typescript --project-id bqvjnxwhjtqegrpcleez > types/database.types.ts"
+    "gen:types": "npx supabase gen types typescript --project-id bqvjnxwhjtqegrpcleez > src/types/database.types.ts"
   },
   "dependencies": {
     "@supabase/ssr": "0.0.5",
