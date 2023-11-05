@@ -48,7 +48,10 @@ module.exports = {
         'paragraph-small': 'var(--paragraph-small)',
       },
       gridTemplateColumns: {
-        'auto-fill': 'repeat(auto-fill, minmax(288px, 1fr))',
+        'auto-fill': 'repeat(auto-fill, minmax(260px, 1fr))',
+      },
+      gridTemplateRows: {
+        'auto-fit': 'repeat(auto-fit, minmax(min-content, 1fr))',
       },
     },
   },

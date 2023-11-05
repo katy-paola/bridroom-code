@@ -20,7 +20,7 @@ export default function Card(Props: {
       <figure>
         <img src={photo} alt="" />
       </figure>
-      <section className="flex flex-col gap-4 p-4">
+      <section className="flex flex-1 flex-col justify-between gap-4 p-4">
         <section className="flex flex-col gap-1">
           <h3 className="text-paragraph-regular font-semibold text-neutral-title">
             {title}

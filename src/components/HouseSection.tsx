@@ -26,9 +26,9 @@ export default async function HouseSection() {
         />
       </header>
       <section className="flex flex-col gap-6">
-        <ul className="grid grid-cols-auto-fill gap-6">
+        <ul className="grid grid-cols-auto-fill grid-rows-auto-fit items-stretch gap-6">
           {data?.map((listing) => (
-            <li key={listing.id}>
+            <li key={listing.id} className="contents">
               <Card
                 photo={listing.photos?.[0]}
                 title={listing.title}
@@ -39,7 +39,7 @@ export default async function HouseSection() {
             </li>
           ))}
         </ul>
-        <section className="flex justify-end">
+        <section className="flex justify-end md:justify-center">
           <Button
             type="secondary"
             size="small"
