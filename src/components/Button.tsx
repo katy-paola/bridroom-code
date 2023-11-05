@@ -35,7 +35,7 @@ export default function Button(Props: {
           hasText === 'both'
             ? 'hidden md:inline-block'
             : hasText === 'no' && 'hidden'
-        }`}
+        } font-semibold`}
       >
         {text}
       </span>

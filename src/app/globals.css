@@ -43,10 +43,13 @@
     --help: #8729ae;
 
     /*heading fontsizes*/
+    --heading-xlarge: 3rem;
+    --heading-large: 2.5rem;
     --heading-medium: 2rem;
     --heading-small: 1.5rem;
 
     /*paragraph fontsizes*/
+    --paragraph-xlarge: 1.75rem;
     --paragraph-medium: 1.125rem;
     --paragraph-regular: 1rem;
     --paragraph-small: 0.75rem;

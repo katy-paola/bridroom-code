@@ -41,8 +41,11 @@ module.exports = {
         },
       },
       fontSize: {
+        'heading-xlarge': 'var(--heading-xlarge)',
+        'heading-large': 'var(--heading-large)',
         'heading-medium': 'var(--heading-medium)',
         'heading-small': 'var(--heading-small)',
+        'paragraph-xlarge': 'var(--paragraph-xlarge)',
         'paragraph-medium': 'var(--paragraph-medium)',
         'paragraph-regular': 'var(--paragraph-regular)',
         'paragraph-small': 'var(--paragraph-small)',
@@ -52,6 +55,13 @@ module.exports = {
       },
       gridTemplateRows: {
         'auto-fit': 'repeat(auto-fit, minmax(min-content, 1fr))',
+      },
+      screens: {
+        xs: '430px',
+        sm: '744px',
+        md: '1024px',
+        lg: '1280px',
+        xl: '1440px',
       },
     },
   },
