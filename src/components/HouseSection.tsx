@@ -1,4 +1,4 @@
-import { createClient } from '@/utils/supabase/server'
+import { createClient } from '@/lib/supabase/server'
 import { cookies } from 'next/headers'
 import Filter from '@/svg/Filter'
 import More from '@/svg/More'
@@ -11,6 +11,7 @@ export default async function HouseSection() {
   const supabase = createClient(cookieStore)
 
   const { data } = await supabase.from('listings').select('*, profiles(*)')
+
   return (
     <section className="flex flex-col gap-6 bg-neutral-secondary-bg px-4 py-8">
       <header className="flex items-center justify-between">
@@ -35,6 +36,7 @@ export default async function HouseSection() {
                 name={listing.profiles?.name}
                 rating={listing.rating}
                 price={listing.price}
+                id={listing.id}
               />
             </li>
           ))}

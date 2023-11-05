@@ -1,5 +1,7 @@
 import FillStar from '@/svg/FillStar'
 import Button from './Button'
+import Link from 'next/link'
+import { formatCurrency } from '@/utils/formatCurrency'
 
 export default function Card(Props: {
   photo: string | undefined
@@ -7,13 +9,10 @@ export default function Card(Props: {
   name: string | null | undefined
   rating: number | null
   price: number | null
+  id: string
 }) {
-  const { photo, title, name, rating, price } = Props
-  const priceCOP = new Intl.NumberFormat('es-CO', {
-    style: 'currency',
-    currency: 'COP',
-    maximumFractionDigits: 0,
-  }).format(price)
+  const { photo, title, name, rating, price, id } = Props
+  const priceCOP = formatCurrency(price ?? 0)
 
   return (
     <article className="flex flex-col overflow-hidden rounded-2xl bg-neutral-main-bg shadow-md">
@@ -43,12 +42,14 @@ export default function Card(Props: {
           <p className="text-paragraph-small font-semibold text-neutral-title">
             {priceCOP}/mes
           </p>
-          <Button
-            type="primary"
-            size="small"
-            hasText="yes"
-            text="Ver detalles"
-          />
+          <Link href={`/l/${id}`}>
+            <Button
+              type="primary"
+              size="small"
+              hasText="yes"
+              text="Ver detalles"
+            />
+          </Link>
         </section>
       </section>
     </article>

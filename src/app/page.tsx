@@ -6,6 +6,7 @@ import { titleFont } from './ui/fonts' */
 import SearchSection from '@/components/SearchSection'
 import HouseSection from '@/components/HouseSection'
 import OwnerSection from '@/components/OwnerSection'
+import { Suspense } from 'react'
 
 export default async function Index() {
   // const cookieStore = cookies()
@@ -17,7 +18,13 @@ export default async function Index() {
   return (
     <section>
       <SearchSection />
-      <HouseSection />
+      <Suspense
+        fallback={
+          <div className="h-96 w-full bg-neutral-secondary-bg">Loading...</div>
+        }
+      >
+        <HouseSection />
+      </Suspense>
       <OwnerSection />
     </section>
     // <div className="flex w-full flex-1 flex-col items-center gap-20">
