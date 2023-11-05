@@ -28,7 +28,7 @@ export default function Button(Props: {
 
   return (
     <button
-      className={`text-white ${getTypeClassName()} ${getSizeClassName()} rounded-lg ${setPadding()}`}
+      className={`flex items-center gap-1 text-white ${getTypeClassName()} ${getSizeClassName()} rounded-lg ${setPadding()}`}
     >
       <span
         className={`${

@@ -47,6 +47,9 @@ module.exports = {
         'paragraph-regular': 'var(--paragraph-regular)',
         'paragraph-small': 'var(--paragraph-small)',
       },
+      gridTemplateColumns: {
+        'auto-fill': 'repeat(auto-fill, minmax(288px, 1fr))',
+      },
     },
   },
   plugins: [],

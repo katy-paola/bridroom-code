@@ -11,26 +11,33 @@ export default function Card(Props: {
   const { photo, title, name, rating, price } = Props
 
   return (
-    <article>
+    <article className="flex flex-col overflow-hidden rounded-2xl bg-neutral-main-bg shadow-md">
       <figure>
         <img src={photo} alt="" />
       </figure>
-      <section>
-        <section>
-          <h3>{title}</h3>
-          <p>{name}</p>
-
+      <section className="flex flex-col gap-4 p-4">
+        <section className="flex flex-col gap-1">
+          <h3 className="text-paragraph-regular font-semibold text-neutral-title">
+            {title}
+          </h3>
+          <p className="text-paragraph-small text-neutral-title">{name}</p>
           {rating === null ? (
-            <p>No hay valoraciones</p>
+            <p className="text-paragraph-regular leading-4 text-neutral-title">
+              No hay valoraciones
+            </p>
           ) : (
-            <section>
-              <p>{rating}</p>
+            <section className="flex items-center">
+              <p className="text-paragraph-regular leading-4 text-neutral-title">
+                {rating}
+              </p>
               <FillStar />
             </section>
           )}
         </section>
-        <section>
-          <p>${price}/mes</p>
+        <section className="flex items-center justify-between">
+          <p className="text-paragraph-regular font-semibold text-neutral-title">
+            ${price}/mes
+          </p>
           <Button
             type="primary"
             size="small"

@@ -12,9 +12,11 @@ export default async function HouseSection() {
 
   const { data } = await supabase.from('listings').select('*, profiles(*)')
   return (
-    <section>
-      <header>
-        <h2>Encuentra aquí tu pensión</h2>
+    <section className="flex flex-col gap-6 bg-neutral-secondary-bg px-4 py-8">
+      <header className="flex items-center justify-between">
+        <h2 className="text-paragraph-medium font-medium text-neutral-title">
+          Encuentra aquí tu pensión
+        </h2>
         <Button
           type="secondary"
           size="small"
@@ -23,26 +25,30 @@ export default async function HouseSection() {
           icon={<Filter />}
         />
       </header>
-      <ul>
-        {data?.map((listing) => (
-          <li key={listing.id}>
-            <Card
-              photo={listing.photos?.[0]}
-              title={listing.title}
-              name={listing.profiles?.name}
-              rating={listing.rating}
-              price={listing.price}
-            />
-          </li>
-        ))}
-      </ul>
-      <Button
-        type="secondary"
-        size="small"
-        hasText="yes"
-        text="Ver más"
-        icon={<More />}
-      />
+      <section className="flex flex-col gap-6">
+        <ul className="grid grid-cols-auto-fill gap-6">
+          {data?.map((listing) => (
+            <li key={listing.id}>
+              <Card
+                photo={listing.photos?.[0]}
+                title={listing.title}
+                name={listing.profiles?.name}
+                rating={listing.rating}
+                price={listing.price}
+              />
+            </li>
+          ))}
+        </ul>
+        <section className="flex justify-end">
+          <Button
+            type="secondary"
+            size="small"
+            hasText="yes"
+            text="Ver más"
+            icon={<More />}
+          />
+        </section>
+      </section>
     </section>
   )
 }
