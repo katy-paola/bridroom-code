@@ -5,6 +5,7 @@ import { cookies } from 'next/headers'
 import { titleFont } from './ui/fonts' */
 import SearchSection from '@/components/SearchSection'
 import HouseSection from '@/components/HouseSection'
+import OwnerSection from '@/components/OwnerSection'
 
 export default async function Index() {
   // const cookieStore = cookies()
@@ -17,6 +18,7 @@ export default async function Index() {
     <section>
       <SearchSection />
       <HouseSection />
+      <OwnerSection />
     </section>
     // <div className="flex w-full flex-1 flex-col items-center gap-20">
     //   <nav className="flex h-16 w-full justify-center border-b border-b-foreground/10">
