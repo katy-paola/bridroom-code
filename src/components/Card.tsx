@@ -9,6 +9,11 @@ export default function Card(Props: {
   price: number | null
 }) {
   const { photo, title, name, rating, price } = Props
+  const priceCOP = new Intl.NumberFormat('es-CO', {
+    style: 'currency',
+    currency: 'COP',
+    maximumFractionDigits: 0,
+  }).format(price)
 
   return (
     <article className="flex flex-col overflow-hidden rounded-2xl bg-neutral-main-bg shadow-md">
@@ -35,8 +40,8 @@ export default function Card(Props: {
           )}
         </section>
         <section className="flex items-center justify-between">
-          <p className="text-paragraph-regular font-semibold text-neutral-title">
-            ${price}/mes
+          <p className="text-paragraph-small font-semibold text-neutral-title">
+            {priceCOP}/mes
           </p>
           <Button
             type="primary"
