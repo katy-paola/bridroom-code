@@ -1,12 +1,6 @@
 export default function ImgLanding() {
   return (
-    <svg
-      width="242"
-      height="120"
-      viewBox="0 0 242 120"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
+    <svg viewBox="0 0 242 120" className="w-full" fill="none">
       <g clipPath="url(#clip0_172_1006)">
         <path
           d="M66.3475 98.1459C72.8845 98.1459 78.1838 92.8466 78.1838 86.3096C78.1838 79.7725 72.8845 74.4732 66.3475 74.4732C59.8105 74.4732 54.5111 79.7725 54.5111 86.3096C54.5111 92.8466 59.8105 98.1459 66.3475 98.1459Z"

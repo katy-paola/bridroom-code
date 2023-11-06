@@ -16,7 +16,7 @@ export default async function Index() {
   // const { data } = await supabase.from('listings').select('*, profiles(*)')
 
   return (
-    <section>
+    <section className="flex w-full flex-col">
       <SearchSection />
       <Suspense
         fallback={

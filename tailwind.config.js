@@ -56,6 +56,13 @@ module.exports = {
       gridTemplateRows: {
         'auto-fit': 'repeat(auto-fit, minmax(min-content, 1fr))',
       },
+      fontFamily: {
+        'body-font': ['var(--font-poppins)'],
+        'title-font': ['var(--font-righteous)'],
+      },
+      maxWidth: {
+        paragraph: '32ch',
+      },
       screens: {
         xs: '430px',
         sm: '744px',

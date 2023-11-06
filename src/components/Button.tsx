@@ -7,14 +7,14 @@ export default function Button(Props: {
 }) {
   const { type, size, hasText, text, icon } = Props
 
-  const getTypeClassName = () => {
+  const setTypeClassName = () => {
     return type === 'primary'
       ? 'bg-primary-default'
       : type === 'secondary'
       ? 'bg-secondary-default'
       : 'bg-tertiary-default'
   }
-  const getSizeClassName = () => {
+  const setSizeClassName = () => {
     return size === 'small' ? 'text-paragraph-small' : 'text-paragraph-regular'
   }
 
@@ -28,7 +28,7 @@ export default function Button(Props: {
 
   return (
     <button
-      className={`flex items-center gap-1 text-white ${getTypeClassName()} ${getSizeClassName()} rounded-lg ${setPadding()}`}
+      className={`flex items-center gap-1 text-white ${setTypeClassName()} ${setSizeClassName()} rounded-lg ${setPadding()}`}
     >
       <span
         className={`${
