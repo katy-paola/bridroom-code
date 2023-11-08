@@ -4,9 +4,13 @@ export default function Button(Props: {
   hasText: string
   text?: string
   icon?: JSX.Element
+  isMobile?: boolean
 }) {
   const { type, size, hasText, text, icon } = Props
 
+  // const setClassName = () => {
+  //   return `flex items-center gap-1 text-white ${setTypeClassName()} ${setSizeClassName()} rounded-lg ${setPadding()}`
+  // }
   const setTypeClassName = () => {
     return type === 'primary'
       ? 'bg-primary-default'

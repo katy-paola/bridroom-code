@@ -1,5 +1,6 @@
-import { createClient } from '@/lib/supabase/server'
-import { cookies } from 'next/headers'
+import { getListingById } from '@/services/listing'
+import FillStar from '@/svg/FillStar'
+import { redirect } from 'next/navigation'
 
 export default async function ListingIdPage({
   params,
@@ -8,20 +9,45 @@ export default async function ListingIdPage({
 }) {
   const { id } = params
 
-  const cookieStore = cookies()
+  const listing = await getListingById(id)
 
-  const supabase = createClient(cookieStore)
-
-  const { data } = await supabase
-    .from('listings')
-    .select('*, profiles(*)')
-    .eq('id', id)
+  if (listing === null) {
+    return redirect('/404')
+  }
 
   return (
-    <div>
-      <h1>ListingIdPage {id}</h1>
+    <div className="rounded-lg bg-gray-100 p-6 shadow-md">
+      <h1 className="mb-4 text-2xl font-bold text-gray-800">{listing.title}</h1>
+      <img
+        src={listing.photos?.[0] ?? '/no-image.png'}
+        alt={listing.title ?? 'No image'}
+        className="mb-4 h-64 w-full object-cover"
+      />
 
-      <pre>{JSON.stringify(data, null, 2)}</pre>
+      <p className="mb-4 text-gray-600">{listing.description}</p>
+
+      <div className="flex items-center justify-between">
+        <div className="flex items-center">
+          <div className="mr-2">
+            <img
+              src={listing.owner?.avatar_url ?? '/no-image.png'}
+              alt={listing.owner?.name ?? 'No image'}
+              className="h-8 w-8 rounded-full"
+            />
+          </div>
+          <p className="text-gray-700">{listing.owner?.name}</p>
+        </div>
+        <p className="text-lg font-semibold text-green-600">${listing.price}</p>
+      </div>
+
+      <div className="mt-4">
+        <span className="text-gray-600">Rating:</span>
+        <div className="flex items-center">
+          {Array.from({ length: listing.rating ?? 0 }, (_, index) => (
+            <FillStar key={index} />
+          ))}
+        </div>
+      </div>
     </div>
   )
 }
