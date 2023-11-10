@@ -21,7 +21,7 @@ export default function RootLayout({
   return (
     <html lang="es" className={`${bodyFont.variable} ${titleFont.variable}`}>
       <body className="font-body-font">
-        <section className={`flex flex-col`}>
+        <section className="flex flex-col">
           <Header />
           <main className="flex min-h-screen flex-col items-center">
             {children}

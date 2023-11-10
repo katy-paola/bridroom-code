@@ -13,10 +13,12 @@ export default function Button(Props: {
   // }
   const setTypeClassName = () => {
     return type === 'primary'
-      ? 'bg-primary-default'
+      ? 'bg-primary-default text-neutral-main-bg'
       : type === 'secondary'
-      ? 'bg-secondary-default'
-      : 'bg-tertiary-default'
+      ? 'bg-secondary-default text-neutral-main-bg'
+      : type === 'tertiary'
+      ? 'bg-tertiary-default text-neutral-main-bg'
+      : 'bg-transparent text-neutral-title'
   }
   const setSizeClassName = () => {
     return size === 'small' ? 'text-paragraph-small' : 'text-paragraph-regular'
@@ -32,7 +34,7 @@ export default function Button(Props: {
 
   return (
     <button
-      className={`flex items-center gap-1 text-white ${setTypeClassName()} ${setSizeClassName()} rounded-lg ${setPadding()}`}
+      className={`flex w-full items-center justify-center gap-1 ${setTypeClassName()} ${setSizeClassName()} rounded-lg ${setPadding()}`}
     >
       <span
         className={`${
