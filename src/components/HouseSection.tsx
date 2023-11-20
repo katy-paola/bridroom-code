@@ -20,6 +20,7 @@ export default async function HouseSection() {
           hasText="both"
           text="Filtrar"
           icon={<Filter />}
+          width="w-auto"
         />
       </header>
       <section className="flex flex-col gap-6">
@@ -45,6 +46,7 @@ export default async function HouseSection() {
               hasText="yes"
               text="Ver más"
               icon={<More />}
+              width="w-auto"
             />
           </Link>
         </section>

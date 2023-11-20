@@ -4,9 +4,9 @@ export default function Button(Props: {
   hasText: string
   text?: string
   icon?: JSX.Element
-  isMobile?: boolean
+  width: string
 }) {
-  const { type, size, hasText, text, icon } = Props
+  const { type, size, hasText, text, icon, width } = Props
 
   // const setClassName = () => {
   //   return `flex items-center gap-1 text-white ${setTypeClassName()} ${setSizeClassName()} rounded-lg ${setPadding()}`
@@ -34,7 +34,7 @@ export default function Button(Props: {
 
   return (
     <button
-      className={`flex w-full items-center justify-center gap-1 ${setTypeClassName()} ${setSizeClassName()} rounded-lg ${setPadding()}`}
+      className={`flex ${width} items-center justify-center gap-1 ${setTypeClassName()} ${setSizeClassName()} rounded-lg ${setPadding()}`}
     >
       <span
         className={`${

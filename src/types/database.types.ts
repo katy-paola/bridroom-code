@@ -56,6 +56,7 @@ export interface Database {
           email: string | null
           id: string
           name: string | null
+          role: string
           username: string | null
         }
         Insert: {
@@ -63,6 +64,7 @@ export interface Database {
           email?: string | null
           id?: string
           name?: string | null
+          role?: string
           username?: string | null
         }
         Update: {
@@ -70,6 +72,7 @@ export interface Database {
           email?: string | null
           id?: string
           name?: string | null
+          role?: string
           username?: string | null
         }
         Relationships: []
