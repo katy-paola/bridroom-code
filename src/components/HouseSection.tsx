@@ -14,6 +14,7 @@ export default async function HouseSection() {
         <h2 className="text-paragraph-medium font-medium text-neutral-title">
           Encuentra aquí tu pensión
         </h2>
+        <h3>Prueba deploy</h3>
         <Button
           type="secondary"
           size="small"
