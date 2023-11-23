@@ -4,7 +4,7 @@ export default function Button(Props: {
   hasText: string
   text?: string
   icon?: JSX.Element
-  width: string
+  width?: string
 }) {
   const { type, size, hasText, text, icon, width } = Props
 
