@@ -48,6 +48,7 @@ export default function Card(Props: {
               size="small"
               hasText="yes"
               text="Ver detalles"
+              width="w-auto"
             />
           </Link>
         </section>

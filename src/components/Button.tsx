@@ -21,7 +21,11 @@ export default function Button(Props: {
       : 'bg-transparent text-neutral-title'
   }
   const setSizeClassName = () => {
-    return size === 'small' ? 'text-paragraph-small' : 'text-paragraph-regular'
+    return size === 'small'
+      ? 'text-paragraph-small'
+      : size === 'regular'
+      ? 'text-paragraph-regular'
+      : 'text-paragraph-small md:text-paragraph-regular'
   }
 
   const setPadding = () => {
@@ -32,20 +36,18 @@ export default function Button(Props: {
       : 'p-2'
   }
 
+  const setText = () => {
+    return hasText === 'both'
+      ? 'hidden md:inline-block'
+      : hasText === 'no' && 'hidden'
+  }
+
   return (
     <button
       className={`flex ${width} items-center justify-center gap-1 ${setTypeClassName()} ${setSizeClassName()} rounded-lg ${setPadding()}`}
     >
-      <span
-        className={`${
-          hasText === 'both'
-            ? 'hidden md:inline-block'
-            : hasText === 'no' && 'hidden'
-        } font-semibold`}
-      >
-        {text}
-      </span>
-      <span>{icon}</span>
+      <span className={`${setText()} font-semibold`}>{text}</span>
+      <span className={`${icon === undefined && 'hidden'}`}>{icon}</span>
     </button>
   )
 }

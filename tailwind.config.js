@@ -50,6 +50,10 @@ module.exports = {
         'paragraph-regular': 'var(--paragraph-regular)',
         'paragraph-small': 'var(--paragraph-small)',
       },
+      padding: {
+        22: '5.5rem',
+        42: '10.5rem',
+      },
       gridTemplateColumns: {
         'auto-fill': 'repeat(auto-fill, minmax(260px, 1fr))',
       },
