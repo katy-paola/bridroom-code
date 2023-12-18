@@ -9,11 +9,12 @@ export default async function HouseSection() {
   const listings = await getAllListings()
 
   return (
-    <section className="flex flex-col gap-6 bg-neutral-secondary-bg px-4 py-8">
+    <section className="flex flex-col gap-6 bg-neutral-secondary-bg px-4 py-8 xs:px-8 sm:gap-8 sm:px-12 sm:py-10">
       <header className="flex items-center justify-between">
         <h2 className="text-paragraph-medium font-medium text-neutral-title">
           Encuentra aquí tu pensión
         </h2>
+
         <Button
           type="secondary"
           size="small"
@@ -38,7 +39,7 @@ export default async function HouseSection() {
             </li>
           ))}
         </ul>
-        <section className="flex justify-end md:justify-center">
+        <section className="flex justify-end sm:justify-center">
           <Link href="/l">
             <Button
               type="secondary"
