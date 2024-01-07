@@ -3,10 +3,11 @@ export default function Button(Props: {
   size: string
   hasText: string
   text?: string
-  icon?: JSX.Element
+  iconLeft?: JSX.Element
+  iconRight?: JSX.Element
   width?: string
 }) {
-  const { type, size, hasText, text, icon, width } = Props
+  const { type, size, hasText, text, iconLeft, iconRight, width } = Props
 
   // const setClassName = () => {
   //   return `flex items-center gap-1 text-white ${setTypeClassName()} ${setSizeClassName()} rounded-lg ${setPadding()}`
@@ -46,8 +47,9 @@ export default function Button(Props: {
     <button
       className={`flex ${width} items-center justify-center gap-1 ${setTypeClassName()} ${setSizeClassName()} rounded-lg ${setPadding()}`}
     >
+      {iconLeft !== undefined && <span>{iconLeft}</span>}
       <span className={`${setText()} font-semibold`}>{text}</span>
-      <span className={`${icon === undefined && 'hidden'}`}>{icon}</span>
+      {iconRight !== undefined && <span>{iconRight}</span>}
     </button>
   )
 }

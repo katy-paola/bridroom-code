@@ -7,6 +7,7 @@ import SearchSection from '@/components/SearchSection'
 import HouseSection from '@/components/HouseSection'
 import OwnerSection from '@/components/OwnerSection'
 import { Suspense } from 'react'
+import Form from '@/components/Form'
 
 export default async function Index() {
   // const cookieStore = cookies()
@@ -18,6 +19,7 @@ export default async function Index() {
   return (
     <section className="flex w-full flex-col">
       <SearchSection />
+      <Form typeAction="login" />
       <Suspense
         fallback={
           <div className="h-96 w-full bg-neutral-secondary-bg">Loading...</div>

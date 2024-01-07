@@ -70,7 +70,7 @@ export default function MenuResponsive({
                     size="both"
                     hasText="yes"
                     text="Agregar pensión"
-                    icon={<Add />}
+                    iconRight={<Add />}
                     width="w-full md:auto"
                   />
                 </Link>
@@ -83,7 +83,7 @@ export default function MenuResponsive({
                   size="both"
                   hasText="yes"
                   text="Mi perfil"
-                  icon={<IconUser />}
+                  iconRight={<IconUser />}
                   width="w-full md:auto"
                 />
               </Link>
