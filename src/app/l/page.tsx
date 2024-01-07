@@ -15,7 +15,7 @@ export default function ListingsPage() {
           size="small"
           hasText="both"
           text="Filtrar"
-          iconRight={<Filter />}
+          iconLeft={<Filter />}
         />
       </header>
 
