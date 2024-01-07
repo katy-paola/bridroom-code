@@ -20,7 +20,7 @@ export default async function HouseSection() {
           size="small"
           hasText="both"
           text="Filtrar"
-          icon={<Filter />}
+          iconRight={<Filter />}
           width="w-auto"
         />
       </header>
@@ -46,7 +46,7 @@ export default async function HouseSection() {
               size="small"
               hasText="yes"
               text="Ver más"
-              icon={<More />}
+              iconRight={<More />}
               width="w-auto"
             />
           </Link>
