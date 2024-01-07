@@ -50,6 +50,7 @@
 
     /*paragraph fontsizes*/
     --paragraph-xlarge: 1.75rem;
+    --paragraph-large: 1.25rem;
     --paragraph-medium: 1.125rem;
     --paragraph-regular: 1rem;
     --paragraph-small: 0.75rem;

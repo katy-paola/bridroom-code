@@ -11,7 +11,7 @@ export default async function HouseSection() {
   return (
     <section className="flex flex-col gap-6 bg-neutral-secondary-bg px-4 py-8 xs:px-8 sm:gap-8 sm:px-12 sm:py-10">
       <header className="flex items-center justify-between">
-        <h2 className="text-paragraph-medium font-medium text-neutral-title">
+        <h2 className="text-paragraph-medium font-medium text-neutral-title md:text-paragraph-xlarge">
           Encuentra aquí tu pensión
         </h2>
 

@@ -46,6 +46,7 @@ module.exports = {
         'heading-medium': 'var(--heading-medium)',
         'heading-small': 'var(--heading-small)',
         'paragraph-xlarge': 'var(--paragraph-xlarge)',
+        'paragraph-large': 'var(--paragraph-large)',
         'paragraph-medium': 'var(--paragraph-medium)',
         'paragraph-regular': 'var(--paragraph-regular)',
         'paragraph-small': 'var(--paragraph-small)',
