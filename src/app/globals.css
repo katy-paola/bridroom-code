@@ -54,6 +54,7 @@
     --paragraph-medium: 1.125rem;
     --paragraph-regular: 1rem;
     --paragraph-small: 0.75rem;
+    --paragraph-xsmall: 0.625rem;
   }
   /*
   @media (prefers-color-scheme: dark) {

@@ -22,8 +22,12 @@ export default function InputForm({
   return (
     <>
       {!isRadio ? (
-        <div>
-          <input type={type} placeholder={placeholder} />
+        <div className="flex justify-between border-b border-solid border-neutral-paragraph px-2 py-3 focus-within:border-neutral-title">
+          <input
+            className="flex w-full text-paragraph-small text-neutral-placeholder outline-none"
+            type={type}
+            placeholder={placeholder}
+          />
           {hasIcon && (
             <button
               onClick={() => {

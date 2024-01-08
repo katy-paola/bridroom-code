@@ -39,6 +39,13 @@ module.exports = {
           paragraph: 'var(--paragraph)',
           title: 'var(--title)',
         },
+        functional: {
+          error: 'var(--error)',
+          success: 'var(--success)',
+          warning: 'var(--warning)',
+          info: 'var(--info)',
+          help: 'var(--help)',
+        },
       },
       fontSize: {
         'heading-xlarge': 'var(--heading-xlarge)',
@@ -50,6 +57,7 @@ module.exports = {
         'paragraph-medium': 'var(--paragraph-medium)',
         'paragraph-regular': 'var(--paragraph-regular)',
         'paragraph-small': 'var(--paragraph-small)',
+        'paragraph-xsmall': 'var(--paragraph-xsmall)',
       },
       padding: {
         22: '5.5rem',

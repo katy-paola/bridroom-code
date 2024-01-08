@@ -9,9 +9,10 @@ export default function Form({ typeAction }: { typeAction: string }) {
       onSubmit={(e) => {
         e.preventDefault()
       }}
+      className="flex w-full flex-col gap-8"
     >
-      <fieldset>
-        <label>
+      <fieldset className="flex flex-col gap-8">
+        <label className="flex flex-col gap-2 text-paragraph-regular text-neutral-paragraph">
           Correo electrónico
           <InputForm
             type="email"
@@ -20,7 +21,7 @@ export default function Form({ typeAction }: { typeAction: string }) {
             isRadio={false}
           />
         </label>
-        <label>
+        <label className="flex flex-col gap-2 text-paragraph-regular text-neutral-paragraph">
           Contraseña
           <InputForm
             type="password"
@@ -28,11 +29,18 @@ export default function Form({ typeAction }: { typeAction: string }) {
             hasIcon={true}
             isRadio={false}
           />
-          {typeAction === 'login' && <a href="#">Olvidé mi contraseña</a>}
+          {typeAction === 'login' && (
+            <a
+              href="#"
+              className="self-end text-paragraph-xsmall text-neutral-paragraph underline"
+            >
+              Olvidé mi contraseña
+            </a>
+          )}
         </label>
         {typeAction === 'register' && (
           <>
-            <label>
+            <label className="flex flex-col gap-2 text-paragraph-regular text-neutral-paragraph">
               Confirmar contraseña
               <InputForm
                 type="password"
@@ -42,7 +50,10 @@ export default function Form({ typeAction }: { typeAction: string }) {
               />
             </label>
 
-            <label id="rol">
+            <label
+              id="rol"
+              className="flex flex-col gap-2 text-paragraph-regular text-neutral-paragraph"
+            >
               Elige tu rol
               <InputForm id="student" hasIcon={false} isRadio={true} />
               <label htmlFor="student">Estudiante</label>
@@ -52,7 +63,7 @@ export default function Form({ typeAction }: { typeAction: string }) {
           </>
         )}
       </fieldset>
-      <section>
+      <section className="flex flex-col gap-4">
         <Button
           type="primary"
           size="regular"
