@@ -76,7 +76,7 @@ export default function Form({ typeAction }: { typeAction: string }) {
             type="secondary"
             size="regular"
             hasText="yes"
-            text="Registrarme"
+            text="Ingresar con Google"
             iconLeft={<Google />}
             width="w-full md:w-auto"
           />
