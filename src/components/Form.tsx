@@ -55,10 +55,16 @@ export default function Form({ typeAction }: { typeAction: string }) {
               className="flex flex-col gap-2 text-paragraph-regular text-neutral-paragraph"
             >
               Elige tu rol
-              <InputForm id="student" hasIcon={false} isRadio={true} />
-              <label htmlFor="student">Estudiante</label>
-              <InputForm id="owner" hasIcon={false} isRadio={true} />
-              <label htmlFor="owner">Propietario</label>
+              <section className="flex gap-5">
+                <label className="rounded-lg border border-solid border-neutral-placeholder px-2 py-1 focus-within:border-none focus-within:bg-primary-disabled">
+                  <InputForm hasIcon={false} isRadio={true} />
+                  Estudiante
+                </label>
+                <label className="rounded-lg border border-solid border-neutral-placeholder px-2 py-1 focus-within:border-none focus-within:bg-primary-disabled">
+                  <InputForm hasIcon={false} isRadio={true} />
+                  Propietario
+                </label>
+              </section>
             </label>
           </>
         )}

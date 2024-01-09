@@ -9,20 +9,18 @@ export default function InputForm({
   placeholder,
   hasIcon,
   isRadio,
-  id,
 }: {
   type?: string
   placeholder?: string
   hasIcon: boolean
   isRadio: boolean
-  id?: string
 }) {
   const [show, setShow] = useState(false)
 
   return (
     <>
       {!isRadio ? (
-        <div className="flex justify-between border-b border-solid border-neutral-paragraph px-2 py-3 focus-within:border-neutral-title">
+        <div className="flex justify-between border-b border-solid border-neutral-paragraph px-2 py-3 focus-within:border-primary-default">
           <input
             className="flex w-full text-paragraph-small text-neutral-placeholder outline-none"
             type={type}
@@ -39,7 +37,7 @@ export default function InputForm({
           )}
         </div>
       ) : (
-        <input type="radio" id={id} name="rol" />
+        <input type="radio" name="rol" className="sr-only" />
       )}
     </>
   )
