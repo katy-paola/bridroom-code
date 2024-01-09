@@ -6,6 +6,8 @@ import { titleFont } from './ui/fonts' */
 import SearchSection from '@/components/SearchSection'
 import HouseSection from '@/components/HouseSection'
 import OwnerSection from '@/components/OwnerSection'
+import MapIcon from '@/svg/MapIcon'
+import Button from '@/components/Button'
 import { Suspense } from 'react'
 
 export default async function Index() {
@@ -26,6 +28,15 @@ export default async function Index() {
         <HouseSection />
       </Suspense>
       <OwnerSection />
+      <div className="fixed bottom-4 right-4 z-10">
+        <Button
+          type="tertiary"
+          size="small"
+          hasText="no"
+          iconRight={<MapIcon />}
+          title="Ver mapa"
+        />
+      </div>
     </section>
     // <div className="flex w-full flex-1 flex-col items-center gap-20">
     //   <nav className="flex h-16 w-full justify-center border-b border-b-foreground/10">
