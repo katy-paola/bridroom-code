@@ -9,7 +9,7 @@ export default function Form({ typeAction }: { typeAction: string }) {
       onSubmit={(e) => {
         e.preventDefault()
       }}
-      className="flex w-full flex-col gap-8"
+      className="flex w-full flex-col gap-8 sm:max-w-sm md:max-w-md"
     >
       <fieldset className="flex flex-col gap-8">
         <label className="flex flex-col gap-2 text-paragraph-regular text-neutral-paragraph">
