@@ -9,11 +9,13 @@ export default function InputForm({
   placeholder,
   hasIcon,
   isRadio,
+  isFocus,
 }: {
   type?: string
   placeholder?: string
   hasIcon: boolean
   isRadio: boolean
+  isFocus?: boolean
 }) {
   const [show, setShow] = useState(false)
 
@@ -37,7 +39,12 @@ export default function InputForm({
           )}
         </div>
       ) : (
-        <input type="radio" name="rol" className="sr-only" />
+        <input
+          type="radio"
+          name="rol"
+          className="sr-only"
+          autoFocus={isFocus}
+        />
       )}
     </>
   )
