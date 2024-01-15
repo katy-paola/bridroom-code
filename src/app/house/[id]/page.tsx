@@ -5,6 +5,7 @@ import Edit from '@/svg/Edit'
 import DeleteIcon from '@/svg/DeleteIcon'
 import CardDetails from '@/components/CardDetails'
 import { getProfileCurrentUser } from '@/services/user'
+import Button from '@/components/Button'
 
 export default async function ListingIdPage({
   params,
@@ -21,7 +22,7 @@ export default async function ListingIdPage({
   }
 
   return (
-    <section className="relative rounded-lg bg-gray-100 pt-14 shadow-md">
+    <section className="relative pt-14">
       <header className="absolute flex w-full justify-end gap-4 bg-slate-400 p-2">
         <ul>
           {user?.role === 'student' ? (
@@ -54,6 +55,29 @@ export default async function ListingIdPage({
         price={listing.price}
         direction={listing.direction}
       />
+      <section>
+        <article>
+          <section>
+            <figure>
+              <img
+                src={listing.owner?.avatar_url ?? '/no-image.png'}
+                alt="Foto del propietario"
+              />
+            </figure>
+            <section>
+              <h4>{listing.owner?.name}</h4>
+              <small>Propietario</small>
+            </section>
+          </section>
+          <Button
+            type="primary"
+            size="regular"
+            hasText="yes"
+            text="Contactar"
+            contact={user?.contact}
+          />
+        </article>
+      </section>
     </section>
   )
 }

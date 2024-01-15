@@ -56,6 +56,7 @@ export interface Database {
       profiles: {
         Row: {
           avatar_url: string | null
+          contact: number
           email: string | null
           id: string
           name: string | null
@@ -64,6 +65,7 @@ export interface Database {
         }
         Insert: {
           avatar_url?: string | null
+          contact?: number
           email?: string | null
           id?: string
           name?: string | null
@@ -72,6 +74,7 @@ export interface Database {
         }
         Update: {
           avatar_url?: string | null
+          contact?: number
           email?: string | null
           id?: string
           name?: string | null

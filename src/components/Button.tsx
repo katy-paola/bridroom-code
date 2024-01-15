@@ -7,8 +7,19 @@ export default function Button(Props: {
   iconRight?: JSX.Element
   width?: string
   title?: string
+  contact?: number
 }) {
-  const { type, size, hasText, text, iconLeft, iconRight, width, title } = Props
+  const {
+    type,
+    size,
+    hasText,
+    text,
+    iconLeft,
+    iconRight,
+    width,
+    title,
+    contact,
+  } = Props
 
   // const setClassName = () => {
   //   return `flex items-center gap-1 text-white ${setTypeClassName()} ${setSizeClassName()} rounded-lg ${setPadding()}`
@@ -45,15 +56,29 @@ export default function Button(Props: {
   }
 
   return (
-    <button
-      className={`flex ${width} items-center justify-center gap-1 ${setTypeClassName()} ${
-        title === 'Ver mapa' && 'bg-transparent'
-      } ${setSizeClassName()} rounded-lg ${setPadding()}`}
-      title={title}
-    >
-      {iconLeft !== undefined && <span>{iconLeft}</span>}
-      <span className={`${setText()} font-semibold`}>{text}</span>
-      {iconRight !== undefined && <span>{iconRight}</span>}
-    </button>
+    <>
+      {text === 'Contactar' ? (
+        <a
+          href={`tel:+57${contact}`}
+          className={`flex ${width} items-center justify-center gap-1 ${setTypeClassName()} ${
+            title === 'Ver mapa' && 'bg-transparent'
+          } ${setSizeClassName()} rounded-lg ${setPadding()}`}
+          title={title}
+        >
+          Contactar
+        </a>
+      ) : (
+        <button
+          className={`flex ${width} items-center justify-center gap-1 ${setTypeClassName()} ${
+            title === 'Ver mapa' && 'bg-transparent'
+          } ${setSizeClassName()} rounded-lg ${setPadding()}`}
+          title={title}
+        >
+          {iconLeft !== undefined && <span>{iconLeft}</span>}
+          <span className={`${setText()} font-semibold`}>{text}</span>
+          {iconRight !== undefined && <span>{iconRight}</span>}
+        </button>
+      )}
+    </>
   )
 }
