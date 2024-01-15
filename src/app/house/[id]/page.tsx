@@ -1,12 +1,10 @@
 import { getListingById } from '@/services/listing'
 import { redirect } from 'next/navigation'
-import Save from '@/svg/Save'
-import Edit from '@/svg/Edit'
-import DeleteIcon from '@/svg/DeleteIcon'
 import CardDetails from '@/components/CardDetails'
 import { getProfileCurrentUser } from '@/services/user'
 import Button from '@/components/Button'
 import EmptyStar from '@/svg/EmptyStar'
+import BoardingHeader from '@/components/BoardingHeader'
 
 export default async function ListingIdPage({
   params,
@@ -24,30 +22,7 @@ export default async function ListingIdPage({
 
   return (
     <section className="relative pt-14">
-      <header className="absolute flex w-full justify-end gap-4 bg-slate-400 p-2">
-        <ul>
-          {user?.role === 'student' ? (
-            <li>
-              <figure>
-                <Save />
-              </figure>
-            </li>
-          ) : (
-            <>
-              <li>
-                <figure>
-                  <Edit />
-                </figure>
-              </li>
-              <li>
-                <figure>
-                  <DeleteIcon />
-                </figure>
-              </li>
-            </>
-          )}
-        </ul>
-      </header>
+      <BoardingHeader role={user?.role} />
       <CardDetails
         photo={listing.photos?.[0] ?? '/no-image.png'}
         title={listing.title}
