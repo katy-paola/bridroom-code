@@ -103,6 +103,46 @@ export default async function ListingIdPage({
         </section>
         <Button type="secondary" size="small" hasText="yes" text="Publicar" />
       </section>
+      <section>
+        <h6>Comentarios</h6>
+        <ul>
+          {listing.comments?.map((comment) => (
+            <li key={comment}>
+              <article>
+                <section>
+                  <figure>
+                    <img src={user?.avatar_url ?? ''} alt="" />
+                  </figure>
+                  <section>
+                    <h4>{user?.name}</h4>
+                    <ul className="flex text-functional-warning">
+                      <li>
+                        <EmptyStar />
+                      </li>
+                      <li>
+                        <EmptyStar />
+                      </li>
+                      <li>
+                        <EmptyStar />
+                      </li>
+                      <li>
+                        <EmptyStar />
+                      </li>
+                      <li>
+                        <EmptyStar />
+                      </li>
+                    </ul>
+                  </section>
+                </section>
+                <section>
+                  <p>{comment}</p>
+                  <button>Responder</button>
+                </section>
+              </article>
+            </li>
+          ))}
+        </ul>
+      </section>
     </section>
   )
 }

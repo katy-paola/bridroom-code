@@ -11,6 +11,7 @@ export interface Database {
     Tables: {
       listings: {
         Row: {
+          comments: string[] | null
           created_at: string
           description: string | null
           direction: string
@@ -22,6 +23,7 @@ export interface Database {
           user_id: string | null
         }
         Insert: {
+          comments?: string[] | null
           created_at?: string
           description?: string | null
           direction?: string
@@ -33,6 +35,7 @@ export interface Database {
           user_id?: string | null
         }
         Update: {
+          comments?: string[] | null
           created_at?: string
           description?: string | null
           direction?: string
