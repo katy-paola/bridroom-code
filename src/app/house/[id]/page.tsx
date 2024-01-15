@@ -25,7 +25,7 @@ export default async function ListingIdPage({
     <section className="relative pt-14 md:pt-[72px]">
       <BoardingHeader role={user?.role} />
       <CardDetails
-        photo={listing.photos?.[0] ?? '/no-image.png'}
+        photo={listing.photos?.[0] ?? '/no-image.jpg'}
         title={listing.title}
         description={listing.description}
         rating={listing.rating}
