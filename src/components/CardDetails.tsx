@@ -14,7 +14,7 @@ export default function CardDetails(Props: {
 
   return (
     <article className="flex flex-col overflow-hidden bg-neutral-main-bg shadow-md">
-      <figure className="h-52 w-full">
+      <figure className="flex h-52 w-full">
         <img src={photo} alt={title ?? 'No image'} className="object-cover" />
       </figure>
       <section className="flex flex-1 flex-col justify-between gap-2 p-4">
@@ -38,8 +38,12 @@ export default function CardDetails(Props: {
             {priceCOP}/mes
           </p>
         </section>
-        <p>{description}</p>
-        <small>{direction}</small>
+        <p className="text-paragraph-small font-normal text-neutral-title">
+          {description}
+        </p>
+        <small className="bg-neutral-hover px-2 py-1 text-paragraph-small font-normal text-neutral-title">
+          {direction}
+        </small>
       </section>
     </article>
   )
