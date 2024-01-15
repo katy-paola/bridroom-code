@@ -13,7 +13,7 @@ export default function CardDetails(Props: {
   const priceCOP = formatCurrency(price ?? 0)
 
   return (
-    <article className="flex flex-col overflow-hidden rounded-2xl bg-neutral-main-bg shadow-md">
+    <article className="flex flex-col overflow-hidden bg-neutral-main-bg shadow-md">
       <figure className="h-52 w-full">
         <img src={photo} alt={title ?? 'No image'} className="object-cover" />
       </figure>

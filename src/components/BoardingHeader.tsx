@@ -5,23 +5,23 @@ import Save from '@/svg/Save'
 export default function BoardingHeader(Props: { role: string | undefined }) {
   const { role } = Props
   return (
-    <header className="absolute flex w-full justify-end gap-4 bg-slate-400 p-2">
-      <ul>
+    <header className="absolute flex w-full justify-end">
+      <ul className="flex gap-4 p-2 text-neutral-main-bg">
         {role === 'student' ? (
           <li>
-            <figure>
+            <figure className="grid items-center rounded-lg bg-neutral-paragraph p-2">
               <Save />
             </figure>
           </li>
         ) : (
           <>
             <li>
-              <figure>
+              <figure className="grid content-center rounded-lg bg-neutral-paragraph p-2">
                 <Edit />
               </figure>
             </li>
             <li>
-              <figure>
+              <figure className="grid items-center rounded-lg bg-neutral-paragraph p-2">
                 <DeleteIcon />
               </figure>
             </li>
