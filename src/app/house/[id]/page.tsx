@@ -2,10 +2,10 @@ import { getListingById } from '@/services/listing'
 import { redirect } from 'next/navigation'
 import CardDetails from '@/components/CardDetails'
 import { getProfileCurrentUser } from '@/services/user'
-import Button from '@/components/Button'
 import EmptyStar from '@/svg/EmptyStar'
 import BoardingHeader from '@/components/BoardingHeader'
 import OwnerInfo from '@/components/OwnerInfo'
+import TypeComment from '@/components/TypeComment'
 
 export default async function ListingIdPage({
   params,
@@ -37,30 +37,7 @@ export default async function ListingIdPage({
         userName={listing.owner?.name}
         contact={listing.owner?.contact}
       />
-      <section>
-        <section>
-          <h5>Dejar un comentario</h5>
-          <ul className="flex text-functional-warning">
-            <li>
-              <EmptyStar />
-            </li>
-            <li>
-              <EmptyStar />
-            </li>
-            <li>
-              <EmptyStar />
-            </li>
-            <li>
-              <EmptyStar />
-            </li>
-            <li>
-              <EmptyStar />
-            </li>
-          </ul>
-          <textarea className="border"></textarea>
-        </section>
-        <Button type="secondary" size="small" hasText="yes" text="Publicar" />
-      </section>
+      <TypeComment />
       <section>
         <h6>Comentarios</h6>
         <ul>
