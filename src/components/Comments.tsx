@@ -19,7 +19,7 @@ export default function Comments(Props: {
                 <figure className="flex h-10 w-10 overflow-hidden rounded-3xl">
                   <img
                     className="h-full w-full object-cover"
-                    src={photo ?? ''}
+                    src={photo ?? '/no-image.jpg'}
                     alt=""
                   />
                 </figure>
