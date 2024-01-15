@@ -3,7 +3,9 @@ import More from '@/svg/More'
 import Button from './Button'
 import Card from './Card'
 import Link from 'next/link'
+import { ListListings, ListListingSkeleton } from './ListListings'
 import { getAllListings } from '@/services/listing'
+import { Suspense } from 'react'
 
 export default async function HouseSection() {
   const listings = await getAllListings()
@@ -25,6 +27,9 @@ export default async function HouseSection() {
         />
       </header>
       <section className="flex flex-col gap-6">
+        <Suspense fallback={<ListListingSkeleton />}>
+          <ListListings />
+        </Suspense>
         <ul className="grid grid-cols-auto-fill grid-rows-auto-fit items-stretch gap-6">
           {listings?.map((listing) => (
             <li key={listing.id} className="contents">
@@ -40,7 +45,7 @@ export default async function HouseSection() {
           ))}
         </ul>
         <section className="flex justify-end sm:justify-center">
-          <Link href="/l">
+          <Link href="/house">
             <Button
               type="secondary"
               size="small"

@@ -1,14 +1,24 @@
 import { getAllListings } from '@/services/listing'
+import Card from './Card'
 
-export async function ListListing() {
+export async function ListListings() {
   const listings = await getAllListings()
 
   if (listings === null) return <div>There are no listings!</div>
 
   return (
-    <ul>
-      {listings.map((listing) => (
-        <li key={listing.id}>{listing.title}</li>
+    <ul className="grid grid-cols-auto-fill grid-rows-auto-fit items-stretch gap-6">
+      {listings?.map((listing) => (
+        <li key={listing.id} className="contents">
+          <Card
+            photo={listing.photos?.[0]}
+            title={listing.title}
+            name={listing.owner?.name}
+            rating={listing.rating}
+            price={listing.price}
+            id={listing.id}
+          />
+        </li>
       ))}
     </ul>
   )

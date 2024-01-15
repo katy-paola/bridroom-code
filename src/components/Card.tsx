@@ -42,7 +42,7 @@ export default function Card(Props: {
           <p className="text-paragraph-small font-semibold text-neutral-title">
             {priceCOP}/mes
           </p>
-          <Link href={`/l/${id}`}>
+          <Link href={`/house/${id}`}>
             <Button
               type="primary"
               size="small"
