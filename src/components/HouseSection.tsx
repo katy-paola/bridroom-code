@@ -1,7 +1,7 @@
-import Filter from '@/svg/Filter'
 import More from '@/svg/More'
 import Button from './Button'
 import Card from './Card'
+import HeaderHouse from './HeaderHouse'
 import Link from 'next/link'
 import { ListListings, ListListingSkeleton } from './ListListings'
 import { getAllListings } from '@/services/listing'
@@ -12,20 +12,7 @@ export default async function HouseSection() {
 
   return (
     <section className="flex flex-col gap-6 bg-neutral-secondary-bg px-4 py-8 xs:px-8 sm:gap-8 sm:px-12 sm:py-10">
-      <header className="flex items-center justify-between">
-        <h2 className="text-paragraph-medium font-medium text-neutral-title md:text-paragraph-xlarge">
-          Encuentra aquí tu pensión
-        </h2>
-
-        <Button
-          type="secondary"
-          size="small"
-          hasText="both"
-          text="Filtrar"
-          iconRight={<Filter />}
-          width="w-auto"
-        />
-      </header>
+      <HeaderHouse />
       <section className="flex flex-col gap-6">
         <Suspense fallback={<ListListingSkeleton />}>
           <ListListings />
