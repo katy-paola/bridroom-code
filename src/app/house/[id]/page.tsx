@@ -16,7 +16,7 @@ export default async function ListingIdPage({
   }
 
   return (
-    <div className="rounded-lg bg-gray-100 p-6 shadow-md">
+    <section className="rounded-lg bg-gray-100 p-6 shadow-md">
       <h1 className="mb-4 text-2xl font-bold text-gray-800">{listing.title}</h1>
       <img
         src={listing.photos?.[0] ?? '/no-image.png'}
@@ -48,6 +48,6 @@ export default async function ListingIdPage({
           ))}
         </div>
       </div>
-    </div>
+    </section>
   )
 }
