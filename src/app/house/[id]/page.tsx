@@ -5,6 +5,7 @@ import { getProfileCurrentUser } from '@/services/user'
 import Button from '@/components/Button'
 import EmptyStar from '@/svg/EmptyStar'
 import BoardingHeader from '@/components/BoardingHeader'
+import OwnerInfo from '@/components/OwnerInfo'
 
 export default async function ListingIdPage({
   params,
@@ -31,29 +32,11 @@ export default async function ListingIdPage({
         price={listing.price}
         direction={listing.direction}
       />
-      <section>
-        <article>
-          <section>
-            <figure>
-              <img
-                src={listing.owner?.avatar_url ?? '/no-image.png'}
-                alt="Foto del propietario"
-              />
-            </figure>
-            <section>
-              <h4>{listing.owner?.name}</h4>
-              <small>Propietario</small>
-            </section>
-          </section>
-          <Button
-            type="primary"
-            size="regular"
-            hasText="yes"
-            text="Contactar"
-            contact={user?.contact}
-          />
-        </article>
-      </section>
+      <OwnerInfo
+        photo={listing.owner?.avatar_url}
+        userName={listing.owner?.name}
+        contact={listing.owner?.contact}
+      />
       <section>
         <section>
           <h5>Dejar un comentario</h5>
