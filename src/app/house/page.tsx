@@ -1,6 +1,6 @@
 import { ListListings, ListListingSkeleton } from '@/components/ListListings'
 import { Suspense } from 'react'
-import HeaderHouse from '@/components/HeaderHouse'
+import HeaderHouse from '@/components/HouseHeader'
 
 export default function ListingsPage() {
   return (

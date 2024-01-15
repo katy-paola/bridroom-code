@@ -1,7 +1,7 @@
 import More from '@/svg/More'
 import Button from './Button'
 import Card from './Card'
-import HeaderHouse from './HeaderHouse'
+import HouseHeader from './HouseHeader'
 import Link from 'next/link'
 import { ListListings, ListListingSkeleton } from './ListListings'
 import { getAllListings } from '@/services/listing'
@@ -12,7 +12,7 @@ export default async function HouseSection() {
 
   return (
     <section className="flex flex-col gap-6 bg-neutral-secondary-bg px-4 py-8 xs:px-8 sm:gap-8 sm:px-12 sm:py-10">
-      <HeaderHouse />
+      <HouseHeader />
       <section className="flex flex-col gap-6">
         <Suspense fallback={<ListListingSkeleton />}>
           <ListListings />

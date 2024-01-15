@@ -1,7 +1,7 @@
 import Filter from '@/svg/Filter'
 import Button from './Button'
 
-export default function HeaderHouse() {
+export default function HouseHeader() {
   return (
     <header className="flex items-center justify-between">
       <h2 className="text-paragraph-medium font-medium text-neutral-title md:text-paragraph-xlarge">
