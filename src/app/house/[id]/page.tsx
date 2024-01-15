@@ -6,6 +6,7 @@ import DeleteIcon from '@/svg/DeleteIcon'
 import CardDetails from '@/components/CardDetails'
 import { getProfileCurrentUser } from '@/services/user'
 import Button from '@/components/Button'
+import EmptyStar from '@/svg/EmptyStar'
 
 export default async function ListingIdPage({
   params,
@@ -77,6 +78,30 @@ export default async function ListingIdPage({
             contact={user?.contact}
           />
         </article>
+      </section>
+      <section>
+        <section>
+          <h5>Dejar un comentario</h5>
+          <ul className="flex text-functional-warning">
+            <li>
+              <EmptyStar />
+            </li>
+            <li>
+              <EmptyStar />
+            </li>
+            <li>
+              <EmptyStar />
+            </li>
+            <li>
+              <EmptyStar />
+            </li>
+            <li>
+              <EmptyStar />
+            </li>
+          </ul>
+          <textarea className="border"></textarea>
+        </section>
+        <Button type="secondary" size="small" hasText="yes" text="Publicar" />
       </section>
     </section>
   )
