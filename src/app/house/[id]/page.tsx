@@ -1,11 +1,11 @@
 import { getListingById } from '@/services/listing'
 import { redirect } from 'next/navigation'
-import CardDetails from '@/components/CardDetails'
 import { getProfileCurrentUser } from '@/services/user'
-import EmptyStar from '@/svg/EmptyStar'
+import CardDetails from '@/components/CardDetails'
 import BoardingHeader from '@/components/BoardingHeader'
 import OwnerInfo from '@/components/OwnerInfo'
 import TypeComment from '@/components/TypeComment'
+import Comments from '@/components/Comments'
 
 export default async function ListingIdPage({
   params,
@@ -38,46 +38,11 @@ export default async function ListingIdPage({
         contact={listing.owner?.contact}
       />
       <TypeComment />
-      <section>
-        <h6>Comentarios</h6>
-        <ul>
-          {listing.comments?.map((comment) => (
-            <li key={comment}>
-              <article>
-                <section>
-                  <figure>
-                    <img src={user?.avatar_url ?? ''} alt="" />
-                  </figure>
-                  <section>
-                    <h4>{user?.name}</h4>
-                    <ul className="flex text-functional-warning">
-                      <li>
-                        <EmptyStar />
-                      </li>
-                      <li>
-                        <EmptyStar />
-                      </li>
-                      <li>
-                        <EmptyStar />
-                      </li>
-                      <li>
-                        <EmptyStar />
-                      </li>
-                      <li>
-                        <EmptyStar />
-                      </li>
-                    </ul>
-                  </section>
-                </section>
-                <section>
-                  <p>{comment}</p>
-                  <button>Responder</button>
-                </section>
-              </article>
-            </li>
-          ))}
-        </ul>
-      </section>
+      <Comments
+        comments={listing.comments}
+        userName={user?.name}
+        photo={user?.avatar_url}
+      />
     </section>
   )
 }
