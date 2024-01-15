@@ -7,24 +7,36 @@ export default function Comments(Props: {
 }) {
   const { comments, userName, photo } = Props
   return (
-    <section>
-      <h6>Comentarios</h6>
-      <ul>
+    <section className="flex flex-col gap-4 p-4">
+      <h6 className="text-paragraph-regular font-normal text-neutral-title">
+        Comentarios
+      </h6>
+      <ul className="flex flex-col gap-4">
         {comments?.map((comment) => (
           <li key={comment}>
-            <article>
-              <section>
-                <figure>
-                  <img src={photo ?? ''} alt="" />
+            <article className="flex flex-col gap-2 bg-neutral-secondary-bg p-2">
+              <section className="flex gap-2">
+                <figure className="flex h-10 w-10 overflow-hidden rounded-3xl">
+                  <img
+                    className="h-full w-full object-cover"
+                    src={photo ?? ''}
+                    alt=""
+                  />
                 </figure>
-                <section>
-                  <h4>{userName}</h4>
+                <section className="flex flex-col">
+                  <h4 className="text-paragraph-small font-medium text-neutral-title">
+                    {userName}
+                  </h4>
                   <Rating />
                 </section>
               </section>
-              <section>
-                <p>{comment}</p>
-                <button>Responder</button>
+              <section className="flex flex-col gap-1">
+                <p className="text-paragraph-small font-normal text-neutral-paragraph">
+                  {comment}
+                </p>
+                <button className="self-end text-paragraph-xsmall font-normal text-neutral-paragraph underline">
+                  Responder
+                </button>
               </section>
             </article>
           </li>
