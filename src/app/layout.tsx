@@ -23,7 +23,7 @@ export default function RootLayout({
       <body className="font-body-font">
         <section className="flex flex-col bg-neutral-main-bg">
           <Header />
-          <main className="flex min-h-screen flex-col items-center">
+          <main className="flex min-h-screen flex-col items-center bg-neutral-main-bg">
             {children}
           </main>
         </section>

@@ -7,15 +7,23 @@ export default function OwnerInfo(Props: {
 }) {
   const { photo, userName, contact } = Props
   return (
-    <section>
-      <article>
-        <section>
-          <figure>
-            <img src={photo ?? '/no-image.png'} alt="Foto del propietario" />
+    <section className="p-4">
+      <article className="flex flex-col gap-4 rounded-lg bg-neutral-secondary-bg p-2 shadow-md">
+        <section className="flex gap-2">
+          <figure className="flex h-10 w-10 overflow-hidden rounded-3xl">
+            <img
+              className="h-full w-full object-cover"
+              src={photo ?? '/no-image.png'}
+              alt="Foto del propietario"
+            />
           </figure>
-          <section>
-            <h4>{userName}</h4>
-            <small>Propietario</small>
+          <section className="flex flex-col">
+            <h4 className="text-paragraph-regular font-semibold text-neutral-title">
+              {userName}
+            </h4>
+            <small className="text-paragraph-xsmall font-normal text-neutral-title">
+              Propietario
+            </small>
           </section>
         </section>
         <Button
@@ -23,6 +31,7 @@ export default function OwnerInfo(Props: {
           size="regular"
           hasText="yes"
           text="Contactar"
+          width="w-full"
           contact={contact}
         />
       </article>
