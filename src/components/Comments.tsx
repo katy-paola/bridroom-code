@@ -7,7 +7,7 @@ export default function Comments(Props: {
 }) {
   const { comments, userName, photo } = Props
   return (
-    <section className="flex flex-col gap-4 p-4">
+    <section className="flex flex-col gap-4 p-4 xs:px-8">
       <h6 className="text-paragraph-regular font-normal text-neutral-title">
         Comentarios
       </h6>
@@ -19,7 +19,7 @@ export default function Comments(Props: {
                 <figure className="flex h-10 w-10 overflow-hidden rounded-3xl">
                   <img
                     className="h-full w-full object-cover"
-                    src={photo ?? '../no-image.jpg'}
+                    src={photo ?? '/no-image.jpg'}
                     alt=""
                   />
                 </figure>

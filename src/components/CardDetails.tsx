@@ -14,10 +14,10 @@ export default function CardDetails(Props: {
 
   return (
     <article className="flex flex-col overflow-hidden bg-neutral-main-bg">
-      <figure className="flex h-52 w-full">
+      <figure className="flex h-52 w-full xs:h-80">
         <img src={photo} alt={title ?? 'No image'} className="object-cover" />
       </figure>
-      <section className="flex flex-1 flex-col justify-between gap-2 p-4">
+      <section className="flex flex-1 flex-col justify-between gap-2 p-4 xs:px-8">
         <h3 className="text-paragraph-regular font-semibold text-neutral-title">
           {title}
         </h3>

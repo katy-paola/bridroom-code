@@ -3,7 +3,7 @@ import Button from './Button'
 
 export default function TypeComment() {
   return (
-    <section className="flex flex-col items-end gap-4 bg-neutral-secondary-bg p-4">
+    <section className="flex flex-col items-end gap-4 bg-neutral-secondary-bg p-4 xs:px-8">
       <section className="flex w-full flex-col gap-2">
         <h5 className="text-paragraph-regular font-medium text-neutral-title">
           Dejar un comentario

@@ -7,13 +7,13 @@ export default function OwnerInfo(Props: {
 }) {
   const { photo, userName, contact } = Props
   return (
-    <section className="p-4">
-      <article className="flex flex-col gap-4 rounded-lg bg-neutral-secondary-bg p-2 shadow-md">
+    <section className="p-4 xs:px-8">
+      <article className="flex flex-col gap-4 rounded-lg bg-neutral-secondary-bg p-2 shadow-md xs:p-4">
         <section className="flex gap-2">
           <figure className="flex h-10 w-10 overflow-hidden rounded-3xl">
             <img
               className="h-full w-full object-cover"
-              src={photo ?? '../no-image.jpg'}
+              src={photo ?? '/no-image.jpg'}
               alt="Foto del propietario"
             />
           </figure>
