@@ -8,6 +8,7 @@ export default function Button(Props: {
   width?: string
   title?: string
   contact?: number
+  onClick?: () => void
 }) {
   const {
     type,
@@ -19,6 +20,7 @@ export default function Button(Props: {
     width,
     title,
     contact,
+    onClick,
   } = Props
 
   // const setClassName = () => {
@@ -31,6 +33,8 @@ export default function Button(Props: {
       ? 'bg-secondary-default text-neutral-main-bg'
       : type === 'tertiary'
       ? 'bg-tertiary-default text-neutral-main-bg'
+      : type === 'cuaternary'
+      ? 'bg-transparent border-solid border-secondary-default border-2 text-secondary-default'
       : 'bg-transparent text-neutral-title'
   }
   const setSizeClassName = () => {
@@ -64,6 +68,7 @@ export default function Button(Props: {
             title === 'Ver mapa' && 'bg-transparent'
           } ${setSizeClassName()} rounded-lg ${setPadding()}`}
           title={title}
+          onClick={onClick}
         >
           Contactar
         </a>
@@ -73,6 +78,7 @@ export default function Button(Props: {
             title === 'Ver mapa' && 'bg-transparent'
           } ${setSizeClassName()} rounded-lg ${setPadding()}`}
           title={title}
+          onClick={onClick}
         >
           {iconLeft !== undefined && <span>{iconLeft}</span>}
           <span className={`${setText()} font-semibold`}>{text}</span>
