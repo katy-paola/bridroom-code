@@ -3,7 +3,7 @@ import InputForm from './InputForm'
 import Button from './Button'
 import Google from '@/svg/Google'
 
-export default function Form({ typeAction }: { typeAction: string }) {
+export default function AuthForm({ typeAction }: { typeAction: string }) {
   return (
     <form
       onSubmit={(e) => {

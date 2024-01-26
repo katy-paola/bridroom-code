@@ -1,5 +1,5 @@
 import ImgLogin from '@/svg/ImgLogin'
-import Form from '@/components/Form'
+import AuthForm from '@/components/AuthForm'
 
 export default function Login() {
   return (
@@ -13,7 +13,7 @@ export default function Login() {
             Inicia sesión aquí:
           </p>
         </section>
-        <Form typeAction="login" />
+        <AuthForm typeAction="login" />
         <small className="text-paragraph-small text-neutral-paragraph lg:text-center">
           ¿No tienes una cuenta?{' '}
           <a

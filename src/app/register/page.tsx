@@ -1,5 +1,5 @@
 import ImgRegister from '@/svg/ImgRegister'
-import Form from '@/components/Form'
+import AuthForm from '@/components/AuthForm'
 
 export default function Register() {
   return (
@@ -13,7 +13,7 @@ export default function Register() {
             Crea tu cuenta aquí:
           </p>
         </section>
-        <Form typeAction="register" />
+        <AuthForm typeAction="register" />
         <small className="text-paragraph-small text-neutral-paragraph lg:text-center">
           ¿Ya tienes una cuenta?{' '}
           <a

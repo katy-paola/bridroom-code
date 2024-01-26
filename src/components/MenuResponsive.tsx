@@ -64,7 +64,7 @@ export default function MenuResponsive({
           <ul className="flex w-full flex-col md:flex-row">
             {role === 'owner' && (
               <li className="p-2 xs:px-4 md:p-0">
-                <Link href="/">
+                <Link href="/add-boarding">
                   <Button
                     type="tab"
                     size="both"
