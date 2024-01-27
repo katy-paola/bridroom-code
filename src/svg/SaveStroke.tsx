@@ -1,4 +1,4 @@
-export default function Save() {
+export default function SaveStroke() {
   return (
     <svg
       width="24"
