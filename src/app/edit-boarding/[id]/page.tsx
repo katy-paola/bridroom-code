@@ -1,6 +1,7 @@
 import Button from '@/components/Button'
 import InputForm from '@/components/InputForm'
 import { getListingById } from '@/services/listing'
+import ImgEditBoarding from '@/svg/ImgEditBoarding'
 import { redirect } from 'next/navigation'
 
 export default async function EditBoardingIdPage({
@@ -14,8 +15,8 @@ export default async function EditBoardingIdPage({
     return redirect('/404')
   }
   return (
-    <section className="w-full pt-14 md:pt-[72px]">
-      <h2>Editar pensión</h2>
+    <section className="mt-14 w-full md:mt-20">
+      <h2>Agregar pensión</h2>
       <form>
         <fieldset>
           <label>
@@ -35,6 +36,7 @@ export default async function EditBoardingIdPage({
               placeholder="Agrega información sobre tu pensión, como servicios, puntos de referencia, etc."
               hasIcon={false}
               isRadio={false}
+              value={listing.description}
             />
           </label>
           <label>
@@ -44,6 +46,7 @@ export default async function EditBoardingIdPage({
               placeholder="Ej.: 500000"
               hasIcon={false}
               isRadio={false}
+              value={listing.price}
             />
           </label>
           <label className="flex flex-col">
@@ -53,17 +56,31 @@ export default async function EditBoardingIdPage({
               placeholder="Ej.: Urbanización Sevilla mz 5 lt 6"
               hasIcon={false}
               isRadio={false}
+              value={listing.direction}
             />
             <a
               href="#"
               className="text-paragraph-xsmall text-neutral-paragraph underline"
             >
-              Seleccionar ubicación en el mapa
+              Modificar ubicación en el mapa
             </a>
           </label>
           <label>
             Agregar fotos:
-            <img src="/upload-photo.svg" alt="" />
+            <ul className="flex">
+              <li>
+                <img src="/upload-photo.svg" alt="" />
+              </li>
+              {listing.photos !== null && (
+                <li>
+                  <img
+                    src={listing.photos[0]}
+                    alt=""
+                    className="h-[120px] w-[120px] object-cover"
+                  />
+                </li>
+              )}
+            </ul>
             <input
               className="sr-only"
               type="file"
@@ -77,10 +94,11 @@ export default async function EditBoardingIdPage({
           type="primary"
           size="regular"
           hasText="yes"
-          text="Publicar"
+          text="Guardar cambios"
           width="w-full"
         />
       </form>
+      <ImgEditBoarding />
     </section>
   )
 }
