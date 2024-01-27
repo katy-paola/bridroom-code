@@ -77,7 +77,7 @@ export default function MenuResponsive({
               </li>
             )}
             <li className="p-2 xs:px-4 md:p-0">
-              <Link href="/">
+              <Link href="/profile">
                 <Button
                   type="tab"
                   size="both"

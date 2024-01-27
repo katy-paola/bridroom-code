@@ -11,11 +11,12 @@ export interface Database {
     Tables: {
       listings: {
         Row: {
+          address: string
           comments: string[] | null
           created_at: string
           description: string | null
-          direction: string
           id: string
+          location: string | null
           photos: string[] | null
           price: number | null
           rating: number | null
@@ -23,11 +24,12 @@ export interface Database {
           user_id: string | null
         }
         Insert: {
+          address?: string
           comments?: string[] | null
           created_at?: string
           description?: string | null
-          direction?: string
           id?: string
+          location?: string | null
           photos?: string[] | null
           price?: number | null
           rating?: number | null
@@ -35,11 +37,12 @@ export interface Database {
           user_id?: string | null
         }
         Update: {
+          address?: string
           comments?: string[] | null
           created_at?: string
           description?: string | null
-          direction?: string
           id?: string
+          location?: string | null
           photos?: string[] | null
           price?: number | null
           rating?: number | null
