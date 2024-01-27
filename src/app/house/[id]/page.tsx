@@ -22,7 +22,7 @@ export default async function ListingIdPage({
   }
 
   return (
-    <section className="mt-14 flex w-full flex-col md:mt-[72px]">
+    <section className="relative mt-14 flex w-full flex-col md:mt-[72px]">
       <BoardingHeader role={currentUser?.role} id={id} />
       <CardDetails
         photo={listing.photos?.[0]}

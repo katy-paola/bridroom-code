@@ -1,4 +1,4 @@
-import DeleteIcon from '@/svg/DeleteIcon'
+import DeleteBoardingButton from './DeleteBoardingButton'
 import Edit from '@/svg/Edit'
 import Save from '@/svg/Save'
 import Link from 'next/link'
@@ -27,9 +27,7 @@ export default function BoardingHeader(Props: {
               </Link>
             </li>
             <li>
-              <figure className="grid items-center rounded-lg bg-neutral-paragraph p-2">
-                <DeleteIcon />
-              </figure>
+              <DeleteBoardingButton />
             </li>
           </>
         )}
