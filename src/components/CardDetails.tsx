@@ -42,7 +42,7 @@ export default function CardDetails(Props: {
           {description}
         </p>
         <small className="bg-neutral-hover px-2 py-1 text-paragraph-small font-normal text-neutral-title">
-          {direction}
+          📍 {direction}
         </small>
       </section>
     </article>

@@ -13,33 +13,62 @@ export default function Comments(Props: {
       </h6>
       <ul className="flex flex-col gap-4">
         {comments?.map((comment) => (
-          <li key={comment}>
-            <article className="flex flex-col gap-2 bg-neutral-secondary-bg p-2">
-              <section className="flex gap-2">
-                <figure className="flex h-10 w-10 overflow-hidden rounded-3xl">
-                  <img
-                    className="h-full w-full object-cover"
-                    src={photo ?? '/no-image.jpg'}
-                    alt=""
-                  />
-                </figure>
-                <section className="flex flex-col">
-                  <h4 className="text-paragraph-small font-medium text-neutral-title">
-                    {userName}
-                  </h4>
-                  <Rating />
+          <>
+            <li key={comment}>
+              <article className="flex flex-col gap-2 bg-neutral-secondary-bg p-2">
+                <section className="flex gap-2">
+                  <figure className="flex h-10 w-10 overflow-hidden rounded-3xl">
+                    <img
+                      className="h-full w-full object-cover"
+                      src={photo ?? '/no-image.jpg'}
+                      alt=""
+                    />
+                  </figure>
+                  <section className="flex flex-col">
+                    <h4 className="text-paragraph-small font-medium text-neutral-title">
+                      {userName}
+                    </h4>
+                    <Rating />
+                  </section>
                 </section>
-              </section>
-              <section className="flex flex-col gap-1">
-                <p className="text-paragraph-small font-normal text-neutral-paragraph">
-                  {comment}
-                </p>
-                <button className="self-end text-paragraph-xsmall font-normal text-neutral-paragraph underline">
-                  Responder
-                </button>
-              </section>
-            </article>
-          </li>
+                <section className="flex flex-col gap-1">
+                  <p className="text-paragraph-small font-normal text-neutral-paragraph">
+                    {comment}
+                  </p>
+                  <button className="self-end text-paragraph-xsmall font-normal text-neutral-paragraph underline">
+                    Responder
+                  </button>
+                </section>
+              </article>
+            </li>
+            <li key={comment}>
+              <article className="flex flex-col gap-2 bg-neutral-secondary-bg p-2">
+                <section className="flex gap-2">
+                  <figure className="flex h-10 w-10 overflow-hidden rounded-3xl">
+                    <img
+                      className="h-full w-full object-cover"
+                      src={photo ?? '/no-image.jpg'}
+                      alt=""
+                    />
+                  </figure>
+                  <section className="flex flex-col">
+                    <h4 className="text-paragraph-small font-medium text-neutral-title">
+                      {userName}
+                    </h4>
+                    <Rating />
+                  </section>
+                </section>
+                <section className="flex flex-col gap-1">
+                  <p className="text-paragraph-small font-normal text-neutral-paragraph">
+                    {comment}
+                  </p>
+                  <button className="self-end text-paragraph-xsmall font-normal text-neutral-paragraph underline">
+                    Responder
+                  </button>
+                </section>
+              </article>
+            </li>
+          </>
         ))}
       </ul>
     </section>
