@@ -28,13 +28,13 @@ export default function Button(Props: {
   // }
   const setTypeClassName = () => {
     return type === 'primary'
-      ? 'bg-primary-default text-neutral-main-bg'
+      ? 'bg-primary-default text-neutral-main-bg hover:bg-primary-hover active:bg-primary-active disabled:bg-primary-disabled'
       : type === 'secondary'
-      ? 'bg-secondary-default text-neutral-main-bg'
+      ? 'bg-secondary-default text-neutral-main-bg hover:bg-secondary-hover active:bg-secondary-active disabled:bg-secondary-disabled'
       : type === 'tertiary'
-      ? 'bg-tertiary-default text-neutral-main-bg'
+      ? 'bg-tertiary-default text-neutral-main-bg hover:bg-tertiary-hover active:bg-tertiary-active disabled:bg-tertiary-disabled'
       : type === 'cuaternary'
-      ? 'bg-transparent border-solid border-secondary-default border-2 text-secondary-default'
+      ? 'bg-transparent border-solid border-secondary-default border-2 text-secondary-default hover:bg-secondary-default hover:text-neutral-main-bg active:bg-secondary-hover active:text-neutral-main-bg active:border-secondary-hover disabled:bg-secondary-disabled disabled:text-neutral-main-bg'
       : 'bg-transparent text-neutral-title'
   }
   const setSizeClassName = () => {
@@ -46,10 +46,12 @@ export default function Button(Props: {
   }
 
   const setPadding = () => {
-    return hasText === 'both'
-      ? 'p-2 md:px-6 md:py-2'
-      : hasText === 'yes'
-      ? 'px-6 py-2'
+    return hasText === 'yes'
+      ? type === 'tab'
+        ? 'px-6 py-2 md:px-4'
+        : 'px-6 py-2'
+      : hasText === 'both'
+      ? 'p-2 md:px-6'
       : 'p-2'
   }
 
