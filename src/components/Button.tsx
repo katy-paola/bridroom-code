@@ -21,9 +21,11 @@ export default function Button(Props: {
     onClick,
   } = Props
 
-  // const setClassName = () => {
-  //   return `flex items-center gap-1 text-white ${setTypeClassName()} ${setSizeClassName()} rounded-lg ${setPadding()}`
-  // }
+  const setClassName = () => {
+    return `flex ${width} items-center justify-center gap-1 leading-none outline-none ${setTypeClassName()} ${
+      title === 'Ver mapa' && 'bg-transparent'
+    } ${setSizeClassName()} rounded-lg ${setPadding()}`
+  }
   const setTypeClassName = () => {
     return type === 'primary'
       ? 'bg-primary-default text-neutral-main-bg hover:bg-primary-hover active:bg-primary-active disabled:bg-primary-disabled'
@@ -60,13 +62,7 @@ export default function Button(Props: {
   }
 
   return (
-    <button
-      className={`flex ${width} items-center justify-center gap-1 leading-none outline-none ${setTypeClassName()} ${
-        title === 'Ver mapa' && 'bg-transparent'
-      } ${setSizeClassName()} rounded-lg ${setPadding()}`}
-      title={title}
-      onClick={onClick}
-    >
+    <button className={setClassName()} title={title} onClick={onClick}>
       {iconLeft !== undefined && <span>{iconLeft}</span>}
       <span className={`${setText()} font-semibold`}>{text}</span>
       {iconRight !== undefined && <span>{iconRight}</span>}
