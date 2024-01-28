@@ -22,16 +22,22 @@ export default async function ListingIdPage({
   }
 
   return (
-    <section className="relative mt-14 flex w-full flex-col md:mt-[72px]">
-      <BoardingHeader role={currentUser?.role} id={id} />
-      <CardDetails
-        photo={listing.photos?.[0]}
-        title={listing.title}
-        description={listing.description}
-        rating={listing.rating}
-        price={listing.price}
-        address={listing.address}
-      />
+    <section className="relative mt-14 flex w-full flex-col sm:gap-8 sm:px-12 sm:py-8 md:mt-[72px]">
+      <section className="flex flex-col gap-4">
+        <BoardingHeader
+          role={currentUser?.role}
+          id={id}
+          listingTitle={listing.title}
+        />
+        <CardDetails
+          photo={listing.photos?.[0]}
+          title={listing.title}
+          description={listing.description}
+          rating={listing.rating}
+          price={listing.price}
+          address={listing.address}
+        />
+      </section>
       <OwnerInfo
         photo={listing.owner?.avatar_url}
         userName={listing.owner?.name}
