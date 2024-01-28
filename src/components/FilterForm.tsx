@@ -4,7 +4,7 @@ import InputSearch from './InputSearch'
 
 export default function FilterForm() {
   return (
-    <form className="flex flex-col gap-8">
+    <form className="right-0 top-12 flex flex-col gap-8 sm:absolute sm:gap-8 sm:bg-neutral-main-bg sm:p-8 sm:shadow-md">
       <fieldset className="flex flex-col gap-6">
         <label className="flex flex-col gap-3 text-paragraph-regular font-medium text-neutral-title">
           Filtrar por precio
@@ -78,7 +78,7 @@ export default function FilterForm() {
           <InputSearch placeholder="Ingresa la palabra que deseas buscar" />
         </label>
       </fieldset>
-      <section className="flex justify-end">
+      <section className="flex justify-end sm:justify-center">
         <Button
           type="cuaternary"
           size="small"
