@@ -7,9 +7,9 @@ export default function CardDetails(Props: {
   description: string | null
   rating: number | null
   price: number | null
-  direction: string | null
+  address: string | null
 }) {
-  const { photo, title, description, rating, price, direction } = Props
+  const { photo, title, description, rating, price, address } = Props
   const priceCOP = formatCurrency(price ?? 0)
 
   return (
@@ -42,7 +42,7 @@ export default function CardDetails(Props: {
           {description}
         </p>
         <small className="bg-neutral-hover px-2 py-1 text-paragraph-small font-normal text-neutral-title">
-          📍 {direction}
+          📍 {address}
         </small>
       </section>
     </article>

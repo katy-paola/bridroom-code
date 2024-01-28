@@ -30,7 +30,7 @@ export default async function ListingIdPage({
         description={listing.description}
         rating={listing.rating}
         price={listing.price}
-        direction={listing.direction}
+        address={listing.address}
       />
       <OwnerInfo
         photo={listing.owner?.avatar_url}
