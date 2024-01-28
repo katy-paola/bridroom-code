@@ -61,30 +61,36 @@ export interface Database {
       }
       profiles: {
         Row: {
+          about: string | null
           avatar_url: string | null
           contact: number
           email: string | null
           id: string
           name: string | null
           role: string
+          university: string | null
           username: string | null
         }
         Insert: {
+          about?: string | null
           avatar_url?: string | null
           contact?: number
           email?: string | null
           id?: string
           name?: string | null
           role?: string
+          university?: string | null
           username?: string | null
         }
         Update: {
+          about?: string | null
           avatar_url?: string | null
           contact?: number
           email?: string | null
           id?: string
           name?: string | null
           role?: string
+          university?: string | null
           username?: string | null
         }
         Relationships: []

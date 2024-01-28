@@ -16,7 +16,7 @@ export default async function EditBoardingIdPage({
   }
   return (
     <section className="mt-14 w-full md:mt-20">
-      <h2>Agregar pensión</h2>
+      <h2>Editar pensión</h2>
       <form>
         <fieldset>
           <label>
@@ -56,7 +56,7 @@ export default async function EditBoardingIdPage({
               placeholder="Ej.: Urbanización Sevilla mz 5 lt 6"
               hasIcon={false}
               isRadio={false}
-              value={listing.direction}
+              value={listing.address}
             />
             <a
               href="#"

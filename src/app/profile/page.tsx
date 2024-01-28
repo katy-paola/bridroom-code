@@ -3,6 +3,7 @@ import { getProfileCurrentUser } from '@/services/user'
 import { getAllListings } from '@/services/listing'
 import ImgFavorites from '@/svg/ImgFavorites'
 import ImgEmptyFavorites from '@/svg/ImgEmptyFavorites'
+import Link from 'next/link'
 
 export default async function Profile() {
   const currentUser = await getProfileCurrentUser()
@@ -10,6 +11,8 @@ export default async function Profile() {
   const source = currentUser?.avatar_url
   const name = currentUser?.name
   const role = currentUser?.role
+  const about = currentUser?.about
+  const university = currentUser?.university
   const email = currentUser?.email
   const favoritePensions = true
 
@@ -26,22 +29,19 @@ export default async function Profile() {
               <small>{role}</small>
             </section>
           </header>
-          <p>
-            Hola, soy {name} y soy estudiante de biología. En mi tiempo libre me
-            gusta leer sobre ciencia, escribir sobre mis experiencias y viajar a
-            lugares nuevos. Mi objetivo es ser una científica que ayude a
-            encontrar soluciones al cambio climático.
-          </p>
-          <p>Cartagena, Bolívar.</p>
+          <p>{about}</p>
+          <p>{university}</p>
           <a href={`mailto:${email}`}>{email ?? ''}</a>
         </section>
-        <Button
-          type="secondary"
-          size="small"
-          hasText="yes"
-          text="Editar perfil"
-          width="w-auto"
-        />
+        <Link href="/profile/edit">
+          <Button
+            type="secondary"
+            size="small"
+            hasText="yes"
+            text="Editar perfil"
+            width="w-auto"
+          />
+        </Link>
       </section>
       <section>
         <h3>Pensiones favoritas</h3>
