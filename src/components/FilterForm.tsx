@@ -1,53 +1,92 @@
 'use client'
 import Button from './Button'
+import InputSearch from './InputSearch'
 
 export default function FilterForm() {
   return (
-    <form>
-      <fieldset>
-        <label className="flex flex-col">
+    <form className="flex flex-col gap-8">
+      <fieldset className="flex flex-col gap-6">
+        <label className="flex flex-col gap-3 text-paragraph-regular font-medium text-neutral-title">
           Filtrar por precio
           <input
+            className="flex h-0.5 w-full cursor-pointer appearance-none flex-wrap content-center rounded-full bg-neutral-paragraph accent-primary-default outline-none"
             type="range"
             min={200}
             max={800}
             step={50}
             list="range"
-            onChange={(e) => {
-              console.log(e.target.value)
-            }}
           />
           <datalist id="range" className="flex justify-between">
-            <option value="200" label="200"></option>
-            <option value="250"></option>
-            <option value="300"></option>
-            <option value="350"></option>
-            <option value="400"></option>
-            <option value="450"></option>
-            <option value="500"></option>
-            <option value="550"></option>
-            <option value="600"></option>
-            <option value="650"></option>
-            <option value="700"></option>
-            <option value="750"></option>
-            <option value="800" label="800"></option>
+            <option
+              className="text-paragraph-xsmall text-neutral-title"
+              value="200"
+              label="200"
+            ></option>
+            <option
+              className="text-paragraph-xsmall text-neutral-title"
+              value="250"
+            ></option>
+            <option
+              className="text-paragraph-xsmall text-neutral-title"
+              value="300"
+            ></option>
+            <option
+              className="text-paragraph-xsmall text-neutral-title"
+              value="350"
+            ></option>
+            <option
+              className="text-paragraph-xsmall text-neutral-title"
+              value="400"
+            ></option>
+            <option
+              className="text-paragraph-xsmall text-neutral-title"
+              value="450"
+            ></option>
+            <option
+              className="text-paragraph-xsmall text-neutral-title"
+              value="500"
+            ></option>
+            <option
+              className="text-paragraph-xsmall text-neutral-title"
+              value="550"
+            ></option>
+            <option
+              className="text-paragraph-xsmall text-neutral-title"
+              value="600"
+            ></option>
+            <option
+              className="text-paragraph-xsmall text-neutral-title"
+              value="650"
+            ></option>
+            <option
+              className="text-paragraph-xsmall text-neutral-title"
+              value="700"
+            ></option>
+            <option
+              className="text-paragraph-xsmall text-neutral-title"
+              value="750"
+            ></option>
+            <option
+              className="text-paragraph-xsmall text-neutral-title"
+              value="800"
+              label="800"
+            ></option>
           </datalist>
         </label>
-        <label>
+        <label className="flex flex-col gap-3 text-paragraph-regular font-medium text-neutral-title">
           Filtrar por palabra clave
-          <input
-            type="search"
-            placeholder="Ingresa la palabra que quieras buscar"
-          />
+          <InputSearch placeholder="Ingresa la palabra que deseas buscar" />
         </label>
       </fieldset>
-      <Button
-        type="cuaternary"
-        size="small"
-        hasText="yes"
-        text="Aplicar"
-        width="w-auto"
-      />
+      <section className="flex justify-end">
+        <Button
+          type="cuaternary"
+          size="small"
+          hasText="yes"
+          text="Aplicar"
+          width="w-auto"
+        />
+      </section>
     </form>
   )
 }

@@ -64,7 +64,7 @@ export default function Button(Props: {
       {text === 'Contactar' ? (
         <a
           href={`tel:+57${contact}`}
-          className={`flex ${width} items-center justify-center gap-1 ${setTypeClassName()} ${
+          className={`flex ${width} items-center justify-center gap-1 leading-none ${setTypeClassName()} ${
             title === 'Ver mapa' && 'bg-transparent'
           } ${setSizeClassName()} rounded-lg ${setPadding()}`}
           title={title}
@@ -74,7 +74,7 @@ export default function Button(Props: {
         </a>
       ) : (
         <button
-          className={`flex ${width} items-center justify-center gap-1 ${setTypeClassName()} ${
+          className={`flex ${width} items-center justify-center gap-1 leading-none outline-none ${setTypeClassName()} ${
             title === 'Ver mapa' && 'bg-transparent'
           } ${setSizeClassName()} rounded-lg ${setPadding()}`}
           title={title}

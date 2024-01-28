@@ -12,7 +12,7 @@ export default function SearchSection() {
           Tu puente para encontrar pensión en la ciudad de Cartagena
         </p>
       </section>
-      <InputSearch />
+      <InputSearch placeholder="Buscar" />
       <figure className="flex h-32 w-auto justify-center lg:absolute lg:bottom-6 lg:right-36 lg:h-60 xl:right-60">
         <ImgLanding />
       </figure>
