@@ -36,13 +36,16 @@ export default async function ListingIdPage({
           rating={listing.rating}
           price={listing.price}
           address={listing.address}
+          id={id}
         />
       </section>
-      <OwnerInfo
-        photo={listing.owner?.avatar_url}
-        userName={listing.owner?.name}
-        contact={listing.owner?.contact}
-      />
+      <section className="sm:hidden">
+        <OwnerInfo
+          photo={listing.owner?.avatar_url}
+          userName={listing.owner?.name}
+          contact={listing.owner?.contact}
+        />
+      </section>
       <TypeComment />
       <Comments
         comments={listing.comments}

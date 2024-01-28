@@ -1,14 +1,21 @@
 import Link from 'next/link'
 import Button from './Button'
+import { getProfileCurrentUser } from '@/services/user'
 
-export default function OwnerInfo(Props: {
+export default async function OwnerInfo(Props: {
   photo: string | null | undefined
   userName: string | null | undefined
   contact: number | undefined
 }) {
   const { photo, userName, contact } = Props
+
+  const currentUser = await getProfileCurrentUser()
+  const isOwner = currentUser?.role === 'owner'
+  const link = isOwner ? `/profile` : `tel:+57${contact}`
+  const textButton = isOwner ? 'Mi perfil' : 'Contactar'
+
   return (
-    <section className="p-4 xs:px-8">
+    <section className="p-4 xs:px-8 sm:p-0">
       <article className="flex flex-col gap-4 rounded-lg bg-neutral-secondary-bg p-2 shadow-md xs:p-4">
         <section className="flex gap-2">
           <figure className="flex h-10 w-10 overflow-hidden rounded-3xl">
@@ -19,20 +26,20 @@ export default function OwnerInfo(Props: {
             />
           </figure>
           <section className="flex flex-col">
-            <h4 className="text-paragraph-regular font-semibold text-neutral-title">
+            <h4 className="text-paragraph-regular font-medium text-neutral-paragraph sm:w-max">
               {userName}
             </h4>
-            <small className="text-paragraph-xsmall font-normal text-neutral-title">
+            <small className="text-paragraph-xsmall font-normal text-neutral-paragraph">
               Propietario
             </small>
           </section>
         </section>
-        <Link href={`tel:+57${contact}`}>
+        <Link href={link}>
           <Button
             type="primary"
-            size="regular"
+            size="small"
             hasText="yes"
-            text="Contactar"
+            text={textButton}
             width="w-full"
           />
         </Link>

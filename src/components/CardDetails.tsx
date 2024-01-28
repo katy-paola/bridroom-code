@@ -1,15 +1,19 @@
 import FillStar from '@/svg/FillStar'
 import { formatCurrency } from '@/utils/formatCurrency'
+import OwnerInfo from './OwnerInfo'
+import { getListingById } from '@/services/listing'
 
-export default function CardDetails(Props: {
+export default async function CardDetails(Props: {
   photo: string | undefined
   title: string | null
   description: string | null
   rating: number | null
   price: number | null
   address: string | null
+  id: string
 }) {
-  const { photo, title, description, rating, price, address } = Props
+  const { photo, title, description, rating, price, address, id } = Props
+  const listing = await getListingById(id)
   const priceCOP = formatCurrency(price ?? 0)
 
   return (
@@ -17,33 +21,46 @@ export default function CardDetails(Props: {
       <figure className="flex h-52 w-full xs:h-80">
         <img src={photo} alt={title ?? 'No image'} className="object-cover" />
       </figure>
-      <section className="flex flex-1 flex-col justify-between gap-2 p-4 xs:px-8">
-        <h3 className="text-paragraph-regular font-semibold text-neutral-title">
-          {title}
-        </h3>
-        <section>
-          {rating === null ? (
-            <p className="text-paragraph-regular leading-4 text-neutral-title">
-              No hay valoraciones
-            </p>
-          ) : (
-            <section className="flex items-center">
-              <p className="text-paragraph-regular leading-4 text-neutral-title">
-                {rating}
+      <section className="flex flex-1 flex-col justify-between gap-2 p-4 xs:px-8 sm:flex-row sm:gap-6 sm:bg-neutral-active sm:p-4">
+        <section className="contents w-full flex-col gap-3 sm:flex sm:justify-between">
+          <section className="contents flex-col gap-3 sm:flex">
+            <h3 className="text-paragraph-regular font-semibold text-neutral-title sm:hidden">
+              {title}
+            </h3>
+            <section className="flex flex-col gap-1 sm:flex-row-reverse sm:items-center sm:justify-between">
+              {rating === null ? (
+                <p className="text-paragraph-small leading-4 text-neutral-title">
+                  No hay valoraciones
+                </p>
+              ) : (
+                <section className="flex items-center">
+                  <p className="text-paragraph-small leading-4 text-neutral-title">
+                    {rating}
+                  </p>
+                  <FillStar />
+                </section>
+              )}
+              <p className="text-paragraph-small font-semibold text-neutral-title">
+                {priceCOP}/mes
               </p>
-              <FillStar />
             </section>
-          )}
-          <p className="text-paragraph-small font-semibold text-neutral-title">
-            {priceCOP}/mes
-          </p>
+            <p className="text-paragraph-small font-normal text-neutral-title">
+              {description}
+            </p>
+          </section>
+          <small className="bg-neutral-hover px-2 py-1 text-paragraph-small font-normal text-neutral-title sm:bg-neutral-main-bg">
+            📍 {address}
+          </small>
         </section>
-        <p className="text-paragraph-small font-normal text-neutral-title">
-          {description}
-        </p>
-        <small className="bg-neutral-hover px-2 py-1 text-paragraph-small font-normal text-neutral-title">
-          📍 {address}
-        </small>
+        {listing !== null && (
+          <section className="hidden w-auto sm:flex">
+            <OwnerInfo
+              photo={listing.owner?.avatar_url}
+              userName={listing.owner?.name}
+              contact={listing.owner?.contact}
+            />
+          </section>
+        )}
       </section>
     </article>
   )

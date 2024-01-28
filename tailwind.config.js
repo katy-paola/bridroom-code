@@ -34,6 +34,7 @@ module.exports = {
         neutral: {
           'main-bg': 'var(--main-bg)',
           'secondary-bg': 'var(--secondary-bg)',
+          active: 'var(--active)',
           hover: 'var(--hover)',
           placeholder: 'var(--placeholder)',
           paragraph: 'var(--paragraph)',
