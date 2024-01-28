@@ -7,7 +7,6 @@ export default function Button(Props: {
   iconRight?: JSX.Element
   width?: string
   title?: string
-  contact?: number
   onClick?: () => void
 }) {
   const {
@@ -19,7 +18,6 @@ export default function Button(Props: {
     iconRight,
     width,
     title,
-    contact,
     onClick,
   } = Props
 
@@ -62,31 +60,16 @@ export default function Button(Props: {
   }
 
   return (
-    <>
-      {text === 'Contactar' ? (
-        <a
-          href={`tel:+57${contact}`}
-          className={`flex ${width} items-center justify-center gap-1 leading-none ${setTypeClassName()} ${
-            title === 'Ver mapa' && 'bg-transparent'
-          } ${setSizeClassName()} rounded-lg ${setPadding()}`}
-          title={title}
-          onClick={onClick}
-        >
-          Contactar
-        </a>
-      ) : (
-        <button
-          className={`flex ${width} items-center justify-center gap-1 leading-none outline-none ${setTypeClassName()} ${
-            title === 'Ver mapa' && 'bg-transparent'
-          } ${setSizeClassName()} rounded-lg ${setPadding()}`}
-          title={title}
-          onClick={onClick}
-        >
-          {iconLeft !== undefined && <span>{iconLeft}</span>}
-          <span className={`${setText()} font-semibold`}>{text}</span>
-          {iconRight !== undefined && <span>{iconRight}</span>}
-        </button>
-      )}
-    </>
+    <button
+      className={`flex ${width} items-center justify-center gap-1 leading-none outline-none ${setTypeClassName()} ${
+        title === 'Ver mapa' && 'bg-transparent'
+      } ${setSizeClassName()} rounded-lg ${setPadding()}`}
+      title={title}
+      onClick={onClick}
+    >
+      {iconLeft !== undefined && <span>{iconLeft}</span>}
+      <span className={`${setText()} font-semibold`}>{text}</span>
+      {iconRight !== undefined && <span>{iconRight}</span>}
+    </button>
   )
 }

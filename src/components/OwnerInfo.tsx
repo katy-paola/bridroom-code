@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import Button from './Button'
 
 export default function OwnerInfo(Props: {
@@ -26,14 +27,15 @@ export default function OwnerInfo(Props: {
             </small>
           </section>
         </section>
-        <Button
-          type="primary"
-          size="regular"
-          hasText="yes"
-          text="Contactar"
-          width="w-full"
-          contact={contact}
-        />
+        <Link href={`tel:+57${contact}`}>
+          <Button
+            type="primary"
+            size="regular"
+            hasText="yes"
+            text="Contactar"
+            width="w-full"
+          />
+        </Link>
       </article>
     </section>
   )
