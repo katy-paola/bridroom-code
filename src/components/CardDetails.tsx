@@ -20,13 +20,7 @@ export default async function CardDetails(Props: {
   return (
     <article className="flex flex-col overflow-hidden bg-neutral-main-bg">
       <Carousel photos={photos} />
-      {/* <figure className="flex h-52 w-full sm:h-80 md:h-[480px]">
-        <img
-          src={photos?.[0]}
-          alt={title ?? 'No image'}
-          className="object-cover"
-        />
-      </figure> */}
+
       <section className="flex flex-1 flex-col justify-between gap-2 p-4 xs:px-8 sm:flex-row sm:gap-6 sm:bg-neutral-active sm:p-4 md:gap-8 md:p-8">
         <section className="contents w-full flex-col gap-3 sm:flex sm:justify-between">
           <section className="contents flex-col gap-3 sm:flex">

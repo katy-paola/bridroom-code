@@ -4,7 +4,7 @@ import ImgAddBoarding from '@/svg/ImgAddBoarding'
 
 export default function AddBoarding() {
   return (
-    <section className="mt-14 w-full md:mt-20">
+    <section className="mt-14 flex w-full flex-col gap-8 p-4 xs:p-8 sm:px-44 md:mt-[72px] md:px-72 lg:flex-row lg:gap-16 lg:px-36 lg:py-16 xl:px-60">
       <h2>Agregar pensión</h2>
       <form>
         <fieldset>
