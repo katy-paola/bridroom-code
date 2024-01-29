@@ -36,7 +36,7 @@ export default async function OwnerInfo(Props: {
         </section>
         <Link href={link}>
           <Button
-            type="primary"
+            type="secondary"
             size="small"
             hasText="yes"
             text={textButton}

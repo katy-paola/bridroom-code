@@ -4,7 +4,7 @@ import OwnerInfo from './OwnerInfo'
 import { getListingById } from '@/services/listing'
 
 export default async function CardDetails(Props: {
-  photo: string | undefined
+  photos: string[] | null
   title: string | null
   description: string | null
   rating: number | null
@@ -12,16 +12,20 @@ export default async function CardDetails(Props: {
   address: string | null
   id: string
 }) {
-  const { photo, title, description, rating, price, address, id } = Props
+  const { photos, title, description, rating, price, address, id } = Props
   const listing = await getListingById(id)
   const priceCOP = formatCurrency(price ?? 0)
 
   return (
     <article className="flex flex-col overflow-hidden bg-neutral-main-bg">
       <figure className="flex h-52 w-full xs:h-80">
-        <img src={photo} alt={title ?? 'No image'} className="object-cover" />
+        <img
+          src={photos?.[0]}
+          alt={title ?? 'No image'}
+          className="object-cover"
+        />
       </figure>
-      <section className="flex flex-1 flex-col justify-between gap-2 p-4 xs:px-8 sm:flex-row sm:gap-6 sm:bg-neutral-active sm:p-4">
+      <section className="flex flex-1 flex-col justify-between gap-2 p-4 xs:px-8 sm:flex-row sm:gap-6 sm:bg-neutral-active sm:p-4 md:gap-8 md:p-8">
         <section className="contents w-full flex-col gap-3 sm:flex sm:justify-between">
           <section className="contents flex-col gap-3 sm:flex">
             <h3 className="text-paragraph-regular font-semibold text-neutral-title sm:hidden">
@@ -34,21 +38,21 @@ export default async function CardDetails(Props: {
                 </p>
               ) : (
                 <section className="flex items-center">
-                  <p className="text-paragraph-small leading-4 text-neutral-title">
+                  <p className="text-paragraph-small font-medium leading-4 text-neutral-title">
                     {rating}
                   </p>
                   <FillStar />
                 </section>
               )}
-              <p className="text-paragraph-small font-semibold text-neutral-title">
+              <p className="text-paragraph-small font-semibold text-neutral-title md:text-paragraph-regular">
                 {priceCOP}/mes
               </p>
             </section>
-            <p className="text-paragraph-small font-normal text-neutral-title">
+            <p className="text-paragraph-small font-normal text-neutral-title md:text-paragraph-regular">
               {description}
             </p>
           </section>
-          <small className="bg-neutral-hover px-2 py-1 text-paragraph-small font-normal text-neutral-title sm:bg-neutral-main-bg">
+          <small className="bg-neutral-hover px-2 py-1 text-paragraph-small font-normal text-neutral-title sm:bg-neutral-main-bg md:text-paragraph-regular">
             📍 {address}
           </small>
         </section>

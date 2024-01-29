@@ -30,7 +30,7 @@ export default async function ListingIdPage({
           listingTitle={listing.title}
         />
         <CardDetails
-          photo={listing.photos?.[0]}
+          photos={listing.photos}
           title={listing.title}
           description={listing.description}
           rating={listing.rating}
