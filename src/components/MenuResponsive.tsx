@@ -39,22 +39,26 @@ export default function MenuResponsive({
         {session === null && (
           <ul className="flex w-full flex-col md:flex-row md:gap-8">
             <li className="p-2 xs:px-4 md:p-0">
-              <Button
-                type="primary"
-                size="both"
-                hasText="yes"
-                text="Iniciar sesión"
-                width="w-full md:auto"
-              />
+              <Link href="/login">
+                <Button
+                  type="primary"
+                  size="both"
+                  hasText="yes"
+                  text="Iniciar sesión"
+                  width="w-full md:auto"
+                />
+              </Link>
             </li>
             <li className="p-2 xs:px-4 md:p-0">
-              <Button
-                type="secondary"
-                size="both"
-                hasText="yes"
-                text="Registrarme"
-                width="w-full md:auto"
-              />
+              <Link href="/register">
+                <Button
+                  type="secondary"
+                  size="both"
+                  hasText="yes"
+                  text="Registrarme"
+                  width="w-full md:auto"
+                />
+              </Link>
             </li>
           </ul>
         )}
