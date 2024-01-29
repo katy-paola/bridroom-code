@@ -1,6 +1,10 @@
+'use client'
+
+import { useState } from 'react'
+
 export default function Carousel(Props: { photos: string[] | null }) {
   const { photos } = Props
-
+  const [active, setActive] = useState(0)
   return (
     <section className="container relative">
       <ul className="relative h-52 w-full sm:h-80 md:h-[480px]">
@@ -21,9 +25,20 @@ export default function Carousel(Props: { photos: string[] | null }) {
         {photos?.map((photo, index) => (
           <li
             key={index}
-            className="flex h-5 w-5 items-center justify-center rounded-3xl bg-neutral-title text-paragraph-xsmall text-neutral-main-bg"
+            className={`flex h-5 w-5 items-center justify-center rounded-3xl hover:bg-secondary-disabled hover:text-neutral-main-bg sm:h-7 sm:w-7 ${
+              active === index
+                ? 'bg-secondary-default text-neutral-main-bg'
+                : 'bg-neutral-main-bg text-secondary-default'
+            } text-paragraph-xsmall sm:text-paragraph-regular`}
           >
-            <a href={`#${index}`}>{++index}</a>
+            <a
+              onClick={() => {
+                setActive(--index)
+              }}
+              href={`#${index}`}
+            >
+              {++index}
+            </a>
           </li>
         ))}
       </ul>
