@@ -22,7 +22,7 @@ export default async function ListingIdPage({
   }
 
   return (
-    <section className="relative mt-14 flex w-full flex-col sm:gap-8 sm:px-12 sm:py-8 md:mt-[72px]">
+    <section className="relative mt-14 flex w-full flex-col sm:gap-8 sm:px-12 sm:py-8 md:mt-[72px] lg:gap-16">
       <section className="flex flex-col gap-4">
         <BoardingHeader
           role={currentUser?.role}
@@ -46,12 +46,14 @@ export default async function ListingIdPage({
           contact={listing.owner?.contact}
         />
       </section>
-      <TypeComment />
-      <Comments
-        comments={listing.comments}
-        userName={currentUser?.name}
-        photo={currentUser?.avatar_url}
-      />
+      <section className="contents w-full gap-16 lg:flex">
+        <TypeComment />
+        <Comments
+          comments={listing.comments}
+          userName={currentUser?.name}
+          photo={currentUser?.avatar_url}
+        />
+      </section>
     </section>
   )
 }

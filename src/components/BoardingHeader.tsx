@@ -12,7 +12,7 @@ export default function BoardingHeader(Props: {
   const { role, id, listingTitle } = Props
   return (
     <header className="absolute flex w-full items-center justify-end sm:static sm:justify-between">
-      <h3 className="hidden text-paragraph-regular font-semibold text-neutral-title sm:block md:text-paragraph-medium">
+      <h3 className="hidden text-paragraph-regular font-semibold text-neutral-title sm:block md:text-paragraph-medium lg:text-paragraph-large">
         {listingTitle}
       </h3>
       <ul className="flex gap-4 p-2 text-neutral-main-bg sm:p-0">

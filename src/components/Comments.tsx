@@ -7,14 +7,14 @@ export default function Comments(Props: {
 }) {
   const { comments, userName, photo } = Props
   return (
-    <section className="flex flex-col gap-4 p-4 xs:px-8 sm:p-0">
+    <section className="flex flex-col gap-4 overflow-auto p-4 xs:px-8 sm:p-0 lg:max-h-60">
       <h6 className="text-paragraph-regular font-normal text-neutral-title">
         Comentarios
       </h6>
       <ul className="flex flex-col gap-4">
-        {comments?.map((comment) => (
+        {comments?.map((comment, index) => (
           <>
-            <li key={comment}>
+            <li key={index}>
               <article className="flex flex-col gap-2 bg-neutral-active p-2">
                 <section className="flex gap-2">
                   <figure className="flex h-10 w-10 overflow-hidden rounded-3xl">
@@ -32,7 +32,7 @@ export default function Comments(Props: {
                   </section>
                 </section>
                 <section className="flex flex-col gap-1">
-                  <p className="text-paragraph-small font-normal text-neutral-paragraph">
+                  <p className="text-paragraph-small font-normal text-neutral-paragraph lg:max-w-paragraph">
                     {comment}
                   </p>
                   <button className="self-end text-paragraph-xsmall font-normal text-neutral-paragraph underline">
@@ -59,7 +59,7 @@ export default function Comments(Props: {
                   </section>
                 </section>
                 <section className="flex flex-col gap-1">
-                  <p className="text-paragraph-small font-normal text-neutral-paragraph">
+                  <p className="text-paragraph-small font-normal text-neutral-paragraph lg:max-w-paragraph">
                     {comment}
                   </p>
                   <button className="self-end text-paragraph-xsmall font-normal text-neutral-paragraph underline">
