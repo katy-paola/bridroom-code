@@ -39,7 +39,7 @@ export default function MenuResponsive({
         {session === null && (
           <ul className="flex w-full flex-col md:flex-row md:gap-8">
             <li className="p-2 xs:px-4 md:p-0">
-              <Link href="/login">
+              <Link href="/loginView">
                 <Button
                   type="primary"
                   size="both"
