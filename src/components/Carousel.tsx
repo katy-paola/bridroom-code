@@ -2,7 +2,7 @@ export default function Carousel(Props: { photos: string[] | null }) {
   const { photos } = Props
 
   return (
-    <ul className="flex h-52 w-full snap-x snap-mandatory gap-3 overflow-x-scroll xs:h-64 sm:h-80 md:h-96 lg:h-[480px] xl:h-[560px]">
+    <ul className="flex h-64 w-full snap-x snap-mandatory gap-3 overflow-x-scroll xs:h-72 sm:h-80 md:h-96 lg:h-[480px] xl:h-[560px]">
       {photos?.map((photo, index) => (
         <li
           key={index}
