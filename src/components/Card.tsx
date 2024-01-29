@@ -16,8 +16,8 @@ export default function Card(Props: {
 
   return (
     <article className="flex flex-col overflow-hidden rounded-2xl bg-neutral-main-bg shadow-md">
-      <figure>
-        <img src={photo} alt="" />
+      <figure className="h-48 w-full">
+        <img className="h-full w-full object-cover" src={photo} alt="" />
       </figure>
       <section className="flex flex-1 flex-col justify-between gap-4 p-4">
         <section className="flex flex-col gap-1">
