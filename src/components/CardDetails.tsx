@@ -48,7 +48,7 @@ export default async function CardDetails(Props: {
                 {priceCOP}/mes
               </p>
             </section>
-            <p className="text-paragraph-small font-normal text-neutral-title md:max-w-[600px] md:text-paragraph-regular">
+            <p className="text-paragraph-small font-normal text-neutral-title md:max-w-[600px] md:text-paragraph-regular xl:max-w-[720px]">
               {description}
             </p>
           </section>
