@@ -1,5 +1,5 @@
 import Button from '@/components/Button'
-import { getProfileCurrentUser } from '@/services/user'
+import { getUserById } from '@/services/user'
 import { getAllListings } from '@/services/listing'
 import ImgFavorites from '@/svg/ImgFavorites'
 import ImgEmptyFavorites from '@/svg/ImgEmptyFavorites'
@@ -7,14 +7,8 @@ import Link from 'next/link'
 
 export default async function Profile({ params }: { params: { id: string } }) {
   const { id } = params
-  const currentUser = await getProfileCurrentUser()
+  const userProfile = await getUserById(id)
   const listings = await getAllListings()
-  const source = currentUser?.avatar_url
-  const name = currentUser?.name
-  const role = currentUser?.role
-  const about = currentUser?.about
-  const university = currentUser?.university
-  const email = currentUser?.email
   const favoritePensions = true
 
   return (
@@ -23,16 +17,22 @@ export default async function Profile({ params }: { params: { id: string } }) {
         <section className="flex flex-col">
           <header>
             <figure>
-              <img className="w-10" src={source ?? '/no-image.jpg'} alt="" />
+              <img
+                className="w-10"
+                src={userProfile?.avatar_url ?? '/no-image.jpg'}
+                alt=""
+              />
             </figure>
             <section>
-              <h3>{name}</h3>
-              <small>{role}</small>
+              <h3>{userProfile?.name}</h3>
+              <small>{userProfile?.role}</small>
             </section>
           </header>
-          <p>{about}</p>
-          <p>{university}</p>
-          <a href={`mailto:${email}`}>{email ?? ''}</a>
+          <p>{userProfile?.about}</p>
+          <p>{userProfile?.university}</p>
+          <a href={`mailto:${userProfile?.email}`}>
+            {userProfile?.email ?? ''}
+          </a>
         </section>
         <Link href={`/profile/${id}/edit`}>
           <Button

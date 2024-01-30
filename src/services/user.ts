@@ -12,6 +12,20 @@ export const getUser = async () => {
   return user
 }
 
+export const getUserById = async (id: string) => {
+  const cookieStore = cookies()
+
+  const supabase = createClient(cookieStore)
+
+  const { data } = await supabase
+    .from('profiles')
+    .select('*')
+    .eq('id', id)
+    .single()
+
+  return data
+}
+
 export const getSession = async () => {
   const cookieStore = cookies()
   const supabase = createClient(cookieStore)

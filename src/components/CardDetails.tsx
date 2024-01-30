@@ -58,6 +58,7 @@ export default async function CardDetails(Props: {
               photo={listing.owner?.avatar_url}
               name={listing.owner?.name}
               contact={listing.owner?.contact}
+              idOwner={listing.owner?.id}
             />
           </section>
         )}

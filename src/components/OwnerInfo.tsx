@@ -2,22 +2,17 @@ import Link from 'next/link'
 import Button from './Button'
 import { getProfileCurrentUser } from '@/services/user'
 
-export default async function OwnerInfo(
-  Props: {
-    photo: string | null | undefined
-    name: string | null | undefined
-    contact: number | undefined
-  },
-  { params }: { params: { id: string } },
-) {
-  const { id } = params
-  const { photo, name, contact } = Props
+export default async function OwnerInfo(Props: {
+  photo: string | null | undefined
+  name: string | null | undefined
+  contact: number | undefined
+  idOwner: string | undefined
+}) {
+  const { photo, name, contact, idOwner } = Props
 
   const currentUser = await getProfileCurrentUser()
   const isOwner = currentUser?.role === 'owner'
-  const link = isOwner
-    ? `/profile/${currentUser.id === id && id}`
-    : `tel:+57${contact}`
+  const link = isOwner ? `/profile/${idOwner}` : `tel:+57${contact}`
   const textButton = isOwner ? 'Mi perfil' : 'Contactar'
 
   return (
