@@ -5,7 +5,8 @@ import ImgFavorites from '@/svg/ImgFavorites'
 import ImgEmptyFavorites from '@/svg/ImgEmptyFavorites'
 import Link from 'next/link'
 
-export default async function Profile() {
+export default async function Profile({ params }: { params: { id: string } }) {
+  const { id } = params
   const currentUser = await getProfileCurrentUser()
   const listings = await getAllListings()
   const source = currentUser?.avatar_url
@@ -33,7 +34,7 @@ export default async function Profile() {
           <p>{university}</p>
           <a href={`mailto:${email}`}>{email ?? ''}</a>
         </section>
-        <Link href="/profile/edit">
+        <Link href={`/profile/${id}/edit`}>
           <Button
             type="secondary"
             size="small"

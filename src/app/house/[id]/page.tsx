@@ -42,7 +42,7 @@ export default async function ListingIdPage({
       <section className="sm:hidden">
         <OwnerInfo
           photo={listing.owner?.avatar_url}
-          userName={listing.owner?.name}
+          name={listing.owner?.name}
           contact={listing.owner?.contact}
         />
       </section>

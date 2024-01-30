@@ -10,13 +10,17 @@ import { type Session } from '@supabase/supabase-js'
 import { type User } from '../types/types'
 import Link from 'next/link'
 
-export default function MenuResponsive({
-  session,
-  user,
-}: {
-  session: Session | null
-  user: User | null
-}) {
+export default function MenuResponsive(
+  {
+    session,
+    user,
+  }: {
+    session: Session | null
+    user: User | null
+  },
+  { params }: { params: { id: string } },
+) {
+  const { id } = params
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const role = user?.role
   return (
@@ -81,7 +85,7 @@ export default function MenuResponsive({
               </li>
             )}
             <li className="p-2 xs:px-4 md:p-0">
-              <Link href="/profile">
+              <Link href={`/profile/${user?.id === id && id}`}>
                 <Button
                   type="tab"
                   size="both"

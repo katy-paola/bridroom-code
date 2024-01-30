@@ -56,7 +56,7 @@ export default async function CardDetails(Props: {
           <section className="hidden w-auto sm:flex">
             <OwnerInfo
               photo={listing.owner?.avatar_url}
-              userName={listing.owner?.name}
+              name={listing.owner?.name}
               contact={listing.owner?.contact}
             />
           </section>
