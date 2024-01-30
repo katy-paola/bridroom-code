@@ -66,7 +66,6 @@ export default function AddBoarding() {
                 className="sr-only"
                 type="file"
                 accept="image/*"
-                capture="environment"
                 multiple
               />
             </label>
