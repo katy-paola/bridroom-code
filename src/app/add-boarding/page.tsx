@@ -4,7 +4,7 @@ import ImgAddBoarding from '@/svg/ImgAddBoarding'
 
 export default function AddBoarding() {
   return (
-    <section className="mt-14 flex w-full flex-col gap-8 p-4 xs:p-8 sm:px-44 md:mt-[72px] md:px-72 lg:flex-row lg:items-center lg:gap-16 lg:px-36 lg:py-16 xl:px-60">
+    <section className="mt-14 flex w-full flex-col gap-8 p-4 xs:p-8 sm:px-44 md:mt-[72px] md:px-72 lg:flex-row lg:items-center lg:gap-16 lg:px-36 lg:py-10 xl:px-60">
       <section className="contents w-full flex-col gap-8 lg:flex">
         <h2 className="text-paragraph-medium font-medium text-neutral-title md:text-paragraph-large">
           Agregar pensión
