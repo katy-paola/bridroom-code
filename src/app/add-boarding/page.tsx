@@ -4,12 +4,14 @@ import ImgAddBoarding from '@/svg/ImgAddBoarding'
 
 export default function AddBoarding() {
   return (
-    <section className="mt-14 flex w-full flex-col gap-8 p-4 xs:p-8 sm:px-44 md:mt-[72px] md:px-72 lg:flex-row lg:gap-16 lg:px-36 lg:py-16 xl:px-60">
-      <section className="contents flex-col md:flex">
-        <h2>Agregar pensión</h2>
-        <form>
-          <fieldset>
-            <label>
+    <section className="mt-14 flex w-full flex-col gap-8 p-4 xs:p-8 sm:px-44 md:mt-[72px] md:px-72 lg:flex-row lg:items-center lg:gap-16 lg:px-36 lg:py-16 xl:px-60">
+      <section className="contents w-full flex-col gap-8 lg:flex">
+        <h2 className="text-paragraph-medium font-medium text-neutral-title md:text-paragraph-large">
+          Agregar pensión
+        </h2>
+        <form className="flex flex-col gap-8">
+          <fieldset className="flex flex-col gap-8">
+            <label className="flex flex-col gap-2 text-paragraph-regular text-neutral-paragraph">
               Título de la publicación:
               <InputForm
                 type="text"
@@ -18,7 +20,7 @@ export default function AddBoarding() {
                 isRadio={false}
               />
             </label>
-            <label>
+            <label className="flex flex-col gap-2 text-paragraph-regular text-neutral-paragraph">
               Descripción:
               <InputForm
                 type="text"
@@ -27,7 +29,7 @@ export default function AddBoarding() {
                 isRadio={false}
               />
             </label>
-            <label>
+            <label className="flex flex-col gap-2 text-paragraph-regular text-neutral-paragraph">
               Precio:
               <InputForm
                 type="number"
@@ -36,7 +38,7 @@ export default function AddBoarding() {
                 isRadio={false}
               />
             </label>
-            <label className="flex flex-col">
+            <label className="flex flex-col gap-2 text-paragraph-regular text-neutral-paragraph">
               Dirección:
               <InputForm
                 type="text"
@@ -51,9 +53,15 @@ export default function AddBoarding() {
                 Seleccionar ubicación en el mapa
               </a>
             </label>
-            <label>
+            <label className="flex flex-col gap-2 text-paragraph-regular text-neutral-paragraph">
               Agregar fotos:
-              <img src="/upload-photo.svg" alt="" />
+              <figure className="h-32 w-32">
+                <img
+                  className="h-full w-full object-cover"
+                  src="/upload-photo.svg"
+                  alt=""
+                />
+              </figure>
               <input
                 className="sr-only"
                 type="file"
@@ -69,10 +77,15 @@ export default function AddBoarding() {
             hasText="yes"
             text="Publicar"
             width="w-full"
+            disabled={true}
           />
         </form>
       </section>
-      <ImgAddBoarding />
+      <section className="flex justify-center">
+        <figure className="w-72 md:w-96 lg:w-[480px]">
+          <ImgAddBoarding />
+        </figure>
+      </section>
     </section>
   )
 }

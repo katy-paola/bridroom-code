@@ -8,6 +8,7 @@ export default function Button(Props: {
   width?: string
   title?: string
   onClick?: () => void
+  disabled?: boolean
 }) {
   const {
     type,
@@ -19,6 +20,7 @@ export default function Button(Props: {
     width,
     title,
     onClick,
+    disabled,
   } = Props
 
   const setClassName = () => {
@@ -62,7 +64,12 @@ export default function Button(Props: {
   }
 
   return (
-    <button className={setClassName()} title={title} onClick={onClick}>
+    <button
+      className={setClassName()}
+      title={title}
+      onClick={onClick}
+      disabled={disabled}
+    >
       {iconLeft !== undefined && <span>{iconLeft}</span>}
       <span className={`${setText()} font-semibold`}>{text}</span>
       {iconRight !== undefined && <span>{iconRight}</span>}
