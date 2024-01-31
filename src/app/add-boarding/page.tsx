@@ -55,7 +55,7 @@ export default function AddBoarding() {
             </label>
             <label className="flex flex-col gap-2 text-paragraph-regular text-neutral-paragraph">
               Agregar fotos:
-              <figure className="h-32 w-32">
+              <figure className="h-20 w-20">
                 <img
                   className="h-full w-full object-cover"
                   src="/upload-photo.svg"

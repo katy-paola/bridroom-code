@@ -66,9 +66,10 @@ module.exports = {
       },
       gridTemplateColumns: {
         'auto-fill': 'repeat(auto-fill, minmax(260px, 1fr))',
+        'auto-fill-sm': 'repeat(auto-fill, 80px)',
       },
       gridTemplateRows: {
-        'auto-fit': 'repeat(auto-fit, minmax(min-content, 1fr))',
+        'auto-fit': 'repeat(auto-fit, 80px)',
       },
       fontFamily: {
         'body-font': ['var(--font-poppins)'],

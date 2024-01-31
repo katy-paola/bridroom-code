@@ -1,8 +1,7 @@
 export default function ImgAddBoarding() {
   return (
     <svg
-      width="288"
-      height="277"
+      className="w-full"
       viewBox="0 0 288 277"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
