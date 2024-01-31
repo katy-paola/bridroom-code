@@ -69,7 +69,7 @@ module.exports = {
         'auto-fill-sm': 'repeat(auto-fill, 80px)',
       },
       gridTemplateRows: {
-        'auto-fit': 'repeat(auto-fit, 80px)',
+        'auto-fit': 'repeat(auto-fit, minmax(min-content, 1fr))',
       },
       fontFamily: {
         'body-font': ['var(--font-poppins)'],
