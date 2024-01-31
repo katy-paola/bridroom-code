@@ -33,7 +33,7 @@ export default function InputForm({
             } outline-none`}
             type={type}
             placeholder={placeholder}
-            value={value ?? ''}
+            defaultValue={value ?? ''}
           />
           {hasIcon && (
             <button
