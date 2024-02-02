@@ -20,7 +20,21 @@ export default async function ListingIdPage({
   if (listing === null) {
     return redirect('/404')
   }
+  const address =
+    typeof listing.location === 'object' &&
+    listing.location !== null &&
+    'address' in listing.location &&
+    typeof listing.location.address === 'string'
+      ? listing.location.address
+      : ''
 
+  const neighborhood =
+    typeof listing.location === 'object' &&
+    listing.location !== null &&
+    'neigh' in listing.location &&
+    typeof listing.location.neigh === 'string'
+      ? listing.location.neigh
+      : ''
   return (
     <section className="relative flex w-full flex-col pb-8 pt-14 sm:gap-8 sm:px-12 md:pt-[104px] lg:gap-16">
       <section className="flex flex-col gap-4">
@@ -35,7 +49,8 @@ export default async function ListingIdPage({
           description={listing.description}
           rating={listing.rating}
           price={listing.price}
-          address={listing.address}
+          address={address}
+          neighborhood={neighborhood}
           id={id}
         />
       </section>
