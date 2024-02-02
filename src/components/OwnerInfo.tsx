@@ -12,8 +12,9 @@ export default async function OwnerInfo(Props: {
 
   const currentUser = await getProfileCurrentUser()
   const isOwner = currentUser?.role === 'owner'
-  const link = isOwner ? `/profile/${idOwner}` : `tel:+57${contact}`
-  const textButton = isOwner ? 'Mi perfil' : 'Contactar'
+  const currentOwner = isOwner && currentUser?.id === idOwner
+  const link = currentOwner ? `/profile/${idOwner}` : `tel:+57${contact}`
+  const textButton = currentOwner ? 'Mi perfil' : 'Contactar'
 
   return (
     <section className="p-4 xs:px-8 sm:p-0">
@@ -27,9 +28,11 @@ export default async function OwnerInfo(Props: {
             />
           </figure>
           <section className="flex flex-col">
-            <h4 className="text-paragraph-regular font-medium text-neutral-paragraph sm:w-max">
-              {name}
-            </h4>
+            <Link href={`/profile/${idOwner}`}>
+              <h4 className="text-paragraph-regular font-medium text-neutral-paragraph hover:underline sm:w-max">
+                {name}
+              </h4>
+            </Link>
             <small className="text-paragraph-xsmall font-normal text-neutral-paragraph">
               Propietario
             </small>
