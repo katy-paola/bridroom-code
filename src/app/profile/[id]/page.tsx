@@ -1,5 +1,5 @@
 import Button from '@/components/Button'
-import { getUserById } from '@/services/user'
+import { getProfileCurrentUser, getUserById } from '@/services/user'
 import { getAllListings } from '@/services/listing'
 import ImgFavorites from '@/svg/ImgFavorites'
 import ImgEmptyFavorites from '@/svg/ImgEmptyFavorites'
@@ -9,11 +9,12 @@ export default async function Profile({ params }: { params: { id: string } }) {
   const { id } = params
   const userProfile = await getUserById(id)
   const listings = await getAllListings()
+  const currentUser = await getProfileCurrentUser()
   const favoritePensions = true
 
   return (
-    <section className="flex w-full flex-col pt-14">
-      <section>
+    <section className="flex w-full flex-col pt-14 md:pt-[72px] lg:flex-row">
+      <section className="flex flex-col gap-8 p-4 pb-8 xs:p-8 sm:px-44 md:px-72 lg:px-32 lg:py-10 xl:px-40">
         <section className="flex flex-col">
           <header>
             <figure>
@@ -25,7 +26,9 @@ export default async function Profile({ params }: { params: { id: string } }) {
             </figure>
             <section>
               <h3>{userProfile?.name}</h3>
-              <small>{userProfile?.role}</small>
+              <small>
+                {userProfile?.role === 'student' ? 'Estudiante' : 'Propietario'}
+              </small>
             </section>
           </header>
           <p>{userProfile?.about}</p>
@@ -34,15 +37,17 @@ export default async function Profile({ params }: { params: { id: string } }) {
             {userProfile?.email ?? ''}
           </a>
         </section>
-        <Link href={`/profile/${id}/edit`}>
-          <Button
-            type="secondary"
-            size="small"
-            hasText="yes"
-            text="Editar perfil"
-            width="w-auto"
-          />
-        </Link>
+        {currentUser?.id === id && (
+          <Link href={`/profile/${id}/edit`}>
+            <Button
+              type="secondary"
+              size="small"
+              hasText="yes"
+              text="Editar perfil"
+              width="w-auto"
+            />
+          </Link>
+        )}
       </section>
       <section>
         <h3>Pensiones favoritas</h3>
