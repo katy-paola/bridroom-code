@@ -15,12 +15,20 @@ export default async function EditBoardingIdPage({
   if (listing === null) {
     return redirect('/404')
   }
+  const address =
+    typeof listing.location === 'object' &&
+    listing.location !== null &&
+    'address' in listing.location &&
+    typeof listing.location.address === 'string'
+      ? listing.location.address
+      : ''
   return (
     <section className="mt-14 flex w-full flex-col gap-8 p-4 xs:p-8 sm:px-44 md:mt-[72px] md:px-72 lg:flex-row lg:items-center lg:gap-16 lg:px-36 lg:py-10 xl:px-60">
       <section className="contents w-full flex-col gap-8 lg:flex">
         <h2 className="text-paragraph-medium font-medium text-neutral-title md:text-paragraph-large">
           Editar pensión
         </h2>
+
         <form className="flex flex-col gap-8">
           <fieldset className="flex flex-col gap-8">
             <label className="flex flex-col gap-2 text-paragraph-regular text-neutral-paragraph">
@@ -60,7 +68,7 @@ export default async function EditBoardingIdPage({
                 placeholder="Ej.: Urbanización Sevilla mz 5 lt 6"
                 hasIcon={false}
                 isRadio={false}
-                value={listing.address}
+                value={address}
               />
               <a
                 href="#"

@@ -9,14 +9,49 @@ export type Json =
 export interface Database {
   public: {
     Tables: {
+      favorites: {
+        Row: {
+          created_at: string
+          id: number
+          id_listing: string | null
+          id_profile: string | null
+        }
+        Insert: {
+          created_at?: string
+          id?: number
+          id_listing?: string | null
+          id_profile?: string | null
+        }
+        Update: {
+          created_at?: string
+          id?: number
+          id_listing?: string | null
+          id_profile?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "favorites_id_listing_fkey"
+            columns: ["id_listing"]
+            isOneToOne: false
+            referencedRelation: "listings"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "favorites_id_profile_fkey"
+            columns: ["id_profile"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          }
+        ]
+      }
       listings: {
         Row: {
-          address: string
           comments: string[] | null
           created_at: string
           description: string | null
           id: string
-          location: string | null
+          location: Json | null
           photos: string[] | null
           price: number | null
           rating: number | null
@@ -24,12 +59,11 @@ export interface Database {
           user_id: string | null
         }
         Insert: {
-          address?: string
           comments?: string[] | null
           created_at?: string
           description?: string | null
           id?: string
-          location?: string | null
+          location?: Json | null
           photos?: string[] | null
           price?: number | null
           rating?: number | null
@@ -37,12 +71,11 @@ export interface Database {
           user_id?: string | null
         }
         Update: {
-          address?: string
           comments?: string[] | null
           created_at?: string
           description?: string | null
           id?: string
-          location?: string | null
+          location?: Json | null
           photos?: string[] | null
           price?: number | null
           rating?: number | null
