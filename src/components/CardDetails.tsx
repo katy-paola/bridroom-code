@@ -11,9 +11,19 @@ export default async function CardDetails(Props: {
   rating: number | null
   price: number | null
   address: string | null
+  neighborhood: string | null
   id: string
 }) {
-  const { photos, title, description, rating, price, address, id } = Props
+  const {
+    photos,
+    title,
+    description,
+    rating,
+    price,
+    address,
+    id,
+    neighborhood,
+  } = Props
   const listing = await getListingById(id)
   const priceCOP = formatCurrency(price ?? 0)
 
@@ -47,9 +57,14 @@ export default async function CardDetails(Props: {
             <p className="text-paragraph-small font-normal text-neutral-title md:max-w-[600px] md:text-paragraph-regular xl:max-w-[720px]">
               {description}
             </p>
+            <p className="text-paragraph-small font-normal text-neutral-title md:text-paragraph-regular">
+              Barrio {neighborhood}
+            </p>
           </section>
           <small className="bg-neutral-hover px-2 py-1 text-paragraph-small font-normal text-neutral-title sm:bg-neutral-main-bg md:text-paragraph-regular">
-            📍 {address}
+            <a href="#">
+              📍 <span className="underline">{address}</span>
+            </a>
           </small>
         </section>
         {listing !== null && (
