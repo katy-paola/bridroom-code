@@ -26,6 +26,19 @@ export const getUserById = async (id: string) => {
   return data
 }
 
+export const getFavorites = async (id: string) => {
+  const cookieStore = cookies()
+
+  const supabase = createClient(cookieStore)
+
+  const { data } = await supabase
+    .from('favorites')
+    .select('*')
+    .eq('user_id', id)
+
+  return data
+}
+
 export const getSession = async () => {
   const cookieStore = cookies()
   const supabase = createClient(cookieStore)
