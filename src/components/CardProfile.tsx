@@ -26,9 +26,9 @@ export default function CardProfile(Props: {
         </figure>
         <section className="flex justify-between px-3 py-2">
           <Link href={`/house/${id}`}>
-            <a className="text-paragraph-small text-neutral-title underline md:text-paragraph-regular">
+            <button className="text-paragraph-small text-neutral-title underline md:text-paragraph-regular">
               Ver más...
-            </a>
+            </button>
           </Link>
           <SaveBoardingButton padding="p-0" />
         </section>
