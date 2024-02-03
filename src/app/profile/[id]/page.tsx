@@ -36,7 +36,7 @@ export default async function Profile({ params }: { params: { id: string } }) {
                 </small>
               </section>
             </header>
-            <p className="text-paragraph-small font-normal text-neutral-paragraph lg:max-w-xl">
+            <p className="max-w-lg text-paragraph-small font-normal text-neutral-paragraph lg:max-w-xl">
               {userProfile?.about}
             </p>
             <p className="text-paragraph-small font-normal text-neutral-paragraph">
@@ -69,13 +69,13 @@ export default async function Profile({ params }: { params: { id: string } }) {
           />
         </figure>
       </section>
-      <section className="flex flex-col gap-8 bg-neutral-secondary-bg px-4 py-8">
-        <h3 className="text-paragraph-regular font-medium text-neutral-title">
+      <section className="flex flex-col gap-8 bg-neutral-secondary-bg px-4 py-8 xs:p-8 sm:px-44 md:px-72">
+        <h3 className="text-paragraph-regular font-medium text-neutral-title md:text-paragraph-medium">
           Pensiones favoritas
         </h3>
         {!favoritePensions ? (
           <>
-            <p className="text-paragraph-small font-normal text-neutral-paragraph">
+            <p className="text-paragraph-small font-normal text-neutral-paragraph md:text-paragraph-regular">
               Actualmente no tienes pensiones guardadas.
             </p>
             <figure className="w-72 self-center">
@@ -87,10 +87,10 @@ export default async function Profile({ params }: { params: { id: string } }) {
             <figure className="w-72 self-center">
               <ImgFavorites />
             </figure>
-            <ul className="flex w-full snap-x snap-mandatory gap-2 overflow-x-scroll py-2">
+            <ul className="flex w-full snap-x snap-mandatory gap-2 overflow-x-scroll py-2 md:flex-col md:overflow-visible">
               {listings?.map((listing) => (
                 <li
-                  className="flex h-full flex-col rounded-lg bg-neutral-main-bg shadow-md"
+                  className="flex h-full snap-start flex-col rounded-lg bg-neutral-main-bg shadow-md"
                   key={listing.id}
                 >
                   <figure className="flex h-20 w-32">
@@ -102,7 +102,7 @@ export default async function Profile({ params }: { params: { id: string } }) {
                   </figure>
                   <section className="flex px-3 py-2">
                     <a
-                      className="text-paragraph-small text-neutral-title underline"
+                      className="text-paragraph-small text-neutral-title underline md:text-paragraph-regular"
                       href={`/house/${listing.id}`}
                     >
                       Ver más...
