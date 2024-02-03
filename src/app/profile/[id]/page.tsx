@@ -70,12 +70,18 @@ export default async function Profile({ params }: { params: { id: string } }) {
         </figure>
       </section>
       <section className="flex flex-col gap-8 bg-neutral-secondary-bg px-4 py-8">
-        <h3>Pensiones favoritas</h3>
-        {!favoritePensions ? (
-          <section>
-            <p>Actualmente no tienes pensiones guardadas.</p>
-            <ImgEmptyFavorites />
-          </section>
+        <h3 className="text-paragraph-regular font-medium text-neutral-title">
+          Pensiones favoritas
+        </h3>
+        {favoritePensions ? (
+          <>
+            <p className="text-paragraph-small font-normal text-neutral-paragraph">
+              Actualmente no tienes pensiones guardadas.
+            </p>
+            <figure className="w-72 self-center">
+              <ImgEmptyFavorites />
+            </figure>
+          </>
         ) : (
           <section>
             <ImgFavorites />
