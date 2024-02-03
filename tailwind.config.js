@@ -78,6 +78,9 @@ module.exports = {
       maxWidth: {
         paragraph: '32ch',
       },
+      minHeight: {
+        main: 'calc(100vh - 4rem)',
+      },
       screens: {
         xs: '430px',
         sm: '744px',
