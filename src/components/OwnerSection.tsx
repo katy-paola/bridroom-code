@@ -10,7 +10,10 @@ export default function OwnerSection() {
         </h2>
         <p className="text-paragraph-regular sm:text-center md:w-max">
           Bridroom te conecta con tus posibles clientes.
-          <Link href="#" className="ml-1 text-paragraph-regular underline">
+          <Link
+            href={`/register?role=owner`}
+            className="ml-1 text-paragraph-regular underline"
+          >
             Regístrate ahora
           </Link>
         </p>
