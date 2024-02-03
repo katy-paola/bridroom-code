@@ -1,8 +1,7 @@
 export default function ImgFavorites() {
   return (
     <svg
-      width="288"
-      height="215"
+      className="w-full"
       viewBox="0 0 288 215"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"

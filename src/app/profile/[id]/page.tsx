@@ -73,7 +73,7 @@ export default async function Profile({ params }: { params: { id: string } }) {
         <h3 className="text-paragraph-regular font-medium text-neutral-title">
           Pensiones favoritas
         </h3>
-        {favoritePensions ? (
+        {!favoritePensions ? (
           <>
             <p className="text-paragraph-small font-normal text-neutral-paragraph">
               Actualmente no tienes pensiones guardadas.
@@ -83,25 +83,35 @@ export default async function Profile({ params }: { params: { id: string } }) {
             </figure>
           </>
         ) : (
-          <section>
-            <ImgFavorites />
-            <ul className="flex w-full flex-wrap">
+          <>
+            <figure className="w-72 self-center">
+              <ImgFavorites />
+            </figure>
+            <ul className="flex w-full snap-x snap-mandatory gap-2 overflow-x-scroll py-2">
               {listings?.map((listing) => (
-                <li className="flex-1" key={listing.id}>
-                  <figure className="flex">
+                <li
+                  className="flex h-full flex-col rounded-lg bg-neutral-main-bg shadow-md"
+                  key={listing.id}
+                >
+                  <figure className="flex h-20 w-32">
                     <img
-                      className="w-32"
+                      className="h-full w-full rounded-t-lg object-cover"
                       src={listing.photos?.[0] ?? '/no-image.jpg'}
                       alt=""
                     />
                   </figure>
-                  <section className="w-max">
-                    <a href={`/house/${listing.id}`}>Ver más...</a>
+                  <section className="flex px-3 py-2">
+                    <a
+                      className="text-paragraph-small text-neutral-title underline"
+                      href={`/house/${listing.id}`}
+                    >
+                      Ver más...
+                    </a>
                   </section>
                 </li>
               ))}
             </ul>
-          </section>
+          </>
         )}
       </section>
     </section>
