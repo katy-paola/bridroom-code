@@ -14,8 +14,8 @@ export default async function Profile({ params }: { params: { id: string } }) {
   const favoritePensions = true
 
   return (
-    <section className="flex w-full flex-col pt-14 md:pt-[72px]">
-      <section className="flex flex-col gap-8 p-4 pb-8 xs:p-8 sm:px-44 md:px-72 lg:flex-row lg:px-36 lg:py-10 xl:px-40">
+    <section className="mt-14 flex w-full flex-col md:mt-16">
+      <section className="flex flex-col justify-between gap-8 p-4 pb-8 xs:p-8 sm:px-44 md:px-72 lg:flex-row lg:px-36 lg:py-10 xl:px-40">
         <section className="flex flex-col gap-8 ">
           <section className="flex flex-col gap-4">
             <header className="flex items-center gap-4">
