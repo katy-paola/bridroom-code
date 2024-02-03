@@ -64,7 +64,6 @@ export default function AuthForm(Props: { typeAction: string }) {
               id="rol"
               className="flex flex-col gap-2 text-paragraph-regular text-neutral-paragraph"
             >
-              {/*  focus-within:border-none focus-within:bg-primary-disabled */}
               Elige tu rol
               <section className="flex gap-5">
                 <label
