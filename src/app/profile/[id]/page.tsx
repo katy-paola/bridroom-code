@@ -70,7 +70,7 @@ export default async function Profile({ params }: { params: { id: string } }) {
           />
         </figure>
       </section>
-      <section className="flex flex-col gap-8 bg-neutral-secondary-bg px-4 py-8 xs:p-8 sm:px-44 md:px-72 lg:px-36">
+      <section className="flex flex-col gap-8 bg-neutral-secondary-bg px-4 py-8 xs:p-8 sm:px-44 md:px-72 lg:px-36 xl:px-40">
         <h3 className="text-paragraph-regular font-medium text-neutral-title md:text-paragraph-medium">
           {userProfile?.role === 'student'
             ? 'Pensiones guardadas'
