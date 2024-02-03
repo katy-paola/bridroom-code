@@ -4,6 +4,7 @@ import { getAllListings } from '@/services/listing'
 import ImgFavorites from '@/svg/ImgFavorites'
 import ImgEmptyFavorites from '@/svg/ImgEmptyFavorites'
 import Link from 'next/link'
+import CardProfile from '@/components/CardProfile'
 
 export default async function Profile({ params }: { params: { id: string } }) {
   const { id } = params
@@ -26,24 +27,24 @@ export default async function Profile({ params }: { params: { id: string } }) {
                 />
               </figure>
               <section className="flex flex-col">
-                <h3 className="text-paragraph-medium font-medium text-neutral-title">
+                <h3 className="text-paragraph-medium font-medium text-neutral-title lg:text-paragraph-xlarge">
                   {userProfile?.name}
                 </h3>
-                <small className="text-paragraph-small font-normal text-neutral-title">
+                <small className="text-paragraph-small font-normal text-neutral-title lg:text-paragraph-regular">
                   {userProfile?.role === 'student'
                     ? 'Estudiante'
                     : 'Propietario'}
                 </small>
               </section>
             </header>
-            <p className="max-w-lg text-paragraph-small font-normal text-neutral-paragraph lg:max-w-xl">
+            <p className="max-w-lg text-paragraph-small font-normal text-neutral-paragraph lg:max-w-xl lg:text-paragraph-regular">
               {userProfile?.about}
             </p>
-            <p className="text-paragraph-small font-normal text-neutral-paragraph">
+            <p className="text-paragraph-small font-normal text-neutral-paragraph lg:text-paragraph-regular">
               {userProfile?.university}
             </p>
             <a
-              className="text-paragraph-small font-normal text-neutral-paragraph underline"
+              className="text-paragraph-small font-normal text-neutral-paragraph underline lg:text-paragraph-regular"
               href={`mailto:${userProfile?.email}`}
             >
               {userProfile?.email ?? ''}
@@ -69,7 +70,7 @@ export default async function Profile({ params }: { params: { id: string } }) {
           />
         </figure>
       </section>
-      <section className="flex flex-col gap-8 bg-neutral-secondary-bg px-4 py-8 xs:p-8 sm:px-44 md:px-72">
+      <section className="flex flex-col gap-8 bg-neutral-secondary-bg px-4 py-8 xs:p-8 sm:px-44 md:px-72 lg:px-36">
         <h3 className="text-paragraph-regular font-medium text-neutral-title md:text-paragraph-medium">
           Pensiones favoritas
         </h3>
@@ -84,30 +85,21 @@ export default async function Profile({ params }: { params: { id: string } }) {
           </>
         ) : (
           <>
-            <figure className="w-72 self-center">
+            <figure className="w-72 self-center lg:hidden">
               <ImgFavorites />
             </figure>
-            <ul className="flex w-full snap-x snap-mandatory gap-2 overflow-x-scroll py-2 md:flex-col md:overflow-visible">
+
+            <ul className="flex w-full snap-x snap-mandatory gap-2 overflow-x-scroll py-2 sm:snap-none sm:flex-col sm:overflow-visible lg:flex-row lg:flex-wrap">
               {listings?.map((listing) => (
-                <li
-                  className="flex h-full snap-start flex-col rounded-lg bg-neutral-main-bg shadow-md"
-                  key={listing.id}
-                >
-                  <figure className="flex h-20 w-32">
-                    <img
-                      className="h-full w-full rounded-t-lg object-cover"
-                      src={listing.photos?.[0] ?? '/no-image.jpg'}
-                      alt=""
-                    />
-                  </figure>
-                  <section className="flex px-3 py-2">
-                    <a
-                      className="text-paragraph-small text-neutral-title underline md:text-paragraph-regular"
-                      href={`/house/${listing.id}`}
-                    >
-                      Ver más...
-                    </a>
-                  </section>
+                <li className="w-full lg:w-auto" key={listing.id}>
+                  <CardProfile
+                    photo={listing.photos?.[0]}
+                    id={listing.id}
+                    title={listing.title}
+                    ownerName={listing.owner?.name ?? ''}
+                    rating={listing.rating}
+                    price={listing.price}
+                  />
                 </li>
               ))}
             </ul>

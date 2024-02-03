@@ -18,7 +18,7 @@ export default function BoardingHeader(Props: {
       <ul className="flex gap-4 p-2 text-neutral-main-bg sm:p-0">
         {role === 'student' ? (
           <li>
-            <SaveBoardingButton />
+            <SaveBoardingButton padding="p-2" />
           </li>
         ) : (
           <>
