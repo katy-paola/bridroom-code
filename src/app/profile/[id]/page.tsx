@@ -13,43 +13,63 @@ export default async function Profile({ params }: { params: { id: string } }) {
   const favoritePensions = true
 
   return (
-    <section className="flex w-full flex-col pt-14 md:pt-[72px] lg:flex-row">
-      <section className="flex flex-col gap-8 p-4 pb-8 xs:p-8 sm:px-44 md:px-72 lg:px-32 lg:py-10 xl:px-40">
-        <section className="flex flex-col">
-          <header>
-            <figure>
-              <img
-                className="w-10"
-                src={userProfile?.avatar_url ?? '/no-image.jpg'}
-                alt=""
+    <section className="flex w-full flex-col pt-14 md:pt-[72px]">
+      <section className="flex flex-col gap-8 p-4 pb-8 xs:p-8 sm:px-44 md:px-72 lg:flex-row lg:px-36 lg:py-10 xl:px-40">
+        <section className="flex flex-col gap-8 ">
+          <section className="flex flex-col gap-4">
+            <header className="flex items-center gap-4">
+              <figure className="h-14 w-14 lg:hidden">
+                <img
+                  className="h-full w-full rounded-full object-cover"
+                  src={userProfile?.avatar_url ?? '/no-image.jpg'}
+                  alt=""
+                />
+              </figure>
+              <section className="flex flex-col">
+                <h3 className="text-paragraph-medium font-medium text-neutral-title">
+                  {userProfile?.name}
+                </h3>
+                <small className="text-paragraph-small font-normal text-neutral-title">
+                  {userProfile?.role === 'student'
+                    ? 'Estudiante'
+                    : 'Propietario'}
+                </small>
+              </section>
+            </header>
+            <p className="text-paragraph-small font-normal text-neutral-paragraph lg:max-w-xl">
+              {userProfile?.about}
+            </p>
+            <p className="text-paragraph-small font-normal text-neutral-paragraph">
+              {userProfile?.university}
+            </p>
+            <a
+              className="text-paragraph-small font-normal text-neutral-paragraph underline"
+              href={`mailto:${userProfile?.email}`}
+            >
+              {userProfile?.email ?? ''}
+            </a>
+          </section>
+          {currentUser?.id === id && (
+            <Link href={`/profile/${id}/edit`}>
+              <Button
+                type="secondary"
+                size="small"
+                hasText="yes"
+                text="Editar perfil"
+                width="w-auto"
               />
-            </figure>
-            <section>
-              <h3>{userProfile?.name}</h3>
-              <small>
-                {userProfile?.role === 'student' ? 'Estudiante' : 'Propietario'}
-              </small>
-            </section>
-          </header>
-          <p>{userProfile?.about}</p>
-          <p>{userProfile?.university}</p>
-          <a href={`mailto:${userProfile?.email}`}>
-            {userProfile?.email ?? ''}
-          </a>
+            </Link>
+          )}
         </section>
-        {currentUser?.id === id && (
-          <Link href={`/profile/${id}/edit`}>
-            <Button
-              type="secondary"
-              size="small"
-              hasText="yes"
-              text="Editar perfil"
-              width="w-auto"
-            />
-          </Link>
-        )}
+        <figure className="hidden h-96 w-96 lg:block">
+          <img
+            className="h-full w-full object-cover"
+            src={userProfile?.avatar_url ?? '/no-image.jpg'}
+            alt=""
+          />
+        </figure>
       </section>
-      <section>
+      <section className="flex flex-col gap-8 bg-neutral-secondary-bg px-4 py-8">
         <h3>Pensiones favoritas</h3>
         {!favoritePensions ? (
           <section>
@@ -59,7 +79,7 @@ export default async function Profile({ params }: { params: { id: string } }) {
         ) : (
           <section>
             <ImgFavorites />
-            <ul className="flex">
+            <ul className="flex w-full flex-wrap">
               {listings?.map((listing) => (
                 <li className="flex-1" key={listing.id}>
                   <figure className="flex">
