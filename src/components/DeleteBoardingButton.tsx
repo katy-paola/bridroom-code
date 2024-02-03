@@ -20,7 +20,7 @@ export default function DeleteBoardingButton() {
         </figure>
       </button>
       {isClicked && (
-        <section className="absolute left-1/2 top-4 flex w-max -translate-x-2/4 flex-col gap-3 bg-neutral-main-bg p-4 text-neutral-title shadow-md">
+        <section className="fixed left-1/2 top-4 flex w-max -translate-x-2/4 flex-col gap-3 bg-neutral-main-bg p-4 text-neutral-title shadow-md">
           <button
             className="self-end"
             onClick={() => {
