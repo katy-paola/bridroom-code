@@ -2,22 +2,24 @@
 
 import Show from '../svg/Show'
 import Hide from '../svg/Hide'
-import { useState } from 'react'
+import { type ChangeEvent, useState } from 'react'
 
 export default function InputForm({
   type,
   placeholder,
   hasIcon,
   isRadio,
-  isFocus,
   value,
+  id,
+  onChange,
 }: {
   type?: string
   placeholder?: string
   hasIcon: boolean
   isRadio: boolean
-  isFocus?: boolean
   value?: string | number | null
+  id?: string
+  onChange?: (e: ChangeEvent) => void
 }) {
   const [show, setShow] = useState(false)
 
@@ -47,10 +49,11 @@ export default function InputForm({
         </div>
       ) : (
         <input
+          id={id}
+          name="role"
           type="radio"
-          name="rol"
           className="sr-only"
-          autoFocus={isFocus}
+          onChange={onChange}
         />
       )}
     </>
