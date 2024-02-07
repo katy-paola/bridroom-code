@@ -13,8 +13,8 @@ export default function Comments(Props: {
       </h6>
       <ul className="flex flex-col gap-4">
         {comments?.map((comment, index) => (
-          <>
-            <li key={index}>
+          <div key={index}>
+            <li>
               <article className="flex flex-col gap-2 bg-neutral-active p-2">
                 <section className="flex gap-2">
                   <figure className="flex h-10 w-10 overflow-hidden rounded-3xl">
@@ -41,7 +41,7 @@ export default function Comments(Props: {
                 </section>
               </article>
             </li>
-            <li key={comment}>
+            <li>
               <article className="flex flex-col gap-2 bg-neutral-active p-2">
                 <section className="flex gap-2">
                   <figure className="flex h-10 w-10 overflow-hidden rounded-3xl">
@@ -68,7 +68,7 @@ export default function Comments(Props: {
                 </section>
               </article>
             </li>
-          </>
+          </div>
         ))}
       </ul>
     </section>

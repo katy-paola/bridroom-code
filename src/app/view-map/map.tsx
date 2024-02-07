@@ -1,6 +1,6 @@
 'use client'
 
-import { MapIconLeaflet } from '@/svg/MapIcon'
+import { MapIconLeaflet } from '@/svg/MapIconLeaflet'
 import { latLng } from 'leaflet'
 import Link from 'next/link'
 import 'leaflet/dist/leaflet.css'
@@ -36,29 +36,31 @@ export function MapLeaflet({ listings }: Props) {
         ]}
       >
         <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-        {
-          listings.map((listing: {
-            id: string;
-            title: string;
+        {listings.map(
+          (listing: {
+            id: string
+            title: string
             location: {
-              coord: string;
-            };
-          
+              coord: string
+            }
           }) => (
             <Marker
               icon={MapIconLeaflet}
               key={listing.id}
               position={getLatitudeAndLongitudeFromString(
-                listing.location.coord
+                listing.location.coord,
               )}
             >
               <Popup>
-              <span className='flex flex-col gap-2'>  {listing.title}
-                <Link href={`/house/${listing.id}`}>ver detalles</Link></span>
+                <span className="flex flex-col gap-2">
+                  {' '}
+                  {listing.title}
+                  <Link href={`/house/${listing.id}`}>ver detalles</Link>
+                </span>
               </Popup>
             </Marker>
-          ))
-        }
+          ),
+        )}
       </MapContainer>
     </div>
   )
