@@ -22,7 +22,7 @@ export function MapLeaflet({ listings }: Props) {
   }
 
   return (
-    <div className="mt-16 h-main w-full">
+    <div className="mt-14 h-main-responsive w-full md:mt-16 md:h-main">
       <MapContainer
         style={{ height: '100%', width: '100%' }}
         center={[10.4002813, -75.5435449]}

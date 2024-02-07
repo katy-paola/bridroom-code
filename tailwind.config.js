@@ -80,9 +80,11 @@ module.exports = {
       },
       minHeight: {
         main: 'calc(100vh - 4rem)',
+        'main-responsive': 'calc(100vh - 3.5rem)',
       },
       height: {
         main: 'calc(100vh - 4rem)',
+        'main-responsive': 'calc(100vh - 56px)',
       },
       screens: {
         xs: '430px',
