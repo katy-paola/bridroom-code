@@ -1,3 +1,5 @@
+import { Icon } from "leaflet"
+
 export default function MapIcon() {
   return (
     <svg
@@ -14,3 +16,10 @@ export default function MapIcon() {
     </svg>
   )
 }
+
+export const MapIconLeaflet = new Icon({
+  iconUrl: 'icons/map-marker.svg',
+  iconSize: [38, 95],
+  iconAnchor: [22, 94],
+  popupAnchor: [-3, -76],
+});

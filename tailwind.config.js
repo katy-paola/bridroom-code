@@ -81,6 +81,9 @@ module.exports = {
       minHeight: {
         main: 'calc(100vh - 4rem)',
       },
+      height: {
+        main: 'calc(100vh - 4rem)',
+      },
       screens: {
         xs: '430px',
         sm: '744px',

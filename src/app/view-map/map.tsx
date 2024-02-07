@@ -1,7 +1,10 @@
 'use client'
 
+import { MapIconLeaflet } from '@/svg/MapIcon'
+import { latLng } from 'leaflet'
+import Link from 'next/link'
 import 'leaflet/dist/leaflet.css'
-import { MapContainer, TileLayer } from 'react-leaflet'
+import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet'
 
 interface Props {
   listings: any
@@ -13,8 +16,13 @@ export function MapLeaflet({ listings }: Props) {
     return null
   }
 
+  const getLatitudeAndLongitudeFromString = (coord: string) => {
+    const [latitude, longitude] = coord.split(',')
+    return latLng(parseFloat(latitude), parseFloat(longitude))
+  }
+
   return (
-    <div className="mt-20 h-96 w-full">
+    <div className="mt-16 h-main w-full">
       <MapContainer
         style={{ height: '100%', width: '100%' }}
         center={[10.4002813, -75.5435449]}
@@ -28,25 +36,29 @@ export function MapLeaflet({ listings }: Props) {
         ]}
       >
         <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-        {/* {listings?.map((listing: any) => (
-        <Marker
-          icon={createIcon('/house-fill.svg')}
-          key={listing.id}
-          position={getLatitudeAndLongitudeFromString(
-            typeof listing.location === 'object' &&
-              listing.location !== null &&
-              'coords' in listing.location &&
-              typeof listing.location.coords === 'string'
-              ? listing.location.coords
-              : '',
-          )}
-        >
-          <Popup>
-            {listing.title}
-            <Link href={`/view-pension/${listing.id}`}>ver detalles</Link>
-          </Popup>
-        </Marker>
-      ))} */}
+        {
+          listings.map((listing: {
+            id: string;
+            title: string;
+            location: {
+              coord: string;
+            };
+          
+          }) => (
+            <Marker
+              icon={MapIconLeaflet}
+              key={listing.id}
+              position={getLatitudeAndLongitudeFromString(
+                listing.location.coord
+              )}
+            >
+              <Popup>
+              <span className='flex flex-col gap-2'>  {listing.title}
+                <Link href={`/house/${listing.id}`}>ver detalles</Link></span>
+              </Popup>
+            </Marker>
+          ))
+        }
       </MapContainer>
     </div>
   )
