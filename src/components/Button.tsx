@@ -26,7 +26,7 @@ export default function Button(Props: {
   } = Props
 
   const setClassName = () => {
-    return `flex ${width} items-center justify-center gap-1 leading-none outline-none ${setTypeClassName()} ${
+    return `flex ${width} items-center justify-center gap-2 leading-none outline-none ${setTypeClassName()} ${
       title === 'Ver mapa' && 'bg-transparent'
     } ${setSizeClassName()} ${type !== 'tab' && 'rounded-lg'} ${setPadding()}`
   }
@@ -82,8 +82,8 @@ export default function Button(Props: {
             hasText === 'no' || size === 'regular'
               ? 'w-6'
               : size === 'both'
-              ? 'w-4 md:w-6'
-              : 'w-4'
+              ? 'w-3 md:w-6'
+              : 'w-3'
           }`}
         >
           {iconRight}

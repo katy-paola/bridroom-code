@@ -2,13 +2,13 @@ export default function Add() {
   return (
     <svg
       className="w-full"
-      viewBox="0 0 24 24"
+      viewBox="0 0 14 14"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
       <path
         className="w-full"
-        d="M11 13H5V11H11V5H13V11H19V13H13V19H11V13Z"
+        d="M6 8H0V6H6V0H8V6H14V8H8V14H6V8Z"
         fill="currentColor"
       />
     </svg>

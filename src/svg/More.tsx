@@ -1,14 +1,14 @@
 export default function More() {
   return (
     <svg
-      width="16"
-      height="16"
-      viewBox="0 0 16 16"
+      className="w-full"
+      viewBox="0 0 14 14"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
       <path
-        d="M8.00001 14.6666L3.33334 9.99992L4.26668 9.06659L7.33334 12.1166V1.33325H8.66668V12.1166L11.7333 9.04992L12.6667 9.99992L8.00001 14.6666Z"
+        className="w-full"
+        d="M5 14L0.0999985 9.1L1.08 8.12L4.3 11.3225V0H5.7V11.3225L8.92 8.1025L9.9 9.1L5 14Z"
         fill="currentColor"
       />
     </svg>

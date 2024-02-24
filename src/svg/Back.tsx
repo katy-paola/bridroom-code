@@ -1,4 +1,4 @@
-export default function ZoomIn() {
+export default function Back() {
   return (
     <svg
       className="w-full"
@@ -8,8 +8,8 @@ export default function ZoomIn() {
     >
       <path
         className="w-full"
-        d="M6 8H0V6H6V0H8V6H14V8H8V14H6V8Z"
-        fill="currentColor"
+        d="M7.4172 14L0.417202 7L7.4172 0L8.6597 1.2425L2.9022 7L8.6597 12.7575L7.4172 14Z"
+        fill="#212121"
       />
     </svg>
   )

@@ -1,14 +1,14 @@
 export default function Menu() {
   return (
     <svg
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
+      className="w-full"
+      viewBox="0 0 22 14"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
       <path
-        d="M3 18V16H21V18H3ZM3 13V11H21V13H3ZM3 8V6H21V8H3Z"
+        className="w-full"
+        d="M0.5 14V11.6667H21.5V14H0.5ZM0.5 8.16667V5.83333H21.5V8.16667H0.5ZM0.5 2.33333V0H21.5V2.33333H0.5Z"
         fill="currentColor"
       />
     </svg>

@@ -5,7 +5,7 @@ import { latLng } from 'leaflet'
 import Link from 'next/link'
 import { MapContainer, Marker, Popup, TileLayer, useMap } from 'react-leaflet'
 import ZoomIn from '@/svg/ZoomIn'
-import Minus from '@/svg/Minus'
+import ZoomOut from '@/svg/ZoomOut'
 
 interface Props {
   listings: any
@@ -31,7 +31,7 @@ function MyZoomControl() {
         onClick={zoomOut}
         className="flex h-8 w-8 items-center justify-center rounded-lg bg-neutral-main-bg align-middle text-heading-medium leading-none text-neutral-title shadow-md hover:bg-neutral-active"
       >
-        <Minus />
+        <ZoomOut />
       </button>
     </div>
   )

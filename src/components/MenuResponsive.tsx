@@ -25,9 +25,11 @@ export default function MenuResponsive({
         onClick={() => {
           setIsMenuOpen(!isMenuOpen)
         }}
-        className="md:hidden"
+        className="p-2 md:hidden"
       >
-        {isMenuOpen ? <Close /> : <Menu />}
+        <figure className="w-4 md:w-6">
+          {isMenuOpen ? <Close /> : <Menu />}
+        </figure>
       </button>
 
       <nav
@@ -64,9 +66,9 @@ export default function MenuResponsive({
         )}
 
         {/* Menú para usuarios autenticados */}
-        {session !== null && (
+        {session === null && (
           <ul className="flex w-full flex-col md:flex-row">
-            {role === 'owner' && (
+            {role !== 'owner' && (
               <li className="p-2 xs:px-4 md:p-0">
                 <Link href="/add-boarding">
                   <Button
