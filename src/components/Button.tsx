@@ -1,4 +1,5 @@
 export default function Button(Props: {
+  id?: string
   type: string
   size: string
   hasText: string
@@ -11,6 +12,7 @@ export default function Button(Props: {
   disabled?: boolean
 }) {
   const {
+    id,
     type,
     size,
     hasText,
@@ -34,7 +36,9 @@ export default function Button(Props: {
       : type === 'secondary'
       ? 'bg-secondary-default text-neutral-main-bg hover:bg-secondary-hover active:bg-secondary-active disabled:bg-secondary-disabled'
       : type === 'tertiary'
-      ? 'bg-tertiary-default text-neutral-main-bg hover:bg-tertiary-hover active:bg-tertiary-active disabled:bg-tertiary-disabled'
+      ? id === 'view-map'
+        ? 'bg-transparent text-tertiary-default hover:text-neutral-main-bg hover:bg-tertiary-default'
+        : 'bg-tertiary-default text-neutral-main-bg hover:bg-tertiary-hover active:bg-tertiary-active disabled:bg-tertiary-disabled'
       : type === 'cuaternary'
       ? 'bg-transparent border-solid border-secondary-default border-2 text-secondary-default hover:bg-secondary-default hover:text-neutral-main-bg active:bg-secondary-hover active:text-neutral-main-bg active:border-secondary-hover disabled:bg-secondary-disabled disabled:text-neutral-main-bg'
       : 'bg-transparent text-neutral-title hover:bg-neutral-hover active:bg-neutral-active disabled:text-neutral-placeholder hover:border-l-2 hover:border-l-primary-default hover:border-l-solid md:hover:border-l-0 md:hover:border-b-2 md:hover:border-b-primary-default md:hover:border-b-solid'
@@ -72,7 +76,19 @@ export default function Button(Props: {
     >
       {iconLeft !== undefined && <span>{iconLeft}</span>}
       <span className={`${setText()} font-semibold`}>{text}</span>
-      {iconRight !== undefined && <span>{iconRight}</span>}
+      {iconRight !== undefined && (
+        <figure
+          className={`${
+            hasText === 'no' || size === 'regular'
+              ? 'w-6'
+              : size === 'both'
+              ? 'w-4 md:w-6'
+              : 'w-4'
+          }`}
+        >
+          {iconRight}
+        </figure>
+      )}
     </button>
   )
 }

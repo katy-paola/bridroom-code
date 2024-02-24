@@ -31,12 +31,12 @@ export default function MenuResponsive({
       </button>
 
       <nav
-        className={`fixed bottom-0 right-0 top-14 z-10 w-4/5 max-w-xs bg-neutral-main-bg shadow-md md:w-auto md:max-w-none ${
+        className={`fixed bottom-0 right-0 top-14 z-[1000] w-4/5 max-w-xs bg-neutral-main-bg shadow-md md:w-auto md:max-w-none ${
           isMenuOpen ? 'flex' : 'hidden'
         } md:static md:flex md:w-auto md:bg-transparent md:shadow-none`}
       >
         {/* Menú para usuarios sin autenticar */}
-        {session === null && (
+        {session !== null && (
           <ul className="flex w-full flex-col md:flex-row md:gap-8">
             <li className="p-2 xs:px-4 md:p-0">
               <Link href="/loginView">

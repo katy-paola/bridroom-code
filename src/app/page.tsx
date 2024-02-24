@@ -9,6 +9,7 @@ import OwnerSection from '@/components/OwnerSection'
 import MapIcon from '@/svg/MapIcon'
 import Button from '@/components/Button'
 import { Suspense } from 'react'
+import Link from 'next/link'
 
 export default async function Index() {
   // const cookieStore = cookies()
@@ -28,15 +29,19 @@ export default async function Index() {
         <HouseSection />
       </Suspense>
       <OwnerSection />
-      <div className="fixed bottom-4 right-4 z-10">
+      <Link
+        href="/view-map"
+        title="Ver mapa"
+        className="fixed bottom-4 right-4 z-10"
+      >
         <Button
+          id='view-map'
           type="tertiary"
-          size="small"
+          size="regular"
           hasText="no"
           iconRight={<MapIcon />}
-          title="Ver mapa"
         />
-      </div>
+      </Link>
     </section>
     // <div className="flex w-full flex-1 flex-col items-center gap-20">
     //   <nav className="flex h-16 w-full justify-center border-b border-b-foreground/10">

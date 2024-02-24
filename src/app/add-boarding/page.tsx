@@ -1,4 +1,5 @@
 import Button from '@/components/Button'
+import { GetLocationMap } from '@/components/GetLocationMap'
 import InputForm from '@/components/InputForm'
 import ImgAddBoarding from '@/svg/ImgAddBoarding'
 
@@ -53,6 +54,9 @@ export default function AddBoarding() {
                 Seleccionar ubicación en el mapa
               </a>
             </label>
+
+            <GetLocationMap />
+
             <label className="flex flex-col gap-2 text-paragraph-regular text-neutral-paragraph">
               Agregar fotos:
               <figure className="h-20 w-20">
