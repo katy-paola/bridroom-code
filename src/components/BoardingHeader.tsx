@@ -15,7 +15,7 @@ export default function BoardingHeader(Props: {
       <h3 className="hidden text-paragraph-regular font-semibold text-neutral-title sm:block md:text-paragraph-medium lg:text-paragraph-large">
         {listingTitle}
       </h3>
-      <ul className="flex gap-4 p-2 text-neutral-main-bg sm:p-0">
+      <ul className="flex gap-2 p-2 text-neutral-main-bg sm:p-0">
         {role === 'student' ? (
           <li>
             <SaveBoardingButton padding="p-2" />
@@ -29,7 +29,7 @@ export default function BoardingHeader(Props: {
                 </figure>
               </Link>
             </li>
-            <li className="rounded-lg bg-neutral-paragraph px-2 hover:bg-tertiary-default sm:bg-transparent sm:text-neutral-title sm:hover:text-neutral-main-bg">
+            <li className="flex items-center rounded-lg bg-neutral-paragraph px-2 hover:bg-tertiary-default sm:bg-transparent sm:text-neutral-title sm:hover:text-neutral-main-bg">
               <DeleteBoardingButton />
             </li>
           </>

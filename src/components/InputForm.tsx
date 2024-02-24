@@ -39,6 +39,7 @@ export default function InputForm({
           />
           {hasIcon && (
             <button
+            className='w-4 text-neutral-placeholder hover:text-neutral-paragraph'
               onClick={() => {
                 setShow(!show)
               }}

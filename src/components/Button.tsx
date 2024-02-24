@@ -27,7 +27,7 @@ export default function Button(Props: {
 
   const setClassName = () => {
     return `flex ${width} items-center justify-center gap-2 leading-none outline-none ${setTypeClassName()} ${
-      title === 'Ver mapa' && 'bg-transparent'
+      id === 'view-map' && 'bg-transparent'
     } ${setSizeClassName()} ${type !== 'tab' && 'rounded-lg'} ${setPadding()}`
   }
   const setTypeClassName = () => {
@@ -74,15 +74,19 @@ export default function Button(Props: {
       onClick={onClick}
       disabled={disabled}
     >
-      {iconLeft !== undefined && <span>{iconLeft}</span>}
+      {iconLeft !== undefined && <figure
+          className={`${
+            hasText === 'no'
+              ? 'w-6'
+              : 'w-3'
+          }`}
+        >{iconLeft}</figure>}
       <span className={`${setText()} font-semibold`}>{text}</span>
       {iconRight !== undefined && (
         <figure
           className={`${
-            hasText === 'no' || size === 'regular'
+            hasText === 'no'
               ? 'w-6'
-              : size === 'both'
-              ? 'w-3 md:w-6'
               : 'w-3'
           }`}
         >

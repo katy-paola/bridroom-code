@@ -2,7 +2,7 @@ export default function Show() {
   return (
     <svg
       className="w-full"
-      viewBox="0 0 14 14"
+      viewBox="0 0 16 12"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >

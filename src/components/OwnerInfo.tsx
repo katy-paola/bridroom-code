@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import Button from './Button'
+import IconUser from '@/svg/IconUser'
 import { getProfileCurrentUser } from '@/services/user'
 
 export default async function OwnerInfo(Props: {
@@ -44,6 +45,7 @@ export default async function OwnerInfo(Props: {
             size="small"
             hasText="yes"
             text={textButton}
+            iconLeft={currentOwner ? <IconUser /> : undefined}
             width="w-full"
           />
         </Link>

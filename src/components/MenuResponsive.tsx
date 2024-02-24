@@ -25,9 +25,9 @@ export default function MenuResponsive({
         onClick={() => {
           setIsMenuOpen(!isMenuOpen)
         }}
-        className="p-2 md:hidden"
+        className="p-1 md:hidden rounded hover:bg-neutral-hover"
       >
-        <figure className="w-4 md:w-6">
+        <figure className="w-4 h-4 flex items-center">
           {isMenuOpen ? <Close /> : <Menu />}
         </figure>
       </button>
@@ -76,7 +76,7 @@ export default function MenuResponsive({
                     size="both"
                     hasText="yes"
                     text="Agregar pensión"
-                    iconRight={<Add />}
+                    iconLeft={<Add />}
                     width="w-full md:auto"
                   />
                 </Link>
@@ -89,7 +89,7 @@ export default function MenuResponsive({
                   size="both"
                   hasText="yes"
                   text="Mi perfil"
-                  iconRight={<IconUser />}
+                  iconLeft={<IconUser />}
                   width="w-full md:auto"
                 />
               </Link>
