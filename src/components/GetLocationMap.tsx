@@ -4,7 +4,7 @@ import { useState, useCallback, useEffect, useMemo, useRef } from 'react'
 import { MapContainer, TileLayer } from 'react-leaflet'
 import { type Map, latLng } from 'leaflet'
 
-const center = latLng(51.505, -0.09)
+const center = latLng(10.381888, -75.490358)
 const zoom = 13
 
 function DisplayPosition({ map }: { map: Map }) {
@@ -48,7 +48,7 @@ export function GetLocationMap() {
 
   const displayMap = useMemo(
     () => (
-      <div className="mt-14 h-96 w-full md:mt-16 md:h-main">
+      <div className="h-96 w-full md:h-main">
         <MapContainer
           center={center}
           style={{ height: '100%', width: '100%' }}
