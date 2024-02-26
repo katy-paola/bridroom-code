@@ -52,16 +52,14 @@ export default function AddBoarding() {
                 hasIcon={false}
                 isRadio={false}
               />
-              <Link
-                href="#"
+              <button
                 className="text-paragraph-xsmall text-neutral-paragraph underline"
-                onClick={(e) => {
-                  e.preventDefault()
+                onClick={() => {
                   setShowMap(!showMap)
                 }}
               >
                 Seleccionar ubicación en el mapa
-              </Link>
+              </button>
               {showMap && <GetLocationMap />}
             </label>
 
