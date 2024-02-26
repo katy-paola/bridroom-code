@@ -22,7 +22,7 @@ export default function DeleteBoardingButton() {
       {isClicked && (
         <section className="fixed left-1/2 top-16 flex w-max -translate-x-2/4 flex-col gap-3 bg-neutral-main-bg p-4 text-neutral-title shadow-md">
           <button
-            className="self-end p-1 w-5 text-neutral-title rounded hover:bg-neutral-hover"
+            className="w-5 self-end rounded p-1 text-neutral-title hover:bg-neutral-hover"
             onClick={() => {
               setIsClicked(!isClicked)
             }}
