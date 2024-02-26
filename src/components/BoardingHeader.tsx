@@ -22,14 +22,14 @@ export default function BoardingHeader(Props: {
           </li>
         ) : (
           <>
-            <li className="h-min rounded-lg bg-neutral-paragraph p-2 hover:bg-secondary-default sm:bg-transparent sm:text-neutral-title sm:hover:text-neutral-main-bg">
+            <li className="h-min">
               <Link href={`/house/${id}/edit`}>
-                <figure className="grid w-3 content-center">
+                <figure className="grid content-center rounded-lg bg-neutral-paragraph p-2 hover:bg-secondary-default sm:bg-transparent sm:text-neutral-title sm:hover:text-neutral-main-bg">
                   <Edit />
                 </figure>
               </Link>
             </li>
-            <li className="flex items-center rounded-lg bg-neutral-paragraph px-2 hover:bg-tertiary-default sm:bg-transparent sm:text-neutral-title sm:hover:text-neutral-main-bg">
+            <li className="flex items-center">
               <DeleteBoardingButton />
             </li>
           </>

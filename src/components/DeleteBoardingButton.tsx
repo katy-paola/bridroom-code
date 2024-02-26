@@ -11,6 +11,7 @@ export default function DeleteBoardingButton() {
   return (
     <>
       <button
+        className="rounded-lg bg-neutral-paragraph p-2 hover:bg-tertiary-default sm:bg-transparent sm:text-neutral-title sm:hover:text-neutral-main-bg"
         onClick={() => {
           setIsClicked(!isClicked)
         }}
