@@ -8,7 +8,7 @@ export default async function Header() {
   const session = await getSession()
 
   return (
-    <header className="fixed z-10 flex w-full items-center justify-between bg-neutral-secondary-bg p-4 text-neutral-title shadow-sm xs:px-8 sm:px-12">
+    <header className="fixed z-[1000] flex w-full items-center justify-between bg-neutral-secondary-bg p-4 text-neutral-title shadow-sm xs:px-8 sm:px-12">
       <Link href="/" className="h-6 md:h-8">
         <Logo />
       </Link>
