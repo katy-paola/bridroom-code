@@ -3,7 +3,6 @@ import Button from '@/components/Button'
 import { GetLocationMap } from '@/components/GetLocationMap'
 import InputForm from '@/components/InputForm'
 import ImgAddBoarding from '@/svg/ImgAddBoarding'
-import Link from 'next/link'
 import { useState } from 'react'
 
 export default function AddBoarding() {
