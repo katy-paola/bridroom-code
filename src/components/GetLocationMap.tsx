@@ -10,11 +10,6 @@ const center = latLng(10.381888, -75.490358)
 const zoom = 13
 
 function DisplayPosition({ map }: { map: Map }) {
-  // if window is undefined, return null
-  if (typeof window === 'undefined') {
-    return null
-  }
-
   const [position, setPosition] = useState(() => map.getCenter())
 
   const onClick = useCallback(() => {
@@ -31,13 +26,17 @@ function DisplayPosition({ map }: { map: Map }) {
       map.off('move', onMove)
     }
   }, [map, onMove])
+  if (typeof window !== 'undefined') {
+    return (
+      <p>
+        latitude: {position.lat.toFixed(4)}, longitude:{' '}
+        {position.lng.toFixed(4)} <button onClick={onClick}>reset</button>
+      </p>
+    )
+  }
+  // if window is undefined, return null
 
-  return (
-    <p>
-      latitude: {position.lat.toFixed(4)}, longitude: {position.lng.toFixed(4)}{' '}
-      <button onClick={onClick}>reset</button>
-    </p>
-  )
+  return null
 }
 
 function MyZoomControl() {
@@ -77,11 +76,6 @@ function MyZoomControl() {
 export function GetLocationMap() {
   const map = useRef<Map>(null)
 
-  // if window is undefined, return null
-  if (typeof window === 'undefined') {
-    return null
-  }
-
   const displayMap = useMemo(
     () => (
       <div className="z-10 h-96 w-full">
@@ -107,11 +101,16 @@ export function GetLocationMap() {
     ),
     [],
   )
+  if (typeof window !== 'undefined') {
+    return (
+      <div>
+        {map.current != null ? <DisplayPosition map={map.current} /> : null}
+        {displayMap}
+      </div>
+    )
+  }
 
-  return (
-    <div>
-      {map.current != null ? <DisplayPosition map={map.current} /> : null}
-      {displayMap}
-    </div>
-  )
+  // if window is undefined, return null
+
+  return null
 }
