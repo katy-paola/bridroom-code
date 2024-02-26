@@ -25,15 +25,15 @@ export default function MenuResponsive({
         onClick={() => {
           setIsMenuOpen(!isMenuOpen)
         }}
-        className="p-1 md:hidden rounded hover:bg-neutral-hover"
+        className="rounded p-1 hover:bg-neutral-hover md:hidden"
       >
-        <figure className="w-4 h-4 flex items-center">
+        <figure className="flex h-4 w-4 items-center">
           {isMenuOpen ? <Close /> : <Menu />}
         </figure>
       </button>
 
       <nav
-        className={`fixed bottom-0 right-0 top-14 z-[1000] w-4/5 max-w-xs bg-neutral-main-bg shadow-md md:w-auto md:max-w-none ${
+        className={`fixed bottom-0 right-0 top-[57px] z-[1000] w-64 bg-neutral-main-bg shadow-md md:w-auto md:max-w-none ${
           isMenuOpen ? 'flex' : 'hidden'
         } md:static md:flex md:w-auto md:bg-transparent md:shadow-none`}
       >
