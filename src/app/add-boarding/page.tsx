@@ -9,14 +9,16 @@ export default function AddBoarding() {
   const [showMap, setShowMap] = useState(false)
 
   return (
-    <section className="mt-14 flex w-full flex-col gap-8 p-4 xs:p-8 sm:px-44 md:mt-16 md:px-72 lg:flex-row lg:items-center lg:gap-16 lg:px-36 lg:py-10 xl:px-60">
+    <section className="mt-14 flex w-full flex-col gap-8 p-4 xs:p-8 sm:px-44 md:mt-16 md:px-72 lg:items-center lg:gap-16 lg:px-36 lg:py-10 xl:px-60">
       <section className="contents w-full flex-col gap-8 lg:flex">
         <h2 className="text-paragraph-medium font-medium text-neutral-title md:text-paragraph-large">
           Agregar pensión
         </h2>
-        <form className="flex flex-col gap-8">
-          <fieldset className="flex flex-col gap-8">
-            <label className="flex flex-col gap-2 text-paragraph-regular text-neutral-paragraph">
+        {/** Contenedor morado */}
+        <form className="flex grid-cols-layout flex-col gap-8 grid-areas-layout md:grid">
+          {/** Contenedor invisible en lg */}
+          <fieldset className="flex flex-col gap-8 lg:contents">
+            <label className="flex h-auto flex-col gap-2 text-paragraph-regular text-neutral-paragraph grid-in-title">
               Título de la publicación:
               <InputForm
                 type="text"
@@ -25,7 +27,7 @@ export default function AddBoarding() {
                 isRadio={false}
               />
             </label>
-            <label className="flex flex-col gap-2 text-paragraph-regular text-neutral-paragraph">
+            <label className="flex h-auto flex-col gap-2 text-paragraph-regular text-neutral-paragraph grid-in-description">
               Descripción:
               <InputForm
                 type="text"
@@ -34,7 +36,7 @@ export default function AddBoarding() {
                 isRadio={false}
               />
             </label>
-            <label className="flex flex-col gap-2 text-paragraph-regular text-neutral-paragraph">
+            <label className="flex h-auto flex-col gap-2 text-paragraph-regular text-neutral-paragraph grid-in-price">
               Precio:
               <InputForm
                 type="number"
@@ -43,7 +45,7 @@ export default function AddBoarding() {
                 isRadio={false}
               />
             </label>
-            <label className="flex flex-col gap-2 text-paragraph-regular text-neutral-paragraph">
+            <label className="flex h-auto flex-col gap-2 text-paragraph-regular text-neutral-paragraph grid-in-address">
               Dirección:
               <InputForm
                 type="text"
@@ -51,18 +53,20 @@ export default function AddBoarding() {
                 hasIcon={false}
                 isRadio={false}
               />
+            </label>
+            <section className="contents h-[1fr] flex-col gap-2 grid-in-map lg:flex">
               <button
-                className="text-paragraph-xsmall text-neutral-paragraph underline"
-                onClick={() => {
+                className="text-left text-paragraph-small text-neutral-paragraph underline grid-in-map"
+                onClick={(e) => {
+                  e.preventDefault()
                   setShowMap(!showMap)
                 }}
               >
                 Seleccionar ubicación en el mapa
               </button>
               {showMap && <GetLocationMap />}
-            </label>
-
-            <label className="flex flex-col gap-2 text-paragraph-regular text-neutral-paragraph">
+            </section>
+            <label className="flex h-auto flex-col gap-2 text-paragraph-regular text-neutral-paragraph grid-in-photos">
               Agregar fotos:
               <figure className="h-20 w-20">
                 <img
@@ -79,18 +83,20 @@ export default function AddBoarding() {
               />
             </label>
           </fieldset>
-          <Button
-            type="primary"
-            size="regular"
-            hasText="yes"
-            text="Publicar"
-            width="w-full"
-            disabled={true}
-          />
+          <section className="contents h-auto justify-end grid-in-button lg:flex">
+            <Button
+              type="primary"
+              size="regular"
+              hasText="yes"
+              text="Publicar"
+              width="w-auto"
+              disabled={true}
+            />
+          </section>
         </form>
       </section>
       <section className="flex justify-center">
-        <figure className="w-72 md:w-96 lg:w-[480px]">
+        <figure className="w-72 md:w-96">
           <ImgAddBoarding />
         </figure>
       </section>

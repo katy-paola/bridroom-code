@@ -67,9 +67,19 @@ module.exports = {
       gridTemplateColumns: {
         'auto-fill': 'repeat(auto-fill, minmax(260px, 1fr))',
         'auto-fill-sm': 'repeat(auto-fill, 80px)',
+        layout: 'repeat(2, 1fr)',
       },
       gridTemplateRows: {
         'auto-fit': 'repeat(auto-fit, minmax(min-content, 1fr))',
+      },
+      gridTemplateAreas: {
+        layout: [
+          'title          description',
+          'address        price',
+          'map            map',
+          'photos         photos',
+          'button         button',
+        ],
       },
       fontFamily: {
         'body-font': ['var(--font-poppins)'],
@@ -95,7 +105,9 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    require('@savvywombat/tailwindcss-grid-areas')
+  ],
 }
 
 // /*primary colors*/
