@@ -1,13 +1,10 @@
 'use client'
 import Button from '@/components/Button'
-import { GetLocationMap } from '@/components/GetLocationMap'
 import InputForm from '@/components/InputForm'
+import LocationMap from '@/components/LocationMap'
 import ImgAddBoarding from '@/svg/ImgAddBoarding'
-import { useState } from 'react'
 
 export default function AddBoarding() {
-  const [showMap, setShowMap] = useState(false)
-
   return (
     <section className="mt-14 flex w-full flex-col gap-8 p-4 xs:p-8 sm:px-44 md:mt-16 md:px-72 lg:items-center lg:gap-16 lg:px-36 lg:py-10 xl:px-60">
       <section className="contents w-full flex-col gap-8 lg:flex">
@@ -54,18 +51,7 @@ export default function AddBoarding() {
                 isRadio={false}
               />
             </label>
-            <section className="contents h-[1fr] flex-col gap-2 grid-in-map lg:flex">
-              <button
-                className="text-left text-paragraph-small text-neutral-paragraph underline grid-in-map"
-                onClick={(e) => {
-                  e.preventDefault()
-                  setShowMap(!showMap)
-                }}
-              >
-                Seleccionar ubicación en el mapa
-              </button>
-              {showMap && <GetLocationMap />}
-            </section>
+            <LocationMap />
             <label className="flex h-auto flex-col gap-2 text-paragraph-regular text-neutral-paragraph grid-in-photos">
               Agregar fotos:
               <figure className="h-20 w-20">

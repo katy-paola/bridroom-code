@@ -1,5 +1,6 @@
 import Button from '@/components/Button'
 import InputForm from '@/components/InputForm'
+import LocationMap from '@/components/LocationMap'
 import { getListingById } from '@/services/listing'
 import ImgEditBoarding from '@/svg/ImgEditBoarding'
 
@@ -23,14 +24,14 @@ export default async function EditBoardingIdPage({
       ? listing.location.address
       : ''
   return (
-    <section className="mt-14 flex w-full flex-col gap-8 p-4 xs:p-8 sm:px-44 md:mt-16 md:px-72 lg:flex-row lg:items-center lg:gap-16 lg:px-36 lg:py-10 xl:px-60">
+    <section className="mt-14 flex w-full flex-col gap-8 p-4 xs:p-8 sm:px-44 md:mt-16 md:px-72 lg:items-center lg:gap-16 lg:px-36 lg:py-10 xl:px-60">
       <section className="contents w-full flex-col gap-8 lg:flex">
         <h2 className="text-paragraph-medium font-medium text-neutral-title md:text-paragraph-large">
           Editar pensión
         </h2>
-        <form className="flex flex-col gap-8">
-          <fieldset className="flex flex-col gap-8">
-            <label className="flex flex-col gap-2 text-paragraph-regular text-neutral-paragraph">
+        <form className="flex grid-cols-layout flex-col gap-8 grid-areas-layout md:grid">
+          <fieldset className="flex flex-col gap-8 lg:contents">
+            <label className="flex h-auto flex-col gap-2 text-paragraph-regular text-neutral-paragraph grid-in-title">
               Título de la publicación:
               <InputForm
                 type="text"
@@ -40,7 +41,7 @@ export default async function EditBoardingIdPage({
                 value={listing.title}
               />
             </label>
-            <label className="flex flex-col gap-2 text-paragraph-regular text-neutral-paragraph">
+            <label className="flex h-auto flex-col gap-2 text-paragraph-regular text-neutral-paragraph grid-in-description">
               Descripción:
               <InputForm
                 type="text"
@@ -50,7 +51,7 @@ export default async function EditBoardingIdPage({
                 value={listing.description}
               />
             </label>
-            <label className="flex flex-col gap-2 text-paragraph-regular text-neutral-paragraph">
+            <label className="flex h-auto flex-col gap-2 text-paragraph-regular text-neutral-paragraph grid-in-price">
               Precio:
               <InputForm
                 type="number"
@@ -60,7 +61,7 @@ export default async function EditBoardingIdPage({
                 value={listing.price}
               />
             </label>
-            <label className="flex flex-col gap-2 text-paragraph-regular text-neutral-paragraph">
+            <label className="flex h-auto flex-col gap-2 text-paragraph-regular text-neutral-paragraph grid-in-address">
               Dirección:
               <InputForm
                 type="text"
@@ -69,30 +70,29 @@ export default async function EditBoardingIdPage({
                 isRadio={false}
                 value={address}
               />
-              <a
-                href="#"
-                className="text-paragraph-xsmall text-neutral-paragraph underline"
-              >
-                Modificar ubicación en el mapa
-              </a>
             </label>
-            <label className="flex flex-col gap-2 text-paragraph-regular text-neutral-paragraph">
+            <LocationMap />
+            <label className="flex h-auto flex-col gap-2 text-paragraph-regular text-neutral-paragraph grid-in-photos">
               Agregar fotos:
               <ul className="flex flex-wrap gap-2">
                 <li className="contents">
-                  <img
-                    className="h-20 w-20 object-cover"
-                    src="/upload-photo.svg"
-                    alt=""
-                  />
+                  <figure className="h-20 w-20">
+                    <img
+                      className="h-full w-full object-cover"
+                      src="/upload-photo.svg"
+                      alt=""
+                    />
+                  </figure>
                 </li>
                 {listing.photos?.map((photo, index) => (
                   <li className="contents" key={index}>
-                    <img
-                      src={photo}
-                      alt=""
-                      className="h-20 w-20 object-cover"
-                    />
+                    <figure className="h-20 w-20">
+                      <img
+                        src={photo}
+                        alt=""
+                        className="h-full w-full object-cover"
+                      />
+                    </figure>
                   </li>
                 ))}
               </ul>
@@ -105,17 +105,19 @@ export default async function EditBoardingIdPage({
               />
             </label>
           </fieldset>
-          <Button
-            type="primary"
-            size="regular"
-            hasText="yes"
-            text="Guardar cambios"
-            width="w-full"
-          />
+          <section className="contents h-auto justify-end grid-in-button lg:flex">
+            <Button
+              type="primary"
+              size="regular"
+              hasText="yes"
+              text="Guardar cambios"
+              width="w-auto"
+            />
+          </section>
         </form>
       </section>
       <section className="flex justify-center">
-        <figure className="w-72 md:w-96 lg:w-[480px]">
+        <figure className="w-72 md:w-96">
           <ImgEditBoarding />
         </figure>
       </section>
