@@ -36,7 +36,7 @@ export default async function ListingIdPage({
       ? listing.location.neigh
       : ''
   return (
-    <section className="relative mt-14 flex w-full flex-col pb-8 pt-4 sm:gap-8 sm:px-12 md:pt-[104px] lg:gap-16">
+    <section className="relative mt-14 flex w-full flex-col pb-8 pt-4 sm:gap-8 sm:px-12 md:pt-8 lg:gap-16">
       <section className="flex flex-col gap-4">
         <BoardingHeader
           role={currentUser?.role}
