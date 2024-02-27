@@ -109,36 +109,3 @@ module.exports = {
     require('@savvywombat/tailwindcss-grid-areas')
   ],
 }
-
-// /*primary colors*/
-//     --primary-default: #7d0089;
-//     --primary-hover: #75167e;
-//     --primary-active: #5f0e67;
-//     --primary-disabled: #de9ae4;
-
-//     /*secondary colors*/
-//     --secondary-default: #3f3d56;
-//     --secondary-hover: #312f48;
-//     --secondary-active: #2a2840;
-//     --secondary-disabled: #898899;
-
-//     /*tertiary colors*/
-//     --tertiary-default: #e02525;
-//     --tertiary-hover: #e81a1a;
-//     --tertiary-active: #c60d0d;
-//     --tertiary-disabled: #f6adad;
-
-//     /*neutral colors*/
-//     --main-bg: #fffefc;
-//     --secondary-bg: #f1f1f1;
-//     --hover: #dad7d7;
-//     --placeholder: #8b8b87;
-//     --paragraph: #555452;
-//     --title: #212121;
-
-//     /*functional colors*/
-//     --error: #ac1c1c;
-//     --success: #2f7c1f;
-//     --warning: #ffb800;
-//     --info: #1653b4;
-//     --help: #8729ae;
