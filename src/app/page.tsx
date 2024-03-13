@@ -6,11 +6,13 @@ import { titleFont } from './ui/fonts' */
 import SearchSection from '@/components/SearchSection'
 import HouseSection from '@/components/HouseSection'
 import OwnerSection from '@/components/OwnerSection'
-import MapIcon from '@/svg/MapIcon'
 import { Suspense } from 'react'
+import MapIcon from '@/svg/MapIcon'
 import Link from 'next/link'
+import { getSession } from '@/services/user'
 
 export default async function Index() {
+  const session = await getSession()
   // const cookieStore = cookies()
 
   // const supabase = createClient(cookieStore)
@@ -28,14 +30,16 @@ export default async function Index() {
         <HouseSection />
       </Suspense>
       <OwnerSection />
-      <Link href="/view-map">
-        <button
-          title="Ver mapa"
-          className="fixed bottom-4 right-4 z-10 grid h-9 w-9 items-center rounded-lg bg-transparent p-2 text-tertiary-default outline-none hover:bg-tertiary-default hover:text-neutral-main-bg"
-        >
-          <MapIcon />
-        </button>
-      </Link>
+      {session !== null && (
+        <Link href="/view-map">
+          <button
+            title="Ver mapa"
+            className="fixed bottom-4 right-4 z-10 grid h-9 w-9 items-center rounded-lg bg-transparent p-2 text-tertiary-default outline-none hover:bg-tertiary-default hover:text-neutral-main-bg"
+          >
+            <MapIcon />
+          </button>
+        </Link>
+      )}
     </section>
     // <div className="flex w-full flex-1 flex-col items-center gap-20">
     //   <nav className="flex h-16 w-full justify-center border-b border-b-foreground/10">

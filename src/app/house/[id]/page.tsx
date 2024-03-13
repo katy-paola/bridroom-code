@@ -4,7 +4,9 @@ import Comments from '@/components/Comments'
 import OwnerInfo from '@/components/OwnerInfo'
 import TypeComment from '@/components/TypeComment'
 import { getListingById } from '@/services/listing'
-import { getProfileCurrentUser } from '@/services/user'
+import { getProfileCurrentUser, getSession } from '@/services/user'
+import MapIcon from '@/svg/MapIcon'
+import Link from 'next/link'
 import { redirect } from 'next/navigation'
 
 export default async function ListingIdPage({
@@ -13,7 +15,7 @@ export default async function ListingIdPage({
   params: { id: string }
 }) {
   const { id } = params
-
+  const session = await getSession()
   const listing = await getListingById(id)
   const currentUser = await getProfileCurrentUser()
 
@@ -69,6 +71,16 @@ export default async function ListingIdPage({
           userName={currentUser?.name}
           photo={currentUser?.avatar_url}
         />
+        {session !== null && (
+          <Link href="/view-map">
+            <button
+              title="Ver mapa"
+              className="fixed bottom-4 right-4 z-10 grid h-9 w-9 items-center rounded-lg bg-transparent p-2 text-tertiary-default outline-none hover:bg-tertiary-default hover:text-neutral-main-bg"
+            >
+              <MapIcon />
+            </button>
+          </Link>
+        )}
       </section>
     </section>
   )
