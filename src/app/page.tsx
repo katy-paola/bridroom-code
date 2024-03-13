@@ -29,7 +29,7 @@ export default async function Index() {
       >
         <HouseSection />
       </Suspense>
-      <OwnerSection />
+      {session === null && <OwnerSection />}
       {session !== null && (
         <Link href="/view-map">
           <button
