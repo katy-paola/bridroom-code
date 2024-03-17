@@ -5,13 +5,14 @@ import Button from './Button'
 import FilterForm from './FilterForm'
 import { useState } from 'react'
 
-export default function HouseHeader() {
+export default function HouseHeader({ role }: { role: string | undefined }) {
   const [isFilterOpen, setIsFilterOpen] = useState(false)
+  const isOwner = role === 'owner'
   return (
     <header className="relative flex flex-col gap-6">
       <section className="flex items-center justify-between">
         <h2 className="text-paragraph-medium font-medium text-neutral-title md:text-paragraph-xlarge">
-          Encuentra aquí tu pensión
+          {isOwner ? 'Mis pensiones' : 'Encuentra aquí tu pensión'}
         </h2>
 
         <Button

@@ -7,7 +7,7 @@ export async function ListListings() {
   const currentUser = await getProfileCurrentUser()
   const session = await getSession()
 
-  if (listings === null) return <div>There are no listings!</div>
+  if (listings === null) return <p>Aún no hay pensiones</p>
 
   return (
     <ul className="grid grid-cols-auto-fill grid-rows-auto-fit items-stretch gap-6">
