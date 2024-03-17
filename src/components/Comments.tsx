@@ -1,19 +1,24 @@
 import Rating from './Rating'
 
 export default function Comments(Props: {
+  isOwner: boolean
   comments: string[] | null
   userName: string | null | undefined
   photo: string | null | undefined
 }) {
-  const { comments, userName, photo } = Props
+  const { isOwner, comments, userName, photo } = Props
   return (
-    <section className="flex flex-col gap-4 overflow-auto p-4 xs:px-8 sm:p-0 lg:max-h-60">
+    <section
+      className={`flex flex-col gap-4 overflow-auto p-4 xs:px-8 sm:p-0 ${
+        isOwner && 'flex-1'
+      } ${isOwner ? 'lg:max-h-[360px]' : 'lg:max-h-60'}`}
+    >
       <h6 className="text-paragraph-regular font-normal text-neutral-title">
         Comentarios
       </h6>
       <ul className="flex flex-col gap-4">
         {comments?.map((comment, index) => (
-          <div key={index}>
+          <div key={index} className="flex flex-col gap-4">
             <li>
               <article className="flex flex-col gap-2 bg-neutral-active p-2">
                 <section className="flex gap-2">

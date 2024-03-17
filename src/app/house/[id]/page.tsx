@@ -5,6 +5,7 @@ import OwnerInfo from '@/components/OwnerInfo'
 import TypeComment from '@/components/TypeComment'
 import { getListingById } from '@/services/listing'
 import { getProfileCurrentUser, getSession } from '@/services/user'
+import ImgComments from '@/svg/ImgComments'
 import MapIcon from '@/svg/MapIcon'
 import Link from 'next/link'
 import { redirect } from 'next/navigation'
@@ -18,6 +19,7 @@ export default async function ListingIdPage({
   const session = await getSession()
   const listing = await getListingById(id)
   const currentUser = await getProfileCurrentUser()
+  const isStudent = currentUser?.role === 'student'
 
   if (listing === null) {
     return redirect('/404')
@@ -65,12 +67,15 @@ export default async function ListingIdPage({
         />
       </section>
       <section className="contents w-full gap-16 lg:flex">
-        <TypeComment />
+        {isStudent && <TypeComment />}
+
         <Comments
+          isOwner={!isStudent}
           comments={listing.comments}
           userName={currentUser?.name}
           photo={currentUser?.avatar_url}
         />
+        {!isStudent && <ImgComments />}
         {session !== null && (
           <Link href="/view-map">
             <button
