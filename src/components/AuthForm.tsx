@@ -2,7 +2,7 @@
 import InputForm from './InputForm'
 import Button from './Button'
 import { useSearchParams } from 'next/navigation'
-import { type ChangeEvent, useState } from 'react'
+import { useState } from 'react'
 
 export default function AuthForm(Props: { typeAction: string }) {
   const { typeAction } = Props
@@ -10,7 +10,7 @@ export default function AuthForm(Props: { typeAction: string }) {
   const ownerChecked = role === 'owner'
   const studentChecked = role !== 'owner'
 
-  const handleChange = (id: string, e: ChangeEvent) => {
+  const handleChange = (id: string) => {
     setRole(id)
   }
   return (
@@ -76,8 +76,8 @@ export default function AuthForm(Props: { typeAction: string }) {
                     hasIcon={false}
                     isRadio={true}
                     id="student"
-                    onChange={(e) => {
-                      handleChange('student', e)
+                    onChange={() => {
+                      handleChange('student')
                     }}
                   />
                   Estudiante
@@ -93,8 +93,8 @@ export default function AuthForm(Props: { typeAction: string }) {
                     hasIcon={false}
                     isRadio={true}
                     id="owner"
-                    onChange={(e) => {
-                      handleChange('owner', e)
+                    onChange={() => {
+                      handleChange('owner')
                     }}
                   />
                   Propietario
