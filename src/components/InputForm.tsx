@@ -36,10 +36,11 @@ export default function InputForm({
             type={type}
             placeholder={placeholder}
             defaultValue={value ?? ''}
+            required
           />
           {hasIcon && (
             <button
-            className='w-4 text-neutral-placeholder hover:text-neutral-paragraph'
+              className="w-4 text-neutral-placeholder hover:text-neutral-paragraph"
               onClick={() => {
                 setShow(!show)
               }}
@@ -55,6 +56,7 @@ export default function InputForm({
           type="radio"
           className="sr-only"
           onChange={onChange}
+          required
         />
       )}
     </>

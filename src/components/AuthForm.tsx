@@ -1,7 +1,6 @@
 'use client'
 import InputForm from './InputForm'
 import Button from './Button'
-import Google from '@/svg/Google'
 import { useSearchParams } from 'next/navigation'
 import { type ChangeEvent, useState } from 'react'
 
@@ -113,7 +112,7 @@ export default function AuthForm(Props: { typeAction: string }) {
           text={typeAction === 'login' ? 'Iniciar sesión' : 'Registrarme'}
           width="w-full md:w-auto"
         />
-        {typeAction === 'login' && (
+        {/* {typeAction === 'login' && (
           <Button
             type="secondary"
             size="regular"
@@ -122,7 +121,7 @@ export default function AuthForm(Props: { typeAction: string }) {
             iconLeft={<Google />}
             width="w-full md:w-auto"
           />
-        )}
+        )} */}
       </section>
     </form>
   )
