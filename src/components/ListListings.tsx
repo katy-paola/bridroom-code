@@ -1,25 +1,43 @@
 import { getAllListings } from '@/services/listing'
 import Card from './Card'
+import { getProfileCurrentUser, getSession } from '@/services/user'
 
 export async function ListListings() {
   const listings = await getAllListings()
+  const currentUser = await getProfileCurrentUser()
+  const session = await getSession()
 
   if (listings === null) return <div>There are no listings!</div>
 
   return (
     <ul className="grid grid-cols-auto-fill grid-rows-auto-fit items-stretch gap-6">
-      {listings?.map((listing) => (
-        <li key={listing.id} className="contents">
-          <Card
-            photo={listing.photos?.[0]}
-            title={listing.title}
-            name={listing.owner?.name}
-            rating={listing.rating}
-            price={listing.price}
-            id={listing.id}
-          />
-        </li>
-      ))}
+      {listings?.map((listing) =>
+        session === null || currentUser?.role !== 'student' ? (
+          <li key={listing.id} className="contents">
+            <Card
+              photo={listing.photos?.[0]}
+              title={listing.title}
+              name={listing.owner?.name}
+              rating={listing.rating}
+              price={listing.price}
+              id={listing.id}
+            />
+          </li>
+        ) : (
+          currentUser?.id === listing.owner?.id && (
+            <li key={listing.id} className="contents">
+              <Card
+                photo={listing.photos?.[0]}
+                title={listing.title}
+                name={listing.owner?.name}
+                rating={listing.rating}
+                price={listing.price}
+                id={listing.id}
+              />
+            </li>
+          )
+        ),
+      )}
     </ul>
   )
 }

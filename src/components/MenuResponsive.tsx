@@ -38,7 +38,7 @@ export default function MenuResponsive({
         } md:static md:flex md:w-auto md:bg-transparent md:shadow-none`}
       >
         {/* Menú para usuarios sin autenticar */}
-        {session !== null && (
+        {session === null && (
           <ul className="flex w-full flex-col md:flex-row md:gap-8">
             <li className="p-2 xs:px-4 md:p-0">
               <Link href="/loginView">
@@ -66,7 +66,7 @@ export default function MenuResponsive({
         )}
 
         {/* Menú para usuarios autenticados */}
-        {session === null && (
+        {session !== null && (
           <ul className="flex w-full flex-col md:flex-row">
             {role !== 'owner' && (
               <li className="p-2 xs:px-4 md:p-0">
