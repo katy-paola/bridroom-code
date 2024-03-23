@@ -44,7 +44,7 @@ export default function Card(Props: {
           </p>
           <Link href={`/house/${id}`}>
             <Button
-              type="primary"
+              variant="primary"
               size="small"
               hasText="yes"
               text="Ver detalles"

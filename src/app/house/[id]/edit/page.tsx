@@ -107,7 +107,7 @@ export default async function EditBoardingIdPage({
           </fieldset>
           <section className="contents h-auto justify-end grid-in-button lg:flex">
             <Button
-              type="primary"
+              variant="primary"
               size="regular"
               hasText="yes"
               text="Guardar cambios"

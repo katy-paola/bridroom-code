@@ -9,6 +9,8 @@ import Button from './Button'
 import { type Session } from '@supabase/supabase-js'
 import { type User } from '../types/types'
 import Link from 'next/link'
+import { createClient } from '@/lib/supabase/client'
+import { useRouter } from 'next/navigation'
 
 export default function MenuResponsive({
   session,
@@ -19,6 +21,16 @@ export default function MenuResponsive({
 }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const role = user?.role
+  const router = useRouter()
+
+  const handleLogout = async () => {
+    const supabase = createClient()
+    const { error } = await supabase.auth.signOut()
+    if (error !== null) console.error('Error logging out:', error.message)
+
+    router.push('/login')
+  }
+
   return (
     <>
       <button
@@ -32,6 +44,11 @@ export default function MenuResponsive({
         </figure>
       </button>
 
+      <aside className="fixed right-0 top-14 z-[1000] max-h-80 max-w-lg overflow-y-scroll scroll-auto bg-neutral-400 p-4">
+        <pre>{JSON.stringify(user, null, 2)}</pre>
+        <pre>{JSON.stringify(session, null, 2)}</pre>
+      </aside>
+
       <nav
         className={`fixed bottom-0 right-0 top-14 z-[1000] w-64 bg-neutral-main-bg shadow-md md:w-auto md:max-w-none ${
           isMenuOpen ? 'flex' : 'hidden'
@@ -41,9 +58,9 @@ export default function MenuResponsive({
         {session === null && (
           <ul className="flex w-full flex-col md:flex-row md:gap-8">
             <li className="p-2 xs:px-4 md:p-0">
-              <Link href="/loginView">
+              <Link href="/login">
                 <Button
-                  type="primary"
+                  variant="primary"
                   size="both"
                   hasText="yes"
                   text="Iniciar sesión"
@@ -54,7 +71,7 @@ export default function MenuResponsive({
             <li className="p-2 xs:px-4 md:p-0">
               <Link href="/register">
                 <Button
-                  type="secondary"
+                  variant="secondary"
                   size="both"
                   hasText="yes"
                   text="Registrarme"
@@ -72,7 +89,7 @@ export default function MenuResponsive({
               <li className="p-2 xs:px-4 md:p-0">
                 <Link href="/add-boarding">
                   <Button
-                    type="tab"
+                    variant="tab"
                     size="both"
                     hasText="yes"
                     text="Agregar pensión"
@@ -85,7 +102,7 @@ export default function MenuResponsive({
             <li className="p-2 xs:px-4 md:p-0">
               <Link href={`/profile/${user?.id}`}>
                 <Button
-                  type="tab"
+                  variant="tab"
                   size="both"
                   hasText="yes"
                   text="Mi perfil"
@@ -96,10 +113,11 @@ export default function MenuResponsive({
             </li>
             <li className="p-2 xs:px-4 md:ml-8 md:p-0">
               <Button
-                type="tertiary"
+                variant="tertiary"
                 size="both"
                 hasText="yes"
                 text="Cerrar sesión"
+                onClick={handleLogout}
                 width="w-full md:auto"
               />
             </li>

@@ -9,8 +9,8 @@ export default function InputSearch(Props: { placeholder: string }) {
         type="search"
         placeholder={placeholder}
       />
-      <button className='w-8 p-2 bg-transparent text-neutral-paragraph hover:text-neutral-title'>
-          <Search />
+      <button className="w-8 bg-transparent p-2 text-neutral-paragraph hover:text-neutral-title">
+        <Search />
       </button>
     </form>
   )

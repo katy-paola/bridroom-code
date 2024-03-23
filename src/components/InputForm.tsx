@@ -10,11 +10,13 @@ export default function InputForm({
   hasIcon,
   isRadio,
   value,
+  name,
   id,
   onChange,
 }: {
   type?: string
   placeholder?: string
+  name?: string
   hasIcon: boolean
   isRadio: boolean
   value?: string | number | null
@@ -36,6 +38,7 @@ export default function InputForm({
             type={type}
             placeholder={placeholder}
             defaultValue={value ?? ''}
+            name={name}
             required
           />
           {hasIcon && (
@@ -52,7 +55,7 @@ export default function InputForm({
       ) : (
         <input
           id={id}
-          name="role"
+          name={name}
           type="radio"
           className="sr-only"
           onChange={onChange}

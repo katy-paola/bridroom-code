@@ -16,7 +16,7 @@ export default function HouseHeader({ role }: { role: string | undefined }) {
         </h2>
 
         <Button
-          type="secondary"
+          variant="secondary"
           size="small"
           hasText="both"
           text="Filtrar"

@@ -1,13 +1,10 @@
-import Link from 'next/link'
-import { headers, cookies } from 'next/headers'
+import ImgLogin from '@/svg/ImgLogin'
+import AuthForm from '@/components/AuthForm'
 import { createClient } from '@/lib/supabase/server'
+import { cookies } from 'next/headers'
 import { redirect } from 'next/navigation'
 
-export default function Login({
-  searchParams,
-}: {
-  searchParams: { message: string }
-}) {
+export default function Login() {
   const signIn = async (formData: FormData) => {
     'use server'
 
@@ -28,91 +25,32 @@ export default function Login({
     return redirect('/')
   }
 
-  const signUp = async (formData: FormData) => {
-    'use server'
-
-    const origin = headers().get('origin')
-    const email = formData.get('email') as string
-    const password = formData.get('password') as string
-    const cookieStore = cookies()
-    const supabase = createClient(cookieStore)
-
-    const { error } = await supabase.auth.signUp({
-      email,
-      password,
-      options: {
-        emailRedirectTo: `${origin}/auth/callback`,
-      },
-    })
-
-    if (error !== null) {
-      return redirect('/login?message=Could not authenticate user')
-    }
-
-    return redirect('/login?message=Check email to continue sign in process')
-  }
-
   return (
-    <div className="flex w-full flex-1 flex-col justify-center gap-2 px-8 sm:max-w-md">
-      <Link
-        href="/"
-        className="group absolute left-8 top-8 flex items-center rounded-md bg-btn-background px-4 py-2 text-sm text-foreground no-underline hover:bg-btn-background-hover"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          className="mr-2 h-4 w-4 transition-transform group-hover:-translate-x-1"
-        >
-          <polyline points="15 18 9 12 15 6" />
-        </svg>{' '}
-        Back
-      </Link>
-
-      <form
-        className="animate-in flex w-full flex-1 flex-col justify-center gap-2 text-foreground"
-        action={signIn}
-      >
-        <label className="text-base" htmlFor="email">
-          Email
-        </label>
-        <input
-          className="mb-6 rounded-md border bg-inherit px-4 py-2"
-          name="email"
-          placeholder="you@example.com"
-          required
-        />
-        <label className="text-base" htmlFor="password">
-          Password
-        </label>
-        <input
-          className="mb-6 rounded-md border bg-inherit px-4 py-2"
-          type="password"
-          name="password"
-          placeholder="••••••••"
-          required
-        />
-        <button className="mb-2 rounded-md bg-green-700 px-4 py-2 text-foreground">
-          Sign In
-        </button>
-        <button
-          formAction={signUp}
-          className="mb-2 rounded-md border border-foreground/20 px-4 py-2 text-foreground"
-        >
-          Sign Up
-        </button>
-        {searchParams?.message !== '' && (
-          <p className="mt-4 bg-foreground/10 p-4 text-center text-foreground">
-            {searchParams.message}
+    <section className="flex min-h-screen w-full flex-col items-center gap-8 bg-neutral-main-bg px-4 pb-8 pt-16 xs:px-8 sm:justify-center sm:px-40 md:px-28 md:pt-22 lg:flex-row lg:gap-16 lg:px-36 lg:pb-20 lg:pt-42 xl:px-60">
+      <section className="contents flex-col gap-8 lg:flex">
+        <section className="flex w-full flex-col gap-4">
+          <h2 className="font-title-font text-heading-small text-primary-default sm:text-center md:text-heading-medium lg:text-left">
+            ¡Bienvenido a Bridroom!
+          </h2>
+          <p className="text-paragraph-regular text-neutral-title sm:text-center lg:max-w-paragraph lg:text-left">
+            Inicia sesión aquí:
           </p>
-        )}
-      </form>
-    </div>
+        </section>
+        <AuthForm typeAction="login" actionSignIn={signIn} />
+        <small className="text-paragraph-small text-neutral-paragraph lg:text-center">
+          ¿No tienes una cuenta?{' '}
+          <a
+            href="#"
+            className="text-paragraph-small text-functional-info underline"
+          >
+            Registrarme
+          </a>
+          .
+        </small>
+      </section>
+      <figure className="flex h-72 w-auto justify-center md:h-[400px] lg:h-[480px]">
+        <ImgLogin />
+      </figure>
+    </section>
   )
 }

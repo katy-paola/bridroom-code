@@ -80,7 +80,7 @@ export default function FilterForm() {
       </fieldset>
       <section className="flex justify-end sm:justify-center">
         <Button
-          type="cuaternary"
+          variant="cuaternary"
           size="small"
           hasText="yes"
           text="Aplicar"

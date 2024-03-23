@@ -4,8 +4,11 @@ import Button from './Button'
 import { useSearchParams } from 'next/navigation'
 import { useState } from 'react'
 
-export default function AuthForm(Props: { typeAction: string }) {
-  const { typeAction } = Props
+export default function AuthForm(Props: {
+  typeAction: string
+  actionSignIn: any
+}) {
+  const { typeAction, actionSignIn } = Props
   const [role, setRole] = useState(useSearchParams().get('role') ?? 'student')
   const ownerChecked = role === 'owner'
   const studentChecked = role !== 'owner'
@@ -13,11 +16,10 @@ export default function AuthForm(Props: { typeAction: string }) {
   const handleChange = (id: string) => {
     setRole(id)
   }
+
   return (
     <form
-      onSubmit={(e) => {
-        e.preventDefault()
-      }}
+      action={actionSignIn}
       className="flex w-full flex-col gap-8 sm:max-w-sm md:max-w-md"
     >
       <fieldset className="flex flex-col gap-8">
@@ -25,6 +27,7 @@ export default function AuthForm(Props: { typeAction: string }) {
           Correo electrónico
           <InputForm
             type="email"
+            name="email"
             placeholder="Ingresa tu correo electrónico"
             hasIcon={false}
             isRadio={false}
@@ -34,6 +37,7 @@ export default function AuthForm(Props: { typeAction: string }) {
           Contraseña
           <InputForm
             type="password"
+            name="password"
             placeholder="Ingresa tu contraseña"
             hasIcon={true}
             isRadio={false}
@@ -106,7 +110,8 @@ export default function AuthForm(Props: { typeAction: string }) {
       </fieldset>
       <section className="flex flex-col gap-4">
         <Button
-          type="primary"
+          type="submit"
+          variant="primary"
           size="regular"
           hasText="yes"
           text={typeAction === 'login' ? 'Iniciar sesión' : 'Registrarme'}

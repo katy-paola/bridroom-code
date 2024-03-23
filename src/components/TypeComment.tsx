@@ -12,7 +12,7 @@ export default function TypeComment() {
         <textarea className="h-10 border border-solid border-neutral-paragraph bg-transparent p-2 text-paragraph-small outline-none sm:h-16"></textarea>
       </section>
       <Button
-        type="cuaternary"
+        variant="cuaternary"
         size="small"
         hasText="yes"
         text="Publicar"

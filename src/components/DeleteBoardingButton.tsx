@@ -39,7 +39,7 @@ export default function DeleteBoardingButton() {
           <ul className="flex justify-between">
             <li>
               <Button
-                type="cuaternary"
+                variant="cuaternary"
                 size="small"
                 hasText="yes"
                 text="No, cancelar."
@@ -51,7 +51,7 @@ export default function DeleteBoardingButton() {
             </li>
             <li>
               <Button
-                type="tertiary"
+                variant="tertiary"
                 size="small"
                 hasText="yes"
                 text="Sí, eliminar."

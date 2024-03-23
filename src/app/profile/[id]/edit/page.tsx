@@ -46,7 +46,7 @@ export default async function ProfileEdit() {
             </label>
           </fieldset>
           <Button
-            type="primary"
+            variant="primary"
             size="regular"
             hasText="yes"
             text="Guardar cambios"

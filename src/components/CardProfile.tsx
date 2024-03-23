@@ -40,7 +40,7 @@ export default function CardProfile(Props: {
           </figure>
           <Link href={`/house/${id}`}>
             <Button
-              type="cuaternary"
+              variant="cuaternary"
               size="small"
               hasText="yes"
               text="Ver detalles"

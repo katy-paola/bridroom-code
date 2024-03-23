@@ -13,7 +13,7 @@ export default function Register() {
             Crea tu cuenta aquí:
           </p>
         </section>
-        <AuthForm typeAction="register" />
+        <AuthForm typeAction="register" actionSignIn={null} />
         <small className="text-paragraph-small text-neutral-paragraph lg:text-center">
           ¿Ya tienes una cuenta?{' '}
           <a

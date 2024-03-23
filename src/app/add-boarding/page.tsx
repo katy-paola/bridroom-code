@@ -1,4 +1,3 @@
-'use client'
 import Button from '@/components/Button'
 import InputForm from '@/components/InputForm'
 import LocationMap from '@/components/LocationMap'
@@ -71,7 +70,7 @@ export default function AddBoarding() {
           </fieldset>
           <section className="contents h-auto justify-end grid-in-button lg:flex">
             <Button
-              type="primary"
+              variant="primary"
               size="regular"
               hasText="yes"
               text="Publicar"

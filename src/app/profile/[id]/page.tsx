@@ -53,7 +53,7 @@ export default async function Profile({ params }: { params: { id: string } }) {
           {currentUser?.id === id && (
             <Link href={`/profile/${id}/edit`}>
               <Button
-                type="secondary"
+                variant="secondary"
                 size="small"
                 hasText="yes"
                 text="Editar perfil"

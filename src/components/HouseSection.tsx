@@ -21,7 +21,7 @@ export default async function HouseSection() {
         <section className="flex justify-end sm:justify-center">
           <Link href="/house">
             <Button
-              type="secondary"
+              variant="secondary"
               size="small"
               hasText="yes"
               text="Ver más"
