@@ -24,7 +24,7 @@ export default function BoardingHeader(Props: {
           <>
             <li className="cursor-pointer rounded-lg bg-neutral-paragraph p-2 hover:bg-secondary-default sm:bg-transparent sm:text-neutral-title sm:hover:text-neutral-main-bg">
               <Link href={`/house/${id}/edit`} className="contents">
-                <figure className="grid w-5 content-center">
+                <figure className="grid w-3 content-center sm:w-5">
                   <Edit />
                 </figure>
               </Link>

@@ -44,11 +44,6 @@ export default function MenuResponsive({
         </figure>
       </button>
 
-      <aside className="fixed right-0 top-14 z-[1000] max-h-80 max-w-lg overflow-y-scroll scroll-auto bg-neutral-400 p-4">
-        <pre>{JSON.stringify(user, null, 2)}</pre>
-        <pre>{JSON.stringify(session, null, 2)}</pre>
-      </aside>
-
       <nav
         className={`fixed bottom-0 right-0 top-14 z-[1000] w-64 bg-neutral-main-bg shadow-md md:w-auto md:max-w-none ${
           isMenuOpen ? 'flex' : 'hidden'
@@ -57,8 +52,8 @@ export default function MenuResponsive({
         {/* Menú para usuarios sin autenticar */}
         {session === null && (
           <ul className="flex w-full flex-col md:flex-row md:gap-8">
-            <li className="p-2 xs:px-4 md:p-0">
-              <Link href="/login">
+            <li className="flex p-2 xs:px-4 md:p-0">
+              <Link href="/login" className="contents">
                 <Button
                   variant="primary"
                   size="both"
@@ -68,8 +63,8 @@ export default function MenuResponsive({
                 />
               </Link>
             </li>
-            <li className="p-2 xs:px-4 md:p-0">
-              <Link href="/register">
+            <li className="flex p-2 xs:px-4 md:p-0">
+              <Link href="/register" className="contents">
                 <Button
                   variant="secondary"
                   size="both"
@@ -85,9 +80,9 @@ export default function MenuResponsive({
         {/* Menú para usuarios autenticados */}
         {session !== null && (
           <ul className="flex w-full flex-col md:flex-row">
-            {role !== 'owner' && (
-              <li className="p-2 xs:px-4 md:p-0">
-                <Link href="/add-boarding">
+            {role === 'owner' && (
+              <li className="flex p-2 xs:px-4 md:p-0">
+                <Link href="/add-boarding" className="contents">
                   <Button
                     variant="tab"
                     size="both"
@@ -99,8 +94,8 @@ export default function MenuResponsive({
                 </Link>
               </li>
             )}
-            <li className="p-2 xs:px-4 md:p-0">
-              <Link href={`/profile/${user?.id}`}>
+            <li className="flex p-2 xs:px-4 md:p-0">
+              <Link href={`/profile/${user?.id}`} className="contents">
                 <Button
                   variant="tab"
                   size="both"
@@ -111,7 +106,7 @@ export default function MenuResponsive({
                 />
               </Link>
             </li>
-            <li className="p-2 xs:px-4 md:ml-8 md:p-0">
+            <li className="flex p-2 xs:px-4 md:ml-8 md:p-0">
               <Button
                 variant="tertiary"
                 size="both"

@@ -80,13 +80,23 @@ export default function Button(Props: {
       type={type}
     >
       {iconLeft !== undefined && (
-        <figure className={`${hasText === 'no' ? 'w-6' : 'w-3'}`}>
+        <figure
+          className={`${
+            hasText === 'no' || text === 'Agregar pensión' ? 'w-6' : 'w-3'
+          }
+          ${text === 'Mi perfil ' && variant === 'tab' ? 'w-3' : 'w-4'}`}
+        >
           {iconLeft}
         </figure>
       )}
       <span className={`${setText()} font-semibold`}>{text}</span>
       {iconRight !== undefined && (
-        <figure className={`${hasText === 'no' ? 'w-6' : 'w-3'}`}>
+        <figure
+          className={`${
+            hasText === 'no' || text === 'Agregar pensión' ? 'w-6' : 'w-3'
+          }
+          ${text === 'Mi perfil ' && variant === 'tab' ? 'w-3' : 'w-4'}`}
+        >
           {iconRight}
         </figure>
       )}

@@ -19,7 +19,7 @@ export default async function ListingIdPage({
   const session = await getSession()
   const listing = await getListingById(id)
   const currentUser = await getProfileCurrentUser()
-  const isStudent = currentUser?.role === 'student'
+  const isOwner = currentUser?.role === 'owner'
 
   if (listing === null) {
     return redirect('/404')
@@ -40,7 +40,7 @@ export default async function ListingIdPage({
       ? listing.location.neigh
       : ''
   return (
-    <section className="relative mt-14 flex w-full flex-col pb-8 pt-4 sm:gap-8 sm:px-12 md:pt-8 lg:gap-16">
+    <section className="relative mt-14 flex w-full flex-col pt-4 sm:gap-8 sm:px-12 md:py-8 lg:gap-16">
       <section className="flex flex-col gap-4">
         <BoardingHeader
           role={currentUser?.role}
@@ -67,15 +67,15 @@ export default async function ListingIdPage({
         />
       </section>
       <section className="contents w-full gap-16 lg:flex">
-        {isStudent && <TypeComment />}
+        {!isOwner && <TypeComment />}
 
         <Comments
-          isOwner={!isStudent}
+          isOwner={isOwner}
           comments={listing.comments}
           userName={currentUser?.name}
           photo={currentUser?.avatar_url}
         />
-        {!isStudent && <ImgComments />}
+        {isOwner && <ImgComments />}
         {session !== null && (
           <Link href="/view-map">
             <button

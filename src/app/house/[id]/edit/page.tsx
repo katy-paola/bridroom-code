@@ -29,7 +29,7 @@ export default async function EditBoardingIdPage({
         <h2 className="text-paragraph-medium font-medium text-neutral-title md:text-paragraph-large">
           Editar pensión
         </h2>
-        <form className="flex grid-cols-layout flex-col gap-8 grid-areas-layout md:grid">
+        <form className="flex grid-cols-layout flex-col gap-8 grid-areas-layout lg:grid">
           <fieldset className="flex flex-col gap-8 lg:contents">
             <label className="flex h-auto flex-col gap-2 text-paragraph-regular text-neutral-paragraph grid-in-title">
               Título de la publicación:

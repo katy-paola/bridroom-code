@@ -11,7 +11,7 @@ export default function AddBoarding() {
           Agregar pensión
         </h2>
         {/** Contenedor morado */}
-        <form className="flex grid-cols-layout flex-col gap-8 grid-areas-layout md:grid">
+        <form className="flex grid-cols-layout flex-col gap-8 grid-areas-layout lg:grid">
           {/** Contenedor invisible en lg */}
           <fieldset className="flex flex-col gap-8 lg:contents">
             <label className="flex h-auto flex-col gap-2 text-paragraph-regular text-neutral-paragraph grid-in-title">

@@ -20,7 +20,10 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="es" className={`${bodyFont.variable} ${titleFont.variable}`}>
+    <html
+      lang="es"
+      className={`${bodyFont.variable} ${titleFont.variable} custom-scrollbar`}
+    >
       <body className="w-full font-body-font">
         <section className="flex w-full flex-col bg-neutral-main-bg">
           <Header />

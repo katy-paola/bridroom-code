@@ -9,7 +9,7 @@ export default function TypeComment() {
           Dejar un comentario
         </h5>
         <Rating />
-        <textarea className="h-10 border border-solid border-neutral-paragraph bg-transparent p-2 text-paragraph-small outline-none sm:h-16"></textarea>
+        <textarea className="h-10 resize-none border border-solid border-neutral-paragraph bg-transparent p-2 text-paragraph-small outline-none sm:h-16"></textarea>
       </section>
       <Button
         variant="cuaternary"

@@ -16,12 +16,12 @@ export default function DeleteBoardingButton() {
           setIsClicked(!isClicked)
         }}
       >
-        <figure className="grid h-auto w-5 content-center">
+        <figure className="grid h-auto w-3 content-center sm:w-5">
           <DeleteIcon />
         </figure>
       </button>
       {isClicked && (
-        <section className="fixed left-1/2 top-16 flex w-max -translate-x-2/4 flex-col gap-3 bg-neutral-main-bg p-4 text-neutral-title shadow-md">
+        <section className="fixed left-1/2 top-16 z-[1005] flex w-max -translate-x-2/4 flex-col gap-3 bg-neutral-main-bg p-4 text-neutral-title shadow-md">
           <button
             className="w-5 self-end rounded p-1 text-neutral-title hover:bg-neutral-hover"
             onClick={() => {
