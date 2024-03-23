@@ -2,15 +2,33 @@ export default function Filter() {
   return (
     <svg
       className="w-full"
-      viewBox="0 0 14 14"
+      viewBox="0 0 24 24"
+      strokeWidth="2.5"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      color="currentColor"
     >
       <path
-        className="w-full"
-        d="M6.22222 14V9.33333H7.77778V10.8889H14V12.4444H7.77778V14H6.22222ZM0 12.4444V10.8889H4.66667V12.4444H0ZM3.11111 9.33333V7.77778H0V6.22222H3.11111V4.66667H4.66667V9.33333H3.11111ZM6.22222 7.77778V6.22222H14V7.77778H6.22222ZM9.33333 4.66667V0H10.8889V1.55556H14V3.11111H10.8889V4.66667H9.33333ZM0 3.11111V1.55556H7.77778V3.11111H0Z"
-        fill="currentColor"
-      />
+        d="M3 6H21"
+        stroke="currentColor"
+        strokeWidth="3"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      ></path>
+      <path
+        d="M7 12L17 12"
+        stroke="currentColor"
+        strokeWidth="2.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      ></path>
+      <path
+        d="M11 18L13 18"
+        stroke="currentColor"
+        strokeWidth="2.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      ></path>
     </svg>
   )
 }

@@ -28,7 +28,7 @@ export default function Button(Props: {
   } = Props
 
   const setClassName = () => {
-    return `flex ${width} box-border items-center justify-center gap-2 leading-none outline-none ${setTypeClassName()} ${
+    return `flex ${width} box-border items-center justify-center gap-1 leading-none outline-none ${setTypeClassName()} ${
       id === 'view-map' && 'bg-transparent'
     } ${setSizeClassName()} ${
       variant !== 'tab' && 'rounded-lg'

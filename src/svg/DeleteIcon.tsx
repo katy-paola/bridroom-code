@@ -2,14 +2,26 @@ export default function Delete() {
   return (
     <svg
       className="w-full"
-      viewBox="0 0 14 14"
+      viewBox="0 0 24 24"
+      strokeWidth="2.5"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      color="currentColor"
     >
       <path
-        d="M3.11111 14C2.68333 14 2.31713 13.8477 2.0125 13.5431C1.70787 13.2384 1.55556 12.8722 1.55556 12.4444V2.33333H0.777778V0.777778H4.66667V0H9.33333V0.777778H13.2222V2.33333H12.4444V12.4444C12.4444 12.8722 12.2921 13.2384 11.9875 13.5431C11.6829 13.8477 11.3167 14 10.8889 14H3.11111ZM4.66667 10.8889H6.22222V3.88889H4.66667V10.8889ZM7.77778 10.8889H9.33333V3.88889H7.77778V10.8889Z"
-        fill="currentColor"
-      />
+        d="M20 9L18.005 20.3463C17.8369 21.3026 17.0062 22 16.0353 22H7.96474C6.99379 22 6.1631 21.3026 5.99496 20.3463L4 9"
+        stroke="currentColor"
+        strokeWidth="2.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      ></path>
+      <path
+        d="M21 6L15.375 6M3 6L8.625 6M8.625 6V4C8.625 2.89543 9.52043 2 10.625 2H13.375C14.4796 2 15.375 2.89543 15.375 4V6M8.625 6L15.375 6"
+        stroke="currentColor"
+        strokeWidth="2.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      ></path>
     </svg>
   )
 }
