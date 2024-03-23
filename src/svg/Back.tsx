@@ -2,15 +2,19 @@ export default function Back() {
   return (
     <svg
       className="h-4 w-4"
-      viewBox="0 0 10 14"
+      strokeWidth="2.5"
+      viewBox="0 0 24 24"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      color="currentColor"
     >
       <path
-        className="w-full"
-        d="M7.4172 14L0.417202 7L7.4172 0L8.6597 1.2425L2.9022 7L8.6597 12.7575L7.4172 14Z"
-        fill="currentColor"
-      />
+        d="M15 6L9 12L15 18"
+        stroke="currentColor"
+        strokeWidth="2.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      ></path>
     </svg>
   )
 }
