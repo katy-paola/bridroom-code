@@ -35,7 +35,7 @@ export default function InputForm({
                 ? 'text-neutral-placeholder'
                 : 'text-neutral-paragraph'
             } outline-none`}
-            type={type}
+            type={show ? 'text' : type}
             placeholder={placeholder}
             defaultValue={value ?? ''}
             name={name}
@@ -44,6 +44,7 @@ export default function InputForm({
           {hasIcon && (
             <button
               className="w-4 text-neutral-placeholder hover:text-neutral-paragraph"
+              type="button"
               onClick={() => {
                 setShow(!show)
               }}
