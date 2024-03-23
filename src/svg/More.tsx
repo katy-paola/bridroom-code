@@ -2,14 +2,19 @@ export default function More() {
   return (
     <svg
       className="w-full"
-      viewBox="0 0 12 14"
+      strokeWidth="2.5"
+      viewBox="0 0 24 24"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      color="currentColor"
     >
       <path
-        d="M5 14L0.0999985 9.1L1.08 8.12L4.3 11.3225V0H5.7V11.3225L8.92 8.1025L9.9 9.1L5 14Z"
-        fill="currentColor"
-      />
+        d="M9 6L15 12L9 18"
+        stroke="currentColor"
+        strokeWidth="2.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      ></path>
     </svg>
   )
 }

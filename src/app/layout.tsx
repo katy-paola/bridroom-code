@@ -21,10 +21,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="es" className={`${bodyFont.variable} ${titleFont.variable}`}>
-      <body className="font-body-font">
-        <section className="flex flex-col bg-neutral-main-bg">
+      <body className="w-full font-body-font">
+        <section className="flex w-full flex-col bg-neutral-main-bg">
           <Header />
-          <main className="flex min-h-screen flex-col items-center bg-neutral-main-bg">
+          <main className="flex min-h-screen w-full flex-col items-center bg-neutral-main-bg">
             {children}
           </main>
         </section>
