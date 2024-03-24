@@ -10,9 +10,11 @@ export default function Comments(Props: {
   const { isOwner, comments, userName, photo } = Props
   return (
     <section
-      className={`flex flex-col gap-4 p-4 xs:px-8 sm:p-0 sm:pb-8 ${
-        isOwner ? 'flex-1' : 'md:max-w-sm'
-      } ${isOwner ? 'lg:max-h-[360px]' : 'lg:max-h-60'}`}
+      className={`flex flex-col gap-4 p-4 xs:px-8 sm:p-0 ${
+        isOwner && 'sm:pb-8'
+      } ${isOwner ? 'flex-1' : 'md:max-w-sm'} ${
+        isOwner ? 'lg:max-h-[360px]' : 'lg:max-h-60'
+      }`}
     >
       <h6 className="text-paragraph-regular font-normal text-neutral-title">
         Comentarios
