@@ -19,9 +19,9 @@ export default async function OwnerInfo(Props: {
 
   return (
     <section className="p-4 xs:px-8 sm:p-0">
-      <article className="flex flex-col gap-4 rounded-lg bg-neutral-secondary-bg p-2 shadow-md xs:p-4">
-        <section className="flex gap-2">
-          <figure className="flex h-10 w-10 overflow-hidden rounded-3xl">
+      <article className="flex flex-col gap-10 rounded-lg bg-neutral-secondary-bg p-2 shadow-md xs:p-4">
+        <section className="flex items-center gap-2">
+          <figure className="flex h-12 w-12 overflow-hidden rounded-3xl">
             <img
               className="h-full w-full object-cover"
               src={photo ?? '/no-image.jpg'}
