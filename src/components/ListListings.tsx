@@ -17,7 +17,12 @@ export async function ListListings() {
   return (
     <ul className="grid grid-cols-auto-fill grid-rows-auto-fit items-stretch gap-6">
       {filteredListings
-        .filter((listing) => currentUser?.id === listing.owner?.id)
+        .filter(
+          (listing) =>
+            session === null ||
+            currentUser?.role === 'student' ||
+            currentUser?.id === listing.owner?.id,
+        )
         .slice(0, 3)
         .map((listing) => (
           <li key={listing.id} className="contents">

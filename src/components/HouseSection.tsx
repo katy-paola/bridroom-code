@@ -22,7 +22,7 @@ export default async function HouseSection() {
         </Suspense>
         {listingsLength > 3 && (
           <section className="flex justify-end sm:justify-center">
-            <Link href="/house">
+            <Link href="/house?showAll=true">
               <Button
                 variant="secondary"
                 size="small"
