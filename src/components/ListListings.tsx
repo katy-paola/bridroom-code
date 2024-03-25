@@ -2,7 +2,11 @@ import { getAllListings } from '@/services/listing'
 import Card from './Card'
 import { getProfileCurrentUser, getSession } from '@/services/user'
 
-export async function ListListings() {
+export async function ListListings({
+  showAllListings = false,
+}: {
+  showAllListings?: boolean
+}) {
   const listings = await getAllListings()
   const currentUser = await getProfileCurrentUser()
   const session = await getSession()
@@ -23,7 +27,7 @@ export async function ListListings() {
             currentUser?.role === 'student' ||
             currentUser?.id === listing.owner?.id,
         )
-        .slice(0, 3)
+        .slice(0, showAllListings ? filteredListings.length : 3)
         .map((listing) => (
           <li key={listing.id} className="contents">
             <Card
