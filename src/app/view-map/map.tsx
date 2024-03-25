@@ -51,10 +51,10 @@ export function MapLeaflet({ listings }: Props) {
     return latLng(parseFloat(latitude), parseFloat(longitude))
   }
 
-    const router = useRouter()
+  const router = useRouter()
 
   return (
-    <div className="relative z-[1] mt-14 h-main-responsive w-full md:mt-16 md:h-main">
+    <div className="relative z-[1] mt-14 h-main-responsive w-full md:mt-[76px] md:h-main">
       <MapContainer
         style={{ height: '100%', width: '100%' }}
         center={[10.381888, -75.490358]}
@@ -70,7 +70,9 @@ export function MapLeaflet({ listings }: Props) {
       >
         <button
           title="Volver"
-          onClick={() => {router.back()}}
+          onClick={() => {
+            router.back()
+          }}
           className="absolute left-4 top-4 z-[400] flex h-8 w-8 items-center justify-center rounded-lg bg-neutral-paragraph p-2 text-neutral-main-bg hover:bg-secondary-default"
         >
           <Back />
