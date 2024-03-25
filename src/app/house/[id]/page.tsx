@@ -76,7 +76,11 @@ export default async function ListingIdPage({
           userName={currentUser?.name}
           photo={currentUser?.avatar_url}
         />
-        {isOwner && <ImgComments />}
+        {isOwner && (
+          <figure className="flex justify-center">
+            <ImgComments />
+          </figure>
+        )}
         {session !== null && (
           <Link href="/view-map">
             <button
