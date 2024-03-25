@@ -4,8 +4,10 @@ import { getProfileCurrentUser, getSession } from '@/services/user'
 
 export async function ListListings({
   showAllListings = false,
+  section = 'default',
 }: {
   showAllListings?: boolean
+  section?: 'default' | 'house'
 }) {
   const listings = await getAllListings()
   const currentUser = await getProfileCurrentUser()
@@ -14,20 +16,30 @@ export async function ListListings({
   if (listings === null) return <p>Aún no hay pensiones</p>
 
   const filteredListings =
-    session === null || currentUser?.role !== 'student'
+    section === 'default' || session === null || currentUser?.role !== 'student'
       ? listings
       : listings.filter((listing) => currentUser?.id === listing.owner?.id)
+
+  const numListingsToShow =
+    section === 'house' &&
+    ((typeof window !== 'undefined' && window.innerWidth >= 1280) ||
+      (typeof window !== 'undefined' &&
+        window.innerWidth >= 430 &&
+        window.innerWidth <= 744))
+      ? 4
+      : 3
 
   return (
     <ul className="grid grid-cols-auto-fill grid-rows-auto-fit items-stretch gap-6">
       {filteredListings
         .filter(
           (listing) =>
+            section === 'default' ||
             session === null ||
             currentUser?.role === 'student' ||
             currentUser?.id === listing.owner?.id,
         )
-        .slice(0, showAllListings ? filteredListings.length : 3)
+        .slice(0, showAllListings ? filteredListings.length : numListingsToShow)
         .map((listing) => (
           <li key={listing.id} className="contents">
             <Card

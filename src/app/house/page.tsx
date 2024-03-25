@@ -9,7 +9,7 @@ export default function ListingsPage() {
 
       <main>
         <Suspense fallback={<ListListingSkeleton />}>
-          <ListListings showAllListings={true} />
+          <ListListings showAllListings={true} section="house" />
         </Suspense>
       </main>
     </section>
