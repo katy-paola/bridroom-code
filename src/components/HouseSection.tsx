@@ -5,8 +5,11 @@ import Link from 'next/link'
 import { ListListings, ListListingSkeleton } from './ListListings'
 import { Suspense } from 'react'
 import { getProfileCurrentUser } from '@/services/user'
+import { getAllListings } from '@/services/listing'
 
 export default async function HouseSection() {
+  const listings = await getAllListings()
+  const listingsLength = listings?.length ?? 0
   const currentUser = await getProfileCurrentUser()
   const role = currentUser?.role
 
@@ -17,19 +20,20 @@ export default async function HouseSection() {
         <Suspense fallback={<ListListingSkeleton />}>
           <ListListings />
         </Suspense>
-
-        <section className="flex justify-end sm:justify-center">
-          <Link href="/house">
-            <Button
-              variant="secondary"
-              size="small"
-              hasText="yes"
-              text="Ver más"
-              iconRight={<More />}
-              width="w-auto"
-            />
-          </Link>
-        </section>
+        {listingsLength > 3 && (
+          <section className="flex justify-end sm:justify-center">
+            <Link href="/house">
+              <Button
+                variant="secondary"
+                size="small"
+                hasText="yes"
+                text="Ver más"
+                iconRight={<More />}
+                width="w-auto"
+              />
+            </Link>
+          </section>
+        )}
       </section>
     </section>
   )

@@ -9,10 +9,17 @@ export async function ListListings() {
 
   if (listings === null) return <p>Aún no hay pensiones</p>
 
+  const filteredListings =
+    session === null || currentUser?.role !== 'student'
+      ? listings
+      : listings.filter((listing) => currentUser?.id === listing.owner?.id)
+
   return (
     <ul className="grid grid-cols-auto-fill grid-rows-auto-fit items-stretch gap-6">
-      {listings?.map((listing) =>
-        session === null || currentUser?.role !== 'student' ? (
+      {filteredListings
+        .filter((listing) => currentUser?.id === listing.owner?.id)
+        .slice(0, 3)
+        .map((listing) => (
           <li key={listing.id} className="contents">
             <Card
               photo={listing.photos?.[0]}
@@ -23,21 +30,7 @@ export async function ListListings() {
               id={listing.id}
             />
           </li>
-        ) : (
-          currentUser?.id === listing.owner?.id && (
-            <li key={listing.id} className="contents">
-              <Card
-                photo={listing.photos?.[0]}
-                title={listing.title}
-                name={listing.owner?.name}
-                rating={listing.rating}
-                price={listing.price}
-                id={listing.id}
-              />
-            </li>
-          )
-        ),
-      )}
+        ))}
     </ul>
   )
 }
