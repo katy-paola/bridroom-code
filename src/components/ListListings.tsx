@@ -20,15 +20,6 @@ export async function ListListings({
       ? listings
       : listings.filter((listing) => currentUser?.id === listing.owner?.id)
 
-  const numListingsToShow =
-    section === 'house' &&
-    ((typeof window !== 'undefined' && window.innerWidth >= 1280) ||
-      (typeof window !== 'undefined' &&
-        window.innerWidth >= 430 &&
-        window.innerWidth <= 744))
-      ? 4
-      : 3
-
   return (
     <ul className="grid grid-cols-auto-fill grid-rows-auto-fit items-stretch gap-6">
       {filteredListings
@@ -39,7 +30,7 @@ export async function ListListings({
             currentUser?.role === 'student' ||
             currentUser?.id === listing.owner?.id,
         )
-        .slice(0, showAllListings ? filteredListings.length : numListingsToShow)
+        .slice(0, showAllListings ? filteredListings.length : 3)
         .map((listing) => (
           <li key={listing.id} className="contents">
             <Card
