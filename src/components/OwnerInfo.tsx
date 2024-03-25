@@ -1,17 +1,17 @@
 import Link from 'next/link'
 import Button from './Button'
 import IconUser from '@/svg/IconUser'
-import { getProfileCurrentUser } from '@/services/user'
+import { type User } from '@/types/types'
 
-export default async function OwnerInfo(Props: {
+export default function OwnerInfo(Props: {
   photo: string | null | undefined
   name: string | null | undefined
   contact: number | undefined
   idOwner: string | undefined
+  currentUser?: User
 }) {
-  const { photo, name, contact, idOwner } = Props
+  const { photo, name, contact, idOwner, currentUser } = Props
 
-  const currentUser = await getProfileCurrentUser()
   const isOwner = currentUser?.role === 'owner'
   const currentOwner = isOwner && currentUser?.id === idOwner
   const link = currentOwner ? `/profile/${idOwner}` : `tel:+57${contact}`

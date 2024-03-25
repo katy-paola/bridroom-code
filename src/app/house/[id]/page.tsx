@@ -64,6 +64,7 @@ export default async function ListingIdPage({
           name={listing.owner?.name}
           contact={listing.owner?.contact}
           idOwner={listing.owner?.id}
+          currentUser={currentUser}
         />
       </section>
       <section className="contents w-full gap-16 lg:flex">
