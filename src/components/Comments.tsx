@@ -11,7 +11,7 @@ export default function Comments(Props: {
   return (
     <section
       className={`flex flex-col gap-4 p-4 xs:px-8 sm:p-0 ${
-        isOwner && 'sm:pb-8'
+        !isOwner && 'lg:pb-8'
       } ${isOwner ? 'flex-1' : 'md:max-w-sm'} ${
         isOwner ? 'lg:max-h-[360px]' : 'lg:max-h-60'
       }`}
@@ -23,7 +23,7 @@ export default function Comments(Props: {
         {comments?.map((comment, index) => (
           <div key={index} className="flex flex-col gap-4">
             <li>
-              <article className="flex flex-col gap-2 bg-neutral-active p-2">
+              <article className="flex flex-col gap-2 bg-neutral-active p-4">
                 <section className="flex gap-2">
                   <figure className="flex h-10 w-10 overflow-hidden rounded-3xl">
                     <img
@@ -50,7 +50,7 @@ export default function Comments(Props: {
               </article>
             </li>
             <li>
-              <article className="flex flex-col gap-2 bg-neutral-active p-2">
+              <article className="flex flex-col gap-2 bg-neutral-active p-4">
                 <section className="flex gap-2">
                   <figure className="flex h-10 w-10 overflow-hidden rounded-3xl">
                     <img
@@ -77,7 +77,7 @@ export default function Comments(Props: {
               </article>
             </li>
             <li>
-              <article className="flex flex-col gap-2 bg-neutral-active p-2">
+              <article className="flex flex-col gap-2 bg-neutral-active p-4">
                 <section className="flex gap-2">
                   <figure className="flex h-10 w-10 overflow-hidden rounded-3xl">
                     <img
