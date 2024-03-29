@@ -18,7 +18,7 @@ export default async function HouseSection() {
       <HouseHeader role={role} />
       <section className="flex flex-col gap-6">
         <Suspense fallback={<ListListingSkeleton />}>
-          <ListListings />
+          <ListListings section="default" listings={listings} />
         </Suspense>
         {listingsLength > 3 && (
           <section className="flex justify-end sm:justify-center">

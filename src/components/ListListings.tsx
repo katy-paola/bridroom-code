@@ -1,37 +1,63 @@
-import { getAllListings } from '@/services/listing'
+'use client'
+
 import Card from './Card'
-import { getProfileCurrentUser, getSession } from '@/services/user'
+import { type User } from '@/types/types'
 
-export async function ListListings({
-  showAllListings = false,
-  section = 'default',
+import { useEffect, useState } from 'react'
+export function ListListings({
+  section,
+  listings,
+  currentUser,
+  session,
 }: {
-  showAllListings?: boolean
   section?: 'default' | 'house'
+  listings?: any
+  currentUser?: User
+  session?: any
 }) {
-  const listings = await getAllListings()
-  const currentUser = await getProfileCurrentUser()
-  const session = await getSession()
-
   if (listings === null) return <p>Aún no hay pensiones</p>
 
   const filteredListings =
-    section === 'default' || session === null || currentUser?.role !== 'student'
+    section === 'house' || session === null || currentUser?.role !== 'student'
       ? listings
-      : listings.filter((listing) => currentUser?.id === listing.owner?.id)
+      : listings.filter((listing: any) => currentUser?.id === listing.owner?.id)
+
+  const [windowWidth, setWindowWidth] = useState<number | undefined>(undefined)
+
+  const handleResize = () => {
+    setWindowWidth(window.innerWidth)
+  }
+  useEffect(() => {
+    handleResize()
+
+    window.addEventListener('resize', handleResize)
+
+    return () => {
+      window.removeEventListener('resize', handleResize)
+    }
+  }, [])
 
   return (
     <ul className="grid grid-cols-auto-fill grid-rows-auto-fit items-stretch gap-6">
       {filteredListings
         .filter(
-          (listing) =>
+          (listing: any) =>
             section === 'default' ||
             session === null ||
             currentUser?.role === 'student' ||
             currentUser?.id === listing.owner?.id,
         )
-        .slice(0, showAllListings ? filteredListings.length : 3)
-        .map((listing) => (
+        .slice(
+          0,
+          section === 'default'
+            ? windowWidth !== undefined &&
+              ((windowWidth >= 430 && windowWidth <= 744) ||
+                windowWidth >= 1280)
+              ? 4
+              : 3
+            : filteredListings.length,
+        )
+        .map((listing: any) => (
           <li key={listing.id} className="contents">
             <Card
               photo={listing.photos?.[0]}
