@@ -17,17 +17,22 @@ export function ListListings({
 }) {
   if (listings === null) return <p>Aún no hay pensiones</p>
 
+  const noSession = session === null || session === undefined
+
   const filteredListings =
-    section === 'house' || session === null || currentUser?.role !== 'student'
+    section === 'house' || noSession || currentUser?.role === 'student'
       ? listings
       : listings.filter((listing: any) => currentUser?.id === listing.owner?.id)
 
-  const [windowWidth, setWindowWidth] = useState<number | undefined>(undefined)
+  const [windowWidth, setWindowWidth] = useState(
+    typeof window !== 'undefined' ? window.innerWidth : undefined,
+  )
 
   const handleResize = () => {
     setWindowWidth(window.innerWidth)
   }
   useEffect(() => {
+    console.log('ventana inicial: ', windowWidth)
     handleResize()
 
     window.addEventListener('resize', handleResize)
@@ -43,7 +48,7 @@ export function ListListings({
         .filter(
           (listing: any) =>
             section === 'default' ||
-            session === null ||
+            noSession ||
             currentUser?.role === 'student' ||
             currentUser?.id === listing.owner?.id,
         )
@@ -51,8 +56,7 @@ export function ListListings({
           0,
           section === 'default'
             ? windowWidth !== undefined &&
-              ((windowWidth >= 430 && windowWidth <= 744) ||
-                windowWidth >= 1280)
+              ((windowWidth > 430 && windowWidth <= 744) || windowWidth >= 1280)
               ? 4
               : 3
             : filteredListings.length,
