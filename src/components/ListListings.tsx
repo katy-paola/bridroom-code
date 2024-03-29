@@ -25,14 +25,16 @@ export function ListListings({
       : listings.filter((listing: any) => currentUser?.id === listing.owner?.id)
 
   const [windowWidth, setWindowWidth] = useState(
-    typeof window !== 'undefined' ? window.innerWidth : undefined,
+    undefined as number | undefined,
   )
 
   const handleResize = () => {
     setWindowWidth(window.innerWidth)
   }
   useEffect(() => {
-    console.log('ventana inicial: ', windowWidth)
+    if (typeof window !== 'undefined') {
+      setWindowWidth(window.innerWidth)
+    }
     handleResize()
 
     window.addEventListener('resize', handleResize)
