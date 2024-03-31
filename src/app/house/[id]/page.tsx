@@ -41,7 +41,7 @@ export default async function ListingIdPage({
       : ''
   return (
     <>
-      <section className="relative mt-14 flex w-full flex-col pt-4 sm:gap-8 sm:px-12 md:py-8 lg:gap-16">
+      <section className="relative mt-14 flex w-full flex-col sm:gap-8 sm:px-12 sm:pt-4 md:py-8 lg:gap-16">
         <section className="flex flex-col gap-4">
           <BoardingHeader
             role={currentUser?.role}
