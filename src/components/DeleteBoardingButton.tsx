@@ -21,44 +21,48 @@ export default function DeleteBoardingButton() {
         </figure>
       </button>
       {isClicked && (
-        <section className="fixed left-1/2 top-16 z-[1005] flex w-max -translate-x-2/4 flex-col gap-3 bg-neutral-main-bg p-4 text-neutral-title shadow-md">
-          <button
-            className="w-5 self-end rounded p-1 text-neutral-title hover:bg-neutral-hover"
-            onClick={() => {
-              setIsClicked(!isClicked)
-            }}
-          >
-            <Close />
-          </button>
-          <section className="flex flex-col gap-2">
-            <p className="max-w-[28ch]">
-              ¿Está seguro que desea eliminar su pensión?
-            </p>
-            <small>Esta acción no se puede deshacer.</small>
+        <section className="fixed left-1/2 top-16 z-[1005] flex w-max -translate-x-2/4 flex-col bg-neutral-main-bg p-5 text-neutral-title shadow-md">
+          <section className="relative w-full">
+            <button
+              className="absolute -right-5 -top-5 w-6 bg-neutral-hover p-1 text-neutral-title hover:bg-tertiary-disabled"
+              onClick={() => {
+                setIsClicked(!isClicked)
+              }}
+            >
+              <Close />
+            </button>
           </section>
-          <ul className="flex justify-between">
-            <li>
-              <Button
-                variant="cuaternary"
-                size="small"
-                hasText="yes"
-                text="No, cancelar."
-                width="w-auto"
-                onClick={() => {
-                  setIsClicked(!isClicked)
-                }}
-              />
-            </li>
-            <li>
-              <Button
-                variant="tertiary"
-                size="small"
-                hasText="yes"
-                text="Sí, eliminar."
-                width="w-auto"
-              />
-            </li>
-          </ul>
+          <section className="flex flex-col gap-3">
+            <section className="flex flex-col gap-2">
+              <p className="max-w-[28ch]">
+                ¿Está seguro que desea eliminar su pensión?
+              </p>
+              <small>Esta acción no se puede deshacer.</small>
+            </section>
+            <ul className="flex justify-between">
+              <li>
+                <Button
+                  variant="cuaternary"
+                  size="small"
+                  hasText="yes"
+                  text="No, cancelar."
+                  width="w-auto"
+                  onClick={() => {
+                    setIsClicked(!isClicked)
+                  }}
+                />
+              </li>
+              <li>
+                <Button
+                  variant="tertiary"
+                  size="small"
+                  hasText="yes"
+                  text="Sí, eliminar."
+                  width="w-auto"
+                />
+              </li>
+            </ul>
+          </section>
         </section>
       )}
     </>
