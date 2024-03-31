@@ -2,8 +2,8 @@
 
 import Card from './Card'
 import { type User } from '@/types/types'
+import { useWindowWidth } from '@/hooks/useWindowWidth'
 
-import { useEffect, useState } from 'react'
 export function ListListings({
   section,
   listings,
@@ -17,32 +17,13 @@ export function ListListings({
 }) {
   if (listings === null) return <p>Aún no hay pensiones</p>
 
+  const listingsLength = useWindowWidth()
   const noSession = session === null || session === undefined
 
   const filteredListings =
     section === 'house' || noSession || currentUser?.role === 'student'
       ? listings
       : listings.filter((listing: any) => currentUser?.id === listing.owner?.id)
-
-  const [windowWidth, setWindowWidth] = useState(
-    undefined as number | undefined,
-  )
-
-  const handleResize = () => {
-    setWindowWidth(window.innerWidth)
-  }
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      setWindowWidth(window.innerWidth)
-    }
-    handleResize()
-
-    window.addEventListener('resize', handleResize)
-
-    return () => {
-      window.removeEventListener('resize', handleResize)
-    }
-  }, [])
 
   return (
     <ul className="grid grid-cols-auto-fill grid-rows-auto-fit items-stretch gap-6">
@@ -56,12 +37,7 @@ export function ListListings({
         )
         .slice(
           0,
-          section === 'default'
-            ? windowWidth !== undefined &&
-              ((windowWidth > 430 && windowWidth <= 744) || windowWidth >= 1280)
-              ? 4
-              : 3
-            : filteredListings.length,
+          section === 'default' ? listingsLength : filteredListings.length,
         )
         .map((listing: any) => (
           <li key={listing.id} className="contents">
@@ -90,5 +66,30 @@ export function ListListingSkeleton() {
       <div className="h-2 max-w-[360px] rounded-full bg-gray-200 dark:bg-gray-700"></div>
       <span className="sr-only">Loading...</span>
     </div>
+  )
+}
+export function Skeleton() {
+  return (
+    <ul className="grid grid-cols-auto-fill grid-rows-auto-fit items-stretch gap-6">
+      {Array.from({ length: useWindowWidth() }).map((_, index) => (
+        <li key={index} className="contents">
+          <article className="flex flex-col overflow-hidden rounded-2xl bg-neutral-hover">
+            <figure className="h-48 w-full"></figure>
+            <section className="flex flex-1 flex-col justify-between gap-4 bg-neutral-active p-4">
+              <section className="flex flex-col gap-2">
+                <h3 className="h-4 bg-neutral-hover text-paragraph-regular font-semibold text-neutral-title"></h3>
+                <p className="h-3 w-2/5 bg-neutral-hover text-paragraph-small text-neutral-title"></p>
+
+                <p className="h-4 w-6 bg-neutral-hover text-paragraph-regular leading-4 text-neutral-title"></p>
+              </section>
+              <section className="flex items-center justify-between">
+                <p className="h-4 w-1/3 bg-neutral-hover text-paragraph-small font-semibold text-neutral-title"></p>
+                <span className="h-8 w-32 rounded-lg bg-neutral-hover"></span>
+              </section>
+            </section>
+          </article>
+        </li>
+      ))}
+    </ul>
   )
 }

@@ -9,10 +9,19 @@ import OwnerSection from '@/components/OwnerSection'
 import { Suspense } from 'react'
 import MapIcon from '@/svg/MapIcon'
 import Link from 'next/link'
-import { getSession } from '@/services/user'
+import { getProfileCurrentUser, getSession } from '@/services/user'
+import HouseHeader from '@/components/HouseHeader'
+import { Skeleton } from '@/components/ListListings'
 
 export default async function Index() {
   const session = await getSession()
+
+  let currentUser = null
+  let role
+  if (session !== null && session !== undefined) {
+    currentUser = await getProfileCurrentUser()
+    role = currentUser?.role
+  }
   // const cookieStore = cookies()
 
   // const supabase = createClient(cookieStore)
@@ -24,7 +33,10 @@ export default async function Index() {
       <SearchSection />
       <Suspense
         fallback={
-          <div className="h-96 w-full bg-neutral-secondary-bg">Loading...</div>
+          <section className="flex flex-col gap-6 bg-neutral-secondary-bg px-4 py-8 xs:px-8 sm:gap-8 sm:px-12 sm:py-10">
+            <HouseHeader role={role} />
+            <Skeleton />
+          </section>
         }
       >
         <HouseSection />
