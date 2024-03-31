@@ -1,4 +1,4 @@
-import { ListListings, ListListingSkeleton } from '@/components/ListListings'
+import { ListListings, Skeleton } from '@/components/ListListings'
 import { Suspense } from 'react'
 import HeaderHouse from '@/components/HouseHeader'
 import { getAllListings } from '@/services/listing'
@@ -12,7 +12,7 @@ export default async function ListingsPage() {
       <HeaderHouse role="student" />
 
       <main>
-        <Suspense fallback={<ListListingSkeleton />}>
+        <Suspense fallback={<Skeleton />}>
           <ListListings
             section="house"
             listings={listings}
