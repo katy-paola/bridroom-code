@@ -2,7 +2,7 @@ import './globals.css'
 import 'leaflet/dist/leaflet.css'
 import Header from '@/components/Header'
 import { bodyFont, titleFont } from './ui/fonts'
-import ToastClient from '@/components/ToastClient'
+// import ToastClient from '@/components/ToastClient'
 
 const defaultUrl =
   process.env.VERCEL_URL != null
@@ -33,7 +33,7 @@ export default function RootLayout({
           </main>
         </section>
 
-        <ToastClient />
+        {/* <ToastClient /> */}
       </body>
     </html>
   )
