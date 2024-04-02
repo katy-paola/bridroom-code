@@ -2,24 +2,16 @@
 import InputForm from './InputForm'
 import Button from './Button'
 import { useSearchParams } from 'next/navigation'
-import { useState } from 'react'
 
-export default function AuthForm(Props: {
-  typeAction: string
-  actionSignIn: any
-}) {
-  const { typeAction, actionSignIn } = Props
-  const [role, setRole] = useState(useSearchParams().get('role') ?? 'student')
+export default function AuthForm(Props: { typeAction: string; action: any }) {
+  const { typeAction, action } = Props
+  const role = useSearchParams().get('role') ?? 'student'
   const ownerChecked = role === 'owner'
   const studentChecked = role !== 'owner'
 
-  const handleChange = (id: string) => {
-    setRole(id)
-  }
-
   return (
     <form
-      action={actionSignIn}
+      action={action}
       className="flex w-full flex-col gap-8 sm:max-w-sm md:max-w-md"
     >
       <fieldset className="flex flex-col gap-8">
@@ -68,42 +60,42 @@ export default function AuthForm(Props: {
               className="flex flex-col gap-2 text-paragraph-regular text-neutral-paragraph"
             >
               Elige tu rol
-              <section className="flex gap-5">
-                <label
-                  className={`cursor-pointer rounded-lg px-2 py-1 text-paragraph-small ${
-                    studentChecked
-                      ? 'border-none bg-primary-disabled'
-                      : 'border border-solid border-neutral-placeholder'
-                  }`}
-                >
-                  <InputForm
-                    hasIcon={false}
-                    isRadio={true}
+              <ul className="flex gap-5">
+                <li>
+                  <input
+                    type="radio"
+                    name="role"
                     id="student"
-                    onChange={() => {
-                      handleChange('student')
-                    }}
+                    value="student"
+                    className="peer hidden"
+                    required
+                    defaultChecked={studentChecked}
                   />
-                  Estudiante
-                </label>
-                <label
-                  className={`cursor-pointer rounded-lg px-2 py-1 text-paragraph-small ${
-                    ownerChecked
-                      ? 'border-none bg-primary-disabled'
-                      : 'border border-solid border-neutral-placeholder'
-                  }`}
-                >
-                  <InputForm
-                    hasIcon={false}
-                    isRadio={true}
+                  <label
+                    htmlFor="student"
+                    className="cursor-pointer rounded-lg border border-solid border-neutral-placeholder px-2 py-1 text-paragraph-small peer-checked:border-none peer-checked:bg-primary-disabled"
+                  >
+                    Estudiante
+                  </label>
+                </li>
+                <li>
+                  <input
+                    type="radio"
+                    name="role"
+                    value="owner"
                     id="owner"
-                    onChange={() => {
-                      handleChange('owner')
-                    }}
+                    required
+                    className="peer hidden"
+                    defaultChecked={ownerChecked}
                   />
-                  Propietario
-                </label>
-              </section>
+                  <label
+                    htmlFor="owner"
+                    className="cursor-pointer rounded-lg border border-solid border-neutral-placeholder px-2 py-1 text-paragraph-small peer-checked:border-none peer-checked:bg-primary-disabled"
+                  >
+                    Propetario
+                  </label>
+                </li>
+              </ul>
             </label>
           </>
         )}

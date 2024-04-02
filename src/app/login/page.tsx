@@ -19,10 +19,10 @@ export default function Login() {
     })
 
     if (error !== null) {
-      return redirect('/login?message=Could not authenticate user')
+      return redirect('/login?message=Could not authenticate user&error=true')
     }
 
-    return redirect('/')
+    return redirect('/?message=Welcome back!')
   }
 
   return (
@@ -36,11 +36,11 @@ export default function Login() {
             Inicia sesión aquí:
           </p>
         </section>
-        <AuthForm typeAction="login" actionSignIn={signIn} />
+        <AuthForm typeAction="login" action={signIn} />
         <small className="text-paragraph-small text-neutral-paragraph lg:text-center">
           ¿No tienes una cuenta?{' '}
           <a
-            href="#"
+            href="/register"
             className="text-paragraph-small text-functional-info underline"
           >
             Registrarme
