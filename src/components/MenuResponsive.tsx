@@ -29,6 +29,7 @@ export default function MenuResponsive({
     if (error !== null) console.error('Error logging out:', error.message)
 
     router.push('/login')
+    router.refresh()
   }
 
   return (

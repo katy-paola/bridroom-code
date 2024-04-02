@@ -24,5 +24,5 @@ export default function ToastClient() {
     }
   }, [message])
 
-  return <Toaster expand richColors />
+  return <Toaster position="top-center" expand richColors />
 }
