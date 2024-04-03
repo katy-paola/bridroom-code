@@ -19,7 +19,7 @@ export default function Login() {
     })
 
     if (error !== null) {
-      return redirect('/login?message=Could not authenticate user&error=true')
+      return redirect(`/login?message=${error.message}&error=true`)
     }
 
     return redirect('/?message=Welcome back!')
