@@ -73,7 +73,7 @@ export default function AuthForm(Props: { typeAction: string; action: any }) {
                   />
                   <label
                     htmlFor="student"
-                    className="cursor-pointer rounded-lg border border-solid border-neutral-placeholder px-2 py-1 text-paragraph-small peer-checked:border-none peer-checked:bg-primary-disabled"
+                    className="cursor-pointer border border-solid border-neutral-placeholder px-2 py-1 text-paragraph-small peer-checked:border-primary-disabled peer-checked:bg-primary-disabled"
                   >
                     Estudiante
                   </label>
@@ -90,9 +90,9 @@ export default function AuthForm(Props: { typeAction: string; action: any }) {
                   />
                   <label
                     htmlFor="owner"
-                    className="cursor-pointer rounded-lg border border-solid border-neutral-placeholder px-2 py-1 text-paragraph-small peer-checked:border-none peer-checked:bg-primary-disabled"
+                    className="cursor-pointer border border-solid border-neutral-placeholder px-2 py-1 text-paragraph-small peer-checked:border-primary-disabled peer-checked:bg-primary-disabled"
                   >
-                    Propetario
+                    Propietario
                   </label>
                 </li>
               </ul>
