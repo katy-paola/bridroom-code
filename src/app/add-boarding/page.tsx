@@ -2,8 +2,41 @@ import Button from '@/components/Button'
 import InputForm from '@/components/InputForm'
 import LocationMap from '@/components/LocationMap'
 import ImgAddBoarding from '@/svg/ImgAddBoarding'
+import { createClient } from '@/lib/supabase/server'
+import { cookies } from 'next/headers'
+import { redirect } from 'next/navigation'
 
 export default function AddBoarding() {
+  const addBoarding = async (formData: FormData) => {
+    'use server'
+
+    const title = formData.get('title') as string
+    const description = formData.get('description') as string
+    const price = Number(formData.get('price'))
+    const address = formData.get('address') as string
+    const neigh = formData.get('neigh') as string
+    const photos = ['one', 'two', 'three', 'four']
+    const cookieStore = cookies()
+    const supabase = createClient(cookieStore)
+
+    const { error } = await supabase.from('listings').insert([
+      {
+        title,
+        description,
+        price,
+        address,
+        neigh,
+        photos,
+      },
+    ])
+
+    if (error !== null) {
+      return redirect(`/add-boarding?message=${error.message}&error=true`)
+    }
+
+    return redirect('/?message=Boarding added!')
+  }
+
   return (
     <section className="mt-14 flex w-full flex-col gap-8 p-4 xs:p-8 sm:px-44 md:mt-16 md:px-72 lg:items-center lg:gap-16 lg:px-36 lg:py-10 xl:px-60">
       <section className="contents w-full flex-col gap-8 lg:flex">
@@ -11,7 +44,10 @@ export default function AddBoarding() {
           Agregar pensión
         </h2>
         {/** Contenedor morado */}
-        <form className="flex grid-cols-layout flex-col gap-8 grid-areas-layout lg:grid">
+        <form
+          action={addBoarding}
+          className="flex grid-cols-layout flex-col gap-8 grid-areas-layout lg:grid"
+        >
           {/** Contenedor invisible en lg */}
           <fieldset className="flex flex-col gap-8 lg:contents">
             <label className="flex h-auto flex-col gap-2 text-paragraph-regular text-neutral-paragraph grid-in-title">
