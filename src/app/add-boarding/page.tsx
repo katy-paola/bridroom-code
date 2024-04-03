@@ -18,6 +18,7 @@ export default function AddBoarding() {
               Título de la publicación:
               <InputForm
                 type="text"
+                name="title"
                 placeholder="Ej.: Pensión disponible en Urbanización Sevilla."
                 hasIcon={false}
                 isRadio={false}
@@ -27,6 +28,7 @@ export default function AddBoarding() {
               Descripción:
               <InputForm
                 type="text"
+                name="description"
                 placeholder="Agrega información sobre tu pensión, como servicios, puntos de referencia, etc."
                 hasIcon={false}
                 isRadio={false}
@@ -36,6 +38,7 @@ export default function AddBoarding() {
               Precio:
               <InputForm
                 type="number"
+                name="price"
                 placeholder="Ej.: 500000"
                 hasIcon={false}
                 isRadio={false}
@@ -45,11 +48,13 @@ export default function AddBoarding() {
               Dirección:
               <InputForm
                 type="text"
+                name="address"
                 placeholder="Ej.: Urbanización Sevilla mz 5 lt 6"
                 hasIcon={false}
                 isRadio={false}
               />
             </label>
+
             <LocationMap />
             <label className="flex h-auto flex-col gap-2 text-paragraph-regular text-neutral-paragraph grid-in-photos">
               Agregar fotos:
@@ -63,11 +68,24 @@ export default function AddBoarding() {
               <input
                 className="sr-only"
                 type="file"
+                name="photos"
                 accept="image/*"
                 multiple
               />
             </label>
           </fieldset>
+
+          <label className="flex h-auto flex-col gap-2 text-paragraph-regular text-neutral-paragraph">
+            Barrio:
+            <InputForm
+              type="text"
+              name="neigh"
+              placeholder="Ej.: Urbanización Sevilla"
+              hasIcon={false}
+              isRadio={false}
+            />
+          </label>
+
           <section className="contents h-auto justify-end grid-in-button lg:flex">
             <Button
               variant="primary"

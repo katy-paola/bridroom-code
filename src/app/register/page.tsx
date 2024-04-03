@@ -25,8 +25,7 @@ export default function Register() {
     })
 
     if (error !== null) {
-      console.error(error)
-      return redirect('/login?message=Could not authenticate user&error=true')
+      return redirect(`/login?message=${error.message}&error=true`)
     }
 
     // add role to user
