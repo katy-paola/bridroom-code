@@ -88,7 +88,7 @@ export interface Database {
         Row: {
           comments: string[] | null
           created_at: string
-          description: string | null
+          description: string
           id: string
           location: Json
           photos: string[] | null
@@ -100,19 +100,19 @@ export interface Database {
         Insert: {
           comments?: string[] | null
           created_at?: string
-          description?: string | null
+          description?: string
           id?: string
-          location: Json
+          location?: Json
           photos?: string[] | null
-          price: number
+          price?: number
           rating?: number | null
-          title: string
+          title?: string
           user_id: string
         }
         Update: {
           comments?: string[] | null
           created_at?: string
-          description?: string | null
+          description?: string
           id?: string
           location?: Json
           photos?: string[] | null
@@ -136,34 +136,34 @@ export interface Database {
           about: string | null
           avatar_url: string | null
           contact: number
-          email: string | null
+          email: string
           id: string
-          name: string | null
+          name: string
           role: string
           university: string | null
-          username: string | null
+          username: string
         }
         Insert: {
           about?: string | null
           avatar_url?: string | null
           contact?: number
-          email?: string | null
+          email?: string
           id?: string
-          name?: string | null
+          name?: string
           role?: string
           university?: string | null
-          username?: string | null
+          username?: string
         }
         Update: {
           about?: string | null
           avatar_url?: string | null
           contact?: number
-          email?: string | null
+          email?: string
           id?: string
-          name?: string | null
+          name?: string
           role?: string
           university?: string | null
-          username?: string | null
+          username?: string
         }
         Relationships: []
       }
