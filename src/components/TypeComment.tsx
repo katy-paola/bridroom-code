@@ -3,6 +3,7 @@ import Button from './Button'
 
 export default function TypeComment() {
   const typeComment = async () => {
+    'use server'
     console.log('Comment added')
   }
   return (

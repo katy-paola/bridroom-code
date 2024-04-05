@@ -1,5 +1,7 @@
 'use client'
+import { useEffect, useState } from 'react'
 import Rating from './Rating'
+import Button from './Button'
 
 export default function Comments(Props: {
   isOwner: boolean
@@ -8,6 +10,10 @@ export default function Comments(Props: {
   photo: string | null | undefined
 }) {
   const { isOwner, comments, userName, photo } = Props
+  const [showInput, setShowInput] = useState(false)
+  useEffect(() => {
+    console.log('showInput', showInput)
+  }, [showInput])
   return (
     <section
       className={`flex flex-col gap-4 p-4 xs:px-8 sm:p-0 ${
@@ -43,9 +49,33 @@ export default function Comments(Props: {
                   <p className="text-paragraph-small font-normal text-neutral-paragraph lg:max-w-prose">
                     {comment}
                   </p>
-                  <button className="self-end text-paragraph-xsmall font-normal text-neutral-paragraph underline">
+                  <button
+                    onClick={() => {
+                      setShowInput(!showInput)
+                    }}
+                    className="self-end text-paragraph-xsmall font-normal text-neutral-paragraph underline"
+                  >
                     Responder
                   </button>
+                  {showInput && (
+                    <section className="flex flex-col items-end gap-2">
+                      <textarea
+                        className="flex h-10 resize-none items-center self-stretch border border-solid border-neutral-paragraph bg-transparent p-2 text-paragraph-small outline-none sm:h-16"
+                        placeholder="Escribe tu respuesta..."
+                        required
+                      ></textarea>
+                      <Button
+                        variant="cuaternary"
+                        size="small"
+                        hasText="yes"
+                        text="Publicar"
+                        width="w-max"
+                        onClick={() => {
+                          setShowInput(!showInput)
+                        }}
+                      />
+                    </section>
+                  )}
                 </section>
               </article>
             </li>
@@ -97,9 +127,21 @@ export default function Comments(Props: {
                   <p className="text-paragraph-small font-normal text-neutral-paragraph lg:max-w-prose">
                     {comment}
                   </p>
-                  <button className="self-end text-paragraph-xsmall font-normal text-neutral-paragraph underline">
+                  <button
+                    onClick={() => {
+                      console.log('showInput', showInput)
+                    }}
+                    className="self-end text-paragraph-xsmall font-normal text-neutral-paragraph underline"
+                  >
                     Responder
                   </button>
+                  {showInput && (
+                    <textarea
+                      className="h-8 resize-none border border-solid border-neutral-paragraph bg-transparent p-2 text-paragraph-small outline-none sm:h-16"
+                      placeholder="Escribe tu respuesta..."
+                      required
+                    ></textarea>
+                  )}
                 </section>
               </article>
             </li>
