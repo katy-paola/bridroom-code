@@ -36,7 +36,7 @@ export default function Login() {
             Inicia sesión aquí:
           </p>
         </section>
-        <AuthForm typeAction="login" actionSignIn={signIn} />
+        <AuthForm typeAction="login" action={signIn} />
         <small className="text-paragraph-small text-neutral-paragraph lg:text-center">
           ¿No tienes una cuenta?{' '}
           <a

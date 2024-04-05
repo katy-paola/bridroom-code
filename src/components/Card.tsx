@@ -2,6 +2,7 @@ import FillStar from '@/svg/FillStar'
 import Button from './Button'
 import Link from 'next/link'
 import { formatCurrency } from '@/utils/formatCurrency'
+import { STORAGE_URL } from '@/lib/config'
 
 export default function Card(Props: {
   photo: string | undefined
@@ -17,7 +18,11 @@ export default function Card(Props: {
   return (
     <article className="flex flex-col overflow-hidden rounded-2xl bg-neutral-main-bg shadow-md">
       <figure className="h-48 w-full">
-        <img className="h-full w-full object-cover" src={photo} alt="" />
+        <img
+          className="h-full w-full object-cover"
+          src={`${STORAGE_URL}photos-listings/${photo}`}
+          alt="Imagen de la pensión"
+        />
       </figure>
       <section className="flex flex-1 flex-col justify-between gap-4 p-4">
         <section className="flex flex-col gap-1">

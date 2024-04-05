@@ -3,30 +3,53 @@ import InputForm from '@/components/InputForm'
 import LocationMap from '@/components/LocationMap'
 import ImgAddBoarding from '@/svg/ImgAddBoarding'
 import { createClient } from '@/lib/supabase/server'
-import { cookies } from 'next/headers'
 import { redirect } from 'next/navigation'
+import { cookies } from 'next/headers'
+import { uploadFileToSupabase } from '../utils/upload-file-to-supabase'
+import InputFilePreview from '@/components/InputFilePreview'
 
 export default function AddBoarding() {
-  const addBoarding = async (formData: FormData) => {
+  const addListingAction = async (formData: FormData) => {
     'use server'
+
+    console.log('formData', formData)
+
+    const photosToApi = formData.getAll('photos')
+    const photosPathUrls: string[] = []
+
+    for await (const photo of photosToApi) {
+      const response = await uploadFileToSupabase(photo as File)
+      if (response !== undefined) photosPathUrls.push(response)
+    }
 
     const title = formData.get('title') as string
     const description = formData.get('description') as string
     const price = Number(formData.get('price'))
     const address = formData.get('address') as string
     const neigh = formData.get('neigh') as string
-    const photos = ['one', 'two', 'three', 'four']
     const cookieStore = cookies()
     const supabase = createClient(cookieStore)
+
+    const user = await supabase.auth.getUser()
+
+    if (user.error !== null) {
+      return redirect(
+        '/add-boarding?message=You must be logged in to add a boarding&error=true',
+      )
+    }
 
     const { error } = await supabase.from('listings').insert([
       {
         title,
         description,
         price,
-        address,
-        neigh,
-        photos,
+        location: {
+          address,
+          coord: '10.403931, -75.470382',
+          neigh,
+        },
+        photos: photosPathUrls,
+        user_id: user.data.user?.id,
       },
     ])
 
@@ -45,7 +68,7 @@ export default function AddBoarding() {
         </h2>
         {/** Contenedor morado */}
         <form
-          action={addBoarding}
+          action={addListingAction}
           className="flex grid-cols-layout flex-col gap-8 grid-areas-layout lg:grid"
         >
           {/** Contenedor invisible en lg */}
@@ -92,23 +115,7 @@ export default function AddBoarding() {
             </label>
 
             <LocationMap />
-            <label className="flex h-auto flex-col gap-2 text-paragraph-regular text-neutral-paragraph grid-in-photos">
-              Agregar fotos:
-              <figure className="h-20 w-20">
-                <img
-                  className="h-full w-full object-cover"
-                  src="/upload-photo.svg"
-                  alt=""
-                />
-              </figure>
-              <input
-                className="sr-only"
-                type="file"
-                name="photos"
-                accept="image/*"
-                multiple
-              />
-            </label>
+            <InputFilePreview />
           </fieldset>
 
           <label className="flex h-auto flex-col gap-2 text-paragraph-regular text-neutral-paragraph">
@@ -125,11 +132,11 @@ export default function AddBoarding() {
           <section className="contents h-auto justify-end grid-in-button lg:flex">
             <Button
               variant="primary"
+              type="submit"
               size="regular"
               hasText="yes"
               text="Publicar"
               width="w-auto"
-              disabled={true}
             />
           </section>
         </form>

@@ -1,3 +1,5 @@
+import { STORAGE_URL } from '@/lib/config'
+
 export default function Carousel(Props: { photos: string[] | null }) {
   const { photos } = Props
 
@@ -8,7 +10,11 @@ export default function Carousel(Props: { photos: string[] | null }) {
           key={index}
           className="w-4/5 shrink-0 grow-0 basis-4/5 snap-center sm:basis-3/4"
         >
-          <img className="h-full w-full object-cover" src={photo} />
+          <img
+            className="h-full w-full object-cover"
+            alt="Imagen de la pensión"
+            src={`${STORAGE_URL}photos-listings/${photo}`}
+          />
         </li>
       ))}
     </ul>
