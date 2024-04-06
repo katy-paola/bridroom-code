@@ -3,6 +3,7 @@ import CardDetails from '@/components/CardDetails'
 import Comments from '@/components/Comments'
 import OwnerInfo from '@/components/OwnerInfo'
 import TypeComment from '@/components/TypeComment'
+import { getComments } from '@/services/comments'
 import { getListingById } from '@/services/listing'
 import { getProfileCurrentUser, getSession } from '@/services/user'
 import ImgComments from '@/svg/ImgComments'
@@ -20,6 +21,7 @@ export default async function ListingIdPage({
   const listing = await getListingById(id)
   const currentUser = await getProfileCurrentUser()
   const isOwner = currentUser?.role === 'owner'
+  const comments = await getComments(id)
 
   if (listing === null) {
     return redirect('/404')
@@ -73,7 +75,7 @@ export default async function ListingIdPage({
 
           <Comments
             isOwner={isOwner}
-            comments={listing.comments}
+            comments={comments as any[]}
             userName={currentUser?.name}
             photo={currentUser?.avatar_url}
           />
