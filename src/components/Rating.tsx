@@ -1,23 +1,17 @@
 import EmptyStar from '@/svg/EmptyStar'
 
-export default function Rating() {
+export default function Rating({
+  numberOfStars = 5,
+}: {
+  numberOfStars?: number
+}) {
   return (
     <ul className="flex text-functional-warning">
-      <li>
-        <EmptyStar />
-      </li>
-      <li>
-        <EmptyStar />
-      </li>
-      <li>
-        <EmptyStar />
-      </li>
-      <li>
-        <EmptyStar />
-      </li>
-      <li>
-        <EmptyStar />
-      </li>
+      {Array.from({ length: numberOfStars }, (_, index) => (
+        <li key={index}>
+          <EmptyStar />
+        </li>
+      ))}
     </ul>
   )
 }

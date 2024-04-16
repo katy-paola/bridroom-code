@@ -73,12 +73,7 @@ export default async function ListingIdPage({
         <section className="contents w-full gap-16 lg:flex">
           {!isOwner && <TypeComment />}
 
-          <Comments
-            isOwner={isOwner}
-            comments={comments as any[]}
-            userName={currentUser?.name}
-            photo={currentUser?.avatar_url}
-          />
+          <Comments isOwner={isOwner} comments={comments} />
           {isOwner && (
             <figure className="flex justify-center">
               <ImgComments />
