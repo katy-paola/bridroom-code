@@ -1,6 +1,6 @@
 import BoardingHeader from '@/components/BoardingHeader'
 import CardDetails from '@/components/CardDetails'
-import Comments from '@/components/Comments'
+import ListComments from '@/components/ListComments'
 import OwnerInfo from '@/components/OwnerInfo'
 import TypeComment from '@/components/TypeComment'
 import { getComments } from '@/services/comments'
@@ -73,7 +73,7 @@ export default async function ListingIdPage({
         <section className="contents w-full gap-16 lg:flex">
           {!isOwner && <TypeComment listingId={id} />}
 
-          <Comments isOwner={isOwner} comments={comments} />
+          <ListComments isOwner={isOwner} comments={comments} />
           {isOwner && (
             <figure className="flex justify-center">
               <ImgComments />

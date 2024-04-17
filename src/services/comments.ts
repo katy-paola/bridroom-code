@@ -2,12 +2,12 @@ import { createClient } from '@/lib/supabase/server'
 import { type Tables } from '@/types/database.types'
 import { cookies } from 'next/headers'
 
-export type Comment = Tables<'comments'> & {
+export type TComment = Tables<'comments'> & {
   profiles: Tables<'profiles'>
 }
 
 // obtenemos los comentarios de cada pensión de la tabla de comentarios que se llama comments
-export const getComments = async (id: string): Promise<Comment[] | null> => {
+export const getComments = async (id: string): Promise<TComment[] | null> => {
   const cookieStore = cookies()
 
   const supabase = createClient(cookieStore)
@@ -17,5 +17,5 @@ export const getComments = async (id: string): Promise<Comment[] | null> => {
     .select('*, profiles(*)')
     .eq('listing_id', id)
 
-  return data as Comment[]
+  return data as TComment[]
 }
