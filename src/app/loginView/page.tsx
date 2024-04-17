@@ -1,6 +1,6 @@
-import ImgLogin from '@/svg/ImgLogin'
 import AuthForm from '@/components/AuthForm'
 import { createClient } from '@/lib/supabase/server'
+import ImgLogin from '@/svg/ImgLogin'
 import { cookies } from 'next/headers'
 import { redirect } from 'next/navigation'
 

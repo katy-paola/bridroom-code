@@ -3,15 +3,15 @@ import { createClient } from '@/utils/supabase/server'
 import Header from '@/components/HeaderPrueba'
 import { cookies } from 'next/headers'
 import { titleFont } from './ui/fonts' */
-import SearchSection from '@/components/SearchSection'
+import HouseHeader from '@/components/HouseHeader'
 import HouseSection from '@/components/HouseSection'
+import { Skeleton } from '@/components/ListListings'
 import OwnerSection from '@/components/OwnerSection'
-import { Suspense } from 'react'
+import SearchSection from '@/components/SearchSection'
+import { getProfileCurrentUser, getSession } from '@/services/user'
 import MapIcon from '@/svg/MapIcon'
 import Link from 'next/link'
-import { getProfileCurrentUser, getSession } from '@/services/user'
-import HouseHeader from '@/components/HouseHeader'
-import { Skeleton } from '@/components/ListListings'
+import { Suspense } from 'react'
 
 export default async function Index() {
   const session = await getSession()

@@ -1,8 +1,8 @@
 'use client'
 
-import Show from '../svg/Show'
+import { useState, type ChangeEvent } from 'react'
 import Hide from '../svg/Hide'
-import { type ChangeEvent, useState } from 'react'
+import Show from '../svg/Show'
 
 export default function InputForm({
   type,

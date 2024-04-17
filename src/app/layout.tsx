@@ -1,8 +1,8 @@
-import './globals.css'
-import 'leaflet/dist/leaflet.css'
 import Header from '@/components/Header'
-import { bodyFont, titleFont } from './ui/fonts'
 import ToastClient from '@/components/ToastClient'
+import 'leaflet/dist/leaflet.css'
+import './globals.css'
+import { bodyFont, titleFont } from './ui/fonts'
 
 const defaultUrl =
   process.env.VERCEL_URL != null

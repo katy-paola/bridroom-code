@@ -1,10 +1,10 @@
 'use client'
 
 import FillStar from '@/svg/FillStar'
+import { type User } from '@/types/types'
 import { useState } from 'react'
 import { GetLocationMap } from './GetLocationMap'
 import OwnerInfo from './OwnerInfo'
-import { type User } from '@/types/types'
 
 export default function CardInfo({
   title,

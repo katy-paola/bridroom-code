@@ -1,8 +1,8 @@
-import { formatCurrency } from '@/utils/formatCurrency'
 import { getListingById } from '@/services/listing'
 import { getProfileCurrentUser } from '@/services/user'
-import Carousel from './Carousel'
+import { formatCurrency } from '@/utils/formatCurrency'
 import CardInfo from './CardInfo'
+import Carousel from './Carousel'
 
 export default async function CardDetails(Props: {
   photos: string[] | null

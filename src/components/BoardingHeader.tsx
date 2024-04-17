@@ -1,5 +1,5 @@
-import DeleteBoardingButton from './DeleteBoardingButton'
 import Edit from '@/svg/Edit'
+import DeleteBoardingButton from './DeleteBoardingButton'
 import SaveBoardingButton from './SaveBoardingButton'
 
 import Link from 'next/link'

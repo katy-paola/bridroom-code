@@ -1,12 +1,12 @@
 import Button from '@/components/Button'
+import InputFilePreview from '@/components/InputFilePreview'
 import InputForm from '@/components/InputForm'
 import LocationMap from '@/components/LocationMap'
-import ImgAddBoarding from '@/svg/ImgAddBoarding'
 import { createClient } from '@/lib/supabase/server'
-import { redirect } from 'next/navigation'
+import ImgAddBoarding from '@/svg/ImgAddBoarding'
 import { cookies } from 'next/headers'
+import { redirect } from 'next/navigation'
 import { uploadFileToSupabase } from '../utils/upload-file-to-supabase'
-import InputFilePreview from '@/components/InputFilePreview'
 
 export default function AddBoarding() {
   const addListingAction = async (formData: FormData) => {

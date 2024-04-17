@@ -1,9 +1,9 @@
 'use client'
 
 import Filter from '@/svg/Filter'
+import { useState } from 'react'
 import Button from './Button'
 import FilterForm from './FilterForm'
-import { useState } from 'react'
 
 export default function HouseHeader({ role }: { role: string | undefined }) {
   const [isFilterOpen, setIsFilterOpen] = useState(false)

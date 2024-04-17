@@ -1,4 +1,4 @@
-import { Righteous, Poppins } from 'next/font/google'
+import { Poppins, Righteous } from 'next/font/google'
 
 export const titleFont = Righteous({
   subsets: ['latin'],

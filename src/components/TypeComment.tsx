@@ -1,9 +1,9 @@
-import Rating from './Rating'
-import Button from './Button'
 import { createClient } from '@/lib/supabase/server'
+import { getProfileCurrentUser } from '@/services/user'
 import { cookies } from 'next/headers'
 import { redirect } from 'next/navigation'
-import { getProfileCurrentUser } from '@/services/user'
+import Button from './Button'
+import Rating from './Rating'
 
 export default function TypeComment({ listingId }: { listingId: string }) {
   const insertComment = async (formData: FormData) => {

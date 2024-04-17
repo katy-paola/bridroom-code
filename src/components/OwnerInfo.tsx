@@ -1,7 +1,7 @@
-import Link from 'next/link'
-import Button from './Button'
 import IconUser from '@/svg/IconUser'
 import { type User } from '@/types/types'
+import Link from 'next/link'
+import Button from './Button'
 
 export default function OwnerInfo(Props: {
   photo: string | null | undefined

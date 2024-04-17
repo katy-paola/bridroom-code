@@ -1,7 +1,7 @@
 'use client'
-import InputForm from './InputForm'
-import Button from './Button'
 import { useSearchParams } from 'next/navigation'
+import Button from './Button'
+import InputForm from './InputForm'
 
 export default function AuthForm(Props: { typeAction: string; action: any }) {
   const { typeAction, action } = Props

@@ -1,8 +1,8 @@
 'use client'
 
-import Card from './Card'
-import { type User } from '@/types/types'
 import { useWindowWidth } from '@/hooks/useWindowWidth'
+import { type User } from '@/types/types'
+import Card from './Card'
 
 export function ListListings({
   section,

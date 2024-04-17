@@ -1,8 +1,8 @@
+import { getAllListings } from '@/services/listing'
+import { getProfileCurrentUser } from '@/services/user'
+import { Suspense } from 'react'
 import HouseHeader from './HouseHeader'
 import { ListListings, Skeleton } from './ListListings'
-import { Suspense } from 'react'
-import { getProfileCurrentUser } from '@/services/user'
-import { getAllListings } from '@/services/listing'
 import ViewMore from './viewMore'
 
 export default async function HouseSection() {

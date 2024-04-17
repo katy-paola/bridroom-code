@@ -1,7 +1,7 @@
-import Link from 'next/link'
+import { getProfileCurrentUser, getSession } from '@/services/user'
 import Logo from '@/svg/Logo'
+import Link from 'next/link'
 import MenuResponsive from './MenuResponsive'
-import { getSession, getProfileCurrentUser } from '@/services/user'
 
 export default async function Header() {
   const user = await getProfileCurrentUser()

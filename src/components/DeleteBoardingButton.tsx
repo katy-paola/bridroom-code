@@ -1,9 +1,9 @@
 'use client'
 
-import DeleteIcon from '@/svg/DeleteIcon'
 import Close from '@/svg/Close'
-import Button from './Button'
+import DeleteIcon from '@/svg/DeleteIcon'
 import { useState } from 'react'
+import Button from './Button'
 
 export default function DeleteBoardingButton() {
   const [isClicked, setIsClicked] = useState(false)

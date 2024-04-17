@@ -1,7 +1,7 @@
 'use client'
 import More from '@/svg/More'
-import Button from './Button'
 import { redirect } from 'next/navigation'
+import Button from './Button'
 
 export default function ViewMore() {
   return (

@@ -1,7 +1,7 @@
-import ImgRegister from '@/svg/ImgRegister'
 import AuthForm from '@/components/AuthForm'
 import { createClient } from '@/lib/supabase/server'
-import { headers, cookies } from 'next/headers'
+import ImgRegister from '@/svg/ImgRegister'
+import { cookies, headers } from 'next/headers'
 import { redirect } from 'next/navigation'
 
 export default function Register() {

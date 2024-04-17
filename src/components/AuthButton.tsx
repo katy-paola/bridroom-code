@@ -1,8 +1,8 @@
 import { createClient } from '@/lib/supabase/server'
-import Link from 'next/link'
-import { cookies } from 'next/headers'
-import { redirect } from 'next/navigation'
 import { getUser } from '@/services/user'
+import { cookies } from 'next/headers'
+import Link from 'next/link'
+import { redirect } from 'next/navigation'
 
 export default async function AuthButton() {
   const user = await getUser()

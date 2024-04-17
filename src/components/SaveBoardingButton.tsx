@@ -1,7 +1,7 @@
 'use client'
 
-import SaveStroke from '@/svg/SaveStroke'
 import SaveFill from '@/svg/SaveFill'
+import SaveStroke from '@/svg/SaveStroke'
 import { useState } from 'react'
 
 export default function SaveBoardingButton(Props: { padding: string }) {

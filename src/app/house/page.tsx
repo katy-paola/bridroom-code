@@ -1,8 +1,8 @@
-import { ListListings, Skeleton } from '@/components/ListListings'
-import { Suspense } from 'react'
 import HeaderHouse from '@/components/HouseHeader'
+import { ListListings, Skeleton } from '@/components/ListListings'
 import { getAllListings } from '@/services/listing'
 import { getProfileCurrentUser } from '@/services/user'
+import { Suspense } from 'react'
 
 export default async function ListingsPage() {
   const listings = await getAllListings()

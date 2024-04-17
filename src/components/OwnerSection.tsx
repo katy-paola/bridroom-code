@@ -1,5 +1,5 @@
-import Link from 'next/link'
 import ImgOwner from '@/svg/ImgOwner'
+import Link from 'next/link'
 
 export default function OwnerSection() {
   return (

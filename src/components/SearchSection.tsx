@@ -1,5 +1,5 @@
-import InputSearch from './InputSearch'
 import ImgLanding from '@/svg/ImgLanding'
+import InputSearch from './InputSearch'
 
 export default function SearchSection() {
   return (

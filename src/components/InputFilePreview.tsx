@@ -1,6 +1,6 @@
 'use client'
 
-import { type ChangeEvent, useState } from 'react'
+import { useState, type ChangeEvent } from 'react'
 
 export default function InputFilePreview() {
   const [images, setImages] = useState<string[]>([])

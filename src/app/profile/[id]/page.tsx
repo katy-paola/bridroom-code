@@ -1,10 +1,10 @@
 import Button from '@/components/Button'
-import { getProfileCurrentUser, getUserById } from '@/services/user'
-import { getAllListings } from '@/services/listing'
-import ImgFavorites from '@/svg/ImgFavorites'
-import ImgEmptyFavorites from '@/svg/ImgEmptyFavorites'
-import Link from 'next/link'
 import CardProfile from '@/components/CardProfile'
+import { getAllListings } from '@/services/listing'
+import { getProfileCurrentUser, getUserById } from '@/services/user'
+import ImgEmptyFavorites from '@/svg/ImgEmptyFavorites'
+import ImgFavorites from '@/svg/ImgFavorites'
+import Link from 'next/link'
 
 export default async function Profile({ params }: { params: { id: string } }) {
   const { id } = params

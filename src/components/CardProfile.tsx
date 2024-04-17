@@ -1,7 +1,7 @@
 import FillStar from '@/svg/FillStar'
-import Button from './Button'
-import Link from 'next/link'
 import { formatCurrency } from '@/utils/formatCurrency'
+import Link from 'next/link'
+import Button from './Button'
 import SaveBoardingButton from './SaveBoardingButton'
 
 export default function CardProfile(Props: {
