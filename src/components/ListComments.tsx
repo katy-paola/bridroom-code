@@ -15,9 +15,14 @@ export default function ListComments(Props: {
         isOwner ? 'lg:max-h-[360px]' : 'lg:max-h-60'
       }`}
     >
-      <h6 className="text-paragraph-regular font-normal text-neutral-title">
+      {
+        comments?.length === 0 ? <h6 className="text-paragraph-regular font-normal text-neutral-title">
+        No hay comentarios
+      </h6> : <h6 className="text-paragraph-regular font-normal text-neutral-title">
         Comentarios
       </h6>
+      }
+      
       <ul className="custom-scrollbar relative flex flex-col gap-4 overflow-y-auto lg:pr-2">
         {comments?.map((comment, index) => {
           if (comment.message === null) return null
