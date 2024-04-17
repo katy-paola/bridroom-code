@@ -71,7 +71,7 @@ export default async function ListingIdPage({
           />
         </section>
         <section className="contents w-full gap-16 lg:flex">
-          {!isOwner && <TypeComment />}
+          {!isOwner && <TypeComment listingId={id} />}
 
           <Comments isOwner={isOwner} comments={comments} />
           {isOwner && (
