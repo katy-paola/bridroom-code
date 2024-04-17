@@ -48,7 +48,7 @@ export default function Comment(Props: {
               Responder
             </button>
             {showInput && (
-              <section className="flex flex-col items-end gap-2">
+              <form className="flex flex-col items-end gap-2">
                 <textarea
                   className="flex h-10 resize-none items-center self-stretch border border-solid border-neutral-paragraph bg-transparent p-2 text-paragraph-small outline-none sm:h-16"
                   placeholder="Escribe tu respuesta..."
@@ -64,7 +64,7 @@ export default function Comment(Props: {
                     setShowInput(false)
                   }}
                 />
-              </section>
+              </form>
             )}
           </section>
         )}
