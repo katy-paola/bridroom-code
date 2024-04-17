@@ -41,7 +41,6 @@ export default function TypeComment({ listingId }: { listingId: string }) {
           <textarea
             className="h-10 resize-none border border-solid border-neutral-paragraph bg-transparent p-2 text-paragraph-small outline-none sm:h-16"
             name="message"
-            required
           ></textarea>
         </section>
         <Button
