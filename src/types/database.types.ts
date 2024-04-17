@@ -16,6 +16,7 @@ export interface Database {
           listing_id: string
           message: string | null
           rating: number
+          responses: string[] | null
           user_id: string
         }
         Insert: {
@@ -24,6 +25,7 @@ export interface Database {
           listing_id?: string
           message?: string | null
           rating?: number
+          responses?: string[] | null
           user_id?: string
         }
         Update: {
@@ -32,6 +34,7 @@ export interface Database {
           listing_id?: string
           message?: string | null
           rating?: number
+          responses?: string[] | null
           user_id?: string
         }
         Relationships: [

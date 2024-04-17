@@ -1,9 +1,5 @@
 'use client'
 
-import { createClient } from '@/lib/supabase/server'
-import { getProfileCurrentUser } from '@/services/user'
-import { cookies } from 'next/headers'
-import { redirect } from 'next/navigation'
 import { useState } from 'react'
 import Button from './Button'
 import Rating from './Rating'
@@ -16,30 +12,8 @@ export default function Comment(Props: {
   message: string
   action?: (formData: FormData) => void
 }) {
-  const { avatarUrl, name, rating, message, id } = Props
+  const { avatarUrl, name, rating, message, id, action } = Props
   const [showInput, setShowInput] = useState(false)
-
-  const createResponse = async (formData: FormData) => {
-    'use server'
-    const message = formData.get('message') as string
-
-    const cookieStore = cookies()
-    const supabase = createClient(cookieStore)
-    const currentUser = await getProfileCurrentUser()
-
-    const { error } = await supabase.from('comments').insert({
-      user_id: currentUser?.id,
-      message,
-    })
-
-    if (error !== null) {
-      return redirect(
-        `/?message='Debes iniciar sesión para dejar un comentario'&error=true`,
-      )
-    }
-
-    return redirect('/?message=Welcome back!')
-  }
 
   return (
     <li>
@@ -75,10 +49,7 @@ export default function Comment(Props: {
               Responder
             </button>
             {showInput && (
-              <form
-                action={createResponse}
-                className="flex flex-col items-end gap-2"
-              >
+              <form action={action} className="flex flex-col items-end gap-2">
                 <textarea
                   className="flex h-10 resize-none items-center self-stretch border border-solid border-neutral-paragraph bg-transparent p-2 text-paragraph-small outline-none sm:h-16"
                   placeholder="Escribe tu respuesta..."

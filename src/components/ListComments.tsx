@@ -6,7 +6,9 @@ export default function ListComments(Props: {
   comments: TComment[] | null
 }) {
   const { isOwner, comments } = Props
-  const createResponse = async (formData: FormData) => {}
+  const createResponse = async (formData: FormData) => {
+    'use server'
+  }
   return (
     <section
       className={`flex flex-col gap-4 p-4 xs:px-8 sm:p-0 ${
