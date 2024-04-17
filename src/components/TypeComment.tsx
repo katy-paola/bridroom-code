@@ -22,7 +22,9 @@ export default function TypeComment({ listingId }: { listingId: string }) {
     })
 
     if (error !== null) {
-      return redirect(`/login?message=${error.message}&error=true`)
+      return redirect(
+        `/?message='Debes iniciar sesión para dejar un comentario'&error=true`,
+      )
     }
 
     return redirect('/?message=Welcome back!')
