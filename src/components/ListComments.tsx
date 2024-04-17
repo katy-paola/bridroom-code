@@ -11,7 +11,7 @@ export default function ListComments(Props: {
     <section
       className={`flex flex-col gap-4 p-4 xs:px-8 sm:p-0 ${
         !isOwner && 'lg:pb-8'
-      } ${isOwner ? 'flex-1' : 'md:max-w-sm'} ${
+      } ${isOwner ? 'flex-1' : 'lg:max-w-sm'} ${
         isOwner ? 'lg:max-h-[360px]' : 'lg:max-h-60'
       }`}
     >
