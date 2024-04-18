@@ -19,3 +19,17 @@ export const getComments = async (id: string): Promise<TComment[] | null> => {
 
   return data as TComment[]
 }
+
+export const getCommentById = async (id: string): Promise<TComment | null> => {
+  const cookieStore = cookies()
+
+  const supabase = createClient(cookieStore)
+
+  const { data } = await supabase
+    .from('comments')
+    .select('*, profiles(*)')
+    .eq('id', id)
+    .single()
+
+  return data as TComment
+}

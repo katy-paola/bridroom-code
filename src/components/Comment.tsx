@@ -10,7 +10,7 @@ export default function Comment(Props: {
   name: string
   rating: number
   message: string
-  action?: (formData: FormData) => void
+  action?: any
 }) {
   const { avatarUrl, name, rating, message, id, action } = Props
   const [showInput, setShowInput] = useState(false)
@@ -53,6 +53,7 @@ export default function Comment(Props: {
                 <textarea
                   className="flex h-10 resize-none items-center self-stretch border border-solid border-neutral-paragraph bg-transparent p-2 text-paragraph-small outline-none sm:h-16"
                   placeholder="Escribe tu respuesta..."
+                  name="responses"
                   required
                 ></textarea>
                 <Button
