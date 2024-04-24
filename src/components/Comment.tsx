@@ -25,7 +25,7 @@ export default function Comment(Props: {
             <h4 className="text-paragraph-small font-medium text-neutral-title">
               {name}
             </h4>
-            <Rating numberOfStars={rating} />
+            <Rating numberOfStars={rating} onlyRead />
           </section>
         </section>
 

@@ -7,8 +7,10 @@ import { useState } from 'react'
 
 export default function Rating({
   numberOfStars = 0,
+  onlyRead = false,
 }: {
   numberOfStars?: number
+  onlyRead?: boolean
 }) {
   const [activeStars, setActiveStars] = useState<number>(numberOfStars)
   const stars: JSX.Element[] = []
@@ -43,7 +45,9 @@ export default function Rating({
           <li
             key={index}
             onClick={() => {
-              setActiveStars(index + 1)
+              if (!onlyRead) {
+                setActiveStars(index + 1)
+              }
             }}
           >
             {stars[index]}
