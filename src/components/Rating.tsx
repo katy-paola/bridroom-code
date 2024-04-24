@@ -6,7 +6,7 @@ import HalfStar from '@/svg/HalfStar'
 import { useState } from 'react'
 
 export default function Rating({
-  numberOfStars = 5,
+  numberOfStars = 0,
 }: {
   numberOfStars?: number
 }) {
@@ -27,6 +27,11 @@ export default function Rating({
   if (stars.length < 5) {
     const emptyStars = 5 - stars.length
     for (let i = 0; i < emptyStars; i++) {
+      stars.push(<EmptyStar />)
+    }
+  }
+  if (stars.length === 0) {
+    for (let i = 0; i < 5; i++) {
       stars.push(<EmptyStar />)
     }
   }
