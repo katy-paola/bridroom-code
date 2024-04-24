@@ -1,8 +1,8 @@
 import { STORAGE_URL } from '@/lib/config'
-import FillStar from '@/svg/FillStar'
 import { formatCurrency } from '@/utils/formatCurrency'
 import Link from 'next/link'
 import Button from './Button'
+import Rating from './Rating'
 
 export default function Card(Props: {
   photo: string | undefined
@@ -36,10 +36,7 @@ export default function Card(Props: {
             </p>
           ) : (
             <section className="flex items-center">
-              <p className="text-paragraph-regular leading-4 text-neutral-title">
-                {rating}
-              </p>
-              <FillStar />
+              <Rating numberOfStars={rating} />
             </section>
           )}
         </section>
