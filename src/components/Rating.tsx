@@ -38,7 +38,10 @@ export default function Rating({
 
   return (
     <>
-      <ul className="flex text-functional-warning" title={`${activeStars}`}>
+      <ul
+        className="flex w-max text-functional-warning"
+        title={`${activeStars}`}
+      >
         {Array.from({ length: stars.length }, (_, index) => (
           <li
             key={index}

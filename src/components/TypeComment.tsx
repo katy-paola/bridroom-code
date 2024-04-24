@@ -38,7 +38,9 @@ export default function TypeComment({ listingId }: { listingId: string }) {
           <h5 className="text-paragraph-regular font-medium text-neutral-title">
             Dejar un comentario
           </h5>
-          <Rating />
+          <section className="w-max cursor-pointer">
+            <Rating />
+          </section>
           <textarea
             className="h-10 resize-none border border-solid border-neutral-paragraph bg-transparent p-2 text-paragraph-small outline-none sm:h-16"
             name="message"
