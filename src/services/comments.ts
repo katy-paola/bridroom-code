@@ -16,6 +16,7 @@ export const getComments = async (id: string): Promise<TComment[] | null> => {
     .from('comments')
     .select('*, profiles(*)')
     .eq('listing_id', id)
+    .order('created_at', { ascending: false })
 
   return data as TComment[]
 }

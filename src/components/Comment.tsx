@@ -1,7 +1,3 @@
-'use client'
-
-import { useState } from 'react'
-import Button from './Button'
 import Rating from './Rating'
 
 export default function Comment(Props: {
@@ -12,8 +8,7 @@ export default function Comment(Props: {
   message: string
   action?: any
 }) {
-  const { avatarUrl, name, rating, message, id, action } = Props
-  const [showInput, setShowInput] = useState(false)
+  const { avatarUrl, name, rating, message } = Props
 
   return (
     <li>
@@ -39,35 +34,6 @@ export default function Comment(Props: {
             <p className="text-paragraph-small font-normal text-neutral-paragraph lg:max-w-prose">
               {message}
             </p>
-            <button
-              id={`comment-${id}`}
-              onClick={() => {
-                setShowInput((prev) => !prev)
-              }}
-              className="self-end text-paragraph-xsmall font-normal text-neutral-paragraph underline"
-            >
-              Responder
-            </button>
-            {showInput && (
-              <form action={action} className="flex flex-col items-end gap-2">
-                <textarea
-                  className="flex h-10 resize-none items-center self-stretch border border-solid border-neutral-paragraph bg-transparent p-2 text-paragraph-small outline-none sm:h-16"
-                  placeholder="Escribe tu respuesta..."
-                  name="responses"
-                  required
-                ></textarea>
-                <Button
-                  variant="cuaternary"
-                  size="small"
-                  hasText="yes"
-                  text="Publicar"
-                  width="w-max"
-                  onClick={() => {
-                    setShowInput(false)
-                  }}
-                />
-              </form>
-            )}
           </section>
         )}
       </article>

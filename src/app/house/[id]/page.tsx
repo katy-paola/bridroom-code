@@ -71,9 +71,10 @@ export default async function ListingIdPage({
           />
         </section>
         <section className="contents w-full gap-16 lg:flex">
-          {!isOwner && <TypeComment listingId={id} />}
+          {!isOwner && currentUser !== null && <TypeComment listingId={id} />}
 
           <ListComments isOwner={isOwner} comments={comments} />
+
           {isOwner && (
             <figure className="flex justify-center">
               <ImgComments />

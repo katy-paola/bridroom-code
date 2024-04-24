@@ -9,6 +9,7 @@ export default function TypeComment({ listingId }: { listingId: string }) {
   const insertComment = async (formData: FormData) => {
     'use server'
     const message = formData.get('message') as string
+    const rating = formData.get('rating') as string
 
     const cookieStore = cookies()
     const supabase = createClient(cookieStore)
@@ -18,16 +19,16 @@ export default function TypeComment({ listingId }: { listingId: string }) {
       user_id: currentUser?.id,
       listing_id: listingId,
       message,
-      rating: 5,
+      rating: parseInt(rating),
     })
 
     if (error !== null) {
       return redirect(
-        `/?message='Debes iniciar sesión para dejar un comentario'&error=true`,
+        `/house/${listingId}?message=Hubo un error al publicar tu comentario`,
       )
     }
 
-    return redirect('/?message=Welcome back!')
+    return redirect(`/house/${listingId}?message=Comentario publicado`)
   }
 
   return (

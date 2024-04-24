@@ -1,41 +1,17 @@
 import { type TComment } from '@/services/comments'
 import Comment from './Comment'
 
-export default function ListComments(Props: {
+export default async function ListComments(Props: {
   isOwner: boolean
   comments: TComment[] | null
 }) {
   const { isOwner, comments } = Props
-  /* const createResponse = async (formData: FormData, idComment: string) => {
-    'use server'
-    const getComment = await getCommentById(idComment)
-    const responses = []
-    const getResponses = formData.get('responses') as string
-    responses.push(getResponses)
-    const cookieStore = cookies()
-    const supabase = createClient(cookieStore)
 
-    if (getComment !== null) {
-      console.log('getComment', getComment)
-      const { error } = await supabase
-        .from('comments')
-        .insert({ responses })
-        .eq('id', getComment.id)
-
-      if (error !== null) {
-        return redirect(
-          `/?message='Debes iniciar sesión para responder un comentario'&error=true`,
-        )
-      }
-    }
-
-    return redirect('/?message=Welcome back!')
-  } */
   return (
     <section
       className={`flex flex-col gap-4 p-4 xs:px-8 sm:p-0 ${
         !isOwner && 'lg:pb-8'
-      } ${isOwner ? 'flex-1' : 'lg:max-w-sm'} ${
+      } ${isOwner ? 'flex-1' : 'lg:max-w-full'} ${
         isOwner ? 'lg:max-h-[360px]' : 'lg:max-h-60'
       }`}
     >
