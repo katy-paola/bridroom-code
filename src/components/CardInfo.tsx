@@ -1,10 +1,10 @@
 'use client'
 
-import FillStar from '@/svg/FillStar'
 import { type User } from '@/types/types'
 import { useState } from 'react'
 import { GetLocationMap } from './GetLocationMap'
 import OwnerInfo from './OwnerInfo'
+import Rating from './Rating'
 
 export default function CardInfo({
   title,
@@ -46,12 +46,7 @@ export default function CardInfo({
                   No hay valoraciones
                 </p>
               ) : (
-                <section className="flex items-center">
-                  <p className="text-paragraph-small font-medium leading-4 text-neutral-title">
-                    {rating}
-                  </p>
-                  <FillStar />
-                </section>
+                <Rating numberOfStars={rating} />
               )}
               <p className="text-paragraph-small font-semibold text-neutral-title md:text-paragraph-regular">
                 {priceCOP}/mes
