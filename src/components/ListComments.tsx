@@ -1,7 +1,4 @@
-import { createClient } from '@/lib/supabase/server'
-import { getCommentById, type TComment } from '@/services/comments'
-import { cookies } from 'next/headers'
-import { redirect } from 'next/navigation'
+import { type TComment } from '@/services/comments'
 import Comment from './Comment'
 
 export default function ListComments(Props: {
@@ -9,7 +6,7 @@ export default function ListComments(Props: {
   comments: TComment[] | null
 }) {
   const { isOwner, comments } = Props
-  const createResponse = async (formData: FormData, idComment: string) => {
+  /* const createResponse = async (formData: FormData, idComment: string) => {
     'use server'
     const getComment = await getCommentById(idComment)
     const responses = []
@@ -33,7 +30,7 @@ export default function ListComments(Props: {
     }
 
     return redirect('/?message=Welcome back!')
-  }
+  } */
   return (
     <section
       className={`flex flex-col gap-4 p-4 xs:px-8 sm:p-0 ${
@@ -64,7 +61,6 @@ export default function ListComments(Props: {
                 rating={comment.rating}
                 message={comment.message}
                 id={comment.id}
-                action={createResponse(comment.id)}
               />
             </div>
           )
