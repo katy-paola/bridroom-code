@@ -1,8 +1,8 @@
 import { STORAGE_URL } from '@/lib/config'
-import FillStar from '@/svg/FillStar'
 import { formatCurrency } from '@/utils/formatCurrency'
 import Link from 'next/link'
 import Button from './Button'
+import Rating from './Rating'
 import SaveBoardingButton from './SaveBoardingButton'
 
 export default function CardProfile(Props: {
@@ -37,7 +37,11 @@ export default function CardProfile(Props: {
       <article className="hidden gap-3 rounded-2xl bg-neutral-main-bg p-3 shadow-md sm:flex lg:hidden">
         <section className="flex flex-col gap-2">
           <figure className="h-24 w-36">
-            <img className="h-full w-full object-cover" src={photo} alt="" />
+            <img
+              className="h-full w-full object-cover"
+              src={`${STORAGE_URL}photos-listings/${photo}`}
+              alt=""
+            />
           </figure>
           <Link href={`/house/${id}`}>
             <Button
@@ -70,10 +74,7 @@ export default function CardProfile(Props: {
               </p>
             ) : (
               <section className="flex items-center">
-                <p className="text-paragraph-small leading-4 text-neutral-title">
-                  {rating}
-                </p>
-                <FillStar />
+                <Rating numberOfStars={rating} />
               </section>
             )}
           </section>
