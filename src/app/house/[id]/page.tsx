@@ -17,6 +17,7 @@ export default async function ListingIdPage({
   params: { id: string }
 }) {
   const { id } = params
+
   const session = await getSession()
   const listing = await getListingById(id)
   const currentUser = await getProfileCurrentUser()
@@ -64,7 +65,7 @@ export default async function ListingIdPage({
         <section className="sm:hidden">
           <OwnerInfo
             photo={listing.owner?.avatar_url}
-            name={listing.owner?.name}
+            name={listing.owner?.name ?? listing.owner?.email}
             contact={listing.owner?.contact}
             idOwner={listing.owner?.id}
             currentUser={currentUser}

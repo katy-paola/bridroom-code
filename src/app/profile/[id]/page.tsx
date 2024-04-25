@@ -28,7 +28,7 @@ export default async function Profile({ params }: { params: { id: string } }) {
               </figure>
               <section className="flex flex-col">
                 <h3 className="text-paragraph-medium font-medium text-neutral-title lg:text-paragraph-xlarge">
-                  {userProfile?.name}
+                  {userProfile?.name ?? userProfile?.email}
                 </h3>
                 <small className="text-paragraph-small font-normal text-neutral-title lg:text-paragraph-regular">
                   {userProfile?.role === 'student'

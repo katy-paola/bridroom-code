@@ -44,7 +44,7 @@ export function ListListings({
             <Card
               photo={listing.photos?.[0]}
               title={listing.title}
-              name={listing.owner?.name}
+              name={listing.owner?.name ?? listing.owner?.email}
               rating={listing.rating}
               price={listing.price}
               id={listing.id}

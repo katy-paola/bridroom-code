@@ -118,17 +118,6 @@ export default function AddBoarding() {
             <InputFilePreview />
           </fieldset>
 
-          <label className="flex h-auto flex-col gap-2 text-paragraph-regular text-neutral-paragraph">
-            Barrio:
-            <InputForm
-              type="text"
-              name="neigh"
-              placeholder="Ej.: Urbanización Sevilla"
-              hasIcon={false}
-              isRadio={false}
-            />
-          </label>
-
           <section className="contents h-auto justify-end grid-in-button lg:flex">
             <Button
               variant="primary"

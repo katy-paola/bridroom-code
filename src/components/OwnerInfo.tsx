@@ -31,7 +31,7 @@ export default function OwnerInfo(Props: {
           <section className="flex flex-col">
             <Link href={`/profile/${idOwner}`}>
               <h4 className="text-paragraph-regular font-medium text-neutral-paragraph hover:underline sm:w-max">
-                {name}
+                {name ?? 'Nombre del propietario'}
               </h4>
             </Link>
             <small className="text-paragraph-xsmall font-normal text-neutral-paragraph">
