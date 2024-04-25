@@ -95,7 +95,7 @@ export default async function Profile({ params }: { params: { id: string } }) {
 
             <ul className="flex w-full snap-x snap-mandatory gap-2 overflow-x-scroll py-2 sm:snap-none sm:flex-col sm:overflow-visible lg:flex-row lg:flex-wrap">
               {listings?.map((listing) => (
-                <li className="w-full lg:w-auto" key={listing.id}>
+                <li className="w-auto sm:w-full lg:w-auto" key={listing.id}>
                   <CardProfile
                     photo={listing.photos?.[0]}
                     id={listing.id}

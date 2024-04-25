@@ -9,11 +9,9 @@ export default async function ListComments(Props: {
 
   return (
     <section
-      className={`flex flex-col gap-4 p-4 xs:px-8 sm:p-0 ${
-        !isOwner && 'lg:pb-8'
-      } ${isOwner ? 'flex-1' : 'lg:max-w-full'} ${
-        isOwner ? 'lg:max-h-[360px]' : 'lg:max-h-60'
-      }`}
+      className={`flex flex-col gap-4 p-4 xs:px-8 sm:p-0 sm:pb-4 ${
+        isOwner ? 'flex-1' : 'lg:max-w-full'
+      } ${isOwner ? 'lg:max-h-[360px]' : 'lg:max-h-[232px]'} lg:pb-0`}
     >
       {comments?.length === 0 ? (
         <h6 className="text-paragraph-regular font-normal text-neutral-title">
