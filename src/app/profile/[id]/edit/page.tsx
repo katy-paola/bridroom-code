@@ -14,14 +14,24 @@ export default async function ProfileEdit() {
         <form className="flex flex-col gap-8">
           <fieldset className="flex flex-col gap-8">
             <label className="flex flex-col gap-2 text-paragraph-regular text-neutral-paragraph">
-              Cambiar foto de perfil
+              Foto de perfil:
               <figure>
                 <img src="/upload-photo.svg" alt="" />
               </figure>
               <input className="sr-only" type="file" accept="image/*" />
             </label>
             <label className="flex flex-col gap-2 text-paragraph-regular text-neutral-paragraph">
-              Editar descripción:
+              Nombre:
+              <InputForm
+                type="text"
+                placeholder="Agrega tu nombre."
+                hasIcon={false}
+                isRadio={false}
+                value={currentUser?.about}
+              />
+            </label>
+            <label className="flex flex-col gap-2 text-paragraph-regular text-neutral-paragraph">
+              Descripción:
               <InputForm
                 type="text"
                 placeholder="Agrega información sobre ti, como tus gustos, hobbies, etc."
@@ -36,8 +46,8 @@ export default async function ProfileEdit() {
                 type="text"
                 placeholder={
                   currentUser?.role === 'student'
-                    ? 'Ej.: Universidad de Cartagena'
-                    : 'Ej.: San Fernando'
+                    ? 'Ej.: Universidad de Cartagena.'
+                    : 'Ej.: San Fernando.'
                 }
                 hasIcon={false}
                 isRadio={false}
