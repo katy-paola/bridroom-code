@@ -31,7 +31,7 @@ export default function CardProfile(Props: {
               Ver más...
             </button>
           </Link>
-          <SaveBoardingButton padding="p-0" isSaved={true} />
+          <SaveBoardingButton padding="p-0" isSaved={true} fromProfile={true} />
         </section>
       </article>
       <article className="hidden gap-3 rounded-2xl bg-neutral-main-bg p-3 shadow-md sm:flex lg:hidden">
@@ -55,7 +55,11 @@ export default function CardProfile(Props: {
               <h3 className="text-paragraph-small font-semibold text-neutral-title">
                 {title}
               </h3>
-              <SaveBoardingButton padding="p-0" />
+              <SaveBoardingButton
+                padding="p-0"
+                isSaved={true}
+                fromProfile={true}
+              />
             </section>
             <p className="text-paragraph-xsmall font-normal text-neutral-title">
               {ownerName}

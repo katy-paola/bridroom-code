@@ -7,8 +7,9 @@ import { useState } from 'react'
 export default function SaveBoardingButton(Props: {
   padding: string
   isSaved?: boolean
+  fromProfile?: boolean
 }) {
-  const { padding, isSaved } = Props
+  const { padding, isSaved, fromProfile } = Props
   const [Saved, setSaved] = useState(isSaved ?? false)
   return (
     <button
@@ -17,7 +18,9 @@ export default function SaveBoardingButton(Props: {
       }}
     >
       <figure
-        className={`grid w-8 items-center rounded-lg sm:w-10 ${padding} text-neutral-main-bg outline-none ${
+        className={`grid ${
+          fromProfile ?? false ? 'w-3 sm:w-5' : 'w-8 sm:w-10'
+        } items-center rounded-lg ${padding} text-neutral-main-bg outline-none ${
           Saved
             ? padding === 'p-2'
               ? 'bg-primary-default hover:bg-neutral-paragraph'
