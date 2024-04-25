@@ -16,7 +16,7 @@ export default function DeleteBoardingButton() {
           setIsClicked(!isClicked)
         }}
       >
-        <figure className="grid h-auto w-3 content-center sm:w-5">
+        <figure className="grid h-auto w-4 content-center sm:w-6">
           <DeleteIcon />
         </figure>
       </button>

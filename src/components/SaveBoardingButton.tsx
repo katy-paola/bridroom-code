@@ -17,7 +17,7 @@ export default function SaveBoardingButton(Props: {
       }}
     >
       <figure
-        className={`grid w-3 items-center rounded-lg sm:w-5 ${padding} text-neutral-main-bg outline-none ${
+        className={`grid w-8 items-center rounded-lg sm:w-10 ${padding} text-neutral-main-bg outline-none ${
           Saved
             ? padding === 'p-2'
               ? 'bg-primary-default hover:bg-neutral-paragraph'
