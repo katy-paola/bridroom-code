@@ -1,3 +1,4 @@
+import { STORAGE_URL } from '@/lib/config'
 import FillStar from '@/svg/FillStar'
 import { formatCurrency } from '@/utils/formatCurrency'
 import Link from 'next/link'
@@ -20,7 +21,7 @@ export default function CardProfile(Props: {
         <figure className="flex h-20 w-32 lg:h-40 lg:w-60">
           <img
             className="h-full w-full rounded-t-lg object-cover"
-            src={photo}
+            src={`${STORAGE_URL}photos-listings/${photo}`}
             alt=""
           />
         </figure>
@@ -30,7 +31,7 @@ export default function CardProfile(Props: {
               Ver más...
             </button>
           </Link>
-          <SaveBoardingButton padding="p-0" />
+          <SaveBoardingButton padding="p-0" isSaved={true} />
         </section>
       </article>
       <article className="hidden gap-3 rounded-2xl bg-neutral-main-bg p-3 shadow-md sm:flex lg:hidden">

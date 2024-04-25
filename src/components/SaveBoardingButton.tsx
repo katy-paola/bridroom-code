@@ -4,18 +4,21 @@ import SaveFill from '@/svg/SaveFill'
 import SaveStroke from '@/svg/SaveStroke'
 import { useState } from 'react'
 
-export default function SaveBoardingButton(Props: { padding: string }) {
-  const { padding } = Props
-  const [isSaved, setIsSaved] = useState(false)
+export default function SaveBoardingButton(Props: {
+  padding: string
+  isSaved?: boolean
+}) {
+  const { padding, isSaved } = Props
+  const [Saved, setSaved] = useState(isSaved ?? false)
   return (
     <button
       onClick={() => {
-        setIsSaved(!isSaved)
+        setSaved(!Saved)
       }}
     >
       <figure
         className={`grid w-3 items-center rounded-lg sm:w-5 ${padding} text-neutral-main-bg outline-none ${
-          isSaved
+          Saved
             ? padding === 'p-2'
               ? 'bg-primary-default hover:bg-neutral-paragraph'
               : 'bg-transparent text-primary-default hover:text-neutral-title'
@@ -24,7 +27,7 @@ export default function SaveBoardingButton(Props: { padding: string }) {
             : 'bg-transparent text-neutral-title hover:text-primary-default'
         }`}
       >
-        {isSaved ? <SaveFill /> : <SaveStroke />}
+        {Saved ? <SaveFill /> : <SaveStroke />}
       </figure>
     </button>
   )
