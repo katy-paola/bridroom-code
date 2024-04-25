@@ -54,7 +54,7 @@ export function MapLeaflet({ listings }: Props) {
   const router = useRouter()
 
   return (
-    <div className="relative z-[1] mt-14 h-main-responsive w-full md:mt-[76px] md:h-main">
+    <div className="relative z-[1] mt-14 h-main-responsive w-full md:mt-[68px] md:h-main">
       <MapContainer
         style={{ height: '100%', width: '100%' }}
         center={[10.381888, -75.490358]}
