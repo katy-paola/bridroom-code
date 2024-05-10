@@ -55,7 +55,7 @@ function MyZoomControl() {
           e.preventDefault()
           zoomIn()
         }}
-        className="flex h-8 w-8 items-center justify-center rounded-lg bg-neutral-main-bg p-2 text-heading-medium leading-none text-neutral-paragraph shadow-md hover:bg-neutral-active"
+        className="flex size-8 items-center justify-center rounded-lg bg-neutral-main-bg p-2 text-heading-medium leading-none text-neutral-paragraph shadow-md hover:bg-neutral-active"
       >
         <ZoomIn />
       </button>
@@ -65,7 +65,7 @@ function MyZoomControl() {
           e.preventDefault()
           zoomOut()
         }}
-        className="flex h-8 w-8 items-center justify-center rounded-lg bg-neutral-main-bg p-2 text-heading-medium leading-none text-neutral-paragraph shadow-md hover:bg-neutral-active"
+        className="flex size-8 items-center justify-center rounded-lg bg-neutral-main-bg p-2 text-heading-medium leading-none text-neutral-paragraph shadow-md hover:bg-neutral-active"
       >
         <ZoomOut />
       </button>

@@ -1,7 +1,7 @@
 export default function Back() {
   return (
     <svg
-      className="h-4 w-4"
+      className="size-4"
       strokeWidth="2.5"
       viewBox="0 0 24 24"
       fill="none"

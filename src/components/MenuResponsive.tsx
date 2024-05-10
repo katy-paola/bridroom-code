@@ -40,7 +40,7 @@ export default function MenuResponsive({
         }}
         className="rounded p-1 hover:bg-neutral-hover md:hidden"
       >
-        <figure className="flex h-4 w-4 items-center">
+        <figure className="flex size-4 items-center">
           {isMenuOpen ? <Close /> : <Menu />}
         </figure>
       </button>

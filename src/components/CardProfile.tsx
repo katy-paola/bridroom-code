@@ -20,7 +20,7 @@ export default function CardProfile(Props: {
       <article className="rounded-b-lg bg-neutral-main-bg shadow-md sm:hidden lg:block">
         <figure className="flex h-20 w-32 lg:h-40 lg:w-60">
           <img
-            className="h-full w-full rounded-t-lg object-cover"
+            className="size-full rounded-t-lg object-cover"
             src={`${STORAGE_URL}photos-listings/${photo}`}
             alt=""
           />
@@ -38,7 +38,7 @@ export default function CardProfile(Props: {
         <section className="flex flex-col gap-2">
           <figure className="h-24 w-36">
             <img
-              className="h-full w-full object-cover"
+              className="size-full object-cover"
               src={`${STORAGE_URL}photos-listings/${photo}`}
               alt=""
             />

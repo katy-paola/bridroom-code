@@ -19,9 +19,9 @@ export default async function Profile({ params }: { params: { id: string } }) {
         <section className="flex flex-col gap-8 ">
           <section className="flex flex-col gap-4">
             <header className="flex items-center gap-4">
-              <figure className="h-14 w-14 lg:hidden">
+              <figure className="size-14 lg:hidden">
                 <img
-                  className="h-full w-full rounded-full object-cover"
+                  className="size-full rounded-full object-cover"
                   src={userProfile?.avatar_url ?? '/no-image.jpg'}
                   alt=""
                 />
@@ -62,9 +62,9 @@ export default async function Profile({ params }: { params: { id: string } }) {
             </Link>
           )}
         </section>
-        <figure className="hidden h-96 w-96 lg:block">
+        <figure className="hidden size-96 lg:block">
           <img
-            className="h-full w-full object-cover"
+            className="size-full object-cover"
             src={userProfile?.avatar_url ?? '/no-image.jpg'}
             alt=""
           />

@@ -26,8 +26,8 @@ export default function SaveBoardingButton(Props: {
               ? 'bg-primary-default hover:bg-neutral-paragraph'
               : 'bg-transparent text-primary-default hover:text-neutral-title'
             : padding === 'p-2'
-            ? 'bg-neutral-paragraph hover:bg-primary-default sm:bg-transparent sm:text-neutral-title sm:hover:text-neutral-main-bg'
-            : 'bg-transparent text-neutral-title hover:text-primary-default'
+              ? 'bg-neutral-paragraph hover:bg-primary-default sm:bg-transparent sm:text-neutral-title sm:hover:text-neutral-main-bg'
+              : 'bg-transparent text-neutral-title hover:text-primary-default'
         }`}
       >
         {Saved ? <SaveFill /> : <SaveStroke />}

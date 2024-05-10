@@ -26,14 +26,14 @@ function MyZoomControl() {
       <button
         title="Acercar"
         onClick={zoomIn}
-        className="flex h-8 w-8 items-center justify-center rounded-lg bg-neutral-main-bg p-2 text-heading-medium leading-none text-neutral-paragraph shadow-md hover:bg-neutral-active"
+        className="flex size-8 items-center justify-center rounded-lg bg-neutral-main-bg p-2 text-heading-medium leading-none text-neutral-paragraph shadow-md hover:bg-neutral-active"
       >
         <ZoomIn />
       </button>
       <button
         title="Alejar"
         onClick={zoomOut}
-        className="flex h-8 w-8 items-center justify-center rounded-lg bg-neutral-main-bg p-2 text-heading-medium leading-none text-neutral-paragraph shadow-md hover:bg-neutral-active"
+        className="flex size-8 items-center justify-center rounded-lg bg-neutral-main-bg p-2 text-heading-medium leading-none text-neutral-paragraph shadow-md hover:bg-neutral-active"
       >
         <ZoomOut />
       </button>
@@ -73,7 +73,7 @@ export function MapLeaflet({ listings }: Props) {
           onClick={() => {
             router.back()
           }}
-          className="absolute left-4 top-4 z-[400] flex h-8 w-8 items-center justify-center rounded-lg bg-neutral-paragraph p-2 text-neutral-main-bg hover:bg-secondary-default"
+          className="absolute left-4 top-4 z-[400] flex size-8 items-center justify-center rounded-lg bg-neutral-paragraph p-2 text-neutral-main-bg hover:bg-secondary-default"
         >
           <Back />
         </button>

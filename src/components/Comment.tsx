@@ -14,9 +14,9 @@ export default function Comment(Props: {
     <li>
       <article className="flex flex-col gap-2 bg-neutral-active p-4">
         <section className="flex gap-2">
-          <figure className="flex h-10 w-10 overflow-hidden rounded-3xl">
+          <figure className="flex size-10 overflow-hidden rounded-3xl">
             <img
-              className="h-full w-full object-cover"
+              className="size-full object-cover"
               src={avatarUrl ?? '/no-image.jpg'}
               alt={`Foto de perfil de ${name}`}
             />

@@ -76,9 +76,9 @@ export default async function EditBoardingIdPage({
               Agregar fotos:
               <ul className="flex flex-wrap gap-2">
                 <li className="contents">
-                  <figure className="h-20 w-20">
+                  <figure className="size-20">
                     <img
-                      className="h-full w-full object-cover"
+                      className="size-full object-cover"
                       src="/upload-photo.svg"
                       alt=""
                     />
@@ -86,11 +86,11 @@ export default async function EditBoardingIdPage({
                 </li>
                 {listing.photos?.map((photo, index) => (
                   <li className="contents" key={index}>
-                    <figure className="h-20 w-20">
+                    <figure className="size-20">
                       <img
                         src={photo}
                         alt=""
-                        className="h-full w-full object-cover"
+                        className="size-full object-cover"
                       />
                     </figure>
                   </li>

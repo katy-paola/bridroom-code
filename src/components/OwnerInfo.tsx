@@ -21,9 +21,9 @@ export default function OwnerInfo(Props: {
     <section className="p-4 xs:px-8 sm:p-0">
       <article className="flex flex-col gap-10 rounded-lg bg-neutral-secondary-bg p-2 shadow-md xs:p-4">
         <section className="flex items-center gap-2">
-          <figure className="flex h-12 w-12 overflow-hidden rounded-3xl">
+          <figure className="flex size-12 overflow-hidden rounded-3xl">
             <img
-              className="h-full w-full object-cover"
+              className="size-full object-cover"
               src={photo ?? '/no-image.jpg'}
               alt="Foto del propietario"
             />

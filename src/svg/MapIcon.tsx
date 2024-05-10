@@ -1,7 +1,7 @@
 export default function MapIcon() {
   return (
     <svg
-      className="h-full w-full"
+      className="size-full"
       strokeWidth="2.5"
       viewBox="0 0 24 24"
       fill="none"

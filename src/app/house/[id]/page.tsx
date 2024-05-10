@@ -87,7 +87,7 @@ export default async function ListingIdPage({
         <Link href="/view-map">
           <button
             title="Ver mapa"
-            className="fixed bottom-4 right-4 z-10 grid h-9 w-9 items-center rounded-lg bg-transparent p-2 text-tertiary-default outline-none hover:bg-tertiary-default hover:text-neutral-main-bg"
+            className="fixed bottom-4 right-4 z-10 grid size-9 items-center rounded-lg bg-transparent p-2 text-tertiary-default outline-none hover:bg-tertiary-default hover:text-neutral-main-bg"
           >
             <MapIcon />
           </button>

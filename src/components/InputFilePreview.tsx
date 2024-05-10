@@ -32,9 +32,9 @@ export default function InputFilePreview() {
   return (
     <label className="flex h-auto flex-col gap-2 text-paragraph-regular text-neutral-paragraph grid-in-photos">
       Agregar fotos:
-      <figure className="h-20 w-20">
+      <figure className="size-20">
         <img
-          className="h-full w-full object-cover"
+          className="size-full object-cover"
           src="/upload-photo.svg"
           alt=""
         />

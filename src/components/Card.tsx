@@ -19,7 +19,7 @@ export default function Card(Props: {
     <article className="flex flex-col overflow-hidden rounded-2xl bg-neutral-main-bg shadow-md">
       <figure className="h-48 w-full">
         <img
-          className="h-full w-full object-cover"
+          className="size-full object-cover"
           src={`${STORAGE_URL}photos-listings/${photo}`}
           alt="Imagen de la pensión"
         />

@@ -11,7 +11,7 @@ export default function Carousel(Props: { photos: string[] | null }) {
           className="w-4/5 shrink-0 grow-0 basis-4/5 snap-center sm:basis-3/4"
         >
           <img
-            className="h-full w-full object-cover"
+            className="size-full object-cover"
             alt="Imagen de la pensión"
             src={`${STORAGE_URL}photos-listings/${photo}`}
           />
