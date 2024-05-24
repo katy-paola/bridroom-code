@@ -3,6 +3,7 @@ import DeleteBoardingButton from './DeleteBoardingButton'
 import SaveBoardingButton from './SaveBoardingButton'
 
 import Link from 'next/link'
+import { Suspense } from 'react'
 
 export default function BoardingHeader(Props: {
   role: string | undefined
@@ -10,6 +11,7 @@ export default function BoardingHeader(Props: {
   listingTitle: string | null
 }) {
   const { role, id, listingTitle } = Props
+
   return (
     <header className="absolute flex w-full items-center justify-end sm:static sm:justify-between">
       <h3 className="hidden text-paragraph-regular font-semibold text-neutral-title sm:block md:text-paragraph-medium lg:text-paragraph-large">
@@ -18,7 +20,9 @@ export default function BoardingHeader(Props: {
       <ul className="flex items-stretch gap-2 p-2 text-neutral-main-bg sm:p-0">
         {role === 'student' ? (
           <li>
-            <SaveBoardingButton padding="p-2" />
+            <Suspense fallback={<>Cargando...........</>}>
+              <SaveBoardingButton padding="p-2" id={id} />
+            </Suspense>
           </li>
         ) : (
           <>
