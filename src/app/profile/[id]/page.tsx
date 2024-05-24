@@ -1,6 +1,6 @@
 import Button from '@/components/Button'
 import CardProfile from '@/components/CardProfile'
-import { getAllListings } from '@/services/listing'
+import { getFavoriteListings } from '@/services/listing'
 import { getProfileCurrentUser, getUserById } from '@/services/user'
 import ImgEmptyFavorites from '@/svg/ImgEmptyFavorites'
 import ImgFavorites from '@/svg/ImgFavorites'
@@ -9,7 +9,7 @@ import Link from 'next/link'
 export default async function Profile({ params }: { params: { id: string } }) {
   const { id } = params
   const userProfile = await getUserById(id)
-  const listings = await getAllListings()
+  const listings = await getFavoriteListings()
   const currentUser = await getProfileCurrentUser()
   const favoritePensions = true
 
@@ -94,6 +94,12 @@ export default async function Profile({ params }: { params: { id: string } }) {
             </figure>
 
             <ul className="flex w-full snap-x snap-mandatory gap-2 overflow-x-scroll py-2 sm:snap-none sm:flex-col sm:overflow-visible lg:flex-row lg:flex-wrap">
+              {listings?.length === 0 && (
+                <p className="text-paragraph-small font-normal text-neutral-paragraph md:text-paragraph-regular">
+                  No hay pensiones guardadas.
+                </p>
+              )}
+
               {listings?.map((listing) => (
                 <li className="w-auto sm:w-full lg:w-auto" key={listing.id}>
                   <CardProfile

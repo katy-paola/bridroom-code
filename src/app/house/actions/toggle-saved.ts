@@ -36,4 +36,5 @@ export default async function submit(formData: FormData) {
   }
 
   revalidatePath('/house' + id)
+  revalidatePath('/profile/' + user.id)
 }
