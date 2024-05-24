@@ -1,6 +1,6 @@
 import { getProfileCurrentUser, getSession } from '@/services/user'
 import Logo from '@/svg/Logo'
-import { User } from '@/types/types'
+import { type User } from '@/types/types'
 import Link from 'next/link'
 import MenuResponsive from './MenuResponsive'
 
