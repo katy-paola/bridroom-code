@@ -5,6 +5,7 @@ import { GetLocationMap } from './GetLocationMap'
 
 export default function LocationMap() {
   const [showMap, setShowMap] = useState(false)
+
   return (
     <section className="contents h-[1fr] flex-col gap-2 grid-in-map lg:flex">
       <button

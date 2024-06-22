@@ -1,4 +1,6 @@
+import { uploadFileToSupabase } from '@/app/utils/upload-file-to-supabase'
 import Button from '@/components/Button'
+import InputFilePreview from '@/components/InputFilePreview'
 import InputForm from '@/components/InputForm'
 import { createClient } from '@/lib/supabase/server'
 import { getProfileCurrentUser } from '@/services/user'
@@ -11,7 +13,10 @@ export default async function ProfileEdit() {
 
   const updateProfile = async (formData: FormData) => {
     'use server'
-    console.log('formData', formData)
+
+    const photoToApi = formData.get('photos')
+    const photoPathUrl = await uploadFileToSupabase(photoToApi as File)
+
     const name = formData.get('name') as string
     const about = formData.get('about') as string
     const place = formData.get('place') as string
@@ -22,20 +27,24 @@ export default async function ProfileEdit() {
 
     if (user.error !== null) {
       return redirect(
-        '/profile/edit?message=You must be logged in to edit your profile&error=true',
+        `/?message=You must be logged in to edit your profile&error=true`,
       )
     }
 
     const { error } = await supabase
       .from('profiles')
-      .update({ name, about, university: place })
+      .update({ name, about, university: place, avatar_url: photoPathUrl })
       .eq('id', user.data.user?.id)
 
     if (error !== null) {
-      return redirect(`/profile/edit?message=${error.message}&error=true`)
+      return redirect(
+        `/profile/${user.data.user?.id}/edit?message=${error.message}&error=true`,
+      )
     }
 
-    return redirect('/profile?message=Profile updated!')
+    return redirect(
+      '/profile/' + user.data.user?.id + '?message=Profile updated!',
+    )
   }
 
   return (
@@ -46,13 +55,7 @@ export default async function ProfileEdit() {
         </h2>
         <form action={updateProfile} className="flex flex-col gap-8">
           <fieldset className="flex flex-col gap-8">
-            <label className="flex flex-col gap-2 text-paragraph-regular text-neutral-paragraph">
-              Foto de perfil:
-              <figure>
-                <img src="/upload-photo.svg" alt="" />
-              </figure>
-              <input className="sr-only" type="file" accept="image/*" />
-            </label>
+            <InputFilePreview label="Foto de perfil:" multiple={false} />
             <label className="flex flex-col gap-2 text-paragraph-regular text-neutral-paragraph">
               Nombre:
               <InputForm
@@ -94,6 +97,7 @@ export default async function ProfileEdit() {
           <Button
             variant="primary"
             size="regular"
+            type="submit"
             hasText="yes"
             text="Guardar cambios"
             width="w-full"

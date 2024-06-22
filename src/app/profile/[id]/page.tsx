@@ -1,5 +1,6 @@
 import Button from '@/components/Button'
 import CardProfile from '@/components/CardProfile'
+import { STORAGE_URL } from '@/lib/config'
 import { getFavoriteListings } from '@/services/listing'
 import { getProfileCurrentUser, getUserById } from '@/services/user'
 import ImgEmptyFavorites from '@/svg/ImgEmptyFavorites'
@@ -11,7 +12,6 @@ export default async function Profile({ params }: { params: { id: string } }) {
   const userProfile = await getUserById(id)
   const listings = await getFavoriteListings()
   const currentUser = await getProfileCurrentUser()
-  const favoritePensions = true
 
   return (
     <section className="mt-14 flex w-full flex-col md:mt-16">
@@ -22,7 +22,10 @@ export default async function Profile({ params }: { params: { id: string } }) {
               <figure className="size-14 lg:hidden">
                 <img
                   className="size-full rounded-full object-cover"
-                  src={userProfile?.avatar_url ?? '/no-image.jpg'}
+                  src={
+                    `${STORAGE_URL}photos-listings/${userProfile?.avatar_url}` ??
+                    '/no-image.jpg'
+                  }
                   alt=""
                 />
               </figure>
@@ -65,7 +68,10 @@ export default async function Profile({ params }: { params: { id: string } }) {
         <figure className="hidden size-96 lg:block">
           <img
             className="size-full object-cover"
-            src={userProfile?.avatar_url ?? '/no-image.jpg'}
+            src={
+              `${STORAGE_URL}photos-listings/${userProfile?.avatar_url}` ??
+              '/no-image.jpg'
+            }
             alt=""
           />
         </figure>
@@ -76,45 +82,38 @@ export default async function Profile({ params }: { params: { id: string } }) {
             ? 'Pensiones guardadas'
             : 'Pensiones publicadas'}
         </h3>
-        {!favoritePensions ? (
-          <>
-            <p className="text-paragraph-small font-normal text-neutral-paragraph md:text-paragraph-regular">
-              {userProfile?.role === 'student'
-                ? 'Actualmente no tienes pensiones guardadas.'
-                : 'Actualmente no tienes pensiones publicadas.'}
-            </p>
-            <figure className="w-72 self-center">
-              <ImgEmptyFavorites />
-            </figure>
-          </>
-        ) : (
-          <>
-            <figure className="w-72 self-center lg:hidden">
-              <ImgFavorites />
-            </figure>
 
-            <ul className="flex w-full snap-x snap-mandatory gap-2 overflow-x-scroll py-2 sm:snap-none sm:flex-col sm:overflow-visible lg:flex-row lg:flex-wrap">
-              {listings?.length === 0 && (
-                <p className="text-paragraph-small font-normal text-neutral-paragraph md:text-paragraph-regular">
-                  No hay pensiones guardadas.
-                </p>
-              )}
+        <figure className="w-72 self-center lg:hidden">
+          <ImgFavorites />
+        </figure>
 
-              {listings?.map((listing) => (
-                <li className="w-auto sm:w-full lg:w-auto" key={listing.id}>
-                  <CardProfile
-                    photo={listing.photos?.[0]}
-                    id={listing.id}
-                    title={listing.title}
-                    ownerName={listing.owner?.name ?? ''}
-                    rating={listing.rating}
-                    price={listing.price}
-                  />
-                </li>
-              ))}
-            </ul>
-          </>
-        )}
+        <ul className="flex w-full snap-x snap-mandatory gap-2 overflow-x-scroll py-2 sm:snap-none sm:flex-col sm:overflow-visible lg:flex-row lg:flex-wrap">
+          {listings?.length === 0 && (
+            <div className="flex flex-col gap-5">
+              <p className="text-paragraph-small font-normal text-neutral-paragraph md:text-paragraph-regular">
+                {userProfile?.role === 'student'
+                  ? 'Actualmente no tienes pensiones guardadas.'
+                  : 'Actualmente no tienes pensiones publicadas.'}
+              </p>
+              <figure className="w-72 self-center">
+                <ImgEmptyFavorites />
+              </figure>
+            </div>
+          )}
+
+          {listings?.map((listing) => (
+            <li className="w-auto sm:w-full lg:w-auto" key={listing.id}>
+              <CardProfile
+                photo={listing.photos?.[0]}
+                id={listing.id}
+                title={listing.title}
+                ownerName={listing.owner?.name ?? ''}
+                rating={listing.rating}
+                price={listing.price}
+              />
+            </li>
+          ))}
+        </ul>
       </section>
     </section>
   )

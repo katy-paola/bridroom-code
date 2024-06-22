@@ -18,7 +18,15 @@ export const getFavoriteListings = async () => {
 
   const supabase = createClient(cookieStore)
 
-  const { data } = await supabase.from('favorites').select('listings(*)')
+  const { data: dataSession } = await supabase.auth.getSession()
+
+  if (dataSession === null) return []
+  if (dataSession.session === null) return []
+
+  const { data } = await supabase
+    .from('favorites')
+    .select('listings(*)')
+    .eq('user_id', dataSession.session?.user.id)
 
   if (data === null) return []
 

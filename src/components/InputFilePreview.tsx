@@ -2,7 +2,13 @@
 
 import { useState, type ChangeEvent } from 'react'
 
-export default function InputFilePreview() {
+export default function InputFilePreview({
+  label = 'Agregar fotos',
+  multiple = true,
+}: {
+  label?: string
+  multiple?: boolean
+}) {
   const [images, setImages] = useState<string[]>([])
 
   const handleImageChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -31,7 +37,7 @@ export default function InputFilePreview() {
 
   return (
     <label className="flex h-auto flex-col gap-2 text-paragraph-regular text-neutral-paragraph grid-in-photos">
-      Agregar fotos:
+      {label}
       <figure className="size-20">
         <img
           className="size-full object-cover"
@@ -44,7 +50,7 @@ export default function InputFilePreview() {
         type="file"
         name="photos"
         accept="image/*"
-        multiple
+        multiple={multiple}
         onChange={handleImageChange}
       />
       <div className="flex flex-wrap gap-2">

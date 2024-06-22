@@ -2,6 +2,7 @@ import AuthForm from '@/components/AuthForm'
 import { createClient } from '@/lib/supabase/server'
 import ImgRegister from '@/svg/ImgRegister'
 import { cookies, headers } from 'next/headers'
+import Link from 'next/link'
 import { redirect } from 'next/navigation'
 
 export default function Register() {
@@ -56,12 +57,12 @@ export default function Register() {
         <AuthForm typeAction="register" action={signUp} />
         <small className="text-paragraph-small text-neutral-paragraph lg:text-center">
           ¿Ya tienes una cuenta?{' '}
-          <a
-            href="#"
+          <Link
+            href="/login"
             className="text-paragraph-small text-functional-info underline"
           >
             Iniciar sesión
-          </a>
+          </Link>
           .
         </small>
       </section>

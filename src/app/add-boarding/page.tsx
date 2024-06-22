@@ -12,8 +12,6 @@ export default function AddBoarding() {
   const addListingAction = async (formData: FormData) => {
     'use server'
 
-    console.log('formData', formData)
-
     const photosToApi = formData.getAll('photos')
     const photosPathUrls: string[] = []
 
