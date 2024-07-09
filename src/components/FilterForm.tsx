@@ -3,12 +3,16 @@ import Button from './Button'
 import InputSearch from './InputSearch'
 
 export default function FilterForm() {
+  const handleChange = (e: any) => {
+    console.log(e.target.value)
+  }
   return (
     <form className="right-0 top-12 flex flex-col gap-8 sm:absolute sm:gap-8 sm:bg-neutral-main-bg sm:p-8 sm:shadow-md">
       <fieldset className="flex flex-col gap-6">
         <label className="flex flex-col gap-3 text-paragraph-regular font-medium text-neutral-title">
           Filtrar por precio
           <input
+            onChange={handleChange}
             className="flex h-0.5 w-full cursor-pointer appearance-none flex-wrap content-center rounded-full bg-neutral-paragraph accent-primary-default outline-none"
             type="range"
             min={200}
