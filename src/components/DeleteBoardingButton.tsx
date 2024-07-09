@@ -4,7 +4,7 @@ import Close from '@/svg/Close'
 import DeleteIcon from '@/svg/DeleteIcon'
 import { useState } from 'react'
 import Button from './Button'
-import DeleteBoardingForm from './deleteBoardingForm'
+import DeleteBoardingForm from './DeleteBoardingForm'
 
 export default function DeleteBoardingButton({ id }: { id: string }) {
   const [isClicked, setIsClicked] = useState(false)
