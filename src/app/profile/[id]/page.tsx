@@ -82,10 +82,11 @@ export default async function Profile({ params }: { params: { id: string } }) {
             ? 'Pensiones guardadas'
             : 'Pensiones publicadas'}
         </h3>
-
-        <figure className="w-72 self-center lg:hidden">
-          <ImgFavorites />
-        </figure>
+        {listings.length !== 0 && (
+          <figure className="w-72 self-center lg:hidden">
+            <ImgFavorites />
+          </figure>
+        )}
 
         <ul className="flex w-full snap-x snap-mandatory gap-2 overflow-x-scroll py-2 sm:snap-none sm:flex-col sm:overflow-visible lg:flex-row lg:flex-wrap">
           {listings?.length === 0 && (

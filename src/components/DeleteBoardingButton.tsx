@@ -4,8 +4,9 @@ import Close from '@/svg/Close'
 import DeleteIcon from '@/svg/DeleteIcon'
 import { useState } from 'react'
 import Button from './Button'
+import DeleteBoardingForm from './deleteBoardingForm'
 
-export default function DeleteBoardingButton() {
+export default function DeleteBoardingButton({ id }: { id: string }) {
   const [isClicked, setIsClicked] = useState(false)
 
   return (
@@ -53,13 +54,7 @@ export default function DeleteBoardingButton() {
                 />
               </li>
               <li>
-                <Button
-                  variant="tertiary"
-                  size="small"
-                  hasText="yes"
-                  text="Sí, eliminar."
-                  width="w-auto"
-                />
+                <DeleteBoardingForm id={id} />
               </li>
             </ul>
           </section>

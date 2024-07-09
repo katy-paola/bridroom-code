@@ -20,7 +20,7 @@ export default function BoardingHeader(Props: {
       <ul className="flex items-stretch gap-2 p-2 text-neutral-main-bg sm:p-0">
         {role === 'student' ? (
           <li>
-            <Suspense fallback={<>Cargando...........</>}>
+            <Suspense fallback={<>Cargando...</>}>
               <SaveBoardingButton padding="p-2" id={id} />
             </Suspense>
           </li>
@@ -34,7 +34,7 @@ export default function BoardingHeader(Props: {
               </Link>
             </li>
             <li className="flex items-center">
-              <DeleteBoardingButton />
+              <DeleteBoardingButton id={id} />
             </li>
           </>
         )}
