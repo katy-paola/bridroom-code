@@ -66,7 +66,7 @@ export default async function ListingIdPage({
           <OwnerInfo
             photo={listing.owner?.avatar_url}
             name={listing.owner?.name ?? listing.owner?.email}
-            contact={listing.owner?.contact}
+            contact={listing.owner?.contact ?? 300000000}
             idOwner={listing.owner?.id}
             currentUser={currentUser}
           />

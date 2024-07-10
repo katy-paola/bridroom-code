@@ -3,7 +3,11 @@
 import { useState } from 'react'
 import { GetLocationMap } from './GetLocationMap'
 
-export default function LocationMap() {
+export default function LocationMap({
+  setCoords,
+}: {
+  setCoords: (coords: { lat: number; lng: number }) => void
+}) {
   const [showMap, setShowMap] = useState(false)
 
   return (
@@ -17,7 +21,7 @@ export default function LocationMap() {
       >
         Modificar ubicación en el mapa
       </button>
-      {showMap && <GetLocationMap />}
+      {showMap && <GetLocationMap setCoords={setCoords} />}
     </section>
   )
 }

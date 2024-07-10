@@ -4,7 +4,7 @@ import ZoomIn from '@/svg/ZoomIn'
 import ZoomOut from '@/svg/ZoomOut'
 import { latLng, type Map } from 'leaflet'
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
-import { MapContainer, TileLayer, useMap } from 'react-leaflet'
+import { MapContainer, TileLayer, useMap, useMapEvent } from 'react-leaflet'
 
 const center = latLng(10.381888, -75.490358)
 const zoom = 13
@@ -73,7 +73,23 @@ function MyZoomControl() {
   )
 }
 
-export function GetLocationMap() {
+function ClickHandler({
+  setCoords,
+}: {
+  setCoords: (coords: { lat: number; lng: number }) => void
+}) {
+  useMapEvent('click', (event) => {
+    console.log('Coordinates:', event.latlng)
+    setCoords(event.latlng)
+  })
+  return null
+}
+
+export function GetLocationMap({
+  setCoords,
+}: {
+  setCoords: (coords: { lat: number; lng: number }) => void
+}) {
   const map = useRef<Map>(null)
 
   const displayMap = useMemo(
@@ -96,6 +112,7 @@ export function GetLocationMap() {
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
+          <ClickHandler setCoords={setCoords} />
         </MapContainer>
       </div>
     ),
