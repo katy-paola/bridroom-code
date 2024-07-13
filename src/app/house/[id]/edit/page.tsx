@@ -1,7 +1,6 @@
-'use client'
-
 import { uploadFileToSupabase } from '@/app/utils/upload-file-to-supabase'
 import Button from '@/components/Button'
+import InputFilePreview from '@/components/InputFilePreview'
 import InputForm from '@/components/InputForm'
 import LocationMap from '@/components/LocationMap'
 import { createClient } from '@/lib/supabase/server'
@@ -10,7 +9,6 @@ import ImgEditBoarding from '@/svg/ImgEditBoarding'
 import { cookies } from 'next/headers'
 
 import { redirect } from 'next/navigation'
-import { useState } from 'react'
 
 export default async function EditBoardingIdPage({
   params,
@@ -30,19 +28,15 @@ export default async function EditBoardingIdPage({
       ? listing.location.address
       : ''
 
-  const [coords, setCoords] = useState<{ lat: number; lng: number } | null>(
-    null,
-  )
-
   const updateListing = async (formData: FormData) => {
     'use server'
 
     const photoToApi = formData.get('photos')
     const photoPathUrl = await uploadFileToSupabase(photoToApi as File)
-
     const title = formData.get('title') as string
     const description = formData.get('description') as string
     const price = Number(formData.get('price'))
+    const coords = formData.get('coords') as string
     const address = formData.get('address') as string
 
     const cookieStore = cookies()
@@ -129,40 +123,8 @@ export default async function EditBoardingIdPage({
                 value={address}
               />
             </label>
-            <LocationMap setCoords={setCoords} />
-            <label className="flex h-auto flex-col gap-2 text-paragraph-regular text-neutral-paragraph grid-in-photos">
-              Agregar fotos:
-              <ul className="flex flex-wrap gap-2">
-                <li className="contents">
-                  <figure className="size-20">
-                    <img
-                      className="size-full object-cover"
-                      src="/upload-photo.svg"
-                      alt=""
-                    />
-                  </figure>
-                </li>
-                {listing.photos?.map((photo, index) => (
-                  <li className="contents" key={index}>
-                    <figure className="size-20">
-                      <img
-                        src={photo}
-                        alt=""
-                        className="size-full object-cover"
-                      />
-                    </figure>
-                  </li>
-                ))}
-              </ul>
-              <input
-                className="sr-only"
-                name="photos"
-                type="file"
-                accept="image/*"
-                capture="environment"
-                multiple
-              />
-            </label>
+            <LocationMap />
+            <InputFilePreview />
           </fieldset>
           <section className="contents h-auto justify-end grid-in-button lg:flex">
             <Button
