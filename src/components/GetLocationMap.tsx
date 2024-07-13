@@ -1,11 +1,11 @@
 'use client'
 
-import { MapIconLeaflet } from '@/svg/MapIconLeaflet'
+import MapIcon from '@/svg/MapIcon'
 import ZoomIn from '@/svg/ZoomIn'
 import ZoomOut from '@/svg/ZoomOut'
 import { latLng, type Map } from 'leaflet'
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
-import { MapContainer, Marker, TileLayer, useMap } from 'react-leaflet'
+import { MapContainer, TileLayer, useMap } from 'react-leaflet'
 
 const center = latLng(10.381888, -75.490358)
 const zoom = 13
@@ -87,7 +87,10 @@ export function GetLocationMap() {
 
   const displayMap = useMemo(
     () => (
-      <div className="z-10 h-96 w-full">
+      <div className="relative z-10 h-96 w-full">
+        <div className="absolute left-1/2 top-1/2 z-[1000] w-8 -translate-x-1/2 -translate-y-1/2 text-tertiary-default">
+          <MapIcon />
+        </div>
         <MapContainer
           center={center}
           style={{ height: '100%', width: '100%' }}
@@ -100,7 +103,6 @@ export function GetLocationMap() {
           ]}
           zoomControl={false}
         >
-          <Marker icon={MapIconLeaflet} position={center} />
           <MyZoomControl />
           <TileLayer
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
