@@ -1,10 +1,11 @@
 'use client'
 
+import { MapIconLeaflet } from '@/svg/MapIconLeaflet'
 import ZoomIn from '@/svg/ZoomIn'
 import ZoomOut from '@/svg/ZoomOut'
 import { latLng, type Map } from 'leaflet'
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
-import { MapContainer, TileLayer, useMap, useMapEvent } from 'react-leaflet'
+import { MapContainer, Marker, TileLayer, useMap } from 'react-leaflet'
 
 const center = latLng(10.381888, -75.490358)
 const zoom = 13
@@ -28,10 +29,18 @@ function DisplayPosition({ map }: { map: Map }) {
   }, [map, onMove])
   if (typeof window !== 'undefined') {
     return (
-      <p>
-        latitude: {position.lat.toFixed(4)}, longitude:{' '}
-        {position.lng.toFixed(4)} <button onClick={onClick}>reset</button>
-      </p>
+      <>
+        <input
+          type="text"
+          name="coords"
+          value={`${position.lat},${position.lng}`}
+          className="sr-only"
+        />
+        <p>
+          latitude: {position.lat.toFixed(4)}, longitude:{' '}
+          {position.lng.toFixed(4)} <button onClick={onClick}>reset</button>
+        </p>
+      </>
     )
   }
   // if window is undefined, return null
@@ -73,23 +82,7 @@ function MyZoomControl() {
   )
 }
 
-function ClickHandler({
-  setCoords,
-}: {
-  setCoords: (coords: { lat: number; lng: number }) => void
-}) {
-  useMapEvent('click', (event) => {
-    console.log('Coordinates:', event.latlng)
-    setCoords(event.latlng)
-  })
-  return null
-}
-
-export function GetLocationMap({
-  setCoords,
-}: {
-  setCoords: (coords: { lat: number; lng: number }) => void
-}) {
+export function GetLocationMap() {
   const map = useRef<Map>(null)
 
   const displayMap = useMemo(
@@ -107,12 +100,12 @@ export function GetLocationMap({
           ]}
           zoomControl={false}
         >
+          <Marker icon={MapIconLeaflet} position={center} />
           <MyZoomControl />
           <TileLayer
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
-          <ClickHandler setCoords={setCoords} />
         </MapContainer>
       </div>
     ),

@@ -40,7 +40,7 @@ export default async function CardDetails(Props: {
           address={address}
           photo={listing.owner?.avatar_url}
           name={listing.owner?.name}
-          contact={listing.owner?.contact}
+          contact={listing.owner?.contact ?? 300000000}
           idOwner={listing.owner?.id}
           currentUser={await getProfileCurrentUser()}
         />
