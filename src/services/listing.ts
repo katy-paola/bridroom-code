@@ -1,7 +1,13 @@
 import { createClient } from '@/lib/supabase/server'
 import { cookies } from 'next/headers'
 
-export const getAllListings = async () => {
+export const getAllListings = async ({
+  price,
+  search,
+}: {
+  price?: number
+  search?: string
+}) => {
   const cookieStore = cookies()
 
   const supabase = createClient(cookieStore)
@@ -10,7 +16,19 @@ export const getAllListings = async () => {
     .from('listings')
     .select('*, owner:profiles(*)')
 
-  return data
+  if (data === null) return []
+
+  if (price === undefined && search === undefined) return data
+
+  if (search !== undefined) {
+    return data.filter((listing) =>
+      listing.title.toLowerCase().includes(search.toLowerCase()),
+    )
+  }
+
+  if (price === undefined) return data
+
+  return data.filter((listing: any) => listing.price <= price)
 }
 
 export const getFavoriteListings = async () => {
