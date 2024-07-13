@@ -6,7 +6,7 @@ import { ListListings, Skeleton } from './ListListings'
 import ViewMore from './viewMore'
 
 export default async function HouseSection() {
-  const listings = await getAllListings()
+  const listings = await getAllListings({})
   const listingsLength = listings?.length ?? 0
   const currentUser = await getProfileCurrentUser()
   const role = currentUser?.role

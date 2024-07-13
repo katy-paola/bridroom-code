@@ -2,8 +2,8 @@ import { createClient } from '@/lib/supabase/server'
 import { cookies } from 'next/headers'
 
 export const getAllListings = async ({
-  price,
-  search,
+  price = undefined,
+  search = undefined,
 }: {
   price?: number
   search?: string
