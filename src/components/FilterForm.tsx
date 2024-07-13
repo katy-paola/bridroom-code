@@ -8,7 +8,7 @@ import InputSearch from './InputSearch'
 export default function FilterForm() {
   const router = useRouter()
   const searchParams = useSearchParams()
-  const price = searchParams.get('price') ?? '100000'
+  const price = searchParams.get('price') ?? '5000000'
   const search = searchParams.get('search')
 
   const [searchValue, setSearch] = useState(search ?? '')
