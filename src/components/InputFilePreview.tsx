@@ -38,28 +38,28 @@ export default function InputFilePreview({
   return (
     <label className="flex h-auto flex-col gap-2 text-paragraph-regular text-neutral-paragraph grid-in-photos">
       {label}
-      <figure className="size-20">
-        <img
-          className="size-full object-cover"
-          src="/upload-photo.svg"
-          alt=""
-        />
-      </figure>
-      <input
-        className="sr-only"
-        type="file"
-        name="photos"
-        accept="image/*"
-        multiple={multiple}
-        onChange={handleImageChange}
-      />
       <div className="flex flex-wrap gap-2">
+        <figure className="size-20">
+          <img
+            className="size-full object-cover"
+            src="/upload-photo.svg"
+            alt=""
+          />
+        </figure>
+        <input
+          className="sr-only"
+          type="file"
+          name="photos"
+          accept="image/*"
+          multiple={multiple}
+          onChange={handleImageChange}
+        />
         {images.map((image, index) => (
-          <div key={index} style={{ margin: '10px' }}>
+          <div key={index}>
             <img
               src={image}
               alt={`Preview ${index}`}
-              style={{ maxWidth: '200px', maxHeight: '200px' }}
+              style={{ width: '80px', height: '80px' }}
             />
           </div>
         ))}
