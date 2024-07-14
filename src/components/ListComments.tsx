@@ -31,7 +31,7 @@ export default async function ListComments(Props: {
             <div key={index} className="flex flex-col gap-4">
               <Comment
                 avatarUrl={comment.profiles.avatar_url ?? '/no-image.jpg'}
-                name={comment.profiles.name}
+                name={comment.profiles.name ?? comment.profiles.email}
                 rating={comment.rating}
                 message={comment.message}
                 id={comment.id}
