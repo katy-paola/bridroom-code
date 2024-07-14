@@ -15,7 +15,7 @@ export default function LocationMap() {
           setShowMap(!showMap)
         }}
       >
-        Modificar ubicación en el mapa
+        Obtén tu ubicación actual en el mapa
       </button>
       {showMap && <GetLocationMap />}
     </section>

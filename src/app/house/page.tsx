@@ -13,9 +13,15 @@ export default async function ListingsPage({
   const { price, search } = searchParams
 
   const priceNumber = price !== undefined ? parseInt(price) : 0
-
-  const listings = await getAllListings({ price: priceNumber, search })
   const currentUser = await getProfileCurrentUser()
+  const role = currentUser?.role
+
+  const listings = await getAllListings({
+    price: priceNumber,
+    search,
+    role,
+    idCurrentUser: currentUser?.id,
+  })
   return (
     <section className="flex w-full flex-col gap-6 px-4 pb-8 pt-22 xs:px-8 xs:pt-24 sm:px-12">
       <HeaderHouse role="student" />

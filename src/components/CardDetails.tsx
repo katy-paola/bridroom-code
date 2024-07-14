@@ -1,5 +1,6 @@
 import { getListingById } from '@/services/listing'
 import { getProfileCurrentUser } from '@/services/user'
+import { type LocationType } from '@/types/database.types'
 import { formatCurrency } from '@/utils/formatCurrency'
 import CardInfo from './CardInfo'
 import Carousel from './Carousel'
@@ -12,6 +13,7 @@ export default async function CardDetails(Props: {
   price: number | null
   address: string | null
   neighborhood: string | null
+  location: LocationType
   id: string
 }) {
   const {
@@ -23,6 +25,7 @@ export default async function CardDetails(Props: {
     address,
     id,
     neighborhood,
+    location,
   } = Props
   const listing = await getListingById(id)
   const priceCOP = formatCurrency(price ?? 0)
@@ -37,6 +40,7 @@ export default async function CardDetails(Props: {
           priceCOP={priceCOP}
           description={description}
           neighborhood={neighborhood}
+          location={location}
           address={address}
           photo={listing.owner?.avatar_url}
           name={listing.owner?.name}

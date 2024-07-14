@@ -42,6 +42,7 @@ export default async function ListingIdPage({
     typeof listing.location.neigh === 'string'
       ? listing.location.neigh
       : ''
+
   return (
     <>
       <section className="relative mt-14 flex w-full flex-col sm:gap-8 sm:px-12 sm:pt-4 md:py-8 lg:gap-16">
@@ -58,6 +59,7 @@ export default async function ListingIdPage({
             rating={listing.rating}
             price={listing.price}
             address={address}
+            location={listing.location}
             neighborhood={neighborhood}
             id={id}
           />

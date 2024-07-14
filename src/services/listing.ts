@@ -4,14 +4,15 @@ import { cookies } from 'next/headers'
 export const getAllListings = async ({
   price = undefined,
   search = undefined,
+  role = 'student',
+  idCurrentUser = '',
 }: {
   price?: number
   search?: string
+  role?: string
+  idCurrentUser?: string
 }) => {
   const cookieStore = cookies()
-
-  console.log('price', price)
-  console.log('search', search)
 
   const supabase = createClient(cookieStore)
 
@@ -29,9 +30,19 @@ export const getAllListings = async ({
     )
   }
 
-  if (price === undefined) return data
+  let tempData = data
 
-  return data.filter((listing: any) => listing.price <= price)
+  if (price !== undefined) {
+    tempData = data.filter((listing: any) => listing.price <= price)
+  }
+
+  if (role === 'owner') {
+    if (idCurrentUser === '') return []
+
+    return tempData.filter((listing) => idCurrentUser === listing.user_id)
+  }
+
+  return tempData
 }
 
 export const getFavoriteListings = async () => {

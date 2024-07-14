@@ -1,52 +1,12 @@
 'use client'
 
-import { MapIconLeaflet } from '@/svg/MapIconLeaflet'
 import ZoomIn from '@/svg/ZoomIn'
 import ZoomOut from '@/svg/ZoomOut'
-import { type LatLng, latLng, type Map } from 'leaflet'
-import { useMemo, useRef, useState } from 'react'
-import {
-  MapContainer,
-  Marker,
-  Popup,
-  TileLayer,
-  useMap,
-  useMapEvents,
-} from 'react-leaflet'
+import { Icon, latLng, type Map } from 'leaflet'
+import { useMemo, useRef } from 'react'
+import { MapContainer, Marker, TileLayer, useMap } from 'react-leaflet'
 
-const center = latLng(10.381888, -75.490358)
 const zoom = 13
-
-function LocationMarker() {
-  const [position, setPosition] = useState<LatLng | null>(null)
-  const map = useMapEvents({
-    click() {
-      map.locate()
-    },
-    locationfound(e) {
-      setPosition(e.latlng)
-      map.flyTo(e.latlng, map.getZoom())
-    },
-  })
-
-  return position === null ? null : (
-    <>
-      <Marker position={position} icon={MapIconLeaflet}>
-        <Popup>Estas aquí</Popup>
-      </Marker>
-      <input
-        type="text"
-        name="coords"
-        value={`${position.lat},${position.lng}`}
-        className="sr-only"
-      />
-      <p className="z-10">
-        latitude: {position.lat.toFixed(4)}, longitude:{' '}
-        {position.lng.toFixed(4)}
-      </p>
-    </>
-  )
-}
 
 function MyZoomControl() {
   const zoomMap = useMap()
@@ -82,14 +42,21 @@ function MyZoomControl() {
   )
 }
 
-export function GetLocationMap() {
+const MapIconLeaflet = new Icon({
+  iconUrl: '../icons/map-marker.svg',
+  iconSize: [38, 95],
+  iconAnchor: [22, 94],
+  popupAnchor: [-3, -76],
+})
+
+export function ViewLocationMap({ lat, lng }: { lat: number; lng: number }) {
   const map = useRef<Map>(null)
 
   const displayMap = useMemo(
     () => (
       <div className="relative z-10 h-96 w-full">
         <MapContainer
-          center={center}
+          center={latLng(lat, lng)}
           style={{ height: '100%', width: '100%' }}
           zoom={zoom}
           scrollWheelZoom={false}
@@ -100,8 +67,8 @@ export function GetLocationMap() {
           ]}
           zoomControl={false}
         >
-          <LocationMarker />
           <MyZoomControl />
+          <Marker position={latLng(lat, lng)} icon={MapIconLeaflet} />
           <TileLayer
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -111,6 +78,11 @@ export function GetLocationMap() {
     ),
     [],
   )
+  if (typeof window !== 'undefined') {
+    return <div>{displayMap}</div>
+  }
 
-  return <div>{displayMap}</div>
+  // if window is undefined, return null
+
+  return null
 }

@@ -1,10 +1,11 @@
 'use client'
 
+import { type LocationType } from '@/types/database.types'
 import { type User } from '@/types/types'
 import { useState } from 'react'
-import { GetLocationMap } from './GetLocationMap'
 import OwnerInfo from './OwnerInfo'
 import Rating from './Rating'
+import { ViewLocationMap } from './ViewLocationMap'
 
 export default function CardInfo({
   title,
@@ -18,6 +19,7 @@ export default function CardInfo({
   contact,
   idOwner,
   currentUser,
+  location,
 }: {
   title: string | null
   rating: number | null
@@ -30,8 +32,15 @@ export default function CardInfo({
   contact?: number | undefined
   idOwner?: string | undefined
   currentUser?: User
+  location: LocationType
 }) {
   const [isMapOpen, setIsMapOpen] = useState(false)
+
+  const [latResult, lngResult] = location.coord.split(',')
+
+  const lat = parseFloat(latResult.trim())
+  const lng = parseFloat(lngResult.trim())
+
   return (
     <section className="flex flex-col gap-2 p-4 xs:p-8 sm:gap-6 sm:bg-neutral-active md:gap-8">
       <section className="flex flex-1 flex-col justify-between gap-2 sm:flex-row sm:gap-6 sm:bg-neutral-active md:gap-8">
@@ -81,7 +90,7 @@ export default function CardInfo({
           />
         </section>
       </section>
-      {isMapOpen && <GetLocationMap />}
+      {isMapOpen && <ViewLocationMap lat={lat} lng={lng} />}
     </section>
   )
 }

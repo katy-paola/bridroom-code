@@ -24,6 +24,7 @@ export default function AddBoarding() {
     const description = formData.get('description') as string
     const price = Number(formData.get('price'))
     const address = formData.get('address') as string
+    const coord = formData.get('coords') as string
     const neigh = formData.get('neigh') as string
     const cookieStore = cookies()
     const supabase = createClient(cookieStore)
@@ -43,7 +44,7 @@ export default function AddBoarding() {
         price,
         location: {
           address,
-          coord: '10.403931, -75.470382',
+          coord,
           neigh,
         },
         photos: photosPathUrls,
