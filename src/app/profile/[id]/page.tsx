@@ -93,8 +93,8 @@ export default async function Profile({ params }: { params: { id: string } }) {
             <div className="flex flex-col gap-5">
               <p className="text-paragraph-small font-normal text-neutral-paragraph md:text-paragraph-regular">
                 {userProfile?.role === 'student'
-                  ? 'Actualmente no tienes pensiones guardadas.'
-                  : 'Actualmente no tienes pensiones publicadas.'}
+                  ? 'Actualmente no hay pensiones guardadas.'
+                  : 'Actualmente no hay pensiones publicadas.'}
               </p>
               <figure className="w-72 self-center">
                 <ImgEmptyFavorites />
