@@ -51,7 +51,7 @@ export default async function EditBoardingIdPage({
 
     if (user.error !== null) {
       return redirect(
-        '/add-boarding?message=You must be logged in to add a boarding&error=true',
+        '/add-boarding?message=You must be logged in to edit a boarding&error=true',
       )
     }
     const { error } = await supabase

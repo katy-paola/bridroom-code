@@ -17,7 +17,7 @@ export default function TypeComment({ listingId }: { listingId: string }) {
 
     if (user.error !== null) {
       return redirect(
-        '/add-boarding?message=You must be logged in to add a boarding&error=true',
+        '/add-boarding?message=You must be logged in to comment&error=true',
       )
     }
 
