@@ -131,6 +131,7 @@ export default async function EditBoardingIdPage({
               variant="primary"
               size="regular"
               hasText="yes"
+              type="submit"
               text="Guardar cambios"
               width="w-auto"
             />

@@ -10,6 +10,9 @@ export const getAllListings = async ({
 }) => {
   const cookieStore = cookies()
 
+  console.log('price', price)
+  console.log('search', search)
+
   const supabase = createClient(cookieStore)
 
   const { data } = await supabase
@@ -18,7 +21,7 @@ export const getAllListings = async ({
 
   if (data === null) return []
 
-  if (price === undefined && search === undefined) return data
+  if (price === 0 && search === undefined) return data
 
   if (search !== undefined) {
     return data.filter((listing) =>
