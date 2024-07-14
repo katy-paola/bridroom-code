@@ -1,5 +1,4 @@
 import { createClient } from '@/lib/supabase/server'
-import { getProfileCurrentUser } from '@/services/user'
 import { cookies } from 'next/headers'
 import { redirect } from 'next/navigation'
 import Button from './Button'
@@ -13,10 +12,17 @@ export default function TypeComment({ listingId }: { listingId: string }) {
 
     const cookieStore = cookies()
     const supabase = createClient(cookieStore)
-    const currentUser = await getProfileCurrentUser()
+
+    const user = await supabase.auth.getUser()
+
+    if (user.error !== null) {
+      return redirect(
+        '/add-boarding?message=You must be logged in to add a boarding&error=true',
+      )
+    }
 
     const { error } = await supabase.from('comments').insert({
-      user_id: currentUser?.id,
+      user_id: user.data.user?.id,
       listing_id: listingId,
       message,
       rating: parseInt(rating),

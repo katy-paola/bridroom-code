@@ -47,7 +47,13 @@ export default async function EditBoardingIdPage({
       neigh: '',
       address,
     }
+    const user = await supabase.auth.getUser()
 
+    if (user.error !== null) {
+      return redirect(
+        '/add-boarding?message=You must be logged in to add a boarding&error=true',
+      )
+    }
     const { error } = await supabase
       .from('listings')
       .update({
