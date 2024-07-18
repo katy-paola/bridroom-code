@@ -12,8 +12,9 @@ export default function CardProfile(Props: {
   ownerName: string | null
   rating: number | null
   price: number | null
+  role: string | undefined
 }) {
-  const { photo, id, title, ownerName, rating, price } = Props
+  const { photo, id, title, ownerName, rating, price, role } = Props
   const priceCOP = formatCurrency(price ?? 0)
   return (
     <>
@@ -25,13 +26,16 @@ export default function CardProfile(Props: {
             alt=""
           />
         </figure>
-        <section className="flex justify-between px-3 py-2">
-          <Link href={`/house/${id}`}>
+        <section className="flex flex-col justify-between gap-2 px-3 py-2">
+          <p>{title}</p>
+          <Link href={`/house/${id}`} className="self-end">
             <button className="text-paragraph-small text-neutral-title underline md:text-paragraph-regular">
-              Ver más...
+              Ver más
             </button>
           </Link>
-          <SaveBoardingButton padding="p-0" id={id} fromProfile={true} />
+          {role === 'student' && (
+            <SaveBoardingButton padding="p-0" id={id} fromProfile={true} />
+          )}
         </section>
       </article>
       <article className="hidden gap-3 rounded-2xl bg-neutral-main-bg p-3 shadow-md sm:flex lg:hidden">
@@ -59,7 +63,9 @@ export default function CardProfile(Props: {
               <h3 className="text-paragraph-small font-semibold text-neutral-title">
                 {title}
               </h3>
-              <SaveBoardingButton padding="p-0" id={id} fromProfile={true} />
+              {role === 'student' && (
+                <SaveBoardingButton padding="p-0" id={id} fromProfile={true} />
+              )}
             </section>
             <p className="text-paragraph-xsmall font-normal text-neutral-title">
               {ownerName}

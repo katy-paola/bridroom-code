@@ -124,6 +124,7 @@ export default async function Profile({ params }: { params: { id: string } }) {
                 ownerName={listing.owner?.name ?? ''}
                 rating={listing.rating}
                 price={listing.price}
+                role={currentUser?.role}
               />
             </li>
           ))}
