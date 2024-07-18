@@ -36,7 +36,7 @@ export default function AuthForm(Props: { typeAction: string; action: any }) {
           />
           {typeAction === 'login' && (
             <a
-              href="#"
+              href="/login/reset-password"
               className="self-end text-paragraph-xsmall text-neutral-paragraph underline"
             >
               Olvidé mi contraseña
