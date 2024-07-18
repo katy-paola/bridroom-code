@@ -1,7 +1,7 @@
 import Button from '@/components/Button'
 import CardProfile from '@/components/CardProfile'
 import { STORAGE_URL } from '@/lib/config'
-import { getFavoriteListings } from '@/services/listing'
+import { getAllListings, getFavoriteListings } from '@/services/listing'
 import { getProfileCurrentUser, getUserById } from '@/services/user'
 import ImgEmptyFavorites from '@/svg/ImgEmptyFavorites'
 import ImgFavorites from '@/svg/ImgFavorites'
@@ -9,8 +9,21 @@ import Link from 'next/link'
 
 export default async function Profile({ params }: { params: { id: string } }) {
   const { id } = params
+
+  let listings = []
+
   const userProfile = await getUserById(id)
-  const listings = await getFavoriteListings()
+
+  if (userProfile?.role === 'student') {
+    listings = await getFavoriteListings()
+  } else {
+    const role = userProfile?.role
+    listings = await getAllListings({
+      role,
+      idCurrentUser: userProfile?.id,
+    })
+  }
+
   const currentUser = await getProfileCurrentUser()
 
   return (
