@@ -5,7 +5,19 @@ import ImgLogin from '@/svg/ImgLogin'
 import { cookies } from 'next/headers'
 import { redirect } from 'next/navigation'
 
-export default function UpdatePassword() {
+export default function UpdatePassword({
+  searchParams,
+}: {
+  searchParams: { code?: string }
+}) {
+  const code = searchParams.code ?? ''
+
+  if (code === '') {
+    return redirect(
+      '/login?message=No se ha encontrado el código de verificación&error=true',
+    )
+  }
+
   const updatePassword = async (formData: FormData) => {
     'use server'
 
@@ -13,17 +25,29 @@ export default function UpdatePassword() {
     const cookieStore = cookies()
     const supabase = createClient(cookieStore)
 
-    const { error } = await supabase.auth.updateUser({
-      password,
-    })
+    console.log('code', code)
 
-    if (error !== null) {
-      return redirect(
-        `/login/update-password?message=${error.message}&error=true`,
-      )
+    try {
+      const data = await supabase.auth.exchangeCodeForSession(code)
+
+      console.log('data', data)
+
+      const { error } = await supabase.auth.updateUser({
+        password,
+      })
+
+      console.log('error', error)
+
+      if (error !== null) {
+        return redirect(
+          `/login/update-password?message=${error.message}&error=true`,
+        )
+      }
+
+      return redirect('/login?message=Tu contraseña ha sido actualizada')
+    } catch (error) {
+      return redirect('/login?message=Ha ocurrido un error&error=true')
     }
-
-    return redirect('/login?message=Tu contraseña ha sido actualizada')
   }
 
   return (
