@@ -1,6 +1,7 @@
 import Header from '@/components/Header'
 import ToastClient from '@/components/ToastClient'
 import 'leaflet/dist/leaflet.css'
+import { type Metadata } from 'next'
 import './globals.css'
 import { bodyFont, titleFont } from './ui/fonts'
 
@@ -9,10 +10,14 @@ const defaultUrl =
     ? `https://${process.env.VERCEL_URL}`
     : 'http://localhost:3000'
 
-export const metadata = {
+export const metadata: Metadata = {
   metadataBase: new URL(defaultUrl),
   title: 'Bridroom',
   description: 'Encontrar tu pensión nunca fue tan facil',
+  openGraph: {
+    url: process.env.VERCEL_URL,
+    siteName: 'Bridroom',
+  },
 }
 
 export default function RootLayout({
