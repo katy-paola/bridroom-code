@@ -20,12 +20,5 @@ export function useWindowWidth() {
     }
   }, [])
 
-  if (windowWidth !== undefined && windowWidth < 430) {
-    return 3
-  }
-
-  return windowWidth !== undefined &&
-    ((windowWidth > 430 && windowWidth <= 744) || windowWidth >= 1280)
-    ? 12
-    : 9
+  return windowWidth !== undefined && windowWidth < 430 ? 3 : 6
 }
