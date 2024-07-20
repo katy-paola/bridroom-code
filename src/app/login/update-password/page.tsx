@@ -61,7 +61,10 @@ export default function UpdatePassword({
             Actualiza tu contraseña:
           </p>
         </section>
-        <form action={updatePassword}>
+        <form
+          action={updatePassword}
+          className="flex w-full flex-col gap-8 sm:max-w-sm md:max-w-md"
+        >
           <fieldset className="flex flex-col gap-8">
             <label className="flex flex-col gap-2 text-paragraph-regular text-neutral-paragraph">
               Nueva contraseña

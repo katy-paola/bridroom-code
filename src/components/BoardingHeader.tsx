@@ -1,9 +1,8 @@
-import { createClient } from '@/lib/supabase/server'
 import Edit from '@/svg/Edit'
 import DeleteBoardingButton from './DeleteBoardingButton'
 import SaveBoardingButton from './SaveBoardingButton'
 
-import { cookies } from 'next/headers'
+import { getSession } from '@/services/user'
 import Link from 'next/link'
 import { Suspense } from 'react'
 
@@ -14,17 +13,15 @@ export default async function BoardingHeader(Props: {
 }) {
   const { role, id, listingTitle } = Props
 
-  const cookieStore = cookies()
-  const supabase = createClient(cookieStore)
-  const session = await supabase.auth.getSession()
+  const session = await getSession()
 
   return (
     <header className="absolute flex w-full items-center justify-end sm:static sm:justify-between">
       <h3 className="hidden text-paragraph-regular font-semibold text-neutral-title sm:block md:text-paragraph-medium lg:text-paragraph-large">
         {listingTitle}
       </h3>
-      {session !== null ||
-        (session !== undefined && (
+      {session !== null && (
+        <>
           <ul className="flex items-stretch gap-2 p-2 text-neutral-main-bg sm:p-0">
             {role === 'student' ? (
               <li>
@@ -47,7 +44,8 @@ export default async function BoardingHeader(Props: {
               </>
             )}
           </ul>
-        ))}
+        </>
+      )}
     </header>
   )
 }

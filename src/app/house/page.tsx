@@ -22,9 +22,17 @@ export default async function ListingsPage({
     role,
     idCurrentUser: currentUser?.id,
   })
+
+  // filtrar por rol, vamos a tener en cuenta que si no hay sesión también deben mostrarse todas
+  const filteredListings = listings?.filter(
+    (listing) =>
+      role === 'student' ||
+      currentUser === null ||
+      currentUser?.id === listing.owner?.id,
+  )
   return (
     <section className="flex w-full flex-col gap-6 px-4 pb-8 pt-22 xs:px-8 xs:pt-24 sm:px-12">
-      <HeaderHouse role="student" />
+      <HeaderHouse role={role} />
 
       <main>
         {price !== undefined || search !== undefined ? (
@@ -38,7 +46,7 @@ export default async function ListingsPage({
         <Suspense fallback={<Skeleton />}>
           <ListListings
             section="house"
-            listings={listings}
+            listings={filteredListings}
             currentUser={currentUser}
           />
         </Suspense>

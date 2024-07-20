@@ -8,7 +8,7 @@ import InputSearch from './InputSearch'
 export default function FilterForm() {
   const router = useRouter()
   const searchParams = useSearchParams()
-  const price = searchParams.get('price') ?? '5000000'
+  const price = searchParams.get('price') ?? '1000000'
   const search = searchParams.get('search')
 
   const [searchValue, setSearch] = useState(search ?? '')
@@ -34,7 +34,7 @@ export default function FilterForm() {
             type="range"
             defaultValue={price}
             min={100000}
-            max={10000000}
+            max={2000000}
           />
           <datalist id="range" className="flex justify-between">
             <option
@@ -44,15 +44,7 @@ export default function FilterForm() {
             ></option>
             <option
               className="text-paragraph-xsmall text-neutral-title"
-              value="250"
-            ></option>
-            <option
-              className="text-paragraph-xsmall text-neutral-title"
-              value="300"
-            ></option>
-            <option
-              className="text-paragraph-xsmall text-neutral-title"
-              value="350"
+              value="200"
             ></option>
             <option
               className="text-paragraph-xsmall text-neutral-title"
@@ -60,36 +52,36 @@ export default function FilterForm() {
             ></option>
             <option
               className="text-paragraph-xsmall text-neutral-title"
-              value="450"
-            ></option>
-            <option
-              className="text-paragraph-xsmall text-neutral-title"
-              value="500"
-            ></option>
-            <option
-              className="text-paragraph-xsmall text-neutral-title"
-              value="550"
-            ></option>
-            <option
-              className="text-paragraph-xsmall text-neutral-title"
               value="600"
             ></option>
             <option
               className="text-paragraph-xsmall text-neutral-title"
-              value="650"
+              value="800"
             ></option>
             <option
               className="text-paragraph-xsmall text-neutral-title"
-              value="700"
+              value="1000"
             ></option>
             <option
               className="text-paragraph-xsmall text-neutral-title"
-              value="750"
+              value="1200"
             ></option>
             <option
               className="text-paragraph-xsmall text-neutral-title"
-              value="10M"
-              label="10M"
+              value="1400"
+            ></option>
+            <option
+              className="text-paragraph-xsmall text-neutral-title"
+              value="1600"
+            ></option>
+            <option
+              className="text-paragraph-xsmall text-neutral-title"
+              value="1800"
+            ></option>
+            <option
+              className="text-paragraph-xsmall text-neutral-title"
+              value="2000"
+              label="2M"
             ></option>
           </datalist>
         </label>

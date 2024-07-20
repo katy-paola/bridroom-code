@@ -3,7 +3,7 @@ import { getProfileCurrentUser } from '@/services/user'
 import { Suspense } from 'react'
 import HouseHeader from './HouseHeader'
 import { ListListings, Skeleton } from './ListListings'
-import ViewMore from './viewMore'
+import ViewMoreButton from './ViewMoreButton'
 
 export default async function HouseSection() {
   const currentUser = await getProfileCurrentUser()
@@ -23,7 +23,7 @@ export default async function HouseSection() {
         <Suspense fallback={<Skeleton />}>
           <ListListings section="default" listings={listings} />
         </Suspense>
-        {listingsLength > 3 && <ViewMore />}
+        <ViewMoreButton listingsLength={listingsLength} />
       </section>
     </section>
   )

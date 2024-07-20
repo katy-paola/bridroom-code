@@ -27,10 +27,14 @@ export function ListListings({
 
   return (
     <ul className="grid grid-cols-auto-fill grid-rows-auto-fit items-stretch gap-6">
+      {filteredListings.length === 0 && (
+        <p className="text-paragraph-medium font-medium text-neutral-title">
+          Aún no hay pensiones
+        </p>
+      )}
       {filteredListings
         .filter(
           (listing: any) =>
-            section === 'default' ||
             noSession ||
             currentUser?.role === 'student' ||
             currentUser?.id === listing.owner?.id,
