@@ -26,7 +26,7 @@ export function ListListings({
       : listings.filter((listing: any) => currentUser?.id === listing.owner?.id)
 
   return (
-    <ul className="grid grid-cols-auto-fill grid-rows-auto-fit items-stretch gap-6">
+    <ul className="grid grid-cols-auto-fill grid-rows-auto-fit items-stretch gap-8 sm:gap-12 sm:gap-y-14">
       {filteredListings.length === 0 && (
         <p className="text-paragraph-medium font-medium text-neutral-title">
           Aún no hay pensiones

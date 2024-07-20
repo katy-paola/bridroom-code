@@ -8,8 +8,8 @@ export type Json =
 
 export interface LocationType {
   coord: string
-  address: string
-  neigh: string
+  neigh: string | null
+  address: string | null
 }
 
 export interface Database {
@@ -45,7 +45,7 @@ export interface Database {
         }
         Relationships: [
           {
-            foreignKeyName: 'public_comments_listing_id_fkey'
+            foreignKeyName: 'comments_listing_id_fkey'
             columns: ['listing_id']
             isOneToOne: false
             referencedRelation: 'listings'
@@ -95,7 +95,6 @@ export interface Database {
       }
       listings: {
         Row: {
-          comments: string[] | null
           created_at: string
           description: string
           id: string
@@ -107,7 +106,6 @@ export interface Database {
           user_id: string
         }
         Insert: {
-          comments?: string[] | null
           created_at?: string
           description?: string
           id?: string
@@ -119,7 +117,6 @@ export interface Database {
           user_id: string
         }
         Update: {
-          comments?: string[] | null
           created_at?: string
           description?: string
           id?: string

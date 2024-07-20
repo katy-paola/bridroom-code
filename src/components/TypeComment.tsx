@@ -1,4 +1,5 @@
 import { createClient } from '@/lib/supabase/server'
+import { getListingById } from '@/services/listing'
 import { cookies } from 'next/headers'
 import { redirect } from 'next/navigation'
 import Button from './Button'
@@ -10,6 +11,8 @@ export default function TypeComment({ listingId }: { listingId: string }) {
     const message = formData.get('message') as string
     const rating = formData.get('rating') as string
 
+    const listing = await getListingById(listingId)
+
     const cookieStore = cookies()
     const supabase = createClient(cookieStore)
 
@@ -20,13 +23,26 @@ export default function TypeComment({ listingId }: { listingId: string }) {
         '/add-boarding?message=You must be logged in to comment&error=true',
       )
     }
-
     const { error } = await supabase.from('comments').insert({
       user_id: user.data.user?.id,
       listing_id: listingId,
       message,
-      rating: parseInt(rating),
+      rating: parseFloat(rating),
     })
+
+    const { error: errorUpdate } = await supabase
+      .from('listings')
+      .update({
+        rating:
+          (parseFloat(rating) + (listing?.rating ?? parseFloat(rating))) / 2,
+      })
+      .eq('id', listingId)
+
+    if (errorUpdate !== null) {
+      return redirect(
+        `/house/${listingId}?message=Hubo un error al publicar tu comentario`,
+      )
+    }
 
     if (error !== null) {
       return redirect(
@@ -50,6 +66,7 @@ export default function TypeComment({ listingId }: { listingId: string }) {
           <textarea
             className="h-10 resize-none border border-solid border-neutral-paragraph bg-transparent p-2 text-paragraph-small outline-none sm:h-16"
             name="message"
+            defaultValue=""
           ></textarea>
         </section>
         <Button
