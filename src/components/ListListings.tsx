@@ -74,7 +74,7 @@ export function ListListingSkeleton() {
 }
 export function Skeleton() {
   return (
-    <ul className="grid grid-cols-auto-fill grid-rows-auto-fit items-stretch gap-6">
+    <ul className="grid grid-cols-auto-fill grid-rows-auto-fit items-stretch gap-8 sm:gap-12 sm:gap-y-14">
       {Array.from({ length: useWindowWidth() }).map((_, index) => (
         <li key={index} className="contents">
           <article className="flex flex-col overflow-hidden rounded-2xl bg-neutral-hover">
