@@ -80,7 +80,7 @@ export default async function Profile({ params }: { params: { id: string } }) {
         </section>
         <figure className="hidden size-96 lg:block">
           <img
-            className="size-full object-cover"
+            className="size-full rounded-3xl object-cover"
             src={
               `${userProfile?.avatar_url}` ??
               `${STORAGE_URL}photos-user/${userProfile?.avatar_url}`
