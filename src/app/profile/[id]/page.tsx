@@ -101,7 +101,7 @@ export default async function Profile({ params }: { params: { id: string } }) {
           </figure>
         )}
 
-        <ul className="flex w-full snap-x snap-mandatory gap-2 overflow-x-scroll py-2 sm:snap-none sm:flex-col sm:overflow-visible lg:flex-row lg:flex-wrap">
+        <ul className="flex w-full snap-x snap-mandatory gap-2 overflow-x-scroll py-2 sm:snap-none sm:flex-col sm:gap-6 sm:overflow-visible lg:grid lg:grid-cols-auto-fill lg:grid-rows-auto-fit">
           {listings?.length === 0 && (
             <div className="flex flex-col gap-5">
               <p className="text-paragraph-small font-normal text-neutral-paragraph md:text-paragraph-regular">
@@ -116,7 +116,7 @@ export default async function Profile({ params }: { params: { id: string } }) {
           )}
 
           {listings?.map((listing) => (
-            <li className="w-auto sm:w-full lg:w-auto" key={listing.id}>
+            <li className="flex w-full" key={listing.id}>
               <CardProfile
                 photo={listing.photos?.[0]}
                 id={listing.id}

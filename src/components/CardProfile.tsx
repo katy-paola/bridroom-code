@@ -18,27 +18,55 @@ export default function CardProfile(Props: {
   const priceCOP = formatCurrency(price ?? 0)
   return (
     <>
-      <article className="rounded-b-lg bg-neutral-main-bg shadow-md sm:hidden lg:block">
-        <figure className="flex h-20 w-32 lg:h-40 lg:w-60">
+      <article className="flex w-full flex-1 flex-col rounded-b-lg bg-neutral-main-bg shadow-md sm:hidden lg:flex">
+        <figure className="flex h-32 w-full lg:h-48">
           <img
             className="size-full rounded-t-lg object-cover"
             src={`${STORAGE_URL}photos-listings/${photo}`}
             alt=""
           />
         </figure>
-        <section className="flex flex-col justify-between gap-2 px-3 py-2">
-          <p>{title}</p>
+        <section className="flex w-max flex-1 flex-col justify-between gap-2 px-3 py-2 lg:w-full">
+          <section className="flex flex-col gap-1">
+            <section className="flex w-48 items-start justify-between">
+              <h3 className="max-w-[24ch] text-paragraph-small font-semibold text-neutral-title lg:max-w-none lg:text-base">
+                {title}
+              </h3>
+              {role === 'student' && (
+                <SaveBoardingButton padding="p-0" id={id} fromProfile={true} />
+              )}
+            </section>
+            <p className="text-paragraph-xsmall font-normal text-neutral-title">
+              {ownerName}
+            </p>
+            {rating === null ? (
+              <p className="text-paragraph-small leading-4 text-neutral-title">
+                No hay valoraciones
+              </p>
+            ) : (
+              <section className="flex items-center">
+                <Rating numberOfStars={rating} />
+              </section>
+            )}
+          </section>
+          <p className="self-end text-paragraph-small font-semibold text-neutral-title">
+            {priceCOP}/mes
+          </p>
           <Link href={`/house/${id}`} className="self-end">
-            <button className="text-paragraph-small text-neutral-title underline md:text-paragraph-regular">
-              Ver más
-            </button>
+            <Button
+              variant="primary"
+              size="small"
+              hasText="yes"
+              text="Ver detalles"
+              width="w-full"
+            />
           </Link>
           {role === 'student' && (
             <SaveBoardingButton padding="p-0" id={id} fromProfile={true} />
           )}
         </section>
       </article>
-      <article className="hidden gap-3 rounded-2xl bg-neutral-main-bg p-3 shadow-md sm:flex lg:hidden">
+      <article className="hidden w-full gap-3 rounded-2xl bg-neutral-main-bg p-3 shadow-md sm:flex lg:hidden">
         <section className="flex flex-col gap-2">
           <figure className="h-24 w-36">
             <img
@@ -49,7 +77,7 @@ export default function CardProfile(Props: {
           </figure>
           <Link href={`/house/${id}`}>
             <Button
-              variant="cuaternary"
+              variant="primary"
               size="small"
               hasText="yes"
               text="Ver detalles"
