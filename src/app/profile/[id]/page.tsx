@@ -36,8 +36,8 @@ export default async function Profile({ params }: { params: { id: string } }) {
                 <img
                   className="size-full rounded-full object-cover"
                   src={
-                    `${STORAGE_URL}photos-user/${userProfile?.avatar_url}` ??
-                    `${userProfile?.avatar_url}`
+                    `${userProfile?.avatar_url}` ??
+                    `${STORAGE_URL}photos-user/${userProfile?.avatar_url}`
                   }
                   alt=""
                 />
@@ -82,8 +82,8 @@ export default async function Profile({ params }: { params: { id: string } }) {
           <img
             className="size-full object-cover"
             src={
-              `${STORAGE_URL}photos-user/${userProfile?.avatar_url}` ??
-              `${userProfile?.avatar_url}`
+              `${userProfile?.avatar_url}` ??
+              `${STORAGE_URL}photos-user/${userProfile?.avatar_url}`
             }
             alt=""
           />
