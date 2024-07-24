@@ -28,8 +28,8 @@ export default function CardProfile(Props: {
         </figure>
         <section className="flex w-max flex-1 flex-col justify-between gap-2 px-3 py-2 lg:w-full">
           <section className="flex flex-col gap-1">
-            <section className="flex w-48 items-start justify-between">
-              <h3 className="max-w-[24ch] text-paragraph-small font-semibold text-neutral-title lg:max-w-none lg:text-base">
+            <section className="flex justify-between gap-2">
+              <h3 className="text-paragraph-small font-semibold text-neutral-title lg:text-base">
                 {title}
               </h3>
               {role === 'student' && (
@@ -61,9 +61,6 @@ export default function CardProfile(Props: {
               width="w-full"
             />
           </Link>
-          {role === 'student' && (
-            <SaveBoardingButton padding="p-0" id={id} fromProfile={true} />
-          )}
         </section>
       </article>
       <article className="hidden w-full gap-3 rounded-2xl bg-neutral-main-bg p-3 shadow-md sm:flex lg:hidden">
