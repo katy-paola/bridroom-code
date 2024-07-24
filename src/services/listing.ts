@@ -57,7 +57,7 @@ export const getFavoriteListings = async () => {
 
   const { data } = await supabase
     .from('favorites')
-    .select('listings(*)')
+    .select('listings(*, owner:profiles(*))')
     .eq('user_id', dataSession.session?.user.id)
 
   if (data === null) return []
