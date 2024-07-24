@@ -8,7 +8,7 @@ import Menu from '@/svg/Menu'
 import { type Session } from '@supabase/supabase-js'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { type User } from '../types/types'
 import Button from './Button'
 
@@ -22,6 +22,7 @@ export default function MenuResponsive({
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const role = user?.role
   const router = useRouter()
+  const menuRef = useRef<HTMLDivElement>(null)
 
   const handleLogout = async () => {
     const supabase = createClient()
@@ -31,6 +32,30 @@ export default function MenuResponsive({
     router.push('/login')
     router.refresh()
   }
+
+  const handleClickOutside = (event: MouseEvent) => {
+    if (
+      menuRef.current !== null &&
+      !menuRef.current.contains(event.target as Node)
+    ) {
+      setIsMenuOpen(false)
+    }
+  }
+
+  const handleItemClick = () => {
+    setIsMenuOpen(false)
+  }
+
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.addEventListener('mousedown', handleClickOutside)
+    } else {
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+  }, [isMenuOpen])
 
   return (
     <>
@@ -46,6 +71,7 @@ export default function MenuResponsive({
       </button>
 
       <nav
+        ref={menuRef}
         className={`fixed bottom-0 right-0 top-14 z-[1000] w-64 bg-neutral-main-bg shadow-md md:w-auto md:max-w-none ${
           isMenuOpen ? 'flex' : 'hidden'
         } md:static md:flex md:w-auto md:bg-transparent md:shadow-none`}
@@ -53,7 +79,7 @@ export default function MenuResponsive({
         {/* Menú para usuarios sin autenticar */}
         {session === null && (
           <ul className="flex w-full flex-col md:flex-row md:gap-8">
-            <li className="flex p-2 xs:px-4 md:p-0">
+            <li className="flex p-2 xs:px-4 md:p-0" onClick={handleItemClick}>
               <Link href="/login" className="contents">
                 <Button
                   variant="primary"
@@ -64,7 +90,7 @@ export default function MenuResponsive({
                 />
               </Link>
             </li>
-            <li className="flex p-2 xs:px-4 md:p-0">
+            <li className="flex p-2 xs:px-4 md:p-0" onClick={handleItemClick}>
               <Link href="/register" className="contents">
                 <Button
                   variant="secondary"
@@ -82,7 +108,7 @@ export default function MenuResponsive({
         {session !== null && (
           <ul className="flex w-full flex-col md:flex-row">
             {role === 'owner' && (
-              <li className="flex p-2 xs:px-4 md:p-0">
+              <li className="flex p-2 xs:px-4 md:p-0" onClick={handleItemClick}>
                 <Link href="/add-boarding" className="contents">
                   <Button
                     variant="tab"
@@ -95,7 +121,7 @@ export default function MenuResponsive({
                 </Link>
               </li>
             )}
-            <li className="flex p-2 xs:px-4 md:p-0">
+            <li className="flex p-2 xs:px-4 md:p-0" onClick={handleItemClick}>
               <Link href={`/profile/${user?.id}`} className="contents">
                 <Button
                   variant="tab"
@@ -107,7 +133,10 @@ export default function MenuResponsive({
                 />
               </Link>
             </li>
-            <li className="flex p-2 xs:px-4 md:ml-8 md:p-0">
+            <li
+              className="flex p-2 xs:px-4 md:ml-8 md:p-0"
+              onClick={handleItemClick}
+            >
               <Button
                 variant="tertiary"
                 size="both"
