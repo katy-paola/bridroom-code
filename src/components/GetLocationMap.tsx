@@ -14,7 +14,7 @@ import {
 const center = latLng(10.381888, -75.490358)
 const zoom = 14
 const minZoom = 13
-const maxZoom = 16 // Ajusta este valor según el nivel de zoom que consideres adecuado
+const maxZoom = 17 // Ajusta este valor según el nivel de zoom que consideres adecuado
 
 function LocationMarker() {
   const [position, setPosition] = useState<LatLng | null>(null)
