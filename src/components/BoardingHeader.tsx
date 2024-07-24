@@ -1,6 +1,6 @@
 import Edit from '@/svg/Edit'
 import DeleteBoardingButton from './DeleteBoardingButton'
-import SaveBoardingButton from './SaveBoardingButton'
+import SaveBoardingButton from './SaveBoarding'
 
 import { getSession } from '@/services/user'
 import Link from 'next/link'

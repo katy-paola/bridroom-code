@@ -3,7 +3,7 @@ import { formatCurrency } from '@/utils/formatCurrency'
 import Link from 'next/link'
 import Button from './Button'
 import Rating from './Rating'
-import SaveBoardingButton from './SaveBoardingButton'
+import SaveBoardingButton from './SaveBoarding'
 
 export default function CardProfile(Props: {
   photo: string | undefined
