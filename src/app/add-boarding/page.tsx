@@ -102,6 +102,16 @@ export default function AddBoarding() {
                 isRadio={false}
               />
             </label>
+            <label className="flex h-auto flex-col gap-2 text-paragraph-regular text-neutral-paragraph grid-in-neigh">
+              Barrio:
+              <InputForm
+                type="text"
+                name="neigh"
+                placeholder="Ej.: Urbanización Sevilla"
+                hasIcon={false}
+                isRadio={false}
+              />
+            </label>
             <label className="flex h-auto flex-col gap-2 text-paragraph-regular text-neutral-paragraph grid-in-address">
               Dirección:
               <InputForm

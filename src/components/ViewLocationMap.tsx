@@ -6,7 +6,7 @@ import { Icon, latLng, type Map } from 'leaflet'
 import { useMemo, useRef } from 'react'
 import { MapContainer, Marker, TileLayer, useMap } from 'react-leaflet'
 
-const zoom = 13
+const zoom = 16.5
 
 function MyZoomControl() {
   const zoomMap = useMap()

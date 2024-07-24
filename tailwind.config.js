@@ -68,18 +68,18 @@ module.exports = {
       gridTemplateColumns: {
         'auto-fill': 'repeat(auto-fill, minmax(260px, 1fr))',
         'auto-fill-sm': 'repeat(auto-fill, 80px)',
-        layout: 'repeat(2, 1fr)',
+        layout: 'repeat(4, 1fr)',
       },
       gridTemplateRows: {
         'auto-fit': 'repeat(auto-fit, minmax(min-content, 1fr))',
       },
       gridTemplateAreas: {
         layout: [
-          'title          description',
-          'address        price',
-          'map            map',
-          'photos         photos',
-          'button         button',
+          'title    title     description description',
+          'neigh address      price  price',
+          'map   map map         map',
+          'photos  photos photos       photos',
+          'button   button button      button',
         ],
       },
       fontFamily: {

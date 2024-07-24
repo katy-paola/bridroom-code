@@ -1,8 +1,6 @@
 'use client'
 
 import { MapIconLeaflet } from '@/svg/MapIconLeaflet'
-import ZoomIn from '@/svg/ZoomIn'
-import ZoomOut from '@/svg/ZoomOut'
 import { type LatLng, latLng, type Map } from 'leaflet'
 import { useMemo, useRef, useState } from 'react'
 import {
@@ -10,20 +8,18 @@ import {
   Marker,
   Popup,
   TileLayer,
-  useMap,
   useMapEvents,
 } from 'react-leaflet'
 
 const center = latLng(10.381888, -75.490358)
-const zoom = 13
+const zoom = 14
+const minZoom = 13
+const maxZoom = 16 // Ajusta este valor según el nivel de zoom que consideres adecuado
 
 function LocationMarker() {
   const [position, setPosition] = useState<LatLng | null>(null)
   const map = useMapEvents({
-    click() {
-      map.locate()
-    },
-    locationfound(e) {
+    click(e) {
       setPosition(e.latlng)
       map.flyTo(e.latlng, map.getZoom())
     },
@@ -32,7 +28,7 @@ function LocationMarker() {
   return position === null ? null : (
     <>
       <Marker position={position} icon={MapIconLeaflet}>
-        <Popup>Estas aquí</Popup>
+        <Popup>Ubicación seleccionada</Popup>
       </Marker>
       <input
         type="text"
@@ -45,40 +41,6 @@ function LocationMarker() {
         {position.lng.toFixed(4)}
       </p>
     </>
-  )
-}
-
-function MyZoomControl() {
-  const zoomMap = useMap()
-  const zoomIn = () => {
-    zoomMap.setZoom(zoomMap.getZoom() + 1)
-  }
-  const zoomOut = () => {
-    zoomMap.setZoom(zoomMap.getZoom() - 1)
-  }
-  return (
-    <div className="absolute right-4 top-4 z-[400] flex flex-col gap-2">
-      <button
-        title="Acercar"
-        onClick={(e) => {
-          e.preventDefault()
-          zoomIn()
-        }}
-        className="flex size-8 items-center justify-center rounded-lg bg-neutral-main-bg p-2 text-heading-medium leading-none text-neutral-paragraph shadow-md hover:bg-neutral-active"
-      >
-        <ZoomIn />
-      </button>
-      <button
-        title="Alejar"
-        onClick={(e) => {
-          e.preventDefault()
-          zoomOut()
-        }}
-        className="flex size-8 items-center justify-center rounded-lg bg-neutral-main-bg p-2 text-heading-medium leading-none text-neutral-paragraph shadow-md hover:bg-neutral-active"
-      >
-        <ZoomOut />
-      </button>
-    </div>
   )
 }
 
@@ -98,10 +60,11 @@ export function GetLocationMap() {
             [10.267611, -75.578984],
             [10.537838, -75.390558],
           ]}
-          zoomControl={false}
+          maxZoom={maxZoom} // Limita el zoom máximo
+          minZoom={minZoom} // Limita el zoom mínimo
+          zoomControl={true} // Usa los controles de zoom predeterminados
         >
           <LocationMarker />
-          <MyZoomControl />
           <TileLayer
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
