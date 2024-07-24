@@ -28,8 +28,8 @@ export default async function Profile({ params }: { params: { id: string } }) {
 
   return (
     <section className="mt-14 flex w-full flex-col md:mt-16">
-      <section className="flex flex-col justify-between gap-8 p-4 pb-8 xs:p-8 sm:px-44 md:px-72 lg:flex-row lg:px-36 lg:py-10 xl:px-40">
-        <section className="flex flex-col gap-8 ">
+      <section className="flex flex-col justify-between gap-8 bg-profile bg-contain bg-center bg-no-repeat p-4 pb-8 xs:p-8 sm:px-44 md:px-72 lg:flex-row lg:px-36 lg:py-10 xl:px-40">
+        <section className="flex flex-1 flex-col gap-8 rounded-xl bg-opacity  p-4 shadow-md backdrop-blur-10 lg:rounded-3xl">
           <section className="flex flex-col gap-4">
             <header className="flex items-center gap-4">
               <figure className="size-14 lg:hidden">

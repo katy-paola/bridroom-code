@@ -9,6 +9,7 @@ module.exports = {
       colors: {
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
+        opacity: 'var(--opacity)',
         btn: {
           background: 'hsl(var(--btn-background))',
           'background-hover': 'hsl(var(--btn-background-hover))',
@@ -103,9 +104,13 @@ module.exports = {
         lg: '1280px',
         xl: '1440px',
       },
+      backgroundImage: {
+        profile: 'url("/bg-profile.svg")',
+      },
+      backdropBlur: {
+        10: '10px',
+      },
     },
   },
-  plugins: [
-    require('@savvywombat/tailwindcss-grid-areas')
-  ],
+  plugins: [require('@savvywombat/tailwindcss-grid-areas')],
 }
