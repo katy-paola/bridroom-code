@@ -6,11 +6,13 @@ import { useState, type ChangeEvent, type MouseEvent } from 'react'
 export default function InputFilePreview({
   label = 'Agregar fotos',
   multiple = true,
+  defaultPhotos = [],
 }: {
   label?: string
   multiple?: boolean
+  defaultPhotos?: string[]
 }) {
-  const [images, setImages] = useState<string[]>([])
+  const [images, setImages] = useState<string[]>(defaultPhotos)
   const [fileObjects, setFileObjects] = useState<File[]>([]) // Para manejar los objetos de archivos
 
   const handleImageChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -53,7 +55,7 @@ export default function InputFilePreview({
     const fileName = fileObjects[index]?.name
     if (fileName !== '') {
       const { error } = await supabase.storage
-        .from('your_bucket_name')
+        .from('listings')
         .remove([fileName])
       if (error !== null) {
         console.error('Error removing file from Supabase:', error.message)

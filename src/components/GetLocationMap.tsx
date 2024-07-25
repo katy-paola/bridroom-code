@@ -12,12 +12,12 @@ import {
 } from 'react-leaflet'
 
 const center = latLng(10.381888, -75.490358)
-const zoom = 14
-const minZoom = 13
-const maxZoom = 17 // Ajusta este valor según el nivel de zoom que consideres adecuado
+const zoom = 15
+const minZoom = 14
+const maxZoom = 16 // Ajusta este valor según el nivel de zoom que consideres adecuado
 
-function LocationMarker() {
-  const [position, setPosition] = useState<LatLng | null>(null)
+function LocationMarker({ defaultPosition }: { defaultPosition: string }) {
+  const [position, setPosition] = useState<LatLng | null>(center)
   const map = useMapEvents({
     click(e) {
       setPosition(e.latlng)
@@ -33,7 +33,8 @@ function LocationMarker() {
       <input
         type="text"
         name="coords"
-        value={`${position.lat},${position.lng}`}
+        defaultValue={defaultPosition}
+        value={`${position.lat},${position.lng}` ?? defaultPosition}
         className="sr-only"
       />
       <p className="z-10">
@@ -44,7 +45,11 @@ function LocationMarker() {
   )
 }
 
-export function GetLocationMap() {
+export function GetLocationMap({
+  defaultPosition = center.toString(),
+}: {
+  defaultPosition: string
+}) {
   const map = useRef<Map>(null)
 
   const displayMap = useMemo(
@@ -64,7 +69,7 @@ export function GetLocationMap() {
           minZoom={minZoom} // Limita el zoom mínimo
           zoomControl={true} // Usa los controles de zoom predeterminados
         >
-          <LocationMarker />
+          <LocationMarker defaultPosition={defaultPosition} />
           <TileLayer
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

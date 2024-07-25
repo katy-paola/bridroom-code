@@ -31,12 +31,18 @@ export default async function EditBoardingIdPage({
   const updateListing = async (formData: FormData) => {
     'use server'
 
-    const photoToApi = formData.get('photos')
-    const photoPathUrl = await uploadFileToSupabase(photoToApi as File)
+    const photosToApi = formData.getAll('photos')
+    const photosPathUrls: string[] = []
+
+    for await (const photo of photosToApi) {
+      const response = await uploadFileToSupabase(photo as File)
+      if (response !== undefined) photosPathUrls.push(response)
+    }
     const title = formData.get('title') as string
     const description = formData.get('description') as string
     const price = Number(formData.get('price'))
     const coords = formData.get('coords') as string
+    const neigh = formData.get('neigh') as string
     const address = formData.get('address') as string
 
     const cookieStore = cookies()
@@ -44,9 +50,10 @@ export default async function EditBoardingIdPage({
 
     const location = {
       coord: coords,
-      neigh: '',
+      neigh,
       address,
     }
+
     const user = await supabase.auth.getUser()
 
     if (user.error !== null) {
@@ -60,8 +67,9 @@ export default async function EditBoardingIdPage({
         title,
         description,
         price,
-        avatar_url: photoPathUrl,
+        photos: photosPathUrls,
         location,
+        user_id: user.data.user?.id,
       })
       .eq('id', listing.id)
 
@@ -118,6 +126,17 @@ export default async function EditBoardingIdPage({
                 value={listing.price}
               />
             </label>
+            <label className="flex h-auto flex-col gap-2 text-paragraph-regular text-neutral-paragraph grid-in-neigh">
+              Barrio:
+              <InputForm
+                type="text"
+                name="neigh"
+                placeholder="Ej.: Urbanización Sevilla"
+                hasIcon={false}
+                isRadio={false}
+                value={listing.location.neigh}
+              />
+            </label>
             <label className="flex h-auto flex-col gap-2 text-paragraph-regular text-neutral-paragraph grid-in-address">
               Dirección:
               <InputForm
@@ -129,8 +148,8 @@ export default async function EditBoardingIdPage({
                 value={address}
               />
             </label>
-            <LocationMap />
-            <InputFilePreview />
+            <LocationMap defaultPosition={listing.location.coord} />
+            <InputFilePreview defaultPhotos={listing.photos ?? []} />
           </fieldset>
           <section className="contents h-auto justify-end grid-in-button lg:flex">
             <Button

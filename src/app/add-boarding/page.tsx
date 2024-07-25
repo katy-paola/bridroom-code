@@ -123,7 +123,7 @@ export default function AddBoarding() {
               />
             </label>
 
-            <LocationMap />
+            <LocationMap defaultPosition="10.381888, -75.490358" />
             <InputFilePreview />
           </fieldset>
 

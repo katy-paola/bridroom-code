@@ -36,7 +36,7 @@ export default function CardInfo({
 }) {
   const [isMapOpen, setIsMapOpen] = useState(false)
 
-  const [latResult, lngResult]: string[] = location.coord.split(',')
+  const [latResult, lngResult]: string[] = location.coord.split(',') ?? []
 
   const lat = parseFloat(latResult.trim())
   const lng = parseFloat(lngResult.trim())

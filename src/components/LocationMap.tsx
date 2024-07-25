@@ -17,7 +17,11 @@ const InfoIcon = () => (
   </svg>
 )
 
-export default function LocationMap() {
+export default function LocationMap({
+  defaultPosition,
+}: {
+  defaultPosition: string
+}) {
   const [showMap, setShowMap] = useState(false)
   const [showInfo, setShowInfo] = useState(false)
 
@@ -51,7 +55,7 @@ export default function LocationMap() {
           clic para seleccionar la ubicación.
         </p>
       )}
-      {showMap && <GetLocationMap />}
+      {showMap && <GetLocationMap defaultPosition={defaultPosition} />}
     </section>
   )
 }
