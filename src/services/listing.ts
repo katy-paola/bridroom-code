@@ -24,23 +24,38 @@ export const getAllListings = async ({
 
   if (price === 0 && search === undefined) return data
 
-  if (search !== undefined) {
-    return data.filter((listing) =>
-      listing.title.toLowerCase().includes(search.toLowerCase()),
-    )
-  }
+  const normalizeString = (str: string) =>
+    str
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .toLowerCase()
 
   let tempData = data
 
+  if (search !== undefined) {
+    const normalizedSearch = normalizeString(search)
+    tempData = tempData.filter(
+      (listing) =>
+        normalizeString(listing.title).includes(normalizedSearch) ||
+        normalizeString(listing.description).includes(normalizedSearch) ||
+        normalizeString(listing.location.neigh ?? '').includes(
+          normalizedSearch,
+        ),
+    )
+  }
+
   if (price !== undefined) {
-    tempData = data.filter((listing: any) => listing.price <= price)
+    tempData = tempData.filter((listing: any) => listing.price <= price)
   }
 
   if (role === 'owner') {
     if (idCurrentUser === '') return []
 
-    return tempData.filter((listing) => idCurrentUser === listing.user_id)
+    tempData = tempData.filter((listing) => idCurrentUser === listing.user_id)
   }
+
+  // Ordenar los resultados por precio ascendente
+  tempData.sort((a, b) => a.price - b.price)
 
   return tempData
 }
