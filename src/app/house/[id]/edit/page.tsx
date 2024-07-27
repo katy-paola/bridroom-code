@@ -7,7 +7,6 @@ import { createClient } from '@/lib/supabase/server'
 import { getListingById } from '@/services/listing'
 import ImgEditBoarding from '@/svg/ImgEditBoarding'
 import { cookies } from 'next/headers'
-
 import { redirect } from 'next/navigation'
 
 export default async function EditBoardingIdPage({
