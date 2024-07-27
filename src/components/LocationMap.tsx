@@ -19,8 +19,10 @@ const InfoIcon = () => (
 
 export default function LocationMap({
   defaultPosition,
+  fromEdit = false,
 }: {
   defaultPosition: string
+  fromEdit?: boolean
 }) {
   const [showMap, setShowMap] = useState(false)
   const [showInfo, setShowInfo] = useState(false)
@@ -55,7 +57,9 @@ export default function LocationMap({
           clic para seleccionar la ubicación.
         </p>
       )}
-      {showMap && <GetLocationMap defaultPosition={defaultPosition} />}
+      {showMap && (
+        <GetLocationMap defaultPosition={defaultPosition} fromEdit={fromEdit} />
+      )}
     </section>
   )
 }

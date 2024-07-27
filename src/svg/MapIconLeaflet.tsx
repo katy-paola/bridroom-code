@@ -4,7 +4,7 @@ import { Icon } from 'leaflet'
 
 export const MapIconLeaflet = new Icon({
   iconUrl: 'icons/map-marker.svg',
-  iconSize: [38, 95],
-  iconAnchor: [22, 94],
+  iconSize: [36, 36],
+  iconAnchor: [36, 36],
   popupAnchor: [-3, -76],
 })

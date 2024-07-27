@@ -147,7 +147,10 @@ export default async function EditBoardingIdPage({
                 value={address}
               />
             </label>
-            <LocationMap defaultPosition={listing.location.coord} />
+            <LocationMap
+              defaultPosition={listing.location.coord}
+              fromEdit={true}
+            />
             <InputFilePreview defaultPhotos={listing.photos ?? []} />
           </fieldset>
           <section className="contents h-auto justify-end grid-in-button lg:flex">
