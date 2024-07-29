@@ -1,5 +1,6 @@
 import Button from '@/components/Button'
 import CardProfile from '@/components/CardProfile'
+import { Image } from '@/components/Image'
 import { STORAGE_URL } from '@/lib/config'
 import { getAllListings, getFavoriteListings } from '@/services/listing'
 import { getProfileCurrentUser, getUserById } from '@/services/user'
@@ -33,13 +34,11 @@ export default async function Profile({ params }: { params: { id: string } }) {
           <section className="flex flex-col gap-4">
             <header className="flex items-center gap-4">
               <figure className="size-14 lg:hidden">
-                <img
+                <Image
+                  src={`${STORAGE_URL}photos-listings/${userProfile?.avatar_url}`}
+                  alt="Foto de perfil"
                   className="size-full rounded-full object-cover"
-                  src={
-                    `${userProfile?.avatar_url}` ??
-                    `${STORAGE_URL}photos-user/${userProfile?.avatar_url}`
-                  }
-                  alt=""
+                  fallbackSrc={`${userProfile?.avatar_url}`}
                 />
               </figure>
               <section className="flex flex-col">
@@ -79,13 +78,11 @@ export default async function Profile({ params }: { params: { id: string } }) {
           )}
         </section>
         <figure className="hidden size-96 lg:block">
-          <img
+          <Image
+            src={`${STORAGE_URL}photos-listings/${userProfile?.avatar_url}`}
+            alt="Foto de perfil"
             className="size-full rounded-3xl object-cover"
-            src={
-              `${userProfile?.avatar_url}` ??
-              `${STORAGE_URL}photos-user/${userProfile?.avatar_url}`
-            }
-            alt=""
+            fallbackSrc={`${userProfile?.avatar_url}`}
           />
         </figure>
       </section>

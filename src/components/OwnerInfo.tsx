@@ -1,3 +1,5 @@
+import { Image } from '@/components/Image'
+import { STORAGE_URL } from '@/lib/config'
 import IconUser from '@/svg/IconUser'
 import { type User } from '@/types/types'
 import Link from 'next/link'
@@ -22,10 +24,11 @@ export default function OwnerInfo(Props: {
       <article className="flex flex-col gap-10 rounded-lg bg-neutral-secondary-bg p-2 shadow-md xs:p-4">
         <section className="flex items-center gap-2">
           <figure className="flex size-12 overflow-hidden rounded-3xl">
-            <img
+            <Image
+              src={`${STORAGE_URL}photos-listings/${photo}`}
+              alt="Foto de perfil"
               className="size-full object-cover"
-              src={photo ?? '/no-image.jpg'}
-              alt="Foto del propietario"
+              fallbackSrc={`${photo}`}
             />
           </figure>
           <section className="flex flex-col">
