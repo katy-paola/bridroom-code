@@ -109,16 +109,6 @@ export default function AuthForm(Props: { typeAction: string; action: any }) {
           text={typeAction === 'login' ? 'Iniciar sesión' : 'Registrarme'}
           width="w-full md:w-auto"
         />
-        {/* {typeAction === 'login' && (
-          <Button
-            type="secondary"
-            size="regular"
-            hasText="yes"
-            text="Ingresar con Google"
-            iconLeft={<Google />}
-            width="w-full md:w-auto"
-          />
-        )} */}
       </section>
     </form>
   )
