@@ -3,11 +3,10 @@ import CardProfile from '@/components/CardProfile'
 import { Image } from '@/components/Image'
 import { STORAGE_URL } from '@/lib/config'
 import { getAllListings, getFavoriteListings } from '@/services/listing'
-import { getProfileCurrentUser, getSession, getUserById } from '@/services/user'
+import { getProfileCurrentUser, getUserById } from '@/services/user'
 import ImgEmptyFavorites from '@/svg/ImgEmptyFavorites'
 import ImgFavorites from '@/svg/ImgFavorites'
 import Link from 'next/link'
-import { redirect } from 'next/navigation'
 
 export default async function Profile({ params }: { params: { id: string } }) {
   const { id } = params
@@ -27,11 +26,6 @@ export default async function Profile({ params }: { params: { id: string } }) {
   }
 
   const currentUser = await getProfileCurrentUser()
-  const session = await getSession()
-
-  if (session === null) {
-    return redirect('/login')
-  }
 
   return (
     <section className="mt-14 flex w-full flex-col md:mt-16">
