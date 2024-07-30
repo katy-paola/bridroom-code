@@ -33,6 +33,12 @@ export default async function EditBoardingIdPage({
     const photosToApi = formData.getAll('photos')
     const photosPathUrls: string[] = []
 
+    if (photosToApi.length === 0) {
+      return redirect(
+        '/add-boarding?message=Debes agregar por lo menos una foto&error=true',
+      )
+    }
+
     for await (const photo of photosToApi) {
       const response = await uploadFileToSupabase(photo as File)
       if (response !== undefined) photosPathUrls.push(response)
@@ -43,6 +49,12 @@ export default async function EditBoardingIdPage({
     const coords = formData.get('coords') as string
     const neigh = formData.get('neigh') as string
     const address = formData.get('address') as string
+
+    if (coords === undefined || coords === '') {
+      return redirect(
+        '/add-boarding?message=Debes seleccionar una ubicación en el mapa&error=true',
+      )
+    }
 
     const cookieStore = cookies()
     const supabase = createClient(cookieStore)
@@ -151,7 +163,7 @@ export default async function EditBoardingIdPage({
               defaultPosition={listing.location.coord}
               fromEdit={true}
             />
-            <InputFilePreview defaultPhotos={listing.photos ?? []} />
+            <InputFilePreview />
           </fieldset>
           <section className="contents h-auto justify-end grid-in-button lg:flex">
             <Button

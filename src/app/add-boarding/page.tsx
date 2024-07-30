@@ -15,6 +15,12 @@ export default function AddBoarding() {
     const photosToApi = formData.getAll('photos')
     const photosPathUrls: string[] = []
 
+    if (photosToApi.length === 0) {
+      return redirect(
+        '/add-boarding?message=Debes agregar por lo menos una foto&error=true',
+      )
+    }
+
     for await (const photo of photosToApi) {
       const response = await uploadFileToSupabase(photo as File)
       if (response !== undefined) photosPathUrls.push(response)
@@ -24,10 +30,16 @@ export default function AddBoarding() {
     const description = formData.get('description') as string
     const price = Number(formData.get('price'))
     const address = formData.get('address') as string
-    const coord = formData.get('coords') as string
+    const coords = formData.get('coords') as string
     const neigh = formData.get('neigh') as string
     const cookieStore = cookies()
     const supabase = createClient(cookieStore)
+
+    if (coords === undefined || coords === '') {
+      return redirect(
+        '/add-boarding?message=Debes seleccionar una ubicación en el mapa&error=true',
+      )
+    }
 
     const user = await supabase.auth.getUser()
 
@@ -44,7 +56,7 @@ export default function AddBoarding() {
         price,
         location: {
           address,
-          coord,
+          coord: coords,
           neigh,
         },
         photos: photosPathUrls,
