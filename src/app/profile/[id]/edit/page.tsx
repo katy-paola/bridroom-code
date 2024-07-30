@@ -74,6 +74,7 @@ export default async function ProfileEdit() {
                   hasIcon={false}
                   isRadio={false}
                   value={currentUser?.name}
+                  isRequired={false}
                 />
               </label>
               <label className="flex flex-col gap-2 text-paragraph-regular text-neutral-paragraph">
@@ -88,15 +89,11 @@ export default async function ProfileEdit() {
                 />
               </label>
               <label className="flex flex-col gap-2 text-paragraph-regular text-neutral-paragraph">
-                {currentUser?.role === 'student' ? 'Universidad' : 'Barrio'}
+                Barrio:
                 <InputForm
                   type="text"
                   name="place"
-                  placeholder={
-                    currentUser?.role === 'student'
-                      ? 'Ej.: Universidad de Cartagena.'
-                      : 'Ej.: San Fernando.'
-                  }
+                  placeholder="Ej: San Fernando"
                   hasIcon={false}
                   isRadio={false}
                   value={currentUser?.university}

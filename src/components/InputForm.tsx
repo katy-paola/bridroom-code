@@ -12,6 +12,7 @@ export default function InputForm({
   value,
   name,
   id,
+  isRequired = true,
   onChange,
 }: {
   type?: string
@@ -21,6 +22,7 @@ export default function InputForm({
   isRadio: boolean
   value?: string | number | null
   id?: string
+  isRequired?: boolean
   onChange?: (e: ChangeEvent) => void
 }) {
   const [show, setShow] = useState(false)
@@ -39,7 +41,7 @@ export default function InputForm({
             placeholder={placeholder}
             defaultValue={value ?? ''}
             name={name}
-            required
+            required={isRequired}
           />
           {hasIcon && (
             <button
@@ -60,7 +62,7 @@ export default function InputForm({
           type="radio"
           className="sr-only"
           onChange={onChange}
-          required
+          required={isRequired}
         />
       )}
     </>
