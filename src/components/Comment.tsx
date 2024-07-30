@@ -8,7 +8,7 @@ export default function Comment(Props: {
   message: string
   action?: any
 }) {
-  const { avatarUrl, name, rating, message } = Props
+  const { id, avatarUrl, name, rating, message } = Props
 
   return (
     <li>
@@ -22,9 +22,11 @@ export default function Comment(Props: {
             />
           </figure>
           <section className="flex flex-col">
-            <h4 className="text-paragraph-small font-medium text-neutral-title">
-              {name}
-            </h4>
+            <a href={`/profile/${id}`}>
+              <h4 className="text-paragraph-small font-medium text-neutral-title">
+                {name}
+              </h4>
+            </a>
             <Rating numberOfStars={rating} onlyRead />
           </section>
         </section>

@@ -34,7 +34,7 @@ export default async function ListComments(Props: {
                 name={comment.profiles.name ?? comment.profiles.email}
                 rating={comment.rating}
                 message={comment.message}
-                id={comment.id}
+                id={comment.user_id}
               />
             </div>
           )
