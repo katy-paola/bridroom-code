@@ -5,6 +5,7 @@ import InputForm from '@/components/InputForm'
 import LocationMap from '@/components/LocationMap'
 import { createClient } from '@/lib/supabase/server'
 import { getListingById } from '@/services/listing'
+import { getSession } from '@/services/user'
 import ImgEditBoarding from '@/svg/ImgEditBoarding'
 import { cookies } from 'next/headers'
 import { redirect } from 'next/navigation'
@@ -14,11 +15,18 @@ export default async function EditBoardingIdPage({
 }: {
   params: { id: string }
 }) {
+  const session = await getSession()
+
+  if (session === null) {
+    return redirect('/login')
+  }
+
   const { id } = params
   const listing = await getListingById(id)
   if (listing === null) {
     return redirect('/404')
   }
+
   const address =
     typeof listing.location === 'object' &&
     listing.location !== null &&
