@@ -24,23 +24,14 @@ export const getAllListings = async ({
 
   if (price === 0 && search === undefined) return data
 
-  const normalizeString = (str: string) =>
-    str
-      .normalize('NFD')
-      .replace(/[\u0300-\u036f]/g, '')
-      .toLowerCase()
-
   let tempData = data
 
   if (search !== undefined) {
-    const normalizedSearch = normalizeString(search)
-    tempData = tempData.filter(
+    tempData = data.filter(
       (listing) =>
-        normalizeString(listing.title).includes(normalizedSearch) ||
-        normalizeString(listing.description).includes(normalizedSearch) ||
-        normalizeString(listing.location.neigh ?? '').includes(
-          normalizedSearch,
-        ),
+        listing.title.toLowerCase().includes(search.toLowerCase()) ||
+        listing.description.toLowerCase().includes(search.toLowerCase()) ||
+        listing.location.neigh?.toLowerCase().includes(search.toLowerCase()),
     )
   }
 
