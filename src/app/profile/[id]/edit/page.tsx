@@ -3,13 +3,18 @@ import Button from '@/components/Button'
 import InputFilePreview from '@/components/InputFilePreview'
 import InputForm from '@/components/InputForm'
 import { createClient } from '@/lib/supabase/server'
-import { getProfileCurrentUser } from '@/services/user'
+import { getProfileCurrentUser, getSession } from '@/services/user'
 import ImgEditProfile from '@/svg/ImgEditProfile'
 import { cookies } from 'next/headers'
 import { redirect } from 'next/navigation'
 
 export default async function ProfileEdit() {
   const currentUser = await getProfileCurrentUser()
+  const session = await getSession()
+
+  if (session === null) {
+    return redirect('/login')
+  }
 
   const updateProfile = async (formData: FormData) => {
     'use server'
