@@ -3,12 +3,19 @@ import InputFilePreview from '@/components/InputFilePreview'
 import InputForm from '@/components/InputForm'
 import LocationMap from '@/components/LocationMap'
 import { createClient } from '@/lib/supabase/server'
+import { getSession } from '@/services/user'
 import ImgAddBoarding from '@/svg/ImgAddBoarding'
 import { cookies } from 'next/headers'
 import { redirect } from 'next/navigation'
 import { uploadFileToSupabase } from '../utils/upload-file-to-supabase'
 
-export default function AddBoarding() {
+export default async function AddBoarding() {
+  const session = await getSession()
+
+  if (session === null) {
+    return redirect('/login')
+  }
+
   const addListingAction = async (formData: FormData) => {
     'use server'
 
