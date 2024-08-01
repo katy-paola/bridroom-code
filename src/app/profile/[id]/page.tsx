@@ -38,7 +38,7 @@ export default async function Profile({ params }: { params: { id: string } }) {
                   src={`${STORAGE_URL}photos-listings/${userProfile?.avatar_url}`}
                   alt="Foto de perfil"
                   className="size-full rounded-full object-cover"
-                  fallbackSrc={`${userProfile?.avatar_url}`}
+                  fallbackSrc="/no-image.jpg"
                 />
               </figure>
               <section className="flex flex-col">
@@ -82,7 +82,7 @@ export default async function Profile({ params }: { params: { id: string } }) {
             src={`${STORAGE_URL}photos-listings/${userProfile?.avatar_url}`}
             alt="Foto de perfil"
             className="size-full rounded-3xl object-cover"
-            fallbackSrc={`${userProfile?.avatar_url}`}
+            fallbackSrc="/no-image.jpg"
           />
         </figure>
       </section>
