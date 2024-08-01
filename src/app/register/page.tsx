@@ -1,7 +1,7 @@
 import AuthForm from '@/components/AuthForm'
 import { createClient } from '@/lib/supabase/server'
 import ImgRegister from '@/svg/ImgRegister'
-import { cookies, headers } from 'next/headers'
+import { cookies } from 'next/headers'
 import Link from 'next/link'
 import { redirect } from 'next/navigation'
 
@@ -9,7 +9,7 @@ export default function Register() {
   const signUp = async (formData: FormData) => {
     'use server'
 
-    const origin = process.env.NEXT_PUBLIC_BASE_URL ?? headers().get('origin')
+    const origin = process.env.VERCEL_URL ?? process.env.NEXT_PUBLIC_BASE_URL
 
     const email = formData.get('email') as string
     const password = formData.get('password') as string
