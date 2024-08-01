@@ -1,11 +1,18 @@
 import Button from '@/components/Button'
 import InputForm from '@/components/InputForm'
 import { createClient } from '@/lib/supabase/server'
+import { getProfileCurrentUser } from '@/services/user'
 import ImgLogin from '@/svg/ImgLogin'
 import { cookies } from 'next/headers'
 import { redirect } from 'next/navigation'
 
-export default function ResetPassword() {
+export default async function ResetPassword() {
+  const currentUser = await getProfileCurrentUser()
+
+  if (currentUser !== null) {
+    return redirect('/')
+  }
+
   const resetPassword = async (formData: FormData) => {
     'use server'
     const email = formData.get('email') as string
