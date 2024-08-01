@@ -27,27 +27,23 @@ export default function UpdatePassword({
 
     console.log('code', code)
 
-    try {
-      const data = await supabase.auth.exchangeCodeForSession(code)
+    const data = await supabase.auth.exchangeCodeForSession(code)
 
-      console.log('data', data)
+    console.log('data', data)
 
-      const { error } = await supabase.auth.updateUser({
-        password,
-      })
+    const { error } = await supabase.auth.updateUser({
+      password,
+    })
 
-      console.log('error', error)
+    console.log('error', error)
 
-      if (error !== null) {
-        return redirect(
-          `/login/update-password?message=${error.message}&error=true`,
-        )
-      }
-
-      return redirect('/login?message=Tu contraseña ha sido actualizada')
-    } catch (error) {
-      return redirect('/login?message=Ha ocurrido un error&error=true')
+    if (error !== null) {
+      return redirect(
+        `/login/update-password?message=${error.message}&error=true`,
+      )
     }
+
+    return redirect('/?message=Tu contraseña ha sido actualizada')
   }
 
   return (

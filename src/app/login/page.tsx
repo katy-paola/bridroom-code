@@ -1,10 +1,17 @@
 import AuthForm from '@/components/AuthForm'
 import { createClient } from '@/lib/supabase/server'
+import { getProfileCurrentUser } from '@/services/user'
 import ImgLogin from '@/svg/ImgLogin'
 import { cookies } from 'next/headers'
 import { redirect } from 'next/navigation'
 
-export default function Login() {
+export default async function Login() {
+  const currentUser = await getProfileCurrentUser()
+
+  if (currentUser !== null) {
+    return redirect('/')
+  }
+
   const signIn = async (formData: FormData) => {
     'use server'
 
