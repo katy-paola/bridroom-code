@@ -19,8 +19,11 @@ export default async function ResetPassword() {
     const cookieStore = cookies()
     const supabase = createClient(cookieStore)
 
+    const redirectToUrl =
+      process.env.VERCEL_URL ?? process.env.NEXT_PUBLIC_BASE_URL
+
     const { error } = await supabase.auth.resetPasswordForEmail(email, {
-      redirectTo: `${process.env.NEXT_PUBLIC_BASE_URL}/login/update-password`,
+      redirectTo: `${redirectToUrl}/login/update-password`,
     })
 
     if (error !== null) {
