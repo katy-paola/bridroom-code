@@ -22,7 +22,7 @@ export default function ResetPassword() {
       )
     }
 
-    return redirect('/login?message=Revisa tu correo electrónico')
+    return redirect('/login?message=Revisa tu correo')
   }
 
   return (

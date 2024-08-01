@@ -1,15 +1,20 @@
 'use client'
 
+import { STORAGE_URL } from '@/lib/config'
 import { useState, type ChangeEvent } from 'react'
 
 export default function InputFilePreview({
   label = 'Agregar fotos',
   multiple = true,
+  previusImages = [],
 }: {
   label?: string
   multiple?: boolean
+  previusImages?: string[]
 }) {
   const [images, setImages] = useState<string[]>([])
+  const [previusImagesLocal, setPreviusImagesLocal] =
+    useState<string[]>(previusImages)
 
   const handleImageChange = (event: ChangeEvent<HTMLInputElement>) => {
     const fileList = event.target.files
@@ -54,12 +59,41 @@ export default function InputFilePreview({
           multiple={multiple}
           onChange={handleImageChange}
         />
+
+        {previusImagesLocal.map((image, index) => (
+          <div key={index}>
+            <img
+              src={`${STORAGE_URL}photos-listings/${image}`}
+              alt={`Preview ${index}`}
+              style={{ width: '80px', height: '80px' }}
+              className="hover:opacity-50"
+              onClick={(e) => {
+                e.preventDefault()
+                setPreviusImagesLocal((previusImagesLocal) =>
+                  previusImagesLocal.filter((_, i) => i !== index),
+                )
+              }}
+            />
+          </div>
+        ))}
+
+        <input
+          type="hidden"
+          name="previusImages"
+          value={previusImagesLocal.join(',')}
+        />
+
         {images.map((image, index) => (
           <div key={index}>
             <img
               src={image}
               alt={`Preview ${index}`}
               style={{ width: '80px', height: '80px' }}
+              className="hover:opacity-50"
+              onClick={(e) => {
+                e.preventDefault()
+                setImages((images) => images.filter((_, i) => i !== index))
+              }}
             />
           </div>
         ))}

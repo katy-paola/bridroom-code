@@ -51,10 +51,22 @@ export default async function EditBoardingIdPage({
       const response = await uploadFileToSupabase(photo as File)
       if (response !== undefined) photosPathUrls.push(response)
     }
+
+    const previusImages = formData.get('previusImages') as string
+    const photosToSupabase: string[] = []
+
+    if (previusImages !== '') {
+      const previusImagesArray = previusImages.split(',')
+
+      photosToSupabase.push(...previusImagesArray)
+    }
+
+    photosToSupabase.push(...photosPathUrls)
+
     const title = formData.get('title') as string
     const description = formData.get('description') as string
     const price = Number(formData.get('price'))
-    const coords = formData.get('coords') as string
+    const coords = (formData.get('coords') as string) ?? listing.location.coord
     const neigh = formData.get('neigh') as string
     const address = formData.get('address') as string
 
@@ -86,7 +98,7 @@ export default async function EditBoardingIdPage({
         title,
         description,
         price,
-        photos: photosPathUrls,
+        photos: photosToSupabase,
         location,
         user_id: user.data.user?.id,
       })
@@ -171,7 +183,7 @@ export default async function EditBoardingIdPage({
               defaultPosition={listing.location.coord}
               fromEdit={true}
             />
-            <InputFilePreview />
+            <InputFilePreview previusImages={listing.photos ?? []} />
           </fieldset>
           <section className="contents h-auto justify-end grid-in-button lg:flex">
             <Button
