@@ -27,7 +27,7 @@ export const getAllListings = async ({
   let tempData = data
 
   if (search !== undefined) {
-    tempData = data.filter(
+    tempData = tempData.filter(
       (listing) =>
         listing.title.toLowerCase().includes(search.toLowerCase()) ||
         listing.description.toLowerCase().includes(search.toLowerCase()) ||
@@ -35,7 +35,7 @@ export const getAllListings = async ({
     )
   }
 
-  if (price !== undefined) {
+  if (price !== 0 && price !== undefined) {
     tempData = tempData.filter((listing: any) => listing.price <= price)
   }
 
