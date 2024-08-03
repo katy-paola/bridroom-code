@@ -1,3 +1,5 @@
+import { Image } from '@/components/Image'
+import { STORAGE_URL } from '@/lib/config'
 import Rating from './Rating'
 
 export default function Comment(Props: {
@@ -15,10 +17,11 @@ export default function Comment(Props: {
       <article className="flex flex-col gap-2 bg-neutral-active p-4">
         <section className="flex gap-2">
           <figure className="flex size-10 overflow-hidden rounded-3xl">
-            <img
+            <Image
+              src={`${STORAGE_URL}photos-listings/${avatarUrl}`}
+              alt="Foto de perfil"
               className="size-full object-cover"
-              src={avatarUrl ?? '/no-image.jpg'}
-              alt={`Foto de perfil de ${name}`}
+              fallbackSrc="/no-image.jpg"
             />
           </figure>
           <section className="flex flex-col">
