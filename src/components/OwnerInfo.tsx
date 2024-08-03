@@ -42,16 +42,26 @@ export default function OwnerInfo(Props: {
             </small>
           </section>
         </section>
-        <Link href={link}>
-          <Button
-            variant="secondary"
-            size="small"
-            hasText="yes"
-            text={textButton}
-            iconLeft={currentOwner ? <IconUser /> : undefined}
-            width="w-full"
-          />
-        </Link>
+
+        {currentOwner ? (
+          <Link href={link}>
+            <Button
+              variant="secondary"
+              size="small"
+              hasText="yes"
+              text={textButton}
+              iconLeft={currentOwner ? <IconUser /> : undefined}
+              width="w-full"
+            />
+          </Link>
+        ) : (
+          <a
+            href={link}
+            className="box-border flex w-full items-center justify-center gap-1 rounded-lg border-2 border-solid border-transparent bg-secondary-default px-6 py-2 text-paragraph-small leading-none text-neutral-main-bg outline-none hover:bg-secondary-hover active:bg-secondary-active disabled:bg-secondary-disabled"
+          >
+            {textButton}
+          </a>
+        )}
       </article>
     </section>
   )
