@@ -108,7 +108,7 @@ export default function MenuResponsive({
         {/* Menú para usuarios autenticados */}
         {session !== null && (
           <ul className="flex w-full flex-col md:flex-row">
-            {role === 'owner' && user?.contact && (
+            {role === 'owner' && user?.contact != null && (
               <li className="flex p-2 xs:px-4 md:p-0" onClick={handleItemClick}>
                 <Link href="/add-boarding" className="contents">
                   <Button
@@ -123,7 +123,7 @@ export default function MenuResponsive({
               </li>
             )}
 
-            {role === 'owner' && !user?.contact && (
+            {role === 'owner' && user?.contact == null && (
               <li className="flex p-2 xs:px-4 md:p-0" onClick={handleItemClick}>
                 <Button
                   variant="tab"
@@ -134,7 +134,7 @@ export default function MenuResponsive({
                   width="w-full md:auto"
                   onClick={() => {
                     toast.custom((t) => (
-                      <div className="bg-white rounded-sm shadow-lg flex flex-col gap-5 py-3 px-5">
+                      <div className="flex flex-col gap-5 rounded-sm bg-white px-5 py-3 shadow-lg">
                         <h1 className="text-paragraph-small">
                           Para agregar una pensión necesitas agregar tu número
                           de contacto

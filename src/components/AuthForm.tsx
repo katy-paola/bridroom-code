@@ -44,7 +44,9 @@ export default function AuthForm(Props: { typeAction: string; action: any }) {
             hasIcon={true}
             isRadio={false}
             value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={(e) => {
+              setPassword(e.target.value)
+            }}
           />
           {typeAction === 'login' && (
             <a
@@ -65,7 +67,9 @@ export default function AuthForm(Props: { typeAction: string; action: any }) {
                 hasIcon={true}
                 isRadio={false}
                 value={confirmPassword}
-                onChange={(e) => setConfirmPassword(e.target.value)}
+                onChange={(e) => {
+                  setConfirmPassword(e.target.value)
+                }}
               />
             </label>
 
@@ -106,7 +110,9 @@ export default function AuthForm(Props: { typeAction: string; action: any }) {
                     className="peer hidden"
                     required
                     defaultChecked={studentChecked}
-                    onChange={() => setSeletedRole('student')}
+                    onChange={() => {
+                      setSeletedRole('student')
+                    }}
                   />
                   <label
                     htmlFor="student"
@@ -124,7 +130,9 @@ export default function AuthForm(Props: { typeAction: string; action: any }) {
                     required
                     className="peer hidden"
                     defaultChecked={ownerChecked}
-                    onChange={() => setSeletedRole('owner')}
+                    onChange={() => {
+                      setSeletedRole('owner')
+                    }}
                   />
                   <label
                     htmlFor="owner"
