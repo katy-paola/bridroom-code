@@ -13,6 +13,7 @@ export default function Register() {
 
     const email = formData.get('email') as string
     const password = formData.get('password') as string
+    const contact = formData.get('contact') as string
     const role = formData.get('role') as string
     const cookieStore = cookies()
     const supabase = createClient(cookieStore)
@@ -32,7 +33,7 @@ export default function Register() {
     // add role to user
     const { error: errorRole } = await supabase
       .from('profiles')
-      .update({ role })
+      .update({ role, contact: +contact })
       .match({ id: data?.user?.id })
 
     if (errorRole !== null) {

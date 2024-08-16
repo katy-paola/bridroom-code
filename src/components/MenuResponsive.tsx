@@ -9,6 +9,7 @@ import { type Session } from '@supabase/supabase-js'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { useEffect, useRef, useState } from 'react'
+import { toast } from 'sonner'
 import { type User } from '../types/types'
 import Button from './Button'
 
@@ -107,7 +108,7 @@ export default function MenuResponsive({
         {/* Menú para usuarios autenticados */}
         {session !== null && (
           <ul className="flex w-full flex-col md:flex-row">
-            {role === 'owner' && (
+            {role === 'owner' && user?.contact && (
               <li className="flex p-2 xs:px-4 md:p-0" onClick={handleItemClick}>
                 <Link href="/add-boarding" className="contents">
                   <Button
@@ -121,6 +122,39 @@ export default function MenuResponsive({
                 </Link>
               </li>
             )}
+
+            {role === 'owner' && !user?.contact && (
+              <li className="flex p-2 xs:px-4 md:p-0" onClick={handleItemClick}>
+                <Button
+                  variant="tab"
+                  size="both"
+                  hasText="yes"
+                  text="Agregar pensión"
+                  iconLeft={<Add />}
+                  width="w-full md:auto"
+                  onClick={() => {
+                    toast.custom((t) => (
+                      <div className="bg-white rounded-sm shadow-lg flex flex-col gap-5 py-3 px-5">
+                        <h1 className="text-paragraph-small">
+                          Para agregar una pensión necesitas agregar tu número
+                          de contacto
+                        </h1>
+                        <Link href={`/profile/${user?.id}`}>
+                          <Button
+                            variant="primary"
+                            size="both"
+                            hasText="yes"
+                            text="Agregar contacto"
+                            width="w-full"
+                          />
+                        </Link>
+                      </div>
+                    ))
+                  }}
+                />
+              </li>
+            )}
+
             <li className="flex p-2 xs:px-4 md:p-0" onClick={handleItemClick}>
               <Link href={`/profile/${user?.id}`} className="contents">
                 <Button

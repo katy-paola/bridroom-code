@@ -1,5 +1,7 @@
 'use client'
+
 import { useSearchParams } from 'next/navigation'
+import { useEffect, useState } from 'react'
 import Button from './Button'
 import InputForm from './InputForm'
 
@@ -8,6 +10,14 @@ export default function AuthForm(Props: { typeAction: string; action: any }) {
   const role = useSearchParams().get('role') ?? 'student'
   const ownerChecked = role === 'owner'
   const studentChecked = role !== 'owner'
+  const [seletedRole, setSeletedRole] = useState(role)
+  const [password, setPassword] = useState('')
+  const [confirmPassword, setConfirmPassword] = useState('')
+  const [passowrdMatch, setPassowrdMatch] = useState(false)
+
+  useEffect(() => {
+    setPassowrdMatch(password === confirmPassword)
+  }, [password, confirmPassword])
 
   return (
     <form
@@ -33,6 +43,8 @@ export default function AuthForm(Props: { typeAction: string; action: any }) {
             placeholder="Ingresa tu contraseña"
             hasIcon={true}
             isRadio={false}
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
           />
           {typeAction === 'login' && (
             <a
@@ -52,8 +64,32 @@ export default function AuthForm(Props: { typeAction: string; action: any }) {
                 placeholder="Confirma tu contraseña"
                 hasIcon={true}
                 isRadio={false}
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
               />
             </label>
+
+            <span
+              className={`text-paragraph-small ${passowrdMatch ? 'text-green-500' : 'text-red-500'}`}
+            >
+              {passowrdMatch
+                ? 'Las contraseñas coinciden'
+                : 'Las contraseñas no coinciden'}
+            </span>
+
+            {seletedRole === 'owner' && (
+              <label className="flex flex-col gap-2 text-paragraph-regular text-neutral-paragraph">
+                Teléfono
+                <InputForm
+                  type="tel"
+                  name="contact"
+                  placeholder="Ingresa tu número de teléfono"
+                  hasIcon={false}
+                  isRadio={false}
+                  isRequired
+                />
+              </label>
+            )}
 
             <label
               id="rol"
@@ -70,6 +106,7 @@ export default function AuthForm(Props: { typeAction: string; action: any }) {
                     className="peer hidden"
                     required
                     defaultChecked={studentChecked}
+                    onChange={() => setSeletedRole('student')}
                   />
                   <label
                     htmlFor="student"
@@ -87,6 +124,7 @@ export default function AuthForm(Props: { typeAction: string; action: any }) {
                     required
                     className="peer hidden"
                     defaultChecked={ownerChecked}
+                    onChange={() => setSeletedRole('owner')}
                   />
                   <label
                     htmlFor="owner"
@@ -108,6 +146,7 @@ export default function AuthForm(Props: { typeAction: string; action: any }) {
           hasText="yes"
           text={typeAction === 'login' ? 'Iniciar sesión' : 'Registrarme'}
           width="w-full md:w-auto"
+          disabled={!passowrdMatch && typeAction === 'register'}
         />
       </section>
     </form>

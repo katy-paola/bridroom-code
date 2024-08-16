@@ -132,7 +132,7 @@ export default async function EditBoardingIdPage({
                 placeholder="Ej.: Pensión disponible en Urbanización Sevilla."
                 hasIcon={false}
                 isRadio={false}
-                value={listing.title}
+                defaultValue={listing.title}
               />
             </label>
             <label className="flex h-auto flex-col gap-2 text-paragraph-regular text-neutral-paragraph grid-in-description">
@@ -143,7 +143,7 @@ export default async function EditBoardingIdPage({
                 placeholder="Agrega información sobre tu pensión, como servicios, puntos de referencia, etc."
                 hasIcon={false}
                 isRadio={false}
-                value={listing.description}
+                defaultValue={listing.description}
               />
             </label>
             <label className="flex h-auto flex-col gap-2 text-paragraph-regular text-neutral-paragraph grid-in-price">
@@ -154,7 +154,7 @@ export default async function EditBoardingIdPage({
                 placeholder="Ej.: 500000"
                 hasIcon={false}
                 isRadio={false}
-                value={listing.price}
+                defaultValue={listing.price}
               />
             </label>
             <label className="flex h-auto flex-col gap-2 text-paragraph-regular text-neutral-paragraph grid-in-neigh">
@@ -165,7 +165,7 @@ export default async function EditBoardingIdPage({
                 placeholder="Ej.: Urbanización Sevilla"
                 hasIcon={false}
                 isRadio={false}
-                value={listing.location.neigh}
+                defaultValue={listing.location.neigh ?? ''}
               />
             </label>
             <label className="flex h-auto flex-col gap-2 text-paragraph-regular text-neutral-paragraph grid-in-address">
@@ -176,7 +176,7 @@ export default async function EditBoardingIdPage({
                 placeholder="Ej.: Urbanización Sevilla mz 5 lt 6"
                 hasIcon={false}
                 isRadio={false}
-                value={address}
+                defaultValue={address}
               />
             </label>
             <LocationMap

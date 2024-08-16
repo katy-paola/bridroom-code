@@ -5,4 +5,5 @@ export type User = {
   name: string | null
   role: string
   username: string | null
+  contact: number | null
 } | null

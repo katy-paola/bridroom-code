@@ -25,6 +25,7 @@ export default async function ProfileEdit() {
     const name = formData.get('name') as string
     const about = formData.get('about') as string
     const place = formData.get('place') as string
+    const contact = formData.get('contact') as string
     const cookieStore = cookies()
     const supabase = createClient(cookieStore)
 
@@ -38,7 +39,13 @@ export default async function ProfileEdit() {
 
     const { error } = await supabase
       .from('profiles')
-      .update({ name, about, university: place, avatar_url: photoPathUrl })
+      .update({
+        name,
+        about,
+        university: place,
+        avatar_url: photoPathUrl,
+        contact: +contact,
+      })
       .eq('id', user.data.user?.id)
 
     if (error !== null) {
@@ -73,7 +80,7 @@ export default async function ProfileEdit() {
                   placeholder="Agrega tu nombre."
                   hasIcon={false}
                   isRadio={false}
-                  value={currentUser?.name}
+                  defaultValue={currentUser?.name ?? ''}
                   isRequired={false}
                 />
               </label>
@@ -85,7 +92,7 @@ export default async function ProfileEdit() {
                   placeholder="Agrega información sobre ti, como tus gustos, hobbies, etc."
                   hasIcon={false}
                   isRadio={false}
-                  value={currentUser?.about}
+                  defaultValue={currentUser?.about ?? ''}
                 />
               </label>
               <label className="flex flex-col gap-2 text-paragraph-regular text-neutral-paragraph">
@@ -96,9 +103,23 @@ export default async function ProfileEdit() {
                   placeholder="Ej: San Fernando"
                   hasIcon={false}
                   isRadio={false}
-                  value={currentUser?.university}
+                  defaultValue={currentUser?.university ?? ''}
                 />
               </label>
+
+              {currentUser?.role === 'owner' && (
+                <label className="flex flex-col gap-2 text-paragraph-regular text-neutral-paragraph">
+                  Teléfono:
+                  <InputForm
+                    type="tel"
+                    name="contact"
+                    placeholder="Ingresa tu número de teléfono"
+                    hasIcon={false}
+                    isRadio={false}
+                    defaultValue={currentUser?.contact?.toString() ?? ''}
+                  />
+                </label>
+              )}
             </fieldset>
             <Button
               variant="primary"

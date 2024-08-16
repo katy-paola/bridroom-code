@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, type ChangeEvent } from 'react'
+import { ChangeEvent, useState } from 'react'
 import Hide from '../svg/Hide'
 import Show from '../svg/Show'
 
@@ -13,6 +13,7 @@ export default function InputForm({
   name,
   id,
   isRequired = true,
+  defaultValue,
   onChange,
 }: {
   type?: string
@@ -20,10 +21,11 @@ export default function InputForm({
   name?: string
   hasIcon: boolean
   isRadio: boolean
-  value?: string | number | null
+  value?: string | number
   id?: string
   isRequired?: boolean
-  onChange?: (e: ChangeEvent) => void
+  defaultValue?: string | number
+  onChange?: (e: ChangeEvent<HTMLInputElement>) => void
 }) {
   const [show, setShow] = useState(false)
 
@@ -39,8 +41,10 @@ export default function InputForm({
             } outline-none`}
             type={show ? 'text' : type}
             placeholder={placeholder}
-            defaultValue={value ?? ''}
+            defaultValue={defaultValue ?? ''}
             name={name}
+            onChange={onChange}
+            value={value}
             required={isRequired}
           />
           {hasIcon && (
@@ -62,6 +66,8 @@ export default function InputForm({
           type="radio"
           className="sr-only"
           onChange={onChange}
+          defaultValue={defaultValue}
+          value={value}
           required={isRequired}
         />
       )}
